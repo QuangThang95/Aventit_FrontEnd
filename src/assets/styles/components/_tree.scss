@@ -1,0 +1,19 @@
+.left-sidebar-content-bottom {
+  height: calc(100% - 260px);
+  padding-left: 10px;
+  &__tree-view {
+    &.dx-widget * {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.trees-list {
+  border: 1px solid $color-gray; 
+}
+
+.trees-list:focus-within {
+  border: $border-color-highlight;
+}

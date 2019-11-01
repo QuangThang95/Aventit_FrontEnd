@@ -1,0 +1,8 @@
+<kiss-left-sidebars [isNavbar]="isNavbar">
+    <kiss-selected-actions [selectedActions]="layoutSandbox.selectedAction$ | async" [currentUrl]="currentUrl">
+    </kiss-selected-actions>
+    <kiss-module-config-navigator></kiss-module-config-navigator>
+</kiss-left-sidebars>
+<div class="view-content" kissScroll (scrollPosition)="scrollChanged($event)">
+    <router-outlet></router-outlet>
+</div>

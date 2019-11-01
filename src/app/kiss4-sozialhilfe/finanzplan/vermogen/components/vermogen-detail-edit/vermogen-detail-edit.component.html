@@ -1,0 +1,121 @@
+<div class="container-detail__form">
+    <dx-validation-group #validationGroup>
+        <dx-form [formData]="dataSource" [showColonAfterLabel]="true">
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="5" [template]="'freibetragTemplate'" [editorOptions]="{ width: '100%' }" dataField="Freibetrag">
+                    <dxo-label id="i006_freibetrag-label" [text]="'Vermogen.Detail.Freibetrag' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="5" [template]="'angerechnetTemplate'" [editorOptions]="{ width: '100%' }"
+                    dataField="Angerechnet">
+                    <dxo-label id="i006_angerechnet-label" [text]="'Vermogen.Detail.Angerechnet' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="8" dataField="Name" itemType="group" [editorOptions]="{ width: '100%' }"
+                    [template]="'personTemplate'">
+                    <dxo-label [text]="'Vermogen.Detail.Person' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="8" dataField="ArtDesVermogens" itemType="group" [editorOptions]="{ width: '100%' }"
+                    [template]="'artDesVermogensTemplate'">
+                    <dxo-label [text]="'Vermogen.Detail.ArtDesVermoge' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="5" [template]="'vermogensTemplate'" [editorOptions]="{ width: '100%' }" dataField="Vermogen">
+                    <dxo-label id="i006_vermogens-label" [text]="'Vermogen.Detail.Vermogen' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="5" [template]="'vermogensverbrauchTemplate'" [editorOptions]="{ width: '100%' }"
+                    dataField="Verbrauch">
+                    <dxo-label id="i006_vermogensverbrauch-label" [text]="'Vermogen.Detail.MonatlVermogensverbrauch' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item [colSpan]="12" [template]="'beschreibungTemplate'" [editorOptions]="{ width: '100%' }"
+                    dataField="beschreibung">
+                    <dxo-label id="i006_beschreibung-label" [text]="'Vermogen.Detail.Beschreibung' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+
+
+
+
+            <!-- Template -->
+            <div *dxTemplate="let data of 'freibetragTemplate'">
+                <dx-number-box #freibetragTemplate id="i006_freibetrag_textbox" [step]=0 [tabIndex]="1" [accessKey]="1">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-number-box>
+            </div>
+
+            <div *dxTemplate="let data of 'angerechnetTemplate'">
+                <dx-number-box #angerechnetTemplate id="i006_freibetrag_textbox" [step]=0 [tabIndex]="2">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-number-box>
+            </div>
+
+            <div *dxTemplate="let data of 'personTemplate'">
+                <dx-select-box [dataSource]="dataSelectBoxPerson" [showClearButton]="true" [tabIndex]="3">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-select-box>
+            </div>
+
+            <div *dxTemplate="let data of 'artDesVermogensTemplate'">
+                <dx-select-box [dataSource]="dataSelectBoxArtDesVermogen" [showClearButton]="true" [tabIndex]="4">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-select-box>
+            </div>
+
+            <div *dxTemplate="let data of 'vermogensTemplate'">
+                <dx-number-box #vermogensTemplate id="i006_vermogens_textbox" [value]="dataSource?.Vermogen" [tabIndex]="5">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-number-box>
+            </div>
+
+            <div *dxTemplate="let data of 'vermogensverbrauchTemplate'">
+                <dx-number-box #vermogensverbrauchTemplate id="i006_vermogensverbrauch_textbox" [value]="dataSource?.Verbrauch" [tabIndex]="6" >
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-number-box>
+            </div>
+
+            <div *dxTemplate="let data of 'beschreibungTemplate'">
+                <dx-text-area #beschreibungTemplate id="i006_beschreibungTemplate_textare" [tabIndex]="7">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" message="Is required">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-area>
+            </div>
+
+        </dx-form>
+    </dx-validation-group>
+    <!-- <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm> -->
+</div>

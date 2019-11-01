@@ -1,0 +1,65 @@
+{
+    "Arbeit": {
+        "TitlePage": "Arbeit [fr]",
+        "Button": {
+            "Edit": "Bearbeiten [fr]",
+            "Save": "Speichern [fr]",
+            "Cancel": "Abbrechen [fr]"
+        },
+        "ArbeitForm": {
+            "Erwerbssituation": "Erwerbssituation [fr]",
+            "Beschaftigungsgrad": "Beschäftigungsgrad [fr]",
+            "Teilzeitgrund": "Teilzeitgrund [fr]",
+            "Branche": "Branche [fr]",
+            "ErlernterBeruf": "Erlernter Beruf [fr]",
+            "LetzteTatigkeit": "Letzte Tätigkeit [fr]",
+            "Arbeitgeber": "Arbeitgeber [fr]",
+            "HochsteAusbildung": "höchste Ausbildung [fr]",
+            "LetzeAusb": "Letze abgebr. Ausb [fr]",
+            "Integrationsstand": "Integrationsstand [fr]",
+            "ArbeitszeitWoche": "ArbeitszeitWoche [fr]",
+            "Unregelmassig": "unregelmassig [fr]",
+            "Stempenln": "Stempenln seit [fr]",
+            "Ausgesteuert": "Ausgesteuert [fr]",
+            "AusgesteuertSeit": "Ausgesteuert seit [fr]",
+            "arbeitslos": "arbeitslos (letzte 3 Jahre) [fr]",
+            "Bemerkung": "Bemerkung [fr]",
+            "Std": "Std. [fr]",
+            "mal": "mal [fr]",
+            "Number1": "1.",
+            "Number2": "2.",
+            "Number3": "3.",
+            "Number4": "4.",
+            "TitleName": "Name[fr]",
+            "TitleAddress": "Adrese[fr]",
+            "TitleType": "Typen[fr]"
+        },
+        "MessageForm": {
+            "Arbeitszeit": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [fr]",
+            "CloseBrower": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [fr]",
+            "MessageEdit1": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht. [fr]",
+            "MessgeEdit1": "Person: <<Name, Vorname>> Aktualisieren sie die Daten zuerst, um Ihre Änderungen zu speichern. [fr]",
+            "ErlernterBerufNoData": "Keinen zutreffenden Beruf gefunden. [fr]",
+            "BerufNoData": "Keinen zutreffenden Beruf gefunden. [fr]",
+            "ArbeitgeberNoData": "Keine zutreffenden Institutionen gefunden. [fr]",
+            "DoubleHeader": "Die Angaben wurden in den Zwischenspeicher kopiert. [fr]",
+            "ShiftDoubleHeader": " Die ID wurde in den Zwischenspeicher kopiert [fr]",
+            "AddNewMessage": "Das Einfügen eines Datensatzes ist nicht erlaubt ! [fr]",
+            "ArbeitszeitWocheValidatemessage": "Beim Speichern des veränderten Datensatzes ist ein Fehler aufgetreten ![fr]",
+            "DatetimeValidatemessage": "Value must be date or time [fr]"
+        },
+        "Message": {
+            "Information": "Information [fr]",
+            "TitleComfirm": "Bestätigung [fr]",
+            "ComfirmYes": "Ja [fr]",
+            "ComfirmNo": "Nein [fr]",
+            "DeleteAppNew": "Neuen Datensatz wieder löschen ? [fr]",
+            "CancelEditModel": "Änderungen an diesem Datensatz rückgängig machen ? [fr]",
+            "UpdateComfirmYes": "Abandonner [fr]",
+            "UpdateComfirmNo": "Mettre à jour les données [fr]",
+            "ConfirmDeactive": "You have unsaved changes! If you leave, your changes will be lost. [fr]",
+            "Discard": "Discard [fr]",
+            "Abbrechen": "Abbrechen [fr]"
+        }
+    }
+}

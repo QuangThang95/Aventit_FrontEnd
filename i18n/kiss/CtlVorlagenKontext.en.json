@@ -1,0 +1,86 @@
+{
+    "VorlagenKontext": {
+      "Title": "Kontext [en]",
+      "KontextName": "Kontextname [en]",
+      "Description": "Beschreibung [en]",
+      "VorlagenkontextDetails": {
+        "TitleSearch": "Suche [en]",
+        "TitleDetail": "Detail [en]",
+        "Placeholder": "Select ...[en]",
+        "Spaltenauswahl": "Spaltenauswahl [en]",
+        "ExcelExport": "Excel Export [en]",
+        "GridDrucken": "Grid drucken [en]",
+        "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden [en]",
+        "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden [en]",
+        "Suche": "Suche anzeigen/ausblenden [en]",
+        "Filtereditor": "Filtereditor anzeigen/ausblenden [en]",
+        "GridEinstellungen": "Grid Einstellungen [en]",
+        "ApplyFilter": "Filter anwenden [en]",
+        "SchnellGrid": "Schnellfilterzeile anzeigen/ausblenden [en]",
+        "GroupGrid": "Show/Hide Grouping Area [en]",
+        "SucheGrid": "Suche anzeigen/ausblenden [en]",
+        "FilterGrid": "Filtereditor anzeigen/ausblenden [en]",
+        "Einstellungen": "Grid Einstellungen [en]",
+        "EmptyPanelText": "Drag a column header here to group by that column [en]",
+        "Delete": "Löschen [en]",
+        "ZugeteiltVorlagen": "Zugeteilt Vorlagen [en]",
+        "File": "F [en]",
+        "VerfugbareVorlagen":"verfugbare Vorlagen [en]",
+        "DialogLookup": {
+          "Typ": "Type [en]",
+          "Kuerzel": "Logon name [en]",
+          "Name": "Name [en]",
+          "Abteilung": "Department [en]",
+          "VorName": "VorName [en]",
+          "Benutzer": "User [en]"
+        },
+        "Validation": {
+          "NoData": "Keine Daten [en]",
+          "Subject": "The field 'Subject' must not be empty! [en]",
+          "BetreffEmpty": "Information: The field 'Betreff' must not be empty! [en]",
+          "MaxLength": "The content of a field exceeds the maximum allowed length. [en]"
+        },
+        "RowCount": "Number of records [en]",
+        "ColumnChooser": "Benutzerdefiniert [en]",
+        "GridPrint": "Grid drucken [en]",
+        "Filterbuilder": "Gruppierungsbereich anzeigen/ausblenden [en]",
+        "Einfugen": "Einfügen auf derselben Ebene [en]",
+        "Ordnername": "Ordnername [en]",
+        "OrdnerMessage": "Dieser Ordner kann nicht entfernt werden, da er noch Vorlagen oder Ordner enthält. [en]",
+        "NewOrdnerMessage": "Der Name des neuen Ordners muss zuerst im Feld 'Ordnername' eingeben werden! [en]",
+        "TreeAllLeft": "Dies entfernt alle zugeteilten Vorlagen und Ordner. Wollen Sie alle zugeteilten Vorlagen entfernen? [en]"
+      },
+      "Button": {
+        "Add": "Neuer Kontext [en]",
+        "Edit": "Bearbeiten [en]",
+        "Save": "Speichern [en]",
+        "Cancel": "Abbrechen [en]",
+        "Search": "Search [en]"
+      },
+      "Message": {
+        "TitleComfirm": "Bestätigung! [en]",
+        "ComfirmYes": "Ja [en]",
+        "ComfirmNo": "Nein [en]",
+        "KonTextName": "Das Feld 'Kontextname' darf nicht leer bleiben ! [en]",
+        "DeleteAppNew": "Neuen Datensatz wieder löschen ? [en]",
+        "CancelEditModel": "Änderungen an diesem Datensatz rückgängig machen ? [en]",
+        "ComfirmDelete": "Soll der Datensatz gelöscht werden ? [en]",
+        "ConfirmDeactive": "Änderungen an diesem Datensatz rückgängig machen ? [en]",
+        "CloseBrower": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [en]",
+        "MessageUpdate": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht. [en]",
+        "UpdateComfirmYes": "Abbrechen [en]",
+        "UpdateComfirmNo": "Daten aktualisieren [en]",
+        "Information": "information [en]"
+      },
+      "NavigatorPopupConfirm": {
+        "Yes": "Discard [en]",
+        "No": "Abbrechen [en]",
+        "Title": "Bestätigung [en]",
+        "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [en]"
+      },
+      "MessageValidate": {
+        "FormValidate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein [en]",
+        "MaxLengthField": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge. Bitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern. [en]"
+      }
+    }
+  }

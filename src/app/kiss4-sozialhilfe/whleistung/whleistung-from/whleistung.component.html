@@ -1,0 +1,219 @@
+﻿<kiss-right-component>
+  <app-navigator *ngIf='isReadMode' id="i001_sozialhilfe" [titleHeader]="pageTitle" [listBtn]="listBtn" [customizeBtn]="customizeBtn"
+    (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+  <app-navigator *ngIf='!isReadMode' id="i001_sozialhilfe" [titleHeader]="pageTitle" [listBtn]="listBtnReadMode"
+    [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+  <section id="wrapper-content">
+    <div class="container whleistung-container">
+      <div class="right-content  rounded-0">
+        <dx-form #whLeistungForm labelLocation="left" id="C006-detail" [showColonAfterLabel]="false" [formData]="formData">
+          <dxi-item itemType="group" [colCount]="12">
+
+            <dxi-item itemType="group" [colSpan]="3">
+              <dxi-item dataField="datumVon" [template]="'dateboxTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Eröffnet' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+              <dxi-item dataField="abschlussGrundCode" [template]="'selectboxTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Grund' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="empty" [colSpan]="4"></dxi-item>
+
+            <dxi-item itemType="group" [colSpan]="8">
+              <dxi-item dataField="leistungsartCode" [template]="'selectboxBFSTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.BFS-Leistungsart' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="empty" [colSpan]="4"></dxi-item>
+
+            <dxi-item itemType="group" [colSpan]="3">
+              <dxi-item dataField="datumBis" [template]="'dateboxAbTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Abgeschlossen' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+              <dxi-item dataField="eroeffnungsGrundCode" [template]="'selectboxBottomTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Grund' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="empty" [colSpan]="4"></dxi-item>
+
+            <dxi-item itemType="group" [colSpan]="8">
+              <dxi-item dataField="gemeindeCode" [template]="'selectboxGemTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Gemeindet' | translate }}"></dxo-label>
+                <dxi-validation-rule *ngIf="!isReadMode" type="required"></dxi-validation-rule>
+              </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="empty" [colSpan]="4"></dxi-item>
+
+            <dxi-item itemType="group" [colSpan]="12">
+              <dxi-item dataField="bemerkung" [template]="'textAreaBemeGemTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Bemerkung' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="group" [colSpan]="3">
+              <dxi-item dataField="vorsaldo" [template]="'textboxVorTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Vorsaldo' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+
+            <dxi-item itemType="empty" [colSpan]="9"></dxi-item>
+
+            <dxi-item itemType="group" [colSpan]="12">
+              <dxi-item dataField="" [template]="'textAreaImfoGemTemplate'">
+                <dxo-label text="{{ 'I001WhLeistung.Title.Infomationen' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+
+            <dxi-item [colSpan]="12" [editorOptions]="{ width: '100%' }" [template]="'periodenTemplate'">
+              <dxo-label text="{{ 'I001WhLeistung.Title.Perioden' | translate }}"></dxo-label>
+            </dxi-item>
+
+          </dxi-item>
+
+
+          <div *dxTemplate="let data of 'dateboxTemplate'">
+            <span *ngIf="isReadMode">{{formData[data.dataField] | date :'dd.MM.yyyy'}}</span>
+            <dx-date-box *ngIf="!isReadMode" id="i001_sozialhilfe_eroffnet-am" #dateboxEr [(value)]="formData[data.dataField]"
+              displayFormat="dd.MM.yyyy" [readOnly]="isReadOnly" (onValueChanged)="onValueChanged($event,data.dataField)"
+              (onFocusIn)="onFocusIn(dateboxEr,'DateboxEr')" (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)"
+              [accessKey]='1' [min]="minDate" [showClearButton]="true">
+            </dx-date-box>
+          </div>
+
+          <div *dxTemplate="let data of 'dateboxAbTemplate'">
+            <span *ngIf="isReadMode">{{formData[data.dataField] | date :'dd.MM.yyyy'}}</span>
+            <dx-date-box *ngIf="!isReadMode" #dateboxAb id="i001_sozialhilfe_abgeschlossen-am " [(value)]="formData[data.dataField]"
+              displayFormat="dd.MM.yyyy" [readOnly]="isReadOnly" (onValueChanged)="onValueChanged($event,data.dataField)"
+              (onFocusIn)="onFocusIn(dateboxAb,'DateboxAb')" (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)"
+              [accessKey]='4' [min]="minDate" [showClearButton]="true"></dx-date-box>
+          </div>
+
+          <div *dxTemplate="let data of 'textboxVorTemplate'">
+            <span *ngIf="isReadMode">{{formData[data.dataField]}}</span>
+            <dx-number-box *ngIf="!isReadMode" #textboxVor 
+            [(value)]="formData[data.dataField]"
+             [readOnly]="isReadOnly"
+              id="i001_sozialhilfe_vorsaldo-fremdsystem"
+               (onValueChanged)="onValueChanged($event,data.dataField)"
+              (onFocusIn)="onFocusIn(textboxVor,'TextboxVor')" 
+              (onFocusOut)="onFocusOut($event)" 
+              (onKeyDown)="onKeyDown($event)"
+              [accessKey]='8' [rtlEnabled]="true" [format]="'#,##0.00'">
+            </dx-number-box>
+          </div>
+
+          <div *dxTemplate="let data of 'selectboxTemplate'">
+            <span *ngIf="isReadMode">{{grundSelectboxTop}}</span>
+            <dx-select-box *ngIf="!isReadMode" id="i001_sozialhilfe_eroffnet-grund" #selectbox [dataSource]="nameCombobox"
+              valueExpr="code" displayExpr="text" [(value)]="formData[data.dataField]" [readOnly]="isReadOnly"
+              (onValueChanged)="onValueChanged($event,data.dataField)" (onFocusIn)="onFocusIn(selectbox,'Selectbox')"
+              (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" [accessKey]='2'></dx-select-box>
+          </div>
+
+          <div *dxTemplate="let data of 'selectboxBFSTemplate'">
+            <span *ngIf="isReadMode">{{bfsSelectbox}}</span>
+            <dx-select-box *ngIf="!isReadMode" #selectboxBFS id="i001_sozialhilfe_bfs-leistungsart" [dataSource]="nameComboboxBFS"
+              valueExpr="code" displayExpr="text" [(value)]="formData[data.dataField]" [readOnly]="isReadOnly"
+              (onValueChanged)="onValueChanged($event,data.dataField)" (onFocusIn)="onFocusIn(selectboxBFS,'SelectboxBFS')"
+              (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" [accessKey]='3'></dx-select-box>
+          </div>
+
+          <div *dxTemplate="let data of 'selectboxGemTemplate'">
+            <span *ngIf="isReadMode">{{gemeSelectbox}}</span>
+            <dx-select-box *ngIf="!isReadMode" #selectboxGem id="i001_sozialhilfe_zustandige-gemeinde" [dataSource]="nameComboboxGeme"
+              valueExpr="code" displayExpr="text" [(value)]="formData[data.dataField]" [readOnly]="isReadOnly"
+              (onValueChanged)="onValueChanged($event,data.dataField)" (onFocusIn)="onFocusIn(selectboxGem,'SelectboxGem')"
+              (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" [accessKey]='6'>
+              <dx-validator #validation>
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+
+          <div *dxTemplate="let data of 'selectboxBottomTemplate'">
+            <span *ngIf="isReadMode">{{grundSelectboxBottom}}</span>
+            <dx-select-box *ngIf="!isReadMode" #selectboxBottom id="i001_sozialhilfe_abgeschlossen-grund" [dataSource]="nameComboboxBottom"
+              valueExpr="code" displayExpr="text" [(value)]="formData[data.dataField]" [readOnly]="isReadOnly"
+              (onValueChanged)="onValueChanged($event,data.dataField)" (onFocusIn)="onFocusIn(selectboxBottom,'SelectboxBottom')"
+              (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" [accessKey]='5'></dx-select-box>
+          </div>
+
+          <div *dxTemplate="let data of 'textAreaBemeGemTemplate'">
+            <span *ngIf="isReadMode">{{formData[data.dataField]}}</span>
+            <dx-text-area *ngIf="!isReadMode" #textAreaBemeGem id="i001_sozialhilfe_bemerkung" [height]="140"
+              [maxLength]="4000" [(value)]="formData[data.dataField]" [readOnly]="isReadOnly" (onValueChanged)="onValueChanged($event,data.dataField)"
+              (onFocusIn)="onFocusIn(textAreaBemeGem,'TextAreaBemeGem')" (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)"
+              [accessKey]='7'></dx-text-area>
+          </div>
+
+          <div *dxTemplate="let data of 'textAreaImfoGemTemplate'">
+            <span *ngIf="isReadMode">{{formData[data.dataField]}}</span>
+            <dx-text-area *ngIf="!isReadMode" #textImfoGem id="i001_sozialhilfe_infomationen" [height]="140"
+              [maxLength]="4000" [(value)]="formData[data.dataField]" [readOnly]="true" [disabled]="false" (onFocusIn)="onFocusIn(textImfoGem,'TextAreaImfoGemTemplate')"
+              (onFocusOut)="onFocusOut($event)" (onValueChanged)="onValueChanged($event,data.dataField)" [accessKey]='9'></dx-text-area>
+          </div>
+
+          <div *dxTemplate="let data of 'periodenTemplate'">
+            <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container">
+              <dx-filter-builder [fields]="dataGrid.instance.option('columns')" [(value)]="filter">
+              </dx-filter-builder>
+              <dx-button text="ApplyFilter" type="default" (onClick)="dataGrid.instance.filter(filter)">
+              </dx-button>
+              <div class="dx-clearfix"></div>
+            </div>
+            <dx-data-grid #dataGrid id="i001_sozialhilfe_grid-perioden" [dataSource]="dataGridBottom"
+              (onContextMenuPreparing)="onContextMenuPreparing($event)" (mousedown)="onClickGrid($event, 'dataGrid')"
+              [selectedRowKeys]="selectedKeys" keyExpr="bgFinanzplanID" [showRowLines]="true" [disabled]="isDisabledGird"
+              [allowColumnResizing]="true" [columnAutoWidth]="true">
+              <dxo-selection mode="single"></dxo-selection>
+              <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+              <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+              <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+              <dxo-scrolling mode="virtual"></dxo-scrolling>
+              <dxo-editing mode="cell"></dxo-editing>
+              <dxo-group-panel [visible]="gridFunction.model.isGrouping"></dxo-group-panel>
+              <dxo-grouping [contextMenuEnabled]="gridFunction.model.isGrouping" #expandGridTop [autoExpandAll]="true"></dxo-grouping>
+              <dxo-paging [enabled]="false"></dxo-paging>
+              <dxo-paging [pageSize]="99999"></dxo-paging>
+              <dxi-column dataField="status" caption="{{ 'I001WhLeistung.Title.Status' | translate }}" width="auto"></dxi-column>
+              <dxi-column dataField="ub" caption="{{ 'I001WhLeistung.Title.UB' | translate }}" width="auto"></dxi-column>
+              <dxi-column dataField="geplantVon" caption="{{ 'I001WhLeistung.Title.Geplantvon' | translate }} "
+                dataType="date" [format]="{ type: 'dd.MM.yyyy' }" width="auto"></dxi-column>
+              <dxi-column dataField="geplantBis" caption="{{ 'I001WhLeistung.Title.Geplantbis' | translate }}" dataType="date"
+                [format]="{ type: 'dd.MM.yyyy' }" width="auto"></dxi-column>
+              <dxi-column dataField="datumVon" caption="{{ 'I001WhLeistung.Title.Gultigvon' | translate }}" dataType="date"
+                [format]="{ type: 'dd.MM.yyyy' }" width="auto"></dxi-column>
+              <dxi-column dataField="datumBis" caption="{{ 'I001WhLeistung.Title.Gultigbis' | translate }}" dataType="date"
+                [format]="{ type: 'dd.MM.yyyy' }" width="auto"></dxi-column>
+              <dxi-column dataField="hg" caption="{{ 'I001WhLeistung.Title.Hg' | translate }}" width="auto"></dxi-column>
+              <dxi-column dataField="ue" caption="{{ 'I001WhLeistung.Title.Ue' | translate }}" width="auto"></dxi-column>
+              <dxi-column dataField="finanzPlaene" caption="{{ 'I001WhLeistung.Title.Monatsbudgets' | translate }}"
+                width="auto"></dxi-column>
+              <dxi-column></dxi-column>
+            </dx-data-grid>
+          </div>
+        </dx-form>
+      </div>
+    </div> <!-- /. container -->
+    <dx-popup id="j002-j003-popup" [title]="popupDataMess.title" [width]="500" [height]="170" [(visible)]="popupDataMess.visible"
+      [dragEnabled]="false" [closeOnOutsideClick]="false">
+      <div class="j002-j003-popup-tmp-template" *dxTemplate="let data of 'content'" style="text-align: center;">
+        <h3 style="padding: 1em;">{{popupDataMess.message}}</h3>
+        <div class="buttonConfirm">
+          <dx-button text="{{ 'I001WhLeistung.Button.Ja' | translate }}" (onClick)="buttonClicked('yes')">
+          </dx-button>&nbsp;
+          <dx-button text="{{ 'I001WhLeistung.Button.Nein' | translate }}" (onClick)="buttonClicked('no')">
+          </dx-button>
+        </div>
+      </div>
+    </dx-popup>
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+  </section>
+  <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+</kiss-right-component>

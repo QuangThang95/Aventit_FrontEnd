@@ -1,0 +1,102 @@
+<div class="container-detail__form" [ngClass]="{ container__hide: isCollapseFormDetail }">
+    <dx-validation-group #validationGroupInkassofall>
+        <dx-form 
+            id="j007_form-edit"
+            #formDetail
+            [showColonAfterLabel]="false"
+            [showValidationSummary]="true"
+            [screenByWidth]="sizeQualifier"
+        >
+            <!-- Form edit -->
+            <dxi-item itemType="group">
+                <dxi-item [template]="'eroffnetAm'">
+                    <dxo-label [text]="'Inkassofall.eroffnetAm' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [template]="'eroffnetGrund'">
+                    <dxo-label [text]="'Inkassofall.eroffnetGrund' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item itemType="group" [colCount]="3">
+                    <dxi-item [template]="'anzeigeTyp'" [colSpan]="1">
+                        <dxo-label [text]="'Inkassofall.anzeigeTyp' | translate"></dxo-label>
+                    </dxi-item>
+                </dxi-item>
+                <dxi-item [template]="'abgeschlossenAm'">
+                    <dxo-label [text]="'Inkassofall.abgeschlossenAm' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item itemType="group" [colCount]="3">
+                    <dxi-item [template]="'abgeschlossenGrund'" [colSpan]="1">
+                        <dxo-label [text]="'Inkassofall.abgeschlossenGrund' | translate"></dxo-label>
+                    </dxi-item>
+                </dxi-item>
+                <dxi-item [template]="'bemerkung'">
+                    <dxo-label [text]="'Inkassofall.bemerkung' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+            <div *dxTemplate="let data of 'eroffnetAm'">
+                <dx-date-box 
+                    #dateboxEroffnetAm
+                    [min]="minDate"
+                    type="date"
+                    displayFormat="dd.MM.yyyy"
+                    [width]="fixWidth"
+                    (onKeyDown)="keyDownSelectOption.emit($event)"
+                ></dx-date-box>
+            </div>
+            <div *dxTemplate="let data of 'eroffnetGrund'">
+                <dx-text-box
+                    [(value)]="dsInkassofalls.eroffnetGrund"
+                    (onValueChanged)="dsInkassofallsChange.emit(dsInkassofalls)"
+                    accessKey="1"
+                    (onFocusIn)="focusIn.emit($event)"
+                ></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'anzeigeTyp'">
+                <dx-select-box
+                    [dataSource]="dsInkassofalls.typ"
+                    valueExpr="code"
+                    displayExpr="text"
+                    (onValueChanged)="dsInkassofallsChange.emit(dsInkassofalls)"
+                    accessKey="3"
+                    (onFocusIn)="focusIn.emit($event)"
+                    (onKeyDown)="keyDownSelectOption.emit($event)"
+                    [placeholder]="'Inkassofall.Placeholder' | translate"
+                    [searchEnabled]="true"
+                ></dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'abgeschlossenAm'">
+                <dx-date-box
+                    #dateboxAbgeschlossenAm
+                    [min]="minDate"
+                    type="date"
+                    displayFormat="dd.MM.yyyy"
+                    [width]="fixWidth"
+                    (onKeyDown)="keyDownSelectOption.emit($event)"
+                ></dx-date-box>
+            </div>
+            <div *dxTemplate="let data of 'abgeschlossenGrund'">
+                <dx-select-box
+                    [dataSource]="dsInkassofalls.abgeschlossenGrund"
+                    valueExpr="code"
+                    displayExpr="text"
+                    (onValueChanged)="dsInkassofallsChange.emit(dsInkassofalls)"
+                    accessKey="3"
+                    (onFocusIn)="focusIn.emit($event)"
+                    (onKeyDown)="keyDownSelectOption.emit($event)"
+                    [placeholder]="'Inkassofall.Placeholder' | translate"
+                    [searchEnabled]="true"
+                ></dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'bemerkung'">
+                <dx-text-area
+                    class="textarea"
+                    [height]="90"
+                    [(value)]="dsInkassofalls.bemerkung"
+                    (onValueChanged)="dsInkassofallsChange.emit(dsInkassofalls)"
+                    accessKey="14"
+                    (onFocusIn)="focusIn.emit($event, true)"
+                    (onFocusOut)="focusOut.emit($event)"
+                ></dx-text-area>
+            </div>
+        </dx-form>
+    </dx-validation-group>
+</div>

@@ -1,0 +1,103 @@
+@import 'settings/variables.scss';
+@import 'components/_tree.scss';
+
+.h005-label-text{
+  font-size: $base-fz+1;
+  font-weight: $base-fw;
+  color: $form-detail-label-color;
+}
+
+.kategorie-center{
+  text-align: center;
+}
+
+.fall-header{
+  overflow:hidden;
+  margin: 16px; 
+  border: 1px solid $color-black;
+  background: $color-white;
+}
+
+.header-title{
+  padding-left:10px;
+  font-weight: 600
+}
+.fall-list-content{
+  margin-top: 15px;
+}
+.dx-treelist-rowsview td {
+  vertical-align: middle;
+  .dx-treelist-empty-space:last-child:after {
+    content: '';
+    height: 25px;
+    width: 1px;
+    background: $dx-border-color;
+    position: absolute;
+    top: -4px;
+    left: -10px;
+  }
+}
+
+#H005_container-trees-list {
+  border: 1px solid $color-gray; 
+}
+
+
+#H005_tree-grid {
+  height: $h005-grid-height;
+  min-height: $h005-grid-min-height;
+}
+
+#H005_filter_title-fall-navigator, #H005_filter_label-filter {
+  padding-left: 10px;
+  font-weight: 600;
+  color: $color-text-navigator;
+}
+
+#bar .dx-toolbar-items-container {
+  background: $toolbar-detail-background-color;
+}
+
+.finger {
+  cursor: pointer;
+}
+
+.img,
+.name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.img {
+  height: 20px;
+  width: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  & ~ .name {
+    margin-left: 10px;
+  }
+}
+
+.count-label {
+  span:nth-child(2) {
+    margin-left: 30px;
+  }
+  span:nth-child(3) {
+    margin-left: 80px;
+  }
+  span:nth-child(4) {
+    margin-left: 15px;
+  }
+  span:nth-child(10) {
+    margin-left: 10px;
+  }
+}
+
+.dx-treelist-text-content.dx-text-content-alignment-left {
+  color: $h005-tree-header-color;
+}
+
+.tree-icon-center{
+  margin-left: -1px;
+}

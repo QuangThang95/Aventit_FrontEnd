@@ -1,0 +1,31 @@
+<kiss-right-component>
+    <app-navigator
+        id="c004_lander-aktualisieren_header"
+        [titleHeader]="'Baland.Title' | translate"
+        [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn"
+        (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)">
+    </app-navigator>
+    <section id="wrapper-content">
+        <div class="container" id="c004_lander-aktualisieren">
+            <div class="right-content">
+                <kiss-baland-list 
+                    #balandList 
+                    [dataSource]="dsBalands" 
+                    [expand]="expand"
+                    (selectData)="onSelectData($event)">
+                </kiss-baland-list>
+                <kiss-baland-detail #balandDetail></kiss-baland-detail>
+            </div>
+        </div>
+    </section>
+</kiss-right-component>
+
+<!-- Print component -->
+<kiss-printer #printer></kiss-printer>
+
+<!-- Popup infomation -->
+<app-popup-confirm #popupModel></app-popup-confirm>
+
+<!-- Progressbar -->
+<app-progressbar #balandProgressBar></app-progressbar>

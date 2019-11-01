@@ -1,0 +1,192 @@
+<kiss-right-component>
+    <div id="c005_postleizahlen">
+        <app-navigator id="c005_postleizahlen_header" titleHeader="{{ 'PostleitzahlenAktualisieren.Title' | translate }}"
+            [listBtn]="listBtn" [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+        <div class="container postleitzahlen-aktualisieren-container">
+            <div class="right-content">
+                <!------------------------- Gridview: Postleitzahlen aktualisieren ------------------------------->
+                <div class="grid-table-view">
+                    <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container">
+                        <dx-filter-builder [fields]="filterColumns" [(value)]="filterAvs">
+                        </dx-filter-builder>
+                        <dx-button text="{{ 'PostleitzahlenAktualisieren.ApplyFilter' | translate }}" type="default"
+                            (onClick)="gridPostleitzahlen.instance.filter(filterAvs)">
+                        </dx-button>
+                        <div class="dx-clearfix"></div>
+                    </div>
+                    <dx-data-grid id="c005_postleizahlen_data-grid" #gridPostleitzahlen [dataSource]="dataExportAllGrid"
+                        [showBorders]="true" [showColumnLines]="true" [allowColumnResizing]="true" [columnMinWidth]="20"
+                        [allowColumnReordering]="true" [showRowLines]="true" [selectedRowKeys]="selectedKeys"
+                        [customizeExportData]="customizeExportData" keyExpr="baPLZID" (onContentReady)="onContentReady($event)"
+                        (onKeyDown)="onKeyDown($event)" (onRowClick)="onRowClick($event)" (onRowPrepared)="onRowPrepared($event)"
+                        (onCellClick)="onCellClick($event)" (onContextMenuPreparing)="onContextMenuPreparing($event)">
+                        <dxo-paging [enabled]="false"></dxo-paging>
+                        <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                        <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+                        <dxo-load-panel [enabled]="false"></dxo-load-panel>
+                        <dxo-scrolling mode="infinite"></dxo-scrolling>
+                        <dxo-sorting mode="single"></dxo-sorting>
+                        <dxo-selection mode="single"></dxo-selection>
+                        <dxo-group-panel [visible]="gridFunction.model.isGrouping" emptyPanelText="{{ 'PostleitzahlenAktualisieren.emptyPanelText' | translate }}"></dxo-group-panel>
+                        <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+                        <dxo-export [enabled]="false" fileName="{{ 'PostleitzahlenAktualisieren.Title' | translate }}"
+                            [allowExportSelectedData]="true"></dxo-export>
+                        <dxi-column [allowFiltering]="false" [allowHiding]="false" [allowExporting]="false"
+                            [allowReordering]="false" caption="" width="20" cellTemplate="cellTemplate" alignment="center"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataType="number" dataField="plz" caption="{{ 'PostleitzahlenAktualisieren.PLZ' | translate }}"
+                            alignment="right"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="plzSuffix" caption="{{ 'PostleitzahlenAktualisieren.PLZSuffix' | translate }}"
+                            alignment="left"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="name" caption="{{ 'PostleitzahlenAktualisieren.Name' | translate }}"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="kanton" caption="{{ 'PostleitzahlenAktualisieren.Kanton' | translate }}"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="bfsCode" caption="{{ 'PostleitzahlenAktualisieren.BFSCode' | translate }}"
+                            dataType="number" alignment="right"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="baPLZID" caption="{{ 'PostleitzahlenAktualisieren.ONRP' | translate }}"
+                            dataType="number" alignment="right"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="sortkey" caption="{{ 'PostleitzahlenAktualisieren.Sortkey' | translate }}"
+                            dataType="number" alignment="right"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="datumVon" caption="{{ 'PostleitzahlenAktualisieren.DatumVon' | translate }}"
+                            dataType="date" format="dd.MM.yyyy"></dxi-column>
+                        <dxi-column [minWidth]="50" width="auto" dataField="datumBis" caption="{{ 'PostleitzahlenAktualisieren.DatumBis' | translate }}"
+                            dataType="date" format="dd.MM.yyyy"></dxi-column>
+                        <dxi-column [allowFiltering]="false" [allowHeaderFiltering]="true" [minWidth]="50" dataField="system"
+                            width="auto" caption="{{ 'PostleitzahlenAktualisieren.System' | translate }}"></dxi-column>
+                        <dxi-column></dxi-column>
+                        <dxo-column-chooser #columnChooser title="{{ 'PostleitzahlenAktualisieren.Message.titleBenutzerdefiniert' | translate }}"
+                            [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+                        <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+                        <div *dxTemplate="let data of 'cellTemplate'">
+                            <i *ngIf="data.data.baPLZID == rowSelectedIndex" class="fa fa-caret-right"></i>
+                        </div>
+                    </dx-data-grid>
+                    <!----------------- End of Gridview: Postleitzahlen aktualisieren ------------------>
+                    <div class="dx-clearfix"></div>
+                    <!---------------- Detail for each of Postleitzahlen aktualisieren ----------------->
+                </div>
+                <div class="form-content-details" id="c005_detail">
+                    <div id="bar-content">
+                        <div class="toolbar-header">
+                            <dx-toolbar id="c005_detail_header">
+                                <dxi-item [template]="'detail-header'" name="toolbar-header" location="before"></dxi-item>
+                                <span class="toolbar-header-title" id="c005_detail_label-detail" *dxTemplate="let temp of 'detail-header'">
+                                    {{ 'PostleitzahlenAktualisieren.Detail' | translate }}</span>
+                            </dx-toolbar>
+                        </div>
+                        <div class="dx-fieldset">
+                            <dx-responsive-box singleColumnScreen="xs" [(screenByWidth)]="screen">
+                                <dxi-row [ratio]="1"></dxi-row>
+                                <dxi-row [ratio]="1" screen="sm"></dxi-row>
+                                <dxi-row [ratio]="1" screen="xs"></dxi-row>
+
+
+                                <dxi-col [ratio]="1"></dxi-col>
+                                <dxi-col [ratio]="1" screen="lg"></dxi-col>
+                                <dxi-item>
+                                    <dxi-location [row]="0" [col]="0" [colspan]="1" screen="lg"></dxi-location>
+                                    <dxi-location [row]="0" [col]="0" [colspan]="2" screen="sm"></dxi-location>
+                                    <dxi-location [row]="0" [col]="0" [colspan]="2" screen="xs"></dxi-location>
+                                    <div *dxTemplate class=" item">
+                                        <div class="dx-fieldset-column">
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.PLZ' |
+                                                    translate }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_plz">{{this.dataPostleitzahlen.plz}}</span>
+                                            </div>
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.PLZSuffix'
+                                                    | translate
+                                                    }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_name">{{this.dataPostleitzahlen.plzSuffix}}</span>
+                                            </div>
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.Name' |
+                                                    translate }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_name-lang">{{this.dataPostleitzahlen.name}}</span>
+                                            </div>
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.Kanton' |
+                                                    translate }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_kanton">{{this.dataPostleitzahlen.kanton}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dxi-item>
+                                <dxi-item>
+                                    <dxi-location [row]="0" [col]="1" screen="lg"></dxi-location>
+                                    <dxi-location [row]="1" [col]="0" [colspan]="2" screen="sm"></dxi-location>
+                                    <dxi-location [row]="1" [col]="0" [colspan]="2" screen="xs"></dxi-location>
+                                    <div *dxTemplate class=" item">
+                                        <div class="dx-fieldset-column">
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.BFSCode' |
+                                                    translate
+                                                    }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_gem-aufnahmedatum">{{this.dataPostleitzahlen.bfsCode}}</span>
+                                            </div>
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.ONRP' |
+                                                    translate }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_gem-aufhebungsdatum">{{this.dataPostleitzahlen.baPLZID}}</span>
+                                            </div>
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.DatumVon'
+                                                    | translate
+                                                    }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_gem-anderungsdatum">{{this.dataPostleitzahlen.datumVon
+                                                    | date :'dd.MM.yyyy'}}</span>
+                                            </div>
+                                            <div class="dx-field">
+                                                <span class="dx-field-label">{{ 'PostleitzahlenAktualisieren.DatumBis'
+                                                    | translate
+                                                    }}</span>
+                                                <span class="dx-field-value-static" id="c003_detail_bez-aufnahmedatum">{{this.dataPostleitzahlen.datumBis
+                                                    | date :'dd.MM.yyyy'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dxi-item>
+
+
+                                <div class="dx-clearfix"></div>
+                            </dx-responsive-box>
+                        </div>
+                        <div class="dx-clearfix"></div>
+                        <div class="button-confirm">
+                            <div id="fileuploader-container" [hidden]="true">
+                                <dx-file-uploader #uploader selectButtonText="{{ 'PostleitzahlenAktualisieren.OK' | translate }}"
+                                    labelText="" name="file" accept="application/zip" uploadMode="instantly"
+                                    [uploadUrl]="this.uploadUrl" [uploadHeaders]="this.requestHeader" [showFileList]="false"
+                                    [maxFileSize]="maxFileSize" [width]="80" (onUploadError)="onUploadError($event)"
+                                    (onUploaded)="onUploaded($event)" (onUploadStarted)="onUploadStarted($event)"
+                                    (onValueChanged)="onValueChanged($event)">
+                                </dx-file-uploader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!------------- End of Detail for each of Postleitzahlen aktualisieren ------------->
+            </div>
+        </div>
+
+        <div *ngIf="visibleProgressBar">
+            <div class="progress-bar-block">
+                <div class="progress-bar-body">
+                    <div class="progress-bar-label"><span>Bitte warten ...</span></div>
+                    <dx-progress-bar #progressBar class="progress-bar-status" [width]="150" [min]="0" [max]="maxValue"
+                        [value]="maxValue - seconds" [showStatus]="false" [visible]="visibleProgressBar">
+                    </dx-progress-bar>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</kiss-right-component>
+
+<!-- Print component -->
+<kiss-printer #printer></kiss-printer>
+
+<!-- Grid setting component -->
+<app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+
+<!-- Popup infomation -->
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>

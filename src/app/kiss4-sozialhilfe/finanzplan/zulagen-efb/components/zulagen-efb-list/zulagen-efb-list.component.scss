@@ -1,0 +1,21 @@
+@import 'settings/variables.scss';
+
+#clientList {
+  .dx-checkbox {
+    padding-bottom: 10px;
+  }
+  .title {
+        font-weight: $base-fw;
+        margin: 10px 0;
+    }
+    @media screen and (max-width: 960px) {
+        .title {
+            height: 40px;
+        }
+    }
+  ::ng-deep dx-data-grid:focus-within {
+    ::ng-deep .dx-datagrid-rowsview {
+      border-bottom: 1px solid #ddd; // overwrite color border when hover
+    }
+  }
+}

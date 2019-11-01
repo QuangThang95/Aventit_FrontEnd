@@ -1,0 +1,15 @@
+.arbeit-edit-group-field {
+  display: flex;
+  align-items: center;
+}
+.arbeit-edit-group-field.padding-top {
+  padding-top: 8px;;
+}
+.arbeit-edit-group-field-left {
+  width: 20px;
+}
+.arbeit-edit-group-field-right {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+}

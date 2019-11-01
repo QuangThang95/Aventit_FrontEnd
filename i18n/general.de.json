@@ -1,0 +1,36 @@
+{
+	"ServerError401": "Der Zugriff ist nicht erlaubt. Bitte einloggen.",
+  "ServerError403": "Der Zugriff ist nicht erlaubt. Bitte geben Sie die korrekten Informationen ein.",
+  "ServerError404": "Es ist ein Fehler aufgetreten. Bitte kontaktieren Sie Ihren Administrator.",
+  "ServerError500": "Es ist ein Fehler aufgetreten. Bitte kontaktieren Sie Ihren Administrator.",
+  "ServerError502": "502 Schlechter Gateway-Fehler. Bitte kontaktieren Sie Ihren Administrator.",
+  "SuccessNotificationTitle": "erfolgreich",
+  "ErrorNotificationTitle": "Fehler",
+  "InfoNotificationTitle": "Info",
+  "WarningNotificationTitle": "Warnung",
+  "SaveBtn": "Speichern",
+  "EditBtn": "Bearbeiten",
+  "CancelBtn": "Stornieren",
+  "BackBtn": "Nazad",
+  "GridEmptyLabel": "Keine Ergebnisse verfügbar",
+
+  "ConfirmDialog": {
+    "Title": "Bitte bestätigen",
+    "Content": "Möchten Sie das Formular schließen, ohne Änderungen zu speichern?",
+    "SubmitBtn": "Die",
+    "CancelBtn": "Nicht"
+  },
+
+  "Printer": {
+    "HeaderLeftDefault": "Ausdruck der Tabelle",
+    "FooterLeftDefault": "Druckdatum",
+    "FooterCenterDefault": "Aventis"
+  },
+
+  "SelectedActions": {
+    "TitleComfirm": "Bestätigung!",
+    "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen?",
+    "Cancel": "Abbrechen",
+    "Ok": "Discard"
+  }
+}

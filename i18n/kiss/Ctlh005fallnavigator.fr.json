@@ -1,0 +1,31 @@
+﻿{
+  "H005FallNavigator": {
+    "Title": "Fall-Navigator [fr]",
+    "Filter": "Filter [fr]",
+    "Status": "Status [fr]",
+    "aktiv": "aktiv [fr]",
+    "abgeschlossen": "abgeschlossen [fr]",
+    "archiviert": "archiviert [fr]",
+    "Anzeige": "Anzeige [fr]",
+    "Gruppe": "Gruppe [fr]",
+    "Gastrecht":"Gastrecht [fr]",
+    "Spalten": "Spalten [fr]",
+    "AHV": "AHV-Nr. [fr]",
+    "Zusatz": "Zusatz [fr]",
+    "fallPendenzen":"fäll. Pendenzen [fr]",
+    "NNr":"N-Nr. [fr]",
+    "Gemeinde": "Gemeinde [fr]",
+    "VersNr" : "Vers.-Nr. [fr]",
+    "Kategorie":"Kategorie [fr]",
+    "AnzahlPersonen": "Anzahl Personen: [fr]",
+    "SieHaben": "Sie haben [fr]",
+    "falligePendenzen": "fällige Pendenzen [fr]",
+    "Information": "Information [fr]",
+    "MaxSelected":"Es können keine weiteren Fälle geöffnet werden. Bitte schliessen Sie zuerst nicht benötigte Fälle. [fr]",
+    "Person": "Person [fr]",
+    "Pendenzen": "> Pendenzen [fr]",
+    "Fall": ">Fall [fr]",
+    "neuerFall": "neuer Fall ... [fr]"
+  }
+}
+  

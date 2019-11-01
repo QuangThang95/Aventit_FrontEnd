@@ -1,0 +1,74 @@
+@import 'settings/variables.scss';
+
+.section_title{
+  padding-top: $padding-horizontal;
+  font-weight: $form-detail-label-font-weight;
+}
+#c007_grid_data {
+    margin-bottom:$c007-margin-bottom;
+}
+#c007_form{
+    margin-bottom:$c007-margin-bottom;
+}
+
+#c007_popup_label{
+   padding: 1em;
+   text-align: center;
+  }
+
+#c007_popup_button{
+    padding-bottom: 1em;
+    float: right;
+    padding-right: 1em;
+  }
+
+.grid-content-center {
+  text-align: center;
+}
+.text-center {
+  text-align: center;
+}
+
+::ng-deep .kiss-input-right .dx-texteditor-input {
+    text-align: end;
+}
+
+.mietvertragItem{
+  margin-bottom: $detail-margin-bottom;
+}
+
+.bis{
+  text-align: center;
+}
+.dx-drop-down-box-width,.form_text_area {
+  min-width: $c007-drop-down-box-width;
+  max-width: $c007-text-area;
+}
+
+.c007_breakline{
+  margin: $c007-margin-bottom 0px;
+}
+
+.mietvertrag_item_height{
+  height: $form-line;
+  line-height: $form-line;
+}
+
+.mietvertrag_right_item_width{
+ width: $width-number-box;
+}
+
+.mietvertrag_right_item_content{  
+  text-align: $c007-text-align;
+ }
+ 
+.button-background {
+  background-color: $color-base;
+  color: $color-white;
+}
+
+.buttonConfirm{
+  margin-bottom: $margin-bottom-10;
+  margin-top: $margin-top-5;
+  float: $float-right;
+}

@@ -1,0 +1,66 @@
+{
+    "Arbeit": {
+        "TitlePage": "Arbeit",
+        "Button": {
+            "Edit": "Bearbeiten",
+            "Save": "Speichern",
+            "Cancel": "Abbrechen"
+        },
+        "ArbeitForm": {
+            "Erwerbssituation": "Erwerbssituation",
+            "Beschaftigungsgrad": "Beschäftigungsgrad",
+            "Teilzeitgrund": "Teilzeitgrund",
+            "Branche": "Branche",
+            "ErlernterBeruf": "Erlernter Beruf",
+            "LetzteTatigkeit": "Letzte Tätigkeit",
+            "Arbeitgeber": "Arbeitgeber",
+            "HochsteAusbildung": "höchste Ausbildung",
+            "LetzeAusb": "Letze abgebr. Ausb",
+            "Integrationsstand": "Integrationsstand",
+            "ArbeitszeitWoche": "ArbeitszeitWoche",
+            "Unregelmassig": "unregelmassig",
+            "Stempenln": "Stempenln seit",
+            "Ausgesteuert": "Ausgesteuert",
+            "AusgesteuertSeit": "Ausgesteuert seit",
+            "arbeitslos": "arbeitslos (letzte 3 Jahre)",
+            "Bemerkung": "Bemerkung",
+            "Std": "Std.",
+            "mal": "mal",
+            "Number1": "1.",
+            "Number2": "2.",
+            "Number3": "3.",
+            "Number4": "4.",
+            "TitleName": "Name",
+            "TitleAddress": "Adrese",
+            "TitleType": "Typen"
+        },
+        "MessageForm": {
+            "Arbeitszeit": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein.",
+            "CloseBrower": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?",
+            "MessageEdit1": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht.",
+            "MessgeEdit1": "Person: <<Name, Vorname>> Aktualisieren sie die Daten zuerst, um Ihre Änderungen zu speichern.",
+            "ErlernterBerufNoData": "Keinen zutreffenden Beruf gefunden.",
+            "BerufNoData": "Keinen zutreffenden Beruf gefunden.",
+            "ArbeitgeberNoData": "Keine zutreffenden Institutionen gefunden.",
+            "DoubleHeader": "Die Angaben wurden in den Zwischenspeicher kopiert.",
+            "ShiftDoubleHeader": " Die ID wurde in den Zwischenspeicher kopiert",
+            "AddNewMessage": "Das Einfügen eines Datensatzes ist nicht erlaubt !",
+            "ArbeitszeitWocheValidatemessage": "Beim Speichern des veränderten Datensatzes ist ein Fehler aufgetreten !",
+            "DatetimeValidatemessage": "Value must be date or time"
+        },
+
+        "Message": {
+            "Information": "Information",
+            "TitleComfirm": "Bestätigung",
+            "ComfirmYes": "Ja",
+            "ComfirmNo": "Nein",
+            "DeleteAppNew": "Neuen Datensatz wieder löschen ?",
+            "CancelEditModel": "Änderungen an diesem Datensatz rückgängig machen ?",
+            "UpdateComfirmYes": "Abbrechen",
+            "UpdateComfirmNo": "Daten aktualisieren",
+            "ConfirmDeactive": "You have unsaved changes! If you leave, your changes will be lost.",
+            "Discard": "Discard",
+            "Abbrechen": "Abbrechen"
+        }
+    }
+}

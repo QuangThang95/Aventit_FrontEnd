@@ -1,0 +1,10 @@
+{
+    "ModuleConfig": {
+        "PopupData": {
+            "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?[it]",
+            "Title": "Bestätigung[it]",
+            "Discard": "Discard[it]",
+            "Abbrechen": "Abbrechen[it]"
+        }
+    }
+}

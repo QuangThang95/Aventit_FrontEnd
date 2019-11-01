@@ -1,0 +1,13 @@
+@import 'settings/variables.scss';
+#clientSumInfoID {
+    .title {
+        font-size: $table-head-fz;
+        font-weight: $base-fw;
+    }
+    .divider {
+        width: 100%;
+        height: 1px;
+        margin: 10px 0;
+        background: $color-gray;
+    }
+}

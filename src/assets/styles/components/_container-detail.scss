@@ -1,0 +1,22 @@
+.container-detail,
+.container-search {
+  margin-top: $margin-content;
+  border: 1px solid $container-border-color;
+
+  &__form {
+    padding: $padding-content;
+  }
+
+  &:focus-within {
+    border: $border-color-highlight;
+    .toolbarHeader .dx-toolbar-items-container {
+      background-color: $toolbar-detail-background-color-highlight !important;
+    }
+  }
+  .kiss-card {
+    .text-title-header {
+      font-size: $font-size;
+      font-weight: $font-weight-title;
+      }
+  }
+}

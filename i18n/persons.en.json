@@ -1,0 +1,16 @@
+{
+  "Persons": {
+    "Title": "Persons"
+  },
+  "PersonDetails": {
+    "FirstName": "First Name",
+    "SurName": "Sur Name",
+    "Address": "Address",
+    "Avatar": "Avatar",
+    "Validation": {
+      "FirstName": "The First Name is required.",
+      "SurName": "The Sure Name is required.",
+      "Address": "The Address is required."
+    }
+  }
+}

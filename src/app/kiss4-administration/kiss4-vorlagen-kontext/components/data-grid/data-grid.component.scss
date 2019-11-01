@@ -1,0 +1,16 @@
+@import 'settings/variables.scss';
+
+::ng-deep #r008_kontext-container {
+    #r008_kontext-multi-select {
+      overflow: auto;
+    }
+  
+    .r008_dx-data-grid {
+      border: $border-color-grid;
+    }
+  
+    .dx-datagrid-headers .dx-header-row {
+      color: $color-black;
+      background-color: $table-heade-bg;
+    }
+}

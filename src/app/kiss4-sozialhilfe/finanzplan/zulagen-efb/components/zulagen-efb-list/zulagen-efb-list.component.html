@@ -1,0 +1,43 @@
+<div id="clientList">
+  <dx-check-box #showNurAktuelleAnzeigen class="label-text"
+                [text]="'ZulagenEfb.ClientList.NurAktuelleAnzeigen' | translate"></dx-check-box>
+  <div class="data-grid">
+    <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container" id="filter-builder">
+      <dx-filter-builder [fields]="dataGrid.instance.option('columns')" [(value)]="filter">
+      </dx-filter-builder>
+      <dx-button [text]="'ZulagenEfb.ClientList.ApplyFilter' | translate" type="default" (onClick)="dataGrid.instance.filter(filter)">
+      </dx-button>
+      <div class="dx-clearfix"></div>
+    </div>
+    <dx-data-grid #dataGrid *ngIf="zulageList" [dataSource]="zulageList" noDataText="Zulagen/EFB" [showBorders]="true" [allowColumnReordering]="true" [allowColumnResizing]="true"
+                  [showRowLines]="true" keyExpr="gultigab" (onContextMenuPreparing)="onContextMenuPreparing($event)" (onSelectionChanged)="onSelectRow($event)">
+
+      <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+      <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-group-panel [visible]="gridFunction.model.isGrouping" [emptyPanelText]="'ZulagenEfb.ClientList.EmptyPanelText' | translate"></dxo-group-panel>
+      <dxo-grouping [contextMenuEnabled]="gridFunction.model.isGrouping" #expandGrid [autoExpandAll]="false"></dxo-grouping>
+      <dxo-column-chooser #columnChooser emptyPanelText="" [title]="'ZulagenEfb.ColumnChooser.Title' | translate"
+                          [enabled]="false"></dxo-column-chooser>
+      <dxo-editing mode="cell" [allowUpdating]="false"></dxo-editing>
+
+      <dxo-selection mode="single"></dxo-selection>
+      <dxi-column dataField="gultigab" [caption]="'ZulagenEfb.ClientList.GultigAb' | translate"></dxi-column>
+      <dxi-column dataField="name" [caption]="'ZulagenEfb.ClientList.Name' | translate"></dxi-column>
+      <dxi-column dataField="geburtsdatum"
+                  [caption]="'ZulagenEfb.ClientList.Geburtsdatum' | translate"></dxi-column>
+      <dxi-column dataField="zulage" [caption]="'ZulagenEfb.ClientList.Zulage' | translate"></dxi-column>
+      <dxi-column dataType="number" dataField="percent" [caption]="'ZulagenEfb.ClientList.Percent' | translate"></dxi-column>
+      <dxi-column dataField="betrag" [caption]="'ZulagenEfb.ClientList.Betrag' | translate"></dxi-column>
+      <dxi-column dataField="bemerkung" [caption]="'ZulagenEfb.ClientList.Bemerkung' | translate"></dxi-column>
+
+      <dxo-summary>
+        <dxi-total-item column="percent" summaryType="sum" valueFormat="#,##0.00"  displayFormat="Sum: {0}">
+        </dxi-total-item>
+      </dxo-summary>
+    </dx-data-grid>
+    <!-- ------------------------- The End Area for gridview ------------------- -->
+    <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+    <kiss-printer #printer></kiss-printer>
+  </div>
+</div>

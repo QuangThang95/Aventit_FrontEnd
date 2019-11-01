@@ -1,0 +1,136 @@
+.grid {
+  margin-top: $margin-content;
+}
+dx-data-grid {
+  max-height: 360px;
+  min-height: 360px;
+
+  .dx-datagrid-headers {
+    .dx-datagrid-table {
+      .dx-row > td {
+        background-color: $table-heade-bg;
+        color: $color-black;
+        font-size: $table-head-fz;
+        border-color: $table-row-border-color;
+        font-weight: $table-row-font-weight;
+        .dx-column-indicators {
+          cursor: pointer;
+          float: right !important;
+          .dx-header-filter:not(.dx-header-filter-empty) {
+            color: #00b6e9 !important;
+          }
+        }
+        .dx-header-filter-indicator {
+          width: 100%;
+          .dx-template-wrapper .remover {
+            height: 19px;
+            width: 15px;
+            float: right;
+            visibility: hidden;
+            text-align: center;
+            a {
+              color: #ff7878;
+            }
+          }
+        }
+        &:focus-within {
+          .remover {
+            visibility: visible !important;
+          }
+        }
+      }
+      .dx-datagrid-filter-row > td {
+        background-color: white;
+      }
+    }
+  }
+
+  .dx-datagrid-rowsview {
+    .dx-row {
+      td.dx-focused {
+        .showinHover {
+          opacity: 1;
+        }
+      }
+      td {
+        .showinHover:focus-within {
+          opacity: 1;
+        }
+      }
+      &.dx-state-hover {
+        .showinHover {
+          opacity: 1;
+        }
+      }
+      .fixHeight {
+        height: 21px;
+      }
+      .showinHover {
+        float: left;
+        padding-right: 4px;
+        opacity: 0;
+        text-align: center;
+      }
+      .tage {
+        padding-right: 15px;
+      }
+      cursor: pointer;
+      border-top: none;
+      border-bottom: none;
+      &.dx-selection {
+        & > td {
+          background-color: $color-node-treeview-focused !important;
+        }
+      }
+      & > td {
+        border-color: $table-row-border-color;
+        color: $table-row-color;
+        font-size: ($table-head-fz - 1);
+        font-weight: $table-row-font-weight;
+        vertical-align: middle !important;
+      }
+      &.selected {
+        background-color: $table-row-selected;
+      }
+      y {
+        color: #ff7878 !important;
+        background-color: #ffd600
+      }
+    }
+  }
+  &:focus-within .dx-datagrid-borders {
+    &>.dx-datagrid-headers {
+      border-top: 1px solid $color-base;
+      border-left: 1px solid $color-base;
+      border-right: 1px solid $color-base;
+    }
+    &>.dx-datagrid-rowsview {
+       border-bottom: 1px solid $color-base;
+       border-left: 1px solid $color-base;
+       border-right: 1px solid $color-base;
+     }
+    &>.dx-datagrid-total-footer {
+      border-bottom: 1px solid $color-base;
+      border-left: 1px solid $color-base;
+      border-right: 1px solid $color-base;
+    }
+
+  }
+  .dx-datagrid-headers {
+    .dx-texteditor-input {
+      border-radius: 0px;
+    }
+  }
+  .dx-checkbox.dx-state-readonly .dx-checkbox-icon {
+    border-color: #ddd;
+  }
+  // START: using `!important` for override css of devextreme
+  .dx-header-row .dx-datagrid-action {
+    text-align: left !important;
+  }
+  .dx-header-row .dx-command-select {
+    text-align: center !important;
+  }
+  // END: using `!important` for override css of devextreme
+}
+

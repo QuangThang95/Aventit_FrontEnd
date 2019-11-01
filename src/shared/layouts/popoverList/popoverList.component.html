@@ -1,0 +1,10 @@
+<div>
+    <a class="btn-popover bg-popover" id="{{targetId}}" tabindex="{{tabIndexHtml}}" (click)="onClick($event)" (keydown)="keydown($event)" [tabIndex]="8"><i
+            class="dx-icon dx-icon-overflow menuiconoverflow"></i></a>
+    <dx-popover target="#{{targetId}}" position="bottom" [width]="150" [(visible)]="popoverVisible">
+        <div *dxTemplate="let data of 'content'" class="popover-list">
+            <dx-menu [width]="auto" [dataSource]="popoverData" displayExpr="name" (onItemClick)="selectMenu($event.itemData)"
+                showFirstSubmenuMode="onHover" orientation="vertical" id="popover-menu"></dx-menu>
+        </div>
+    </dx-popover>
+</div>

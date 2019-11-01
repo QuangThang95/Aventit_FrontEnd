@@ -1,0 +1,45 @@
+{
+    "I001WhLeistung":{
+        "Title":{
+            "Eröffnet":"Eröffnet am",
+            "BFS-Leistungsart":"BFS-Leistungsart",
+            "Grund": "Grund",
+            "Abgeschlossen": "Abgeschlossen am",
+            "Gemeindet":"zuständige Gemeindet",
+            "Bemerkung":"Bemerkung",
+            "Vorsaldo":"Vorsaldo Fremdsystem",
+            "Infomationen":"Infomationen",
+            "Perioden":"Perioden",
+            "Status":"Status",
+            "Geplantvon":"Geplant von",
+            "UB":"UB",
+            "Geplantbis":"Geplant bis",
+            "Gultigvon":"Gultig von",
+            "Gultigbis":"Gultig bis",
+            "Hg":"Hg",
+            "Ue":"Ue",
+            "Monatsbudgets":"enthalt Monatsbudgets",
+            "Information":"Information"
+        },
+        "Button":{
+            "NeueSozialhilfe": "Neue Sozialhilfe",
+            "Bearbeiten":"Bearbeiten",
+            "Speichern":"Speichern",
+            "Abbrechen":"Abbrechen",
+            "Ja":"Ja",
+            "Nein":"Nein"
+        },
+        "Message":{
+            "Title": "Information",
+            "MessageCanCel":"Änderungen an diesem Datensatz rückgängig machen ?",
+            "MessageRefresh":"Datenansicht trotz der nicht gespeicherten Daten aktualisieren",
+            "Message8":"Datum von ungültig. Mindestens ein Finanzplan beginnt vor diesem Datum.",
+            "Message14":"Der Fall beginnt nach seinem Ende",
+            "Message11": "Diese Leistung kann nicht gelöscht werden. Sie enthält mindestens 1 Finanzplan",
+            "Message17":"Soll der Datensatz gelöscht werden ?",
+            "Message1": "Das Einfügen eines Datensatzes ist nicht erlaubt !",
+            "Message16": "Das Feld 'zuständige Gemeinde' darf nicht leer bleiben",
+            "ConfirmDeactive": "You have unsaved changes! If you leave, your changes will be lost."
+        }
+    }
+}

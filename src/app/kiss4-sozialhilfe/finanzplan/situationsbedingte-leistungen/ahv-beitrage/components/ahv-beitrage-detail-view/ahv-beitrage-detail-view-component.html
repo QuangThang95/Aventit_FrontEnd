@@ -1,0 +1,70 @@
+<div class="container-detail__form">
+  <dx-form class="form-body" id="i011-form-details" [showColonAfterLabel]="false" labelLocation="left"
+    #detailAhvBeitrageForm [formData]="ahvBeitragPositionDetail" [screenByWidth]="getSizeQualifier" >
+    <dxi-item itemType="group" [colCount]="10">
+      <dxi-item itemType="group" [colSpan]="6">
+        <dxi-item dataField="baPersonID" [template]="'personTemplate'">
+          <dxo-label text="{{ 'AhvBeitrage.Detail.Person' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item dataField="laID" [template]="'laTemplate'">
+          <dxo-label text="{{ 'AhvBeitrage.Detail.LA' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="2" minColWidth="250">
+          <dxi-item [colSpan]="1" [accessKey]="9" [template]="'betragTemplate'"
+            [editorOptions]="{ placeholder: 'AhvBeitrage.Detail.EnterValue' | translate }" >
+            <dxo-label text="{{ 'AhvBeitrage.Detail.MtlBetrag' | translate }}" ></dxo-label>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="2" minColWidth="250">
+          <dxi-item [template]="'datumVonTemplate'">
+            <dxo-label text="{{ 'AhvBeitrage.Detail.GeplantVon' | translate }}" ></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'datumBisTemplate'">
+            <dxo-label text="{{ 'AhvBeitrage.Detail.GeplantBis' | translate }}" ></dxo-label>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item
+          id="i011_detail_institution"
+          dataField="name"
+          [template]="'institutionTemplate'"
+          [editorOptions]="{ width: '100%', maxLength: '100' }"
+        >
+          <dxo-label
+            text="{{ 'AhvBeitrage.Detail.Institution' | translate }}"
+          ></dxo-label>
+        </dxi-item>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item
+      id="i011_detail_begrundung"
+      dataField="bemerkung"
+      [template]="'bemerkungTemplate'"
+    >
+      <dxo-label
+        text="{{ 'AhvBeitrage.Detail.Begrundung' | translate }}"
+      ></dxo-label>
+    </dxi-item>
+
+    <div class="item-detail-view" *dxTemplate="let data of 'personTemplate'">
+      <span >{{ ahvBeitragPositionDetail.nameVorname }}&nbsp;</span>
+    </div>
+    <div class="item-detail-view" *dxTemplate="let data of 'laTemplate'">
+      <span>{{ ahvBeitragReadMode.positionSart }}&nbsp;</span>
+    </div>
+    <div class="item-detail-view" *dxTemplate="let data of 'betragTemplate'">
+      <span>{{ ahvBeitragReadMode.betrag }}&nbsp;</span>
+    </div>
+    <div class="item-detail-view" *dxTemplate="let data of 'datumVonTemplate'">
+      <span>{{ ahvBeitragPositionDetail.datumVon | date: "dd.MM.yyyy" }}&nbsp;</span>
+    </div>
+    <div class="item-detail-view" *dxTemplate="let data of 'datumBisTemplate'">
+      <span>{{ ahvBeitragPositionDetail.datumBis | date: "dd.MM.yyyy" }}&nbsp;</span>
+    </div>
+    <div class="item-detail-view" *dxTemplate="let data of 'institutionTemplate'">
+      <span>{{ ahvBeitragPositionDetail.institutionName }}&nbsp;</span>
+    </div>
+    <div class="item-detail-view" *dxTemplate="let data of 'bemerkungTemplate'">
+      <span class="white-space-pre">{{ ahvBeitragPositionDetail.bemerkung }}&nbsp;</span>
+    </div>
+  </dx-form>
+</div>

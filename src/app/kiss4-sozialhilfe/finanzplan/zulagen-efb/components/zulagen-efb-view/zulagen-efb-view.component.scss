@@ -1,0 +1,18 @@
+::ng-deep #zulagen_form {
+  .dx-item {
+    outline: 0;
+    border: 0px solid;
+  }
+  .ctrWith {
+    width: 35%;
+  }
+  .ctrmargin-top {
+    margin-top: 6px;
+  }
+}
+
+::ng-deep #I010_detail_header {
+  .dx-toolbar-after {
+    padding-right: 5px;
+  }
+}

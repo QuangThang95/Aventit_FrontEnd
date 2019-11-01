@@ -1,0 +1,482 @@
+<div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+    <kiss-card-title id="o006_detail_header"
+        [titleHeader]="'CtlBfsFragenkatalog.Detail' | translate"
+        [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn"
+        [isCard]="true"
+        (onCustomizeBtnFn)="toolBarOnItemClick($event)">
+    </kiss-card-title>
+</div>
+<div class="container-detail__form" [ngClass]="{'container__hide': isCollapseFormDetail}">
+<dx-validation-group #validationGroupfragenkatalog>
+  <dx-form id="o006_form" #formDetail [showColonAfterLabel]=false [showValidationSummary]="true" [screenByWidth]="getSizeQualifier">
+      <!--Form readonly-->
+      <dxi-item itemType="group" [colCount]="18" *ngIf="isDisableViewModel">
+          <dxi-item itemType="group" [colSpan]="5">
+              <dxi-item [template]="'pictureTemplate'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Leistungsfilter' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateVersion'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Katalog-Version' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateVariable'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Variable' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateFrage'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Frage' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateKategorie'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Kategorie' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplatePerson'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Person' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateFeldtyp'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Feldtyp' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateWerteliste'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Werteliste' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateVorgabewert'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Vorgabewert' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateValidierung'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Validierung' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateIndex'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Index' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateFormat'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Format' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateSort'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Sort.' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item itemType="group" [colCount]="3">
+                  <dxi-item [template]="'TemplateEditierbar'" itemType="group" cssClass="class-test">
+                        <dxo-label text=" "></dxo-label>
+                  </dxi-item>
+                  <dxi-item [template]="'TemplateUpdate'" itemType="group" cssClass="float-right">
+                        <dxo-label text=" "></dxo-label>
+                  </dxi-item>
+              </dxi-item>
+               <dxi-item [template]="'TemplateHilfetext'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Hilfetext' | translate"></dxo-label>
+              </dxi-item>
+          </dxi-item>
+          <dxi-item itemType="group" [colSpan]="1"></dxi-item>
+          <dxi-item itemType="group" [colSpan]="5">
+              <dxi-item class="container-detail__form__label--boder"><span id="o006_detail_label-herleitung-aus-fallfuhrung">{{'CtlBfsFragenkatalog.Column.Herleitung-aus-Fallführung'|translate}}</span>
+              </dxi-item>
+              <dxi-item [template]="'TemplateTyp'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Typ' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              </dxi-item>
+              <dxi-item [template]="'TemplateTabelle'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Tabelle' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateWertelistes'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Werteliste' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateFeld'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Feld' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplatePKFeld'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.PK-Feld' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'BeschrTemplate'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Beschr.' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateSql'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.SQL' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateFilterregel'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Filterregel' | translate"></dxo-label>
+              </dxi-item>
+          </dxi-item>
+          <dxi-item itemType="group" [colSpan]="1"></dxi-item>
+          <dxi-item itemType="group" [colSpan]="5">
+              <dxi-item class=" container-detail__form__label--boder">
+                  <span id="o006_detail_label-xml-export">{{'CtlBfsFragenkatalog.Column.XML-Export'|translate}}</span>
+              </dxi-item>
+              <dxi-item [template]="'TemplateNode'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Node' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplateAttribute'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Attribute' | translate"></dxo-label>
+              </dxi-item>
+              <dxi-item [template]="'TemplatePredicate'">
+                  <dxo-label [text]="'CtlBfsFragenkatalog.Column.Predicate' | translate"></dxo-label>
+              </dxi-item>
+          </dxi-item>
+      </dxi-item>
+      <div *dxTemplate="let data of 'pictureTemplate'">
+        <dx-tag-box #leistungsfilterTagBox accessKey="0" [accessKey]="7" id="o006_detail_leistungsfilter"
+                    [dataSource]="leistung" valueExpr="code" displayExpr="text" [(value)]="leistungArray" (onValueChanged)="onValueChanged($event)"
+                    (onFocusIn)="onFocusIn($event)" placeholder="" [readOnly]="isDisableViewModel">
+        </dx-tag-box>
+      </div>
+      <div *dxTemplate="let data of 'TemplateVersion'"><span class="textBreak">{{ctlBfsFragenkatalogObject?.BFSKatalogVersionID}}</span></div>
+      <div *dxTemplate="let data of 'TemplateVariable'"><span class="textBreak">{{ctlBfsFragenkatalogObject.Variable}}</span></div>
+      <div *dxTemplate="let data of 'TemplateFrage'"><span class="textBreak">{{ctlBfsFragenkatalogObject.Frage}}</span></div>
+      <div *dxTemplate="let data of 'TemplateKategorie'"><span class="textBreak">{{detailkategorie}}</span></div>
+      <div *dxTemplate="let data of 'TemplatePerson'"><span class="textBreak">{{detailperson}}</span></div>
+      <div *dxTemplate="let data of 'TemplateFeldtyp'"><span class="textBreak">{{detailFieldTyp}}</span></div>
+      <div *dxTemplate="let data of 'TemplateWerteliste'"><span class="textBreak">{{ctlBfsFragenkatalogObject.BFSLOVName}}</span></div>
+      <div *dxTemplate="let data of 'TemplateVorgabewert'"><span class="textBreak">{{ctlBfsFragenkatalogObject.Vorgabewert}}</span></div>
+      <div *dxTemplate="let data of 'TemplateValidierung'"><span class="textBreak">{{detailValidierung}}</span></div>
+      <div *dxTemplate="let data of 'TemplateIndex'"><span class="textBreak">{{ctlBfsFragenkatalogObject.PersonIndex}}</span></div>
+      <div *dxTemplate="let data of 'TemplateFormat'"><span class="textBreak">{{ctlBfsFragenkatalogObject.BFSFormat}}</span></div>
+      <div *dxTemplate="let data of 'TemplateSort'"><span class="textBreak">{{ctlBfsFragenkatalogObject.Reihenfolge}}</span></div>
+      <div *dxTemplate="let data of 'TemplateEditierbar'">
+          <dx-check-box id="o006_detail_editierbar" text="editierbar" [(value)]="ctlBfsFragenkatalogObject.Editierbar"
+              (onValueChanged)="onValueChanged($event)" accessKey="12" [readOnly]="isDisableViewModel"></dx-check-box>
+      </div>
+      <div *dxTemplate="let data of 'TemplateUpdate'">
+          <dx-check-box id="o006_detail_updateok" text="UpdateOK" [(value)]="ctlBfsFragenkatalogObject.UpdateOK"
+              (onValueChanged)="onValueChanged($event)" accessKey="13" [readOnly]="isDisableViewModel"></dx-check-box>
+      </div>
+      <div *dxTemplate="let data of 'TemplateHilfetext'"><span class="textBreak">{{ctlBfsFragenkatalogObject.HilfeText}}</span></div>
+      <div *dxTemplate="let data of 'TemplateTyp'"><span class="textBreak">{{detailHafTypDetail}}</span></div>
+      <div *dxTemplate="let data of 'TemplateTabelle'"><span class="textBreak">{{ctlBfsFragenkatalogObject.FFTabelle}}</span></div>
+      <div *dxTemplate="let data of 'TemplateWertelistes'"><span class="textBreak">{{ctlBfsFragenkatalogObject.FFLOVName}}</span></div>
+      <div *dxTemplate="let data of 'TemplateFeld'"><span class="textBreak">{{ctlBfsFragenkatalogObject.FFFeld}}</span></div>
+      <div *dxTemplate="let data of 'TemplatePKFeld'"><span class="textBreak">{{ctlBfsFragenkatalogObject.FFPKFeld}}</span></div>
+      <div *dxTemplate="let data of 'BeschrTemplate'"><span class="textBreak">{{ctlBfsFragenkatalogObject.HerkunftBeschreibung}}</span></div>
+      <div *dxTemplate="let data of 'TemplateSql'"><span class="textBreak">{{ctlBfsFragenkatalogObject.HerkunftSQL}}</span></div>
+      <div *dxTemplate="let data of 'TemplateFilterregel'"><span class="textBreak">{{ctlBfsFragenkatalogObject.FilterRegel}}</span></div>
+      <div *dxTemplate="let data of 'TemplateNode'"><span class="textBreak">{{ ctlBfsFragenkatalogObject.ExportNode }}</span></div>
+      <div *dxTemplate="let data of 'TemplateAttribute'"><span class="textBreak">{{ctlBfsFragenkatalogObject.ExportAttribute}}</span></div>
+      <div *dxTemplate="let data of 'TemplatePredicate'"><span class="textBreak">{{ctlBfsFragenkatalogObject.ExportPredicate}}</span></div>
+
+      <!--Form edit-->
+      <dxi-item itemType="group" [colCount]="3" *ngIf="!isDisableViewModel">
+        <dxi-item itemType="group">
+          <dxi-item [template]="'leistungsfilter'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Leistungsfilter' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'KatalogVersion'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Katalog-Version' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Variable'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Variable' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Frage'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Frage' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Kategorie'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Kategorie' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Person'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Person' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Feldtyp'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Feldtyp' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Werteliste'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Werteliste' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Vorgabewert'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Vorgabewert' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Validierung'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Validierung' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Index'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Index' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Format'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Format' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Sort'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Sort.' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item itemType="group" [colCount]="3">
+            <dxi-item [template]="'Editierbar'" itemType="group" cssClass="class-test">
+              <dxo-label text=" "></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'Update'" itemType="group" cssClass="float-right">
+              <dxo-label text=" "></dxo-label>
+            </dxi-item>
+          </dxi-item>
+          <dxi-item [template]="'Hilfetext'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Hilfetext' | translate"></dxo-label>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group">
+          <dxi-item class="container-detail__form__label--boder"><span >{{'CtlBfsFragenkatalog.Column.Herleitung-aus-Fallführung'|translate}}</span>
+          </dxi-item>
+          <dxi-item [template]="'Typ'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Typ' | translate"></dxo-label>
+            <dxi-validation-rule *ngIf="!isDisableViewModel" type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+          </dxi-item>
+          <dxi-item [template]="'Tabelle'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Tabelle' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Wertelistes'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Werteliste' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Feld'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Feld' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'PKFeld'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.PK-Feld' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Beschr'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Beschr.' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Sql'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.SQL' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Filterregel'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Filterregel' | translate"></dxo-label>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group">
+          <dxi-item class=" container-detail__form__label--boder o006-herleitung-aus-export">
+            <span id="">{{'CtlBfsFragenkatalog.Column.XML-Export'|translate}}</span>
+          </dxi-item>
+          <dxi-item [template]="'Node'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Node' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Attribute'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Attribute' | translate"></dxo-label>
+          </dxi-item>
+          <dxi-item [template]="'Predicate'">
+            <dxo-label [text]="'CtlBfsFragenkatalog.Column.Predicate' | translate"></dxo-label>
+          </dxi-item>
+        </dxi-item>
+      </dxi-item>
+      <div *dxTemplate="let data of 'leistungsfilter'">
+        <dx-tag-box #leistungsfilterTagBox accessKey="0" [accessKey]="7"
+                    [dataSource]="leistung" valueExpr="code" displayExpr="text" [(value)]="leistungArray" (onValueChanged)="onValueChanged($event)"
+                    (onFocusIn)="onFocusIn($event)" placeholder="" [readOnly]="isDisableViewModel">
+        </dx-tag-box>
+      </div>
+      <div *dxTemplate="let data of 'KatalogVersion'">
+        <span>{{ctlBfsFragenkatalogObject?.BFSKatalogVersionID}}</span>
+        <dxi-validation-rule *ngIf="!isDisableViewModel" type="required"></dxi-validation-rule>
+      </div>
+      <div *dxTemplate="let data of 'Variable'">
+          <dx-text-box id="o006_detail_variable" [(value)]="ctlBfsFragenkatalogObject.Variable"
+                       (onValueChanged)="onValueChanged($event)" accessKey="1" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxVariableLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Frage'">
+          <dx-text-area id="o006_detail_frage" [height]="90" [(value)]="ctlBfsFragenkatalogObject.Frage"
+                        (onValueChanged)="onValueChanged($event)" accessKey="2" (onFocusIn)="onFocusIn($event,true)"
+                        (onFocusOut)="onFocusOut($event,false)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxFrageLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-area>
+      </div>
+      <div *dxTemplate="let data of 'Kategorie'">
+          <dx-select-box id="o006_detail_kategorie" [dataSource]="kategorieDetail" valueExpr="code" displayExpr="text"
+                         [(value)]="ctlBfsFragenkatalogObject.BFSKategorieCode" (onValueChanged)="onValueChanged($event)"
+                         accessKey="3" (onFocusIn)="onFocusIn($event)" (onKeyDown)="onKeyDownSelectOption($event)"
+                         placeholder="" [disabled]="isDisableViewModel" [searchEnabled]="true">
+          </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'Person'">
+          <dx-select-box id="o006_detail_person" [dataSource]="personDetail" valueExpr="code" displayExpr="text"
+                         [(value)]="ctlBfsFragenkatalogObject.BFSPersonCode" (onValueChanged)="onValueChanged($event)"
+                         accessKey="4" (onFocusIn)="onFocusIn($event)" (onKeyDown)="onKeyDownSelectOption($event)"
+                         placeholder="" [disabled]="isDisableViewModel" [searchEnabled]="true">
+            <dx-validator>
+              <dxi-validation-rule type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'Feldtyp'">
+          <dx-select-box id="o006_detail_feldtyp" [dataSource]="fieldTypDetail" valueExpr="code" displayExpr="text"
+                         [(value)]="ctlBfsFragenkatalogObject.BFSFeldCode" (onValueChanged)="onValueChanged($event)"
+                         accessKey="5" (onFocusIn)="onFocusIn($event)" (onKeyDown)="onKeyDownSelectOption($event)"
+                         placeholder="" [disabled]="isDisableViewModel" [searchEnabled]="true">
+            <dx-validator>
+              <dxi-validation-rule type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'Werteliste'">
+          <dx-text-box id="o006_detail_werteliste" [(value)]="ctlBfsFragenkatalogObject.BFSLOVName"
+                       (onValueChanged)="onValueChanged($event)" accessKey="6" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxNodelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Vorgabewert'">
+          <dx-text-box id="o006_detail_vorgabewert" [(value)]="ctlBfsFragenkatalogObject.Vorgabewert"
+                       (onValueChanged)="onValueChanged($event)" accessKey="7" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Validierung'">
+          <dx-select-box id="o006_detail_validierung" [dataSource]="validierungDetail" valueExpr="code"
+                         displayExpr="text" [(value)]="ctlBfsFragenkatalogObject.BFSValidierungCode" (onValueChanged)="onValueChanged($event)"
+                         accessKey="8" (onFocusIn)="onFocusIn($event)" (onKeyDown)="onKeyDownSelectOption($event)"
+                         placeholder="" [disabled]="isDisableViewModel" [searchEnabled]="true">
+          </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'Index'">
+          <dx-number-box id="o006_detail_index"
+          class="number-box" 
+          [(value)]="ctlBfsFragenkatalogObject.PersonIndex"
+          (onValueChanged)="onValueChanged($event)" 
+          accessKey="9" 
+          (onFocusIn)="onFocusIn($event)" 
+          [disabled]="isDisableViewModel"             
+          (onFocusOut)="onFocusOut($event,false)" 
+          [format]="typeFormatNumber"
+          width="160">
+            <dx-validator>
+              <dxi-validation-rule type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+              <dxi-validation-rule type="range" [min]="minIntValue" [max]="maxIntValue" [message]="'CtlBfsFragenkatalog.Message.EditNumberOverLengthMessage' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-number-box>
+      </div>
+      <div *dxTemplate="let data of 'Format'">
+          <dx-text-box id="o006_detail_format" [(value)]="ctlBfsFragenkatalogObject.BFSFormat" (onValueChanged)="onValueChanged($event)"
+                       accessKey="10" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxFormatLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Sort'">
+            <dx-number-box 
+            id="o006_detail_sort" 
+            class="number-box"
+            [(value)]="ctlBfsFragenkatalogObject.Reihenfolge" 
+            (onValueChanged)="onValueChanged($event)"
+            accessKey="11" 
+            (onFocusIn)="onFocusIn($event)" 
+            [disabled]="isDisableViewModel" (onFocusOut)="onFocusOut($event,false)"
+            [format]="typeFormatNumber" width="160">
+            <dx-validator>
+              <dxi-validation-rule type="range" [min]="minIntValue" [max]="maxIntValue" [message]="'CtlBfsFragenkatalog.Message.EditNumberOverLengthMessage' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-number-box>
+      </div>
+      <div *dxTemplate="let data of 'Editierbar'">
+        <dx-check-box text="editierbar" [(value)]="ctlBfsFragenkatalogObject.Editierbar"
+                      (onValueChanged)="onValueChanged($event)" accessKey="12" [readOnly]="isDisableViewModel"></dx-check-box>
+      </div>
+      <div *dxTemplate="let data of 'Update'">
+        <dx-check-box text="UpdateOK" [(value)]="ctlBfsFragenkatalogObject.UpdateOK"
+                      (onValueChanged)="onValueChanged($event)" accessKey="13" [readOnly]="isDisableViewModel"></dx-check-box>
+      </div>
+      <div *dxTemplate="let data of 'Hilfetext'">
+          <dx-text-area class="textarea" id="o006_detail_hilfetext" [height]="90" [(value)]="ctlBfsFragenkatalogObject.HilfeText"
+                        (onValueChanged)="onValueChanged($event)" accessKey="14" (onFocusIn)="onFocusIn($event,true)"
+                        (onFocusOut)="onFocusOut($event,false)" [disabled]="isDisableViewModel">
+          </dx-text-area>
+      </div>
+      <div *dxTemplate="let data of 'Typ'">
+          <dx-select-box id="o006_herleitung_typ" [dataSource]="hafTypDetail" valueExpr="code" displayExpr="text"
+                         [(value)]="ctlBfsFragenkatalogObject.HerkunftCode" (onValueChanged)="onValueChanged($event)"
+                         accessKey="15" (onFocusIn)="onFocusIn($event)" (onKeyDown)="onKeyDownSelectOption($event)"
+                         placeholder="" [disabled]="isDisableViewModel" [searchEnabled]="true">
+            <dx-validator>
+              <dxi-validation-rule type="required" [message]="'CtlBfsFragenkatalog.Message.MessageError' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'Tabelle'">
+          <dx-text-box id="o006_herleitung_tabelle" [(value)]="ctlBfsFragenkatalogObject.FFTabelle"
+                       (onValueChanged)="onValueChanged($event)" accessKey="16" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxNodelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Wertelistes'">
+          <dx-text-box id="o006_herleitung_werteliste" [(value)]="ctlBfsFragenkatalogObject.FFLOVName"
+                       (onValueChanged)="onValueChanged($event)" accessKey="17" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxNodelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Feld'">
+          <dx-text-box id="o006_herleitung_feld" [(value)]="ctlBfsFragenkatalogObject.FFFeld" (onValueChanged)="onValueChanged($event)"
+                       accessKey="18" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxNodelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'PKFeld'">
+          <dx-text-box id="o006_herleitung_pk-feld" [(value)]="ctlBfsFragenkatalogObject.FFPKFeld"
+                       (onValueChanged)="onValueChanged($event)" accessKey="19" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxNodelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Beschr'">
+          <dx-text-area id="o006_herleitung_beschr" [height]="90" [(value)]="ctlBfsFragenkatalogObject.HerkunftBeschreibung"
+                        (onValueChanged)="onValueChanged($event)" accessKey="20" (onFocusIn)="onFocusIn($event,true)"
+                        (onFocusOut)="onFocusOut($event,false)" [disabled]="isDisableViewModel">
+          </dx-text-area>
+      </div>
+      <div *dxTemplate="let data of 'Sql'">
+          <dx-text-area id="o006_herleitung_sql" [height]="90" [(value)]="ctlBfsFragenkatalogObject.HerkunftSQL"
+                        (onValueChanged)="onValueChanged($event)" accessKey="21" (onFocusIn)="onFocusIn($event,true)"
+                        (onFocusOut)="onFocusOut($event,false)" [disabled]="isDisableViewModel">
+          </dx-text-area>
+      </div>
+      <div *dxTemplate="let data of 'Filterregel'">
+          <dx-text-area id="o006_herleitung_filterregel" [height]="90" [(value)]="ctlBfsFragenkatalogObject.FilterRegel"
+                        (onValueChanged)="onValueChanged($event)" accessKey="22" (onFocusIn)="onFocusIn($event,true)"
+                        (onFocusOut)="onFocusOut($event,false)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxFilterregelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-area>
+      </div>
+      <div *dxTemplate="let data of 'Node'">
+          <dx-text-box id="o006_xml-export_node" [(value)]="ctlBfsFragenkatalogObject.ExportNode"
+                       (onValueChanged)="onValueChanged($event)" accessKey="23" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxNodelLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Attribute'">
+          <dx-text-box id="o006_xml-export_attribute" [(value)]="ctlBfsFragenkatalogObject.ExportAttribute"
+                       (onValueChanged)="onValueChanged($event)" accessKey="24" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxAttributeLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Predicate'">
+          <dx-text-box id="o006_xml-export_predicate" [(value)]="ctlBfsFragenkatalogObject.ExportPredicate"
+                       (onValueChanged)="onValueChanged($event)" accessKey="25" (onFocusIn)="onFocusIn($event)" [disabled]="isDisableViewModel">
+            <dx-validator>
+              <dxi-validation-rule type="stringLength" [min]="minStringLength" [max]="maxPredicateLength" [message]="'CtlBfsFragenkatalog.Message.NameOverLength' | translate"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+      </div>
+  </dx-form>
+</dx-validation-group>
+</div>
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>

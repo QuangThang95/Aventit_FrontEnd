@@ -1,0 +1,40 @@
+// #Settings - used with preprocessors and contain font, colors definitions, etc.
+@import 'settings/variables';
+
+// #Tools - globally used mixins and functions.
+@import 'tools/mixins';
+@import 'tools/functions';
+
+// #Generic - reset and/or normalize styles, box-sizing definition, etc.
+@import 'generic/box-sizing';
+
+// #Elements - styling for bare HTML elements (like H1, A, etc.).
+// These come with default styling from the browser so we can redefine them here.
+@import 'elements/headings';
+@import 'elements/label';
+@import 'elements/checkbox';
+
+// #Objects - class-based selectors which define undecorated design patterns
+@import 'objects/animations';
+
+// TODO: move to main style
+// #Components - specific UI components.
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/popup-print';
+@import 'components/container';
+@import 'components/remaining-message';
+@import 'components/container-search';
+@import 'components/container-detail';
+@import 'components/toolbar';
+@import 'components/filter-builder';
+@import 'components/layout';
+@import 'components/navigator';
+@import 'components/header';
+@import 'components/grid';
+@import 'settings/common';
+
+// #Utilities - utilities and helper classes with ability to override anything (e.g IE support)
+@import 'trumps/clearfix';
+@import 'trumps/borders';
+@import 'trumps/utils';

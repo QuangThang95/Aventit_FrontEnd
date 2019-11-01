@@ -1,0 +1,143 @@
+@import 'settings/variables.scss';
+@import 'tools/mixins.scss';
+.profileActionBar {
+    cursor: pointer;
+    height: 100%;
+    width: 160px;
+    padding: 0 5px;
+    span {
+        color: $color-grey;
+        &:hover {
+            color: darken($color: $color-grey, $amount: 9);
+        }
+    }
+}
+
+::ng-deep #popover-user {
+    margin: -10px;
+    ul, li {
+        width: 100%
+    }
+    .text-option {
+        display: flex;
+    }
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.profileActionBar-anchor {
+    width: 100%;
+    height: 100%;
+    padding-top: 0px;
+    height: 37px;
+    span {
+        padding: 10px 0px;
+        -webkit-user-select: none;
+        /* Safari 3.1+ */
+        -moz-user-select: none;
+        /* Firefox 2+ */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Standard syntax */
+        i {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        &.profileActionBar-name {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.menu-top {
+    margin-top: 5px;
+}
+.menu-logout {
+    display: none;
+    cursor: pointer;
+    z-index: 999;
+    background: #fff;
+    text-align: right;
+    padding: 8px 8px;
+    border: 1px solid #ebebeb;
+    border-top: 0;
+    @include css3-prefix(box-shadow, 0px 3px 7px 0px rgba(0, 0, 0, 0.24));
+    &:hover {
+        border-bottom: 1px solid $color-grey-verylight;
+        background: $color-grey-verylight;
+    }
+    &.is-show {
+        display: block;
+    }
+}
+
+.profileActionBar-imgWrapper {
+    float: left;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border: 1px solid $color-grey-verylight;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 5px;
+    cursor: default;
+    img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+.profileActionBar-menu {
+    background-color: $color-white;
+    width: 203px;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24);
+    .k-popup {
+        border: none;
+    }
+}
+
+.profileActionBar-menu {
+    border-radius: 0;
+    * {
+        color: $color-grey;
+    }
+}
+
+.profileActionBar-list {
+    width: 100%;
+    &:hover {
+        background-color: $color-theme-lightBlue;
+    }
+}
+
+.profileActionBar-item {
+    padding: 10px 0px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.profileActionBar-link {
+    padding: 0 10px;
+    i {
+        margin-right: 10px;
+    }
+}
+.color-base {
+    color: $color-base;
+}
+
+.icon-option {
+    padding: $padding-10;
+}

@@ -1,0 +1,71 @@
+[{
+		"ControlName": "btnFall",
+		"Text": ">Fall"
+	}, {
+		"ControlName": "btnGotoPendenzen",
+		"Text": "> Pendenzen"
+	}, {
+		"ControlName": "btnNeuerFall",
+		"Text": "neuer Fall ..."
+	}, {
+		"ControlName": "edtAbgeschlossene",
+		"Text": "abgeschlossen"
+	}, {
+		"ControlName": "edtAHVNummer",
+		"Text": "AHV-Nr."
+	}, {
+		"ControlName": "edtAktive",
+		"Text": "aktiv"
+	}, {
+		"ControlName": "edtArchivierte",
+		"Text": "archiviert"
+	}, {
+		"ControlName": "edtGastrecht",
+		"Text": "Gastrecht"
+	}, {
+		"ControlName": "edtGemeinde",
+		"Text": "Gemeinde"
+	}, {
+		"ControlName": "edtGruppe",
+		"Text": "Gruppe"
+	}, {
+		"ControlName": "edtKategorie",
+		"Text": "Kategorie"
+	}, {
+		"ControlName": "edtVersNr",
+		"Text": "Vers.-Nr."
+	}, {
+		"ControlName": "edtZusatz",
+		"Text": "Zusatz"
+	}, {
+		"ControlName": "lblAnzahlPersonen",
+		"Text": "Anzahl Personen: 22"
+	}, {
+		"ControlName": "btnFallInfo",
+		"Text": "Fallinfo"
+	}, {
+		"ControlName": "colAHVNummer",
+		"Text": "AHV-Nr."
+	}, {
+		"ControlName": "colGemeinde",
+		"Text": "Gemeinde"
+	}, {
+		"ControlName": "colKategorie",
+		"Text": "Kategorie"
+	}, {
+		"ControlName": "colName",
+		"Text": "Person"
+	}, {
+		"ControlName": "colPendenzen",
+		"Text": "fäll. Pendenzen"
+	}, {
+		"ControlName": "colVersNr",
+		"Text": "Vers.-Nr."
+	}, {
+		"ControlName": "colZusatz",
+		"Text": "Zusatz"
+	}, {
+		"ControlName": "qryModul",
+		"Text": "Soll der Datensatz gelöscht werden ?"
+	}
+]

@@ -1,0 +1,23 @@
+<div class="form-content-details" id="bar-header">
+    <div id="bar-content">
+        <div class="toolbar-header">
+            <kiss-card-title id="c006_detail_header" [titleHeader]="'ExterneBerater.ExterneBeraterSucheBox.Detail' | translate"
+                [listBtn]="listBtnDetail" [customizeBtn]="customizeBtnDetail" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemDetailClick($event)"></kiss-card-title>
+        </div>
+        <kiss-berater-detail-view *ngIf="isReadOnly" 
+                                [formData]="formData">
+        </kiss-berater-detail-view>
+        <kiss-berater-detail-edit *ngIf="!isReadOnly"
+                                [isAddNew]="isAddNew"
+                                [isEdit]="isEdit"
+                                [listInstitution]="listInstitution"
+                                [listLanguage]="listLanguage"
+                                [formData]="formData"
+                                [isSave]="isSave"
+                                (formRemainData)="showRemainMessage($event)"
+                                (formEditStatus)="editStatus($event)"
+                                (formDataSave)="saveData($event)"
+                                (formDataChange)="onChangeData($event)">
+        </kiss-berater-detail-edit>
+    </div>
+</div>

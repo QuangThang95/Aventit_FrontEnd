@@ -1,0 +1,38 @@
+{
+  "Sidebar": {
+    "Menu": "Speisekarte",
+    "ProductsItem": "Produkte",
+    "PersonsItem": "Personen"
+  },
+
+  "ProfileActionBar": {
+    "SignIn": "Sign in for other feature / area",
+    "SignOut": "Abmelden",
+    "ChangePwd": "Passwort ändern",
+    "Language": "Sprache wechseln",
+    "OpenUser": "Open the User Settings",
+    "Logout": "Logout"
+  },
+
+  "PageNotFound": {
+    "Title": "Hoppla, Seite nicht gefunden",
+    "Subtitle": "Bitte gehen Sie zurück zur vorherigen Seite",
+    "Button": "Rückkehr"
+  },
+  "pageGateWay": {
+    "Title": "Hoppla, 502 Schlechter Gateway-Fehler",
+    "Subtitle": "Bitte gehen Sie zurück zur vorherigen Seite",
+    "Button": "Rückkehr"
+  },
+  "DossierFilter": {
+    "Active": "aktiv",
+    "Closed": "abgeschlossen",
+    "Archived": "Archiveiert",
+    "IncludeGroup": "Gruppe",
+    "IncludeGuest": "Gast",
+    "IncludeTasks": "Aufgaben"
+  },
+  "Navigator": {
+    "Title": "Geöffnete Masken"
+  }
+}

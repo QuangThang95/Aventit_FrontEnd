@@ -1,0 +1,19 @@
+<kiss-right-component>
+    <app-navigator 
+        id="o010_bfs-variablen_header" 
+        titleHeader="{{ 'Variablen.Title' | translate }}"
+        [listBtn]="listBtn" 
+        [customizeBtn]="customizeBtn" 
+        (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)">
+    </app-navigator>
+    <div id="o010_bfs-variablen" class="container">
+        <div class="container__right-content">
+            <kiss-bfs-variablen-remaining-message #remainingMessage></kiss-bfs-variablen-remaining-message>
+            <kiss-bfs-variablen-search #variablenSearch (emitOnSearch)="onSearch($event)"></kiss-bfs-variablen-search>
+            <kiss-bfs-variablen-list #variablenList (emitOnContentReady)="onGetDataReady($event)"></kiss-bfs-variablen-list>
+        </div>
+    </div>
+</kiss-right-component>
+<kiss-printer #printer></kiss-printer>  
+<!-- Progressbar -->
+<app-progressbar #progressBar></app-progressbar>

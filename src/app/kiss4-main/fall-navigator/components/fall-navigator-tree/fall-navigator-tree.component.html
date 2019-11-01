@@ -1,0 +1,79 @@
+<div class="fall-list-content">
+  <div class="count-label">
+    <span class="h005-label-text">{{ 'H005FallNavigator.AnzahlPersonen' | translate}}</span>
+    <span class="h005-label-text" id="H005_label-person-count">{{ personCount }} </span>
+    <span class="h005-label-text">{{ 'H005FallNavigator.SieHaben' | translate}}</span>
+    <span class="h005-label-text" id="H005_label-person-task">{{taskCount}} </span>
+    <span class="h005-label-text">{{ 'H005FallNavigator.falligePendenzen' | translate}}</span>
+  </div>
+  <br>
+  <div id="H005_container-trees-list" class="container-trees-list">
+    <dx-tree-list #treeListNavigator class="trees-list" id="H005_tree-grid" [dataSource]="treeList" keyExpr="id" width="100%"
+      parentIdExpr="parentId" [allowColumnResizing]="true" [allowColumnReordering]="true" [showRowLines]="true"
+      [columnAutoWidth]="true" [autoExpandAll]="false" (onCellClick)="getSelectedCell($event)" (onRowClick)="isBbClick($event)"
+      (onOptionChanged)="countPerson()" (onCellPrepared)="onCellPrepared($event)" (onContextMenuPreparing)=onContextMenuPreparing($event)
+      [(selectedRowKeys)]="selectedKeys" columnResizingMode="widget">
+      <dxo-sorting mode="single"></dxo-sorting>
+      <dxi-column dataField="name" sortOrder="asc" minWidth="80" [width]="250" [caption]=" 'H005FallNavigator.Person' | translate"
+        cellTemplate="tree-Name-Template" cssClass="treeNote"></dxi-column>
+      <dxi-column dataField="b" minWidth="33" [width]="33" [caption]="bCaption" alignment="left" cellTemplate="tree-B-Template"></dxi-column>
+      <dxi-column dataField="f" minWidth="33" [width]="33" [caption]="fCaption" alignment="left" cellTemplate="tree-F-Template"></dxi-column>
+      <dxi-column dataField="s" minWidth="33" [width]="33" [caption]="sCaption" alignment="left" cellTemplate="tree-S-Template"></dxi-column>
+      <dxi-column dataField="i" minWidth="33" [width]="33" [caption]="iCaption" alignment="left" cellTemplate="tree-I-Template"></dxi-column>
+      <dxi-column dataField="m" minWidth="33" [width]="33" [caption]="mCaption" alignment="left" cellTemplate="tree-M-Template"></dxi-column>
+      <dxi-column dataField="a" minWidth="33" [width]="33" [caption]="aCaption" alignment="left" cellTemplate="tree-A-Template"></dxi-column>
+      <dxi-column dataField="k" minWidth="33" [width]="33" [caption]="kCaption" alignment="left" cellTemplate="tree-K-Template"></dxi-column>
+      <dxi-column dataField="ahvNummer" minWidth="33" [width]="120" [caption]=" 'H005FallNavigator.AHV' | translate"
+        *ngIf="ahvNummerVisible"></dxi-column>
+      <dxi-column dataField="nNummer" minWidth="33" [width]="100" [caption]=" 'H005FallNavigator.NNr' | translate"
+        *ngIf="nNummerVisible"></dxi-column>
+      <dxi-column dataField="navigatorZusatz" minWidth="33" [width]="100" [caption]=" 'H005FallNavigator.Zusatz' | translate"
+        *ngIf="navigatorZusatzVisible"></dxi-column>
+      <dxi-column dataField="gemeinde" minWidth="33" [width]="150" [caption]=" 'H005FallNavigator.Gemeinde' | translate"
+        *ngIf="gemeindeVisible"></dxi-column>
+      <dxi-column dataField="versichertennummer" minWidth="33" [width]="150" [caption]=" 'H005FallNavigator.VersNr' | translate"
+        *ngIf="versichertennummerVisible"></dxi-column>
+      <dxi-column dataField="kategorie" minWidth="33" [width]="120" [caption]=" 'H005FallNavigator.Kategorie' | translate"
+        *ngIf="kategorieVisible" cellTemplate="tree-Kategorie-Template"></dxi-column>
+      <dxi-column dataField="fallTaskCount" minWidth="33" [width]="150" [caption]=" 'H005FallNavigator.fallPendenzen' | translate"
+        *ngIf="fallPendenzenVisible"></dxi-column>
+      <dxi-column dataField="" caption="" [visible]="true"></dxi-column>
+      <dxo-selection mode="single"></dxo-selection>
+      <div *dxTemplate="let options of 'tree-Name-Template'">
+        <div class="img" *ngIf="options.data.iconId" style.background-image="url('{{icon_Name_Url}}{{options.data.iconId}}.png')"></div>
+        <span *ngIf="options.data.id" class="name">{{options.data.name}}</span>
+      </div>
+      <div *dxTemplate="let options of 'tree-Kategorie-Template'" class="kategorie-center">
+        <span>{{options.data.kategorie}}</span>
+      </div>
+      <div *dxTemplate="let options of 'tree-B-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.b % 10 === 0 ? '' : 'finger' " *ngIf="options.data.b && options.data.b > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.b}}.png')"></div>
+      </div>
+      <div *dxTemplate="let options of 'tree-F-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.f % 10 === 0 ? '' : 'finger' " *ngIf="options.data.f && options.data.f > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.f}}.png')"></div>
+      </div>
+      <div *dxTemplate="let options of 'tree-S-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.s % 10 === 0 ? '' : 'finger' " *ngIf="options.data.s && options.data.s > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.s}}.png')"></div>
+      </div>
+      <div *dxTemplate="let options of 'tree-I-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.i % 10 === 0 ? '' : 'finger' " *ngIf="options.data.i && options.data.i > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.i}}.png')"></div>
+      </div>
+      <div *dxTemplate="let options of 'tree-M-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.m % 10 === 0 ? '' : 'finger' " *ngIf="options.data.m && options.data.m > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.m}}.png')"></div>
+      </div>
+      <div *dxTemplate="let options of 'tree-A-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.a % 10 === 0 ? '' : 'finger' " *ngIf="options.data.a && options.data.a > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.a}}.png')"></div>
+      </div>
+      <div *dxTemplate="let options of 'tree-K-Template'" class="tree-icon-center">
+        <div class="img" [ngClass]="options.data.k % 10 === 0 ? '' : 'finger' " *ngIf="options.data.k && options.data.k > 0"
+          style.background-image="url('{{icon_Characters_Url}}{{options.data.k}}.png')"></div>
+      </div>
+    </dx-tree-list>
+  </div>
+</div>

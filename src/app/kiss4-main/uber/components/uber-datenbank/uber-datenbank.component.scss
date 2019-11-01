@@ -1,0 +1,16 @@
+@import 'settings/variables.scss';
+#form-uber-datenbank .dx-fieldset-header {
+    font-size:$base-fz + 2;
+    font-weight: $label-detail-font-weight;
+}
+.form-content-details-title {
+    padding-left: $padding-content;
+    font-weight: $label-detail-font-weight;
+}
+
+#form-uber-datenbank .uber-label {
+    padding-top: 15px;
+}
+.btn-Coppy {
+    padding-right: 15px;
+}

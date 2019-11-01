@@ -1,0 +1,20 @@
+<div id="H003_speicher" class="container-detail form-content-details">
+  <div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+      <kiss-card-title [titleHeader]="'Uber.Title_Group.Storage'| translate" [customizeBtn]="customizeBtn"
+        [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)">
+      </kiss-card-title>
+  </div>
+  <div [ngClass]="{'container__hide': !isExpandTabSpeicher}" class="form-body">
+    <div class="grid-table-view" id='form-uber-speicher'>
+      <dx-data-grid #gridSpeicher id="H003_speicher_grid" [dataSource]="browserVersions" [showBorders]="true" class="data-grid-wrapper"
+        [allowColumnResizing]="true" [columnAutoWidth]="true" [columnMinWidth]="50" (mousedown)="onClickGrid()"
+        [selectedRowKeys]="selectedGridSpeicherKeys" [allowColumnReordering]="true" [columnResizingMode]="'widget'">
+        <dxo-selection mode="single"></dxo-selection>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxi-column dataField="name" [caption]="'Uber.Caption.Browser'|translate"></dxi-column>
+        <dxi-column dataField="version" [caption]="'Uber.Caption.Version'|translate"></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>

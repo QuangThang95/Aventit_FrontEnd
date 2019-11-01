@@ -1,0 +1,557 @@
+<div class="arbeit-content-edit" id='c008_edit'>
+  <dx-validation-group #validationGroup>
+      <dx-form id="c008_form" [formData]="arbeitModel" [showColonAfterLabel]="false"
+      [showValidationSummary]="true" [colCount]="12" [screenByWidth]="getSizeQualifier">
+      <dxi-item itemType="group" [colSpan]="6">
+        <dxi-item [template]="'Erwerbssituation'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Erwerbssituation' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Beschaftigungsgrad'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Beschaftigungsgrad' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Teilzeitgrund'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Teilzeitgrund' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Branche'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Branche' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'ErlernterBeruf'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.ErlernterBeruf' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'LetzteTatigkeit'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.LetzteTatigkeit' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Arbeitgeber'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Arbeitgeber' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'HochsteAusbildung'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.HochsteAusbildung' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'LetzeAusb'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.LetzeAusb' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Integrationsstand'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Integrationsstand' | translate"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="6">
+        <dxi-item [template]="'ArbeitszeitWoche'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.ArbeitszeitWoche' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'VariableArbeitszeit'">
+          <dxo-label text=" "></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Stempenln'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Stempenln' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'Ausgesteuert'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Ausgesteuert' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'AusgesteuertSeit'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.AusgesteuertSeit' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'arbeitslos'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.arbeitslos' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item editorType="dxTextArea" [template]="'Bemerkung'">
+          <dxo-label [text]="'Arbeit.ArbeitForm.Bemerkung' | translate"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <div *dxTemplate="let data of 'Erwerbssituation'">
+        <div class="arbeit-edit-group-field">
+            <span class="arbeit-edit-group-field-left">{{ 'Arbeit.ArbeitForm.Number1' | translate }}</span>
+            <div class="arbeit-edit-group-field-right">
+              <dx-select-box #erwerbssituationStatus1Code id="c008_arbeit_erwebssituation-1"
+                [(value)]="arbeitModel.erwerbssituationStatus1Code"
+                [disabled]="itemsIsDisable.erwerbssituationStatus1Code"
+                [accessKey]="1"
+                [showClearButton]="true"
+                [dataSource]="arbeitErwerbssituation1"
+                valueExpr="code"
+                displayExpr="text"
+                (onValueChanged)="onValueChanged($event,'erwerbssituationStatus1Code')"
+                (onFocusIn)="onFocusIn(erwerbssituationStatus1Code,'erwerbssituationStatus1Code')"
+                (onKeyDown)="onKeyDown($event)"
+                (onOpened)="onSelectOpened($event)"
+                width="100%">
+              </dx-select-box>
+            </div>
+        </div>
+        <div class="arbeit-edit-group-field padding-top">
+          <span class="arbeit-edit-group-field-left">{{ 'Arbeit.ArbeitForm.Number2' | translate }}</span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #erwerbssituationStatus2Code id="c008_arbeit_erwebssituation-2"
+              [(value)]="arbeitModel.erwerbssituationStatus2Code"
+              [disabled]="itemsIsDisable.erwerbssituationStatus2Code"
+              [accessKey]="2"
+              [showClearButton]="true"
+              [dataSource]="arbeitErwerbssituation2"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'erwerbssituationStatus2Code')"
+              (onFocusIn)="onFocusIn(erwerbssituationStatus2Code,'erwerbssituationStatus2Code')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="arbeit-edit-group-field padding-top">
+          <span class="arbeit-edit-group-field-left">{{ 'Arbeit.ArbeitForm.Number3' | translate }}</span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #erwerbssituationStatus3Code id="c008_arbeit_erwebssituation-3"
+              [(value)]="arbeitModel.erwerbssituationStatus3Code"
+              [accessKey]="3"
+              [disabled]="itemsIsDisable.erwerbssituationStatus3Code"
+              [showClearButton]="true"
+              [dataSource]="arbeitErwerbssituation3"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'erwerbssituationStatus3Code')"
+              (onFocusIn)="onFocusIn(erwerbssituationStatus3Code,'erwerbssituationStatus3Code')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="arbeit-edit-group-field padding-top">
+          <span class="arbeit-edit-group-field-left">{{ 'Arbeit.ArbeitForm.Number4' | translate }}</span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #erwerbssituationStatus4Code id="c008_arbeit_erwebssituation-4"
+              [(value)]="arbeitModel.erwerbssituationStatus4Code"
+              [accessKey]="4"
+              [disabled]="itemsIsDisable.erwerbssituationStatus4Code"
+              [showClearButton]="true"
+              [dataSource]="arbeitErwerbssituation4"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'erwerbssituationStatus4Code')"
+              (onFocusIn)="onFocusIn(erwerbssituationStatus4Code,'erwerbssituationStatus4Code')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Beschaftigungsgrad'">
+        <div class="arbeit-edit-group-field">
+            <span class="arbeit-edit-group-field-left"></span>
+            <div class="arbeit-edit-group-field-right">
+              <dx-select-box #beschaeftigungsGradCode id="c008_arbeit_beschaftigungsgrad"
+                [(value)]="arbeitModel.beschaeftigungsGradCode"
+                [accessKey]="5"
+                [disabled]="itemsIsDisable.beschaeftigungsGrad"
+                [showClearButton]="true"
+                [dataSource]="arbeitBeschaeftigungsgrad"
+                valueExpr="code"
+                displayExpr="text"
+                (onValueChanged)="onValueChanged($event,'beschaeftigungsGradCode')"
+                (onFocusIn)="onFocusIn(beschaeftigungsGradCode,'beschaeftigungsGradCode')"
+                (onKeyDown)="onKeyDown($event)"
+                (onOpened)="onSelectOpened($event)"
+                width="100%">
+              </dx-select-box>
+            </div>
+          </div>
+      </div>
+      <div *dxTemplate="let data of 'Teilzeitgrund'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left">{{ 'Arbeit.ArbeitForm.Number1' | translate }}</span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #grundTeilzeitarbeit1Code id="c008_arbeit_teilzeitgrund-1"
+              [(value)]="arbeitModel.grundTeilzeitarbeit1Code"
+              [accessKey]="6"
+              [disabled]="itemsIsDisable.grundTeilzeitarbeit1Code"
+              [showClearButton]="true"
+              [dataSource]="arbeitGrundteilzeit1"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'grundTeilzeitarbeit1Code')"
+              (onFocusIn)="onFocusIn(grundTeilzeitarbeit1Code,'grundTeilzeitarbeit1Code')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="arbeit-edit-group-field padding-top">
+          <span class="arbeit-edit-group-field-left">{{ 'Arbeit.ArbeitForm.Number2' | translate }}</span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #grundTeilzeitarbeit2Code id="c008_arbeit_teilzeitgrund-2"
+              [(value)]="arbeitModel.grundTeilzeitarbeit2Code"
+              [accessKey]="7"
+              [disabled]="itemsIsDisable.grundTeilzeitarbeit2Code"
+              [showClearButton]="true"
+              [dataSource]="arbeitGrundteilzeit2"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'grundTeilzeitarbeit2Code')"
+              (onFocusIn)="onFocusIn(grundTeilzeitarbeit2Code,'grundTeilzeitarbeit2Code')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Branche'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #brancheCode id="c008_arbeit_branche"
+              [(value)]="arbeitModel.brancheCode"
+              [accessKey]="8"
+              [showClearButton]="true"
+              [dataSource]="arbeitBranche"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'brancheCode')"
+              (onFocusIn)="onFocusIn(brancheCode,'brancheCode')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'ErlernterBeruf'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-drop-down-box #erlernterBeruf id="c008_arbeit_erlernter-beruf"
+              [accessKey]="9"
+              [dataSource]="berufSuchens"
+              [(value)]="arbeitModel.erlernterBerufCode"
+              [showClearButton]="true"
+              valueExpr="baBerufID"
+              displayExpr="text"
+              paging="{ enabled: true, pageSize: 30 }"
+              [(opened)]="isgridErlernterBeruf"
+              (onOpened)="onDropdownOpened('erlernterBeruf')"
+              (onKeyDown)="spracheKeyDown($event,'erlernterBeruf')"
+              (onFocusIn)="onFocusIn(erlernterBeruf,'erlernterBeruf')"
+              width="100%">
+              <div *dxTemplate="let contentData of 'content'">
+                <dx-data-grid #gridErlernterBeruf
+                  [dataSource]="berufSuchens"
+                  [selection]="{ mode: 'single' }"
+                  [hoverStateEnabled]="true"
+                  [filterRow]="{ visible: true }"
+                  [selectedRowKeys]="selectedKeysErlernterBeruf"
+                  [scrolling]="{ mode: 'infinite' }"
+                  [height]="320"
+                  keyExpr="baBerufID"
+                  [noDataText]="'Arbeit.MessageForm.ErlernterBerufNoData' | translate"
+                  (onRowClick)="gridOnClick($event, 'erlernterBeruf')"
+                  (onKeyDown)="spracheKeyDown($event,'erlernterBeruf')"
+                  (onSelectionChanged)="onSelectionChangedGrid($event,'erlernterBeruf')"
+                  (onContentReady)="erlernterBerufonContentReady($event)">
+                  <dxi-column dataField="text" [caption]="'Arbeit.ArbeitForm.TitleName' | translate"></dxi-column>
+                </dx-data-grid>
+              </div>
+            </dx-drop-down-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'LetzteTatigkeit'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-drop-down-box #beruf id="c008_arbeit_letzte-tatigkeit"
+              [accessKey]="10"
+              [dataSource]="berufSuchens"
+              [(value)]="arbeitModel.berufCode"
+              [showClearButton]="true"
+              valueExpr="baBerufID"
+              displayExpr="text"
+              paging="{ enabled: true, pageSize: 30 }"
+              [(opened)]="isgridBeruf"
+              (onOpened)="onDropdownOpened('beruf')"
+              (onKeyDown)="spracheKeyDown($event,'beruf')"
+              (onFocusIn)="onFocusIn(beruf,'beruf')"
+              width="100%">
+              <div *dxTemplate="let contentData of 'content'">
+                <dx-data-grid #gridBeruf
+                  [dataSource]="berufSuchens"
+                  [selection]="{ mode: 'single' }"
+                  [hoverStateEnabled]="true"
+                  [filterRow]="{ visible: true }"
+                  [selectedRowKeys]="selectedKeysErlernterBeruf"
+                  [scrolling]="{ mode: 'infinite' }"
+                  [height]="320"
+                  (onRowClick)="gridOnClick($event, 'beruf')"
+                  keyExpr="baBerufID"
+                  [noDataText]="'Arbeit.MessageForm.ErlernterBerufNoData' | translate"
+                  (onKeyDown)="spracheKeyDown($event,'beruf')"
+                  (onSelectionChanged)="onSelectionChangedGrid($event,'beruf')"
+                  (onContentReady)="berufonContentReady($event)">
+                  <dxi-column dataField="text" [caption]="'Arbeit.ArbeitForm.TitleName' | translate"></dxi-column>
+                </dx-data-grid>
+              </div>
+            </dx-drop-down-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Arbeitgeber'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-drop-down-box #arbeitgeber id="c008_arbeit_arbeitgeber"
+              [accessKey]="11"
+              [dataSource]="institutionSuchens"
+              (onOpened)="onDropdownOpened('arbeitgeber')"
+              [(value)]="arbeitModel.baInstitutionID"
+              valueExpr="baInstitutionID"
+              displayExpr="name"
+              [showClearButton]="true"
+              [(opened)]="isgridArbeitgeber"
+              paging="{ enabled: true, pageSize: 30 }"
+              (onKeyDown)="spracheKeyDown($event,'arbeitgeber')"
+              (onFocusIn)="onFocusIn(arbeitgeber,'arbeitgeber')"
+              width="100%">
+              <div *dxTemplate="let contentData of 'content'">
+                <dx-data-grid #gridArbeitgeber
+                  [dataSource]="institutionSuchens"
+                  [selection]="{ mode: 'single' }"
+                  [hoverStateEnabled]="true"
+                  [filterRow]="{ visible: true }"
+                  [scrolling]="{ mode: 'infinite' }"
+                  [height]="320"
+                  [noDataText]="'Arbeit.MessageForm.ArbeitgeberNoData' | translate"
+                  (onRowClick)="gridOnClick($event, 'arbeitgeber')"
+                  (onSelectionChanged)="onSelectionChangedGrid($event, 'arbeitgeber')"
+                  (onKeyDown)="spracheKeyDown($event,'arbeitgeber')"
+                  (onContentReady)="institutionContentReady($event)"
+                  [(selectedRowKeys)]="selectedKeysArbeitgeber">
+                  <dxi-column dataField="name" [caption]="'Arbeit.ArbeitForm.TitleName' | translate"></dxi-column>
+                  <dxi-column dataField="adresse" [caption]="'Arbeit.ArbeitForm.TitleAddress' | translate"></dxi-column>
+                  <dxi-column dataField="typen" [caption]="'Arbeit.ArbeitForm.TitleType' | translate"></dxi-column>
+                </dx-data-grid>
+              </div>
+            </dx-drop-down-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'HochsteAusbildung'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #hoechsteAusbildungCode id="c008_arbeit_hochste-ausbildung"
+              [accessKey]="12"
+              [showClearButton]="true"
+              [dataSource]="arbeitAusbildungstyp"
+              [(value)]="arbeitModel.hoechsteAusbildungCode"
+              valueExpr="code"
+              displayExpr="text"
+              [noDataText]="'Keine Daten verfügbar'"
+              (onValueChanged)="onValueChanged($event,'hoechsteAusbildungCode')"
+              (onFocusIn)="onFocusIn(hoechsteAusbildungCode,'hoechsteAusbildungCode')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'LetzeAusb'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #abgebrochenAusbildungCode id="c008_arbeit_letzte-abgebr-ausb"
+              [accessKey]="13"
+              [showClearButton]="true"
+              [dataSource]="arbeitAusbildungstyp"
+              [(value)]="arbeitModel.abgebrochenAusbildungCode"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'abgebrochenAusbildungCode')"
+              (onFocusIn)="onFocusIn(abgebrochenAusbildungCode,'abgebrochenAusbildungCode')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              [noDataText]="'Keine Daten verfügbar'"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Integrationsstand'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #integrationsstandCode id="c008_arbeit_integrationsstand"
+              [accessKey]="14"
+              [showClearButton]="true"
+              [dataSource]="arbeitIntegrationsstand"
+              [(value)]="arbeitModel.integrationsstandCode"
+              valueExpr="code"
+              displayExpr="text"
+              (onValueChanged)="onValueChanged($event,'integrationsstandCode')"
+              (onFocusIn)="onFocusIn(integrationsstandCode,'integrationsstandCode')"
+              (onKeyDown)="onKeyDown($event)"
+              (onOpened)="onSelectOpened($event)"
+              [noDataText]="'Keine Daten verfügbar'"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+
+      <div *dxTemplate="let data of 'ArbeitszeitWoche'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-number-box class="kiss-input-right" #arbeitszeit id="c008_arbeit_arbeitszeit-woche"
+              [accessKey]="15"
+              [format]="arbeitszeitFormat"
+              [disabled]="itemsIsDisable.arbeitszeit"
+              [value]="arbeitModel.arbeitszeit"
+              [width]="widthNumberAndDateBox"
+              [step]="0"
+              (onKeyDown)="onKeyDownCurrency($event,'arbeitszeit')"
+              (onFocusIn)="onFocusIn(arbeitszeit,'arbeitszeit')"
+              (onValueChanged)="onValueChanged($event,'arbeitszeit')">
+              <dx-validator>
+                <dxi-validation-rule
+                  type="range"
+                  [min]="arbeitMinNumber"
+                  [max]="arbeitMaxNumber"
+                  [message]="'Arbeit.MessageForm.ArbeitszeitWocheValidatemessage' | translate">
+                </dxi-validation-rule>
+              </dx-validator>
+            </dx-number-box>
+            <span> &nbsp;&nbsp; {{ 'Arbeit.ArbeitForm.Std' | translate }}</span>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'VariableArbeitszeit'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-check-box #isVariableArbeitszeit id="c008_arbeit_unregelmassig"
+              [accessKey]="16"
+              (onFocusIn)="onFocusIn(isVariableArbeitszeit,'isVariableArbeitszeit')"
+              [disabled]="itemsIsDisable.asVariableArbeitszeit"
+              [(value)]="arbeitModel.isVariableArbeitszeit === undefined ? null : arbeitModel.isVariableArbeitszeit"
+              (onValueChanged)="onValueChanged($event,'isVariableArbeitszeit')">
+            </dx-check-box>
+            <span> &nbsp;&nbsp; {{ 'Arbeit.ArbeitForm.Unregelmassig' | translate }}</span>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Stempenln'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-date-box #stempelDatum id="c008_arbeit_stempeln-seit"
+              [accessKey]="17"
+              [(value)]="arbeitModel.stempelDatum"
+              type="date" [min]="minDate"
+              [disabled]="itemsIsDisable.stempelDatum"
+              [invalidDateMessage]="'Arbeit.MessageForm.DatetimeValidatemessage' | translate"
+              name="input-stempelDatum"
+              maxLength="dateLenght"
+              [max]="maxDate"
+              [displayFormat]="dateFormat"
+              [width]="widthNumberAndDateBox"
+              acceptCustomValue="true"
+              (onPaste)="$event.event.preventDefault()"
+              (onChange)="onDateChange()"
+              (onFocusIn)="onFocusIn(stempelDatum,'stempelDatum')"
+              (onKeyDown)="onKeyDown($event)">
+            </dx-date-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Ausgesteuert'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-select-box #ausgesteuertUnbekanntCode id="c008_arbeit_ausgesteuert"
+              [accessKey]="18"
+              [disabled]="itemsIsDisable.ausgesteuertUnbekannt"
+              [showClearButton]="true"
+              [dataSource]="arbeitNichtbekannt"
+              [(value)]="arbeitModel.ausgesteuertUnbekanntCode"
+              type="date"
+              valueExpr="code"
+              displayExpr="text"
+              (onFocusIn)="onFocusIn(ausgesteuertUnbekanntCode,'ausgesteuertUnbekanntCode')"
+              (onKeyDown)="onKeyDown($event)"
+              (onValueChanged)="onValueChanged($event,'ausgesteuertUnbekanntCode')"
+              (onOpened)="onSelectOpened($event)"
+              width="100%">
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'AusgesteuertSeit'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-date-box #ausgesteuertDatum id="c008_arbeit_ausgesteuert-seit"
+              [accessKey]="19"
+              [(value)]=arbeitModel.ausgesteuertDatum
+              [min]="minDate"
+              [disabled]="itemsIsDisable.ausgesteuertDatum"
+              [max]="maxDate"
+              name="input-geburtsdatumFrom-search"
+              [displayFormat]="dateFormat"
+              valueChangeEvent="keyup"
+              isValid="false"
+              maxLength="dateLenght"
+              [invalidDateMessage]="'Arbeit.MessageForm.DatetimeValidatemessage' | translate"
+              acceptCustomValue="true"
+              [width]="widthNumberAndDateBox"
+              (onChange)="onDateChange()"
+              (onKeyDown)="onKeyDown($event)"
+              (onValueChanged)="onValueChanged($event,'ausgesteuertDatum')"
+              (onFocusIn)="onFocusIn(ausgesteuertDatum,'ausgesteuertDatum')"
+              (onPaste)="$event.event.preventDefault()">
+            </dx-date-box>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'arbeitslos'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <dx-number-box #wieOftArbeitsloTemplate id="c008_arbeit_arbeitslos" class="kiss-input-right"
+              [accessKey]="20"
+              [format]="wieOftArbeitslosFormat"
+              [width]="widthNumberAndDateBox"
+              [value]="arbeitModel.wieOftArbeitslos"
+              (onKeyDown)="onKeyDownCurrency($event,'wieOftArbeitslos')"
+              [step]="0"
+              (onFocusIn)="onFocusIn(wieOftArbeitsloTemplate,'wieOftArbeitsloTemplate')"
+              (onValueChanged)="onValueChanged($event,'wieOftArbeitslos')">
+              <dx-validator>
+                <dxi-validation-rule
+                  type="range"
+                  [min]="minWieOftArbeitslos"
+                  [max]="maxWieOftArbeitslos"
+                  [message]="'Arbeit.MessageForm.ArbeitszeitWocheValidatemessage' | translate">
+                </dxi-validation-rule>
+              </dx-validator>
+            </dx-number-box>
+            <span> &nbsp;&nbsp; {{ 'Arbeit.ArbeitForm.mal' | translate }}</span>
+          </div>
+        </div>
+      </div>
+      <div *dxTemplate="let data of 'Bemerkung'">
+        <div class="arbeit-edit-group-field">
+          <span class="arbeit-edit-group-field-left"></span>
+          <div class="arbeit-edit-group-field-right">
+            <div id="c008_arbeit_bemerkung"
+              [accessKey]="21"
+              [froalaEditor]="froalaEditorConfig"
+              [(froalaModel)]="arbeitModel.bemerkung"
+              width="100%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </dx-form>
+  </dx-validation-group>
+</div>

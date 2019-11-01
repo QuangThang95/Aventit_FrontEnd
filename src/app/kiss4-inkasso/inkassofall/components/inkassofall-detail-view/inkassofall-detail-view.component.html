@@ -1,0 +1,48 @@
+<div class="container-detail__form" [ngClass]="{ container__hide: isCollapseFormDetail }">
+    <dx-form
+        id="j007_form_view"
+        [showColonAfterLabel]="false"
+        [showValidationSummary]="true"
+        [screenByWidth]="sizeQualifier"
+    >
+        <!-- Form readonly -->
+        <dxi-item itemType="group">
+            <dxi-item [template]="'eroffnetAm'">
+                <dxo-label [text]="'Inkassofall.eroffnetAm' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'eroffnetGrund'">
+                <dxo-label [text]="'Inkassofall.eroffnetGrund' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'anzeigeTyp'">
+                <dxo-label [text]="'Inkassofall.anzeigeTyp' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'abgeschlossenAm'">
+                <dxo-label [text]="'Inkassofall.abgeschlossenAm' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'abgeschlossenGrund'">
+                <dxo-label [text]="'Inkassofall.abgeschlossenGrund' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'bemerkung'">
+                <dxo-label [text]="'Inkassofall.bemerkung' | translate"></dxo-label>
+            </dxi-item>
+        </dxi-item>
+        <div *dxTemplate="let data of 'eroffnetAm'">
+            <span>{{ dsInkassofalls.eroffnetAm }}</span>
+        </div>
+        <div *dxTemplate="let data of 'eroffnetGrund'">
+            <span>{{ dsInkassofalls.eroffnetGrund }}</span>
+        </div>
+        <div *dxTemplate="let data of 'anzeigeTyp'">
+            <span>{{ dsInkassofalls.typ }}</span>
+        </div>
+        <div *dxTemplate="let data of 'abgeschlossenAm'">
+            <span>{{ dsInkassofalls.abgeschlossenAm }}</span>
+        </div>
+        <div *dxTemplate="let data of 'abgeschlossenGrund'">
+            <span>{{ dsInkassofalls.abgeschlossenGrund }}</span>
+        </div>
+        <div *dxTemplate="let data of 'bemerkung'">
+            <span>{{ dsInkassofalls.bemerkung }}</span>
+        </div>
+    </dx-form>
+</div>

@@ -1,0 +1,32 @@
+{
+    "Konfiguration": {
+        "Title": "Konfiguration [en]",
+        "Erhebungsjahr": "Erhebungsjahr [en]",
+        "InstitutionNr": "Institution-Nr. [en]",
+        "DSN": "DSN [en]",
+        "ExportPfad": "Export-Pfad [en]",
+        "ExportPfadXML": "Export-Pfad XML [en]",
+        "Gemeinden": "Gemeinden [en]",
+        "Code": "Code [en]",
+        "Gemeinde": "Gemeinde [en]",
+        "LabelSie": "Sie können diese Werte unter \"System\\Konfiguration\" im Schlüssel \"System\\SoStat\" anpassen [en]",
+        "Placeholder": "Select ... [en]",
+        "ColumnChooser": "Spaltenauswahl [en]",
+        "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen [en]",
+        "Message": {
+            "Ok": "OK [en]",
+            "Information": "Information [en]",
+            "deleteGrid": "Das Löschen dieses Datensatzes ist nicht erlaubt ! [en]"
+        },
+        "Validation": {
+            "NoDataGrid": "Keine Daten [en]"
+        },
+        "ColumnChooser": {
+            "Title": "Benutzerdefiniert [en]",
+            "EmptyPanelText": "Keine Daten [en]"
+        },
+        "Button": {
+            "Filter": "Filter anwenden [en]"
+        }
+    }
+}

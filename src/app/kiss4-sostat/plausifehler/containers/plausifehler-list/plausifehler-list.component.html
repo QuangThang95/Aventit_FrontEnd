@@ -1,0 +1,62 @@
+<div *ngIf="gridFunction.model.isFilterBuilder" class="filter-builder">
+    <dx-filter-builder [fields]="filterColumns" [(value)]="filterAvs">
+    </dx-filter-builder>
+    <dx-button [text]="'plausifehler.buttonFiltereditor' | translate" type="default" (onClick)="gridplausifehler.instance.filter(filterAvs)">
+    </dx-button>
+    <div class="dx-clearfix"></div>
+</div>
+    <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+    <div>
+        <dx-data-grid id="o011_plausifehler_grid-plausifehler" #gridplausifehler
+            [dataSource]="dataExportAllGridTop" 
+            [showBorders]="true" 
+            [showColumnLines]="true"
+            [allowColumnResizing]="true" 
+            [columnMinWidth]="20" 
+            [allowColumnReordering]="true" 
+            columnAutoWidth="true"
+            [showRowLines]="true" 
+            [selectedRowKeys]="selectedKeys"
+            [noDataText]="'plausifehler.mainGridNoDataText' | translate"
+            (onContentReady)="onContentReady($event)" 
+            (onKeyDown)="onKeyDown($event)" 
+            (onRowClick)="onRowClick($event)"
+            (onContextMenuPreparing)="onContextMenuPreparing($event)" >
+            <dxo-paging [enabled]="false"></dxo-paging>
+            <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+            <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+            <dxo-load-panel [enabled]="false"></dxo-load-panel>
+            <dxo-scrolling mode="virtual"></dxo-scrolling>
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-group-panel [visible]="gridFunction.model.isGrouping" [emptyPanelText]="'plausifehler.emptyPanelText' | translate"></dxo-group-panel>
+            <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+
+            <dxi-column [allowFiltering]="true" width="auto" dataField="sar" [caption]="'plausifehler.sar' | translate"
+                alignment="left"></dxi-column>
+            <dxi-column [allowFiltering]="true" width="auto" dataField="person" [caption]="'plausifehler.person' | translate"
+                alignment="left"></dxi-column>
+            <dxi-column width="auto" [allowFiltering]="true"  dataField="plausiFehler" [caption]="'plausifehler.plausiFehler' | translate"
+                alignment="left"></dxi-column>
+            <dxi-column [allowFiltering]="true" width="auto" dataField="variable" [caption]="'plausifehler.variable' | translate"
+                alignment="left"></dxi-column>
+            <dxi-column [allowFiltering]="true" width="auto" dataField="dossierStatus" [caption]="'plausifehler.dossierStatus' | translate"
+                alignment="left"></dxi-column>
+            <dxi-column [allowFiltering]="true" width="auto" dataType="number" dataField="dossierID" [caption]="'plausifehler.dossierID' | translate"
+                alignment="right"></dxi-column>
+            <dxi-column [minWidth]="60" [allowFiltering]="false" [allowHiding]="false" [allowExporting]="false" [allowReordering]="false" [caption]="" cellTemplate="cellTemplate"></dxi-column>
+
+            <div *dxTemplate="let data of 'cellTemplate'">
+                <dx-button text="..." type="normal" (onClick)="onClick($event, data)"></dx-button>
+            </div>
+            <dxo-column-chooser #columnChooser [title]="titleBenutzerdefiniert" [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+            <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+        </dx-data-grid>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="grid-margin-top">
+            <span>{{ 'plausifehler.AnzahlDatensatze' | translate }}</span>
+            <span id="o011_plausifehler_anzahl-datensatze"> {{this.total ? this.total : 0 }}</span>
+          </div>
+<app-popover #popover></app-popover>
+

@@ -1,0 +1,54 @@
+@import 'settings/variables.scss';
+@import 'tools/mixins.scss';
+.dropdown-pane {
+    width: 100%;
+    background: #fff;
+    border: 1px solid $color-grey-verylight;
+    margin-top: 6px;
+    border-top: 0;
+    @include css3-prefix(box-shadow, 0px 3px 7px 0px rgba(0, 0, 0, 0.24));
+    z-index: 999;
+    span {
+        display: block;
+        text-align: left;
+        padding: 10px 5px;
+        color: $color-grey;
+        border-bottom: 1px solid $color-grey-verylight;
+        &:last-child {
+            border-bottom: 0;
+        }
+        &:hover {
+            background: $color-grey-verylight;
+        }
+    }
+}
+
+.languageSelectorWrapper {
+    min-width: 70px;
+    span {
+        cursor: pointer;
+        -webkit-user-select: none;
+        /* Safari 3.1+ */
+        -moz-user-select: none;
+        /* Firefox 2+ */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Standard syntax */
+        text-align: center;
+        &:hover,
+        &:active,
+        &:focus {
+            color: darken($color: $color-grey, $amount: 10);
+        }
+    }
+}
+
+.language-selector-anchor {
+    display: block;
+    border-radius: 5px;
+    color: $color-grey;
+    padding: 10px 5px;
+    outline: none;
+    text-transform: uppercase;
+}

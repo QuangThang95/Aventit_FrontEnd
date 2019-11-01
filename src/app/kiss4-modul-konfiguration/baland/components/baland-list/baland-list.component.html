@@ -1,0 +1,56 @@
+<div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container">
+    <dx-filter-builder [fields]="filterColumns" [(value)]="filterAvs"></dx-filter-builder>
+    <dx-button [text]="'Baland.ApplyFilter' | translate" type="default" (onClick)="gridBaland.instance.filter(filterAvs)"></dx-button>
+</div>
+<dx-data-grid
+    id="c004_lander-aktualisieren_data-grid"
+    #gridBaland
+    [dataSource]="dataSource"
+    [showBorders]="true"
+    [showColumnLines]="true"
+    [allowColumnResizing]="true"
+    [allowColumnReordering]="true"
+    [showRowLines]="true"
+    [focusedRowEnabled]="true"
+    [focusedRowKey]="selectedKey"
+    [noDataText]="'Baland.NoDataGrid' | translate"
+    [customizeExportData]="customizeExportData"
+    keyExpr="baLandID"
+    columnResizingMode="widget"
+    (onRowPrepared)="onRowPrepared($event)"
+    (onFocusedRowChanged)="onFocusedRowChanged($event)"
+    (onContextMenuPreparing)="onContextMenuPreparing($event)">
+    <dxo-paging [pageSize]="50"></dxo-paging>
+    <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+    <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+    <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-sorting mode="single"></dxo-sorting>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-group-panel [visible]="gridFunctionModel.isGrouping" [emptyPanelText]="'Baland.emptyPanelText' | translate"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+    <dxo-export [enabled]="false" [fileName]="'Baland.Title' | translate" [allowExportSelectedData]="true"></dxo-export>
+    <dxo-column-chooser #columnChooser [title]="'Baland.titlecolumnchooser' | translate" [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+    <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+
+    <dxi-column alignment="center" width="20" caption="" cellTemplate="cellTemplate" [allowFiltering]="false" [allowHiding]="false" [allowExporting]="false" [allowReordering]="false" [allowResizing]="false"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="text" [caption]="'Baland.Name' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="textFR" [caption]="'Baland.TextFR' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="textIT" [caption]="'Baland.TextIT' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="textEN" [caption]="'Baland.TextEN' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="iso2Code" [caption]="'Baland.Iso2' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="iso3Code" [caption]="'Baland.Iso3' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="bfsCode" [caption]="'Baland.BFSCode' | translate" dataType="number" alignment="right"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="sortKey" [caption]="'Baland.Sortierung' | translate" dataType="number" alignment="right"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="sapCode" [caption]="'Baland.SAPCode' | translate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="datumVon" [caption]="'Baland.Datumvon' | translate" dataType="date" [format]="formatDate"></dxi-column>
+    <dxi-column [minWidth]="50" width="auto" dataField="datumBis" [caption]="'Baland.Datumbis' | translate" dataType="date" [format]="formatDate"></dxi-column>
+    <dxi-column [allowFiltering]="false" [allowHeaderFiltering]="true" [minWidth]="50" dataField="bfsDelivered" width="auto" [caption]="'Baland.VomBFSgeliefert' | translate"></dxi-column>
+    <dxi-column [allowFiltering]="false" [allowHiding]="false" [allowExporting]="false" [allowReordering]="false"></dxi-column>
+    <div *dxTemplate="let data of 'cellTemplate'">
+        <i *ngIf="data.data.baLandID === rowSelectedIndex" class="fa fa-caret-right"></i>
+    </div>
+</dx-data-grid>
+
+<!-- Grid setting component -->
+<app-grid-function #gridFunction (onchange)="onChangeGridSetting()" [keyStorage]="gridFunctionKey"></app-grid-function>

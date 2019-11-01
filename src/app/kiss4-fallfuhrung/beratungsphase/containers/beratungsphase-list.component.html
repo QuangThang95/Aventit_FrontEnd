@@ -1,0 +1,184 @@
+<kiss-right-component>
+  <app-navigator titleHeader="{{pageTitle}}{{suffixPageTitle}}" [customizeBtn]="customizeBtn" [listBtn]="listBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopHeader($event)"
+    (dblclick)="onCopyTitle()"></app-navigator>
+  <section id="wrapper-content">
+    <div class="container">
+      <div class="right-content rounded-0">
+        <div class="error" *ngIf="isErrorClosed">
+          <span class="btn-close-error">
+            <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+            </dx-button>
+          </span>
+          <div class="error-messege">
+            <span class="ico-error">
+              <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+            </span>
+            <i id="err-messeger">{{messageErr}}</i>
+          </div>
+        </div>
+        <div id="bar-content">
+          <dx-validation-group #validationGroup>
+          <dx-form class="form-padding" [showColonAfterLabel]="false" [formData]="beratungsphaseFormData">
+            <dxi-item itemType="group" [colCount]="2">
+              <!----------------------- Phase-Eröffnung -------------------------------->
+              <dxi-item itemType="group" [colSpan]="1" [caption]="'D005Beratungsphase.PhaseEroffnungLabel' | translate">
+                <dxi-item [template]="'datumVon'" dataField="datumVon">
+                  <dxo-label id="d005_phase-eroffnung_datum-label" [text]="'D005Beratungsphase.PhaseEroffnung.Datum' | translate"></dxo-label>
+                  <dxi-validation-rule *ngIf="!isReadOnly" type="required">
+                  </dxi-validation-rule>
+                </dxi-item>
+                <dxi-item [template]="'SARTemplate'" [editorOptions]="{ width: '100%' }" dataField="userID">
+                  <dxi-validation-rule *ngIf="!isReadOnly" type="required">
+                  </dxi-validation-rule>
+                  <dxo-label id="d005_phase-eroffnung_sar-label" [text]="'D005Beratungsphase.PhaseEroffnung.SAR' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [template]="'DPLzugewiesenTemplate'" [editorOptions]="{ width: '100%' }" dataField="fsDienstleistungspaketID_Zugewiesen"
+                  [visible]="visibledplSelectBox">
+                  <dxo-label id="d005_phase-eroffnung_dpl-zugewiesen-label" [text]="'D005Beratungsphase.PhaseEroffnung.DLPzugewiesen' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [template]="'DPLbedarfTemplate'" [editorOptions]="{ width: '100%' }" dataField="fsDienstleistungspaketID_Bedarf"
+                  [visible]="visibledplSelectBox">
+                  <dxo-label id="d005_phase-eroffnung_dpl-bedarf-label" [text]="'D005Beratungsphase.PhaseEroffnung.DLPBedarf' | translate"></dxo-label>
+                </dxi-item>
+              </dxi-item>
+              <!----------------------- The End Phase-Eröffnung ------------------------>
+              <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+              <!----------------------- Phase-Abschluss -------------------------------->
+              <dxi-item itemType="group" [colSpan]="1" [caption]="'D005Beratungsphase.PhaseAbschlussLabel' | translate"
+                cssClass="d005-beratungsphase-groupbottom">
+                <dxi-item [template]="'datumBis'" [editorOptions]="{ width: '100%' }" dataField="datumBis">
+                  <dxo-label id="d005_phase-abschluss_datum-label" [text]="'D005Beratungsphase.PhaseAbschluss.Datum' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [template]="'grundTemplate'" [editorOptions]="{ width: '100%' }" dataField="abschlussGrundCode">
+                  <dxo-label id="d005_phase-abschluss_grund-label" [text]="'D005Beratungsphase.PhaseAbschluss.Grund' | translate"></dxo-label>
+                </dxi-item>
+              </dxi-item>
+              <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+              <dxi-item itemType="group" [colSpan]="2">
+                <dxi-item [template]="'bemerkung'" [editorOptions]="{ width: '100%', height: 140, maxLength: '4000' }"
+                  dataField="bemerkung">
+                  <dxo-label id="d005_phase-abschluss_bemerkung-label" [text]="'D005Beratungsphase.PhaseAbschluss.Bemerkung' | translate"></dxo-label>
+                </dxi-item>
+              </dxi-item>
+              <!----------------------- The End Phase-Abschluss -------------------------->
+            </dxi-item>
+            <div *dxTemplate="let data of 'datumVon'">
+              <div *ngIf="isReadOnly; else elseBlock">
+                <span>{{beratungsphaseFormData.datumVon | date:'dd.MM.yyyy'}}</span>
+              </div>
+              <ng-template #elseBlock>
+                <dx-date-box #datumVon id="d005_phase-eroffnung_datum-von" [(value)]="beratungsphaseFormData.datumVon"
+                  [accessKey]="8" type="date" displayFormat="dd.MM.yyyy" (onValueChanged)="onChangeData($event,'DatumVon')"
+                  [readOnly]="readOnlySettingComponents.datumVon"
+                  (onFocusIn)="onFocusIn(datumVon,'DatumVon','datebox')" (onFocusOut)="onFocusOut($event,'DatumVon')"
+                  (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()" (onOpened)="onOpened()" [min]="minDate" [max]="maxDate">
+                  <dx-validator>
+                      <dxi-validation-rule type="required" [message]="'D005Beratungsphase.Msg.datumVonCheckNotNull' | translate">
+                      </dxi-validation-rule>
+                  </dx-validator>
+                </dx-date-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'SARTemplate'">
+              <div *ngIf="isReadOnly; else elseBlock">
+                <span>{{sarTextValue}}</span>
+              </div>
+              <ng-template #elseBlock>
+                <dx-drop-down-box #SARTemplate id="d005_phase-eroffnung_sar" (onValueChanged)="onChangeData($event,'SAR')"
+                  [accessKey]="9" [(value)]="beratungsphaseFormData.userId" valueExpr="userID" displayExpr="name"
+                  [showClearButton]="true" [placeholder]="'D005Beratungsphase.DefaultText.SelectBox' | translate"
+                  [dataSource]="dataSARSelectboxes" [(opened)]="openGrid" [readOnly]="readOnlySettingComponents.sar"
+                  (onFocusIn)="onFocusIn(SARTemplate,'SAR','selectbox')" (onFocusOut)="onFocusOut($event,'SAR')"
+                  (onClosed)="onClosed()" (onOpened)="onOpened()" (onKeyDown)="onKeyDown($event)" class="select-box-class">
+                  <div *dxTemplate="let contentData of 'content'">
+                    <dx-data-grid #SarGrid [dataSource]="dataSARSelectboxes" [selection]="{ mode: 'single' }"
+                      [hoverStateEnabled]="true" [paging]="{ enabled: true, pageSize: 10 }" [filterRow]="{ visible: true }"
+                      [scrolling]="{ mode: 'infinite' }" [height]="220" (onRowClick)="onClickRowGridSAR($event)"
+                      keyExpr="userID"  [noDataText]="'D005Beratungsphase.Msg.TextDropDowBox' | translate" [allowColumnReordering]="true" [allowColumnResizing]="true" [columnResizingMode]="'widget'">
+                      <dxi-column dataField="name" [caption]="'D005Beratungsphase.PhaseEroffnung.CaptionName' | translate"></dxi-column>
+                      <dxi-column dataField="logonName" [caption]=" 'D005Beratungsphase.PhaseEroffnung.CaptionLogonName' | translate "></dxi-column>
+                    </dx-data-grid>
+                  </div>
+                  <dx-validator>
+                      <dxi-validation-rule type="required" [message]="'D005Beratungsphase.Msg.sarCheckNotNullContentDialog' | translate">
+                      </dxi-validation-rule>
+                  </dx-validator>
+                </dx-drop-down-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'DPLzugewiesenTemplate'">
+              <div *ngIf="isReadOnly; else elseBlock">
+                <span>{{dplZugewiesenTextValue}}</span>
+              </div>
+              <ng-template #elseBlock>
+                <dx-select-box #DPLzugewiesenTemplate id="d005_phase-eroffnung_dpl-zugewiesen" [accessKey]="10"
+                  [(value)]="beratungsphaseFormData.fsDienstleistungspaketIdZugewiesen" [dataSource]="dataDPLSelectboxes"
+                  valueExpr="code" displayExpr="text" [placeholder]="'D005Beratungsphase.DefaultText.SelectBox' | translate"
+                  [readOnly]="readOnlySettingComponents.DPLzugewiesen" (onFocusIn)="onFocusIn(DPLzugewiesenTemplate,'dplzugewiesen','selectbox')"
+                  (onFocusOut)="onFocusOut($event,'DPLzugewiesen')" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()"
+                  (onOpened)="onOpened()" [searchEnabled]="true" (onValueChanged)="onChangeData($event,'DPLzugewiesen')"
+                  [showClearButton]="true" class="select-box-class">
+                </dx-select-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'DPLbedarfTemplate'">
+              <div *ngIf="isReadOnly; else elseBlock">
+                <span>{{dplBedarfTextValue}}</span>
+              </div>
+              <ng-template #elseBlock>
+                <dx-select-box #DPLbedarfTemplate id="d005_phase-eroffnung_dpl-bedarf" [accessKey]="11" [(value)]="beratungsphaseFormData.fsDienstleistungspaketIdBedarf"
+                  [dataSource]="dataDPLSelectboxes" valueExpr="code" displayExpr="text" [placeholder]="'D005Beratungsphase.DefaultText.SelectBox' | translate"
+                  [readOnly]="readOnlySettingComponents.DPLbedarf" (onFocusIn)="onFocusIn(DPLbedarfTemplate,'dplbedarf','selectbox')"
+                  (onFocusOut)="onFocusOut($event,'DPLbedarf')" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()"
+                  (onOpened)="onOpened()" [searchEnabled]="true" (onValueChanged)="onChangeData($event,'DPLbedarf')"
+                  [showClearButton]="true" class="select-box-class">
+                </dx-select-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'datumBis'">
+              <div *ngIf="isReadOnly; else elseBlock">
+                <span>{{beratungsphaseFormData.datumBis | date:'dd.MM.yyyy'}}</span>
+              </div>
+              <ng-template #elseBlock>
+                <dx-date-box #datumBis id="d005_phase-abschluss_datum-bis" [(value)]="beratungsphaseFormData.datumBis"
+                  [accessKey]="12" type="date" displayFormat="dd.MM.yyyy" [readOnly]="readOnlySettingComponents.datumBis"
+                  (onFocusIn)="onFocusIn(datumBis,'DatumBis','datebox')"
+                  (onFocusOut)="onFocusOut($event,'DatumBis')" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()"
+                  (onOpened)="onOpened()" (onValueChanged)="onChangeData($event,'DatumBis')" [min]="minDate" [max]="maxDate">
+                  <dx-validator>
+                      <dxi-validation-rule type="custom" [validationCallback]="validationCallback" [message]="'D005Beratungsphase.Msg.ValidateDatumbis' | translate"></dxi-validation-rule>
+                  </dx-validator>
+                </dx-date-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'grundTemplate'">
+              <div *ngIf="isReadOnly; else elseBlock">
+                <span>{{grundTextValue}}</span>
+              </div>
+              <ng-template #elseBlock>
+                <dx-select-box #grundTemplate id="d005_phase-abschluss_grund" [accessKey]="13" [(value)]="beratungsphaseFormData.abschlussGrundCode"
+                  [dataSource]="dataGrundSelectboxes" valueExpr="code" displayExpr="text" [readOnly]="readOnlySettingComponents.grund"
+                  (onFocusIn)="onFocusIn(grundTemplate,'grund','selectbox')" [placeholder]="'D005Beratungsphase.DefaultText.SelectBox' | translate"
+                  (onFocusOut)="onFocusOut($event,'Grund')" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()"
+                  (onOpened)="onOpened()" [searchEnabled]="true" (onValueChanged)="onChangeData($event,'Grund')"
+                  [showClearButton]="true" class="select-box-class">
+                </dx-select-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'bemerkung'">
+                <div id="d005_form__bemerkung">
+                    <div id="d005_phase-abschluss_bemerkung" [froalaEditor]="froalaEditorConfig" [(froalaModel)]="beratungsphaseFormData.bemerkung"
+                    [accessKey]="11" id="froalaEditor"></div>
+                </div>
+            </div>
+
+          </dx-form>
+        </dx-validation-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+  <app-popup-concurrency [popUpConcurrencyModel]="popUpConcurrencyModel"></app-popup-concurrency>
+</kiss-right-component>

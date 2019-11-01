@@ -1,0 +1,51 @@
+
+    <div class="grid-table-view">
+        <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container" id="C006_filter-builder">
+            <dx-filter-builder [fields]="gridBerater.instance.option('columns')" [(value)]="filter">
+            </dx-filter-builder>
+            <dx-button text="Filter anwenden" type="default" (onClick)="gridBerater.instance.filter(filter)">
+            </dx-button>
+            <div class="dx-clearfix"></div>
+        </div>
+        <div class="grid-margin-top">
+            <dx-data-grid id="C006_data-grid" 
+                            #gridBerater 
+                            [columnAutoWidth]="true" 
+                            [dataSource]="beraterData"
+                            [allowColumnResizing]="true" 
+                            [hoverStateEnabled]="true" 
+                            [showRowLines]="true" 
+                            [showBorders]="true"
+                            [allowColumnReordering]="true" 
+                            keyExpr="id" 
+                            [noDataText]="'VorlagenKontext.VorlagenkontextDetails.Validation.NoData' | translate"
+                            [editing]="{allowDeleting: false, texts: {confirmDeleteMessage: ''}}"
+                            [disabled]="!isReadOnly" 
+                            [focusedRowKey]="selectedKeys[0]" 
+                            (onContextMenuPreparing)="onContextMenuPreparing($event)"
+                            (onContentReady)="onContentReady($event)"
+                            [columnResizingMode]="'widget'"
+                            [focusedRowEnabled]="true"
+                            (onFocusedRowChanged)="onFocusedRowChanged($event)">
+                <dxi-column dataField="institution" [caption]="'ExterneBerater.ExterneBeraterSucheBox.Institution' | translate"></dxi-column>
+                <dxi-column dataField="name" [caption]="'ExterneBerater.ExterneBeraterSucheBox.Name' | translate"></dxi-column>
+                <dxi-column dataField="vorname" [caption]="'ExterneBerater.ExterneBeraterSucheBox.Vorname' | translate"></dxi-column>
+                <dxi-column dataField="telefon" [caption]="'ExterneBerater.ExterneBeraterSucheBox.Telefon' | translate"></dxi-column>
+                <dxi-column dataField="eMail" [caption]="'ExterneBerater.ExterneBeraterSucheBox.Email' | translate"></dxi-column>
+                <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" [highlightCaseSensitive]="false"
+                    [placeholder]="'ExterneBerater.SearchSuche' | translate"></dxo-search-panel>
+                <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+                <dxo-selection selectAllMode="allPages" showCheckBoxesMode="onClick" mode="single"></dxo-selection>
+                <dxo-group-panel [visible]="gridFunctionModel.isGrouping"></dxo-group-panel>
+                <dxo-scrolling mode="vitual"></dxo-scrolling>
+                <dxo-sorting mode="multiple"></dxo-sorting>
+                <dxo-paging [enabled]="false"></dxo-paging>
+                <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="true"></dxo-grouping>
+                <dxo-column-fixing [enabled]="false"></dxo-column-fixing>
+                <dxo-column-chooser #columnChooser [title]="'ExterneBerater.ColumnChooser' | translate" [enabled]="false"></dxo-column-chooser>
+                <dxo-export [enabled]="false" [fileName]="titlePage" [allowExportSelectedData]="true"></dxo-export>
+            </dx-data-grid>
+        </div>
+    </div>
+<kiss-printer #printer></kiss-printer>

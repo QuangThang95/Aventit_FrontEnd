@@ -1,0 +1,13 @@
+<div class="languageSelectorWrapper">
+  <span (click)="onToggle()" class="language-selector-anchor" [ngClass]="{'active': show}" data-toggle="lang-dropdown">
+    <i *ngIf="selectedLangFlag" class="{{ selectedLangFlag }}" title="{{selectedLanguage}}"></i>
+    &nbsp;
+    <i class="fa fa-caret-down"></i>
+  </span>
+
+  <div class="dropdown-pane top" id="lang-dropdown" data-dropdown *ngIf="show">
+    <span *ngFor="let lang of availableLanguages" (click)="selectLanguage(lang)">
+      <i *ngIf="lang.flag" class="{{ lang.flag }}" title="{{lang.name}}"></i>
+    </span>
+  </div>
+</div>

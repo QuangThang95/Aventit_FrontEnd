@@ -1,0 +1,58 @@
+<div class="container-search" id="o012_suchen">
+    <dx-toolbar id="o012_suchen_header" class="container-search__header">
+      <dxi-item [template]="'titleGridview'" name="toolbar-header" location="before"></dxi-item>
+      <div *dxTemplate="let temp of 'titleGridview'">
+        <span (click)="onCollapseSearchContainer($event)" class="container-search__header-title">{{ 'Kennzahlen.Suchen' | translate }}</span>
+      </div>
+      <dxi-item location="after" widget="dxButton" [options]="options" [visible]="true"></dxi-item>
+    </dx-toolbar>
+  <div class="container-search__form" *ngIf="isExpand">
+    <dx-form *ngIf="kennzahlenData" id="form-search-o012" colCount="auto" labelLocation="left" [formData]="kennzahlenData"
+      [showColonAfterLabel]="false" [colCount]="12" (keyup.enter)="onSearchByEnter()"
+      #kennzahlenSearchFormInstance>
+      <dxi-item [colSpan]="5" [template]="'jahrTemplate'">
+        <dxo-label [text]="'Kennzahlen.Jahr' | translate" [showColon]="false"></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'jahrTemplate'">
+        <dx-number-box format='#' (onKeyPress)="onkeypress($event)" [(value)]="kennzahlenData.erhebungsjahr"
+          [width]="fixWidth" name="suchen_gemeinde" placeholder="" id="o012_suchen_jahr"></dx-number-box>
+      </div>
+      <dxi-item itemType="empty" [colSpan]="7"></dxi-item>
+      <dxi-item [colSpan]="2" [template]="'letzteAuszahlungBisTemplate'">
+        <dxo-label [text]="'Kennzahlen.LetzteAuszahlung' | translate" [showColon]="false"></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'letzteAuszahlungBisTemplate'">
+        <dx-date-box #dateboxauszahlung [(value)]="letzteAuszahlungVon" [min]="minDate" type="date" displayFormat="dd.MM.yyyy" [width]="fixWidth"
+          id="o012_suchen_letzte-auszahlung"  (onKeyDown)="onKeyDownSelectOption($event)">
+        </dx-date-box>
+      </div>
+
+      <dxi-item [colSpan]="3" [template]="'letzteAuszahlungVonTemplate'">
+        <dxo-label [text]="'Kennzahlen.Bis' | translate" [showColon]="false"></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'letzteAuszahlungVonTemplate'">
+        <dx-date-box #dateboxauszahlungbis [(value)]="letzteAuszahlungBis" [min]="minDate" type="date" displayFormat="dd.MM.yyyy" [width]="fixWidth"
+          id="o012_suchen_letzte-auszahlung-bis" (onKeyDown)="onKeyDownSelectOption($event)">
+        </dx-date-box>
+      </div>
+
+      <dxi-item itemType="empty" [colSpan]="7"></dxi-item>
+
+      <dxi-item [colSpan]="12" [editorOptions]="{  width: '100%' }" [template]="'NettobedarfTemplate'">
+        <dxo-label text=" "></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'NettobedarfTemplate'">
+        <dx-check-box class="container-search__check-box" [(value)]="kennzahlenData.nettobedarfGroesser0" [text]="'Kennzahlen.Nettobedarf' | translate"
+          id="o012_suchen_nettobedarf"></dx-check-box>
+      </div>
+
+      <dxi-item [colSpan]="12" [editorOptions]="{  width: '100%' }" [template]="'ProDossierTemplate'">
+        <dxo-label text=" "></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'ProDossierTemplate'">
+        <dx-check-box class="container-search__check-box" id="o012_suchen_pro-dossier" [(value)]="kennzahlenData.proDossier"
+          [text]="'Kennzahlen.ProDossier' | translate"></dx-check-box>
+      </div>
+    </dx-form>
+  </div>
+</div>

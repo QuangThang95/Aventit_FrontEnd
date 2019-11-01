@@ -1,0 +1,35 @@
+.remaining-message {
+    min-height: 50px;
+    margin-bottom: 15px;
+    border: 2px solid red;
+    &__btn-container {
+        float: right;
+    }
+
+    &__btn-close {
+        border: $detail-hide-grid;
+        background: $mid-button-background-transparent !important;
+        & i {
+            color: $color-text-control !important;
+        }
+    }
+
+    &__content {
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    &__icon {
+        float: left;
+        color: $icon-error;
+        padding-right: 10px;
+    }
+
+    &__text {
+        float: left;
+        white-space: pre-line;
+    }
+}
+.message-concurrency {
+  white-space: pre-line;
+}

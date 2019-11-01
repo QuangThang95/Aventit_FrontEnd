@@ -1,0 +1,100 @@
+@import 'settings/variables.scss';
+
+.h008-fallbearbeitung-sidebar-container {
+  height: 559px;
+  padding: 4px 5px 5px 5px;
+}
+.h008-fallbearbeitung-sidebar-treeview {
+  height: calc(100% - 36px);
+  border: solid 1px #ddd;
+}
+.d006_navigation-container {
+  height: 100%;
+}
+.left-icon-container {
+  display: inline-flex;
+  vertical-align: text-bottom;
+  padding: 2px;
+}
+.right-icon-container {
+    float: right;
+}
+.right-icon-container button {
+    padding: 5px;
+}
+.img {
+  height: 26px;
+  width: 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #fff;
+  cursor: pointer;
+}
+.img-timeline {
+  height: 20px;
+  width: 20px;
+  background-image: url('/assets/icon/h010-timeline.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #fff;
+  cursor: pointer;
+}
+.left-icon-container:hover .img, .img-active {
+  height: 32px;
+  width: 32px;
+}
+.tree-view-node-text {
+  display: block;
+  width: calc(100% - 72px);;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tree-view-right-context {
+  visibility: hidden;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+  float: right;
+  background-image: url('/assets/icon/hoz3dot.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+::ng-deep .dx-state-selected>div .tree-view-right-context,
+::ng-deep .dx-state-hover>div .tree-view-right-context {
+  visibility: visible;
+}
+.right-content-button {
+  width: 100%;
+}
+ul.right-content-button>div {
+  &:hover{
+    background-color: #e6e6e6;
+  }
+}
+::ng-deep .d006_navigation-popover .dx-popup-content {
+  padding: 5px;
+}
+ul.right-content-button li {
+  width: max-content;
+  padding: 0 5px 2px;
+}
+.buttonConfirm{
+  margin-bottom: 10px;
+  margin-top: 5px;
+  float: right;
+}
+.custom-title {
+  padding: 10px;
+}
+::ng-deep .d006_navigation-tree-view img {
+  float: left;
+}
+::ng-deep .c013-navigation-popup {
+  width: 100%;
+}

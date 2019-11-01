@@ -1,0 +1,47 @@
+<div class="container-search" id="o009_suchen">
+	<dx-toolbar id="o009_suchen_header" class="container-search__header">
+		<dxi-item [template]="'titleGridview'" name="toolbar-header" location="before"></dxi-item>
+		<div *dxTemplate="let temp of 'titleGridview'">
+			<span (click)="onCollapseSearchContainer($event)" class="container-search__header-title">{{ 'GemeindeCode.Suchen' | translate }}</span>
+		</div>
+        <dxi-item location="after" widget="dxButton" [options]="options" [visible]="true"></dxi-item>
+	</dx-toolbar>
+	<div *ngIf="isExpand" class="container-search__form">
+		<dx-form 
+			#gemeindeCodeSearchFormInstance 
+			colCount="auto" 
+			labelLocation="left" 
+			[showColonAfterLabel]="false" 
+			[colCount]="12"
+			(keyup.enter)="onSearch()">
+			<dxi-item [dataField]="'GemeindeCode.Gemeinde' | translate" [template]="'gemeindeTemplate'" [colSpan]="4"></dxi-item>
+			<dxi-item [dataField]="'GemeindeCode.PLZ' | translate" [template]="'plzTemplate'" [colSpan]="4"></dxi-item>
+
+			<div *dxTemplate="let data of 'gemeindeTemplate'">
+				<dx-text-box 
+					class="container-search__input-box"
+					name="suchen_gemeinde" 
+					placeholder="" 
+					id="o009_suchen_gemeinde" 
+					[(value)]="searchData['Name']"
+					[maxLength]="100">
+				</dx-text-box>
+			</div>
+
+			<div *dxTemplate="let data of 'plzTemplate'">
+				<dx-number-box 
+					class="container-search__input-box"
+					name="suchen_plz" 
+					placeholder="" 
+					id="o009_suchen_plz" 
+					[(value)]="searchData['PLZ']"
+					[min]="minIntValue" 
+					[max]="maxIntValue"
+					format="#,###">
+				</dx-number-box>
+			</div>
+
+		</dx-form>
+	</div>
+</div>
+<br>

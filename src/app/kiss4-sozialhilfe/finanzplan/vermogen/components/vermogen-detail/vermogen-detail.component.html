@@ -1,0 +1,23 @@
+<div class="toolbar-header">
+    <kiss-card-title id="i006_detail_header" 
+        titleHeader="{{ 'CtlBfsFragenkatalog.Detail' | translate }}" 
+        [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn" 
+        [isCard]="true" 
+        (onCustomizeBtnFn)="toolBarOnItemClick($event)">
+    </kiss-card-title>
+
+    <kiss-vermogen-detail-view 
+        *ngIf="isViewMode"
+        [dataSource]="dataVermogenDetail">
+    </kiss-vermogen-detail-view>
+
+    <kiss-vermogen-detail-edit 
+        *ngIf="!isViewMode"
+        [dataSource]="dataVermogenDetail"
+        [addMode]="isAddMode"
+        [dataSelectBoxPerson]="dataSelectBoxPerson"
+        [dataSelectBoxArtDesVermogen]="dataSelectBoxArtDesVermogen">
+    </kiss-vermogen-detail-edit>
+
+</div>

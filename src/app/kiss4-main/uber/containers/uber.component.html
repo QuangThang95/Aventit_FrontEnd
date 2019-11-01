@@ -1,0 +1,59 @@
+<kiss-right-component>
+  <app-navigator [titleHeader]="'Uber.Title_Group.Title'|translate" [customizeBtn]="customizeBtn"
+    (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+  <div class="container">
+    <div class="container__right-content">
+      <div class="form-body">
+
+        <!-- ----------------------------------- form 1 ----------------------------------------------------------------------------- -->
+        <kiss-uber-detail 
+          id="H003_uber_uber" 
+          [userInfo]="userInfo" 
+          [xUser]="xUser" 
+          [cultureInfo]="cultureInfo"
+          (clicked)="actionAssembliesKopiFrm1OnClick()">
+        </kiss-uber-detail>
+
+        <!-- --------------------------------- form 2 ------------------------------------------------------------------------------- -->
+        <kiss-uber-datenbank id="H003_datenbank" [databaseInfo]="databaseInfo" (buttonClick)="actionDatenbankKopiFrm2OnClick($event)"></kiss-uber-datenbank>
+
+        <!-- form 3 ---------------------------------------------------------------------------------------------------------------- -->
+        <kiss-uber-datenbank-versionen #datenbankversionen id="H003_datenbank-versionen" [databaseVersions]="databaseVersions"
+          (buttonClickDataVersion)="actionDatenbankVersionenKopiFrm3OnClick($event)" (buttonClickRefreshDataversion)="showDatenbankVersionenPopup()"
+          (rowClickGrid)="selectRowDatenbankVersionen($event)" (mouseDown)="onClickGrid($event)">
+        </kiss-uber-datenbank-versionen>
+
+        <!-- form 4 ---------------------------------------------------------------------------------------------------------------- -->
+        <kiss-uber-assemblies #assemblies id="H003_assemblies" [kiss4WebVersions]="kiss4WebVersions"
+          (buttonClickAssemblies)="actionAssembliesKopiFrm4OnClick($event)" (buttonRefreshAssemblies)="actionAssembliesAnsichtFrm4OnClick($event)"
+          (mouseDown)="onClickGrid($event)">
+        </kiss-uber-assemblies>
+
+        <!-- form 5 ---------------------------------------------------------------------------------------------------------------- -->
+        <kiss-uber-speicher #speicher id="H003_speicher" [browserVersions]="browserVersions" (buttonSpeicher)="actionSpeicherKopiFrm5OnClick()"
+          (buttonRefreshSpeicher)=actionSpeicherAnsichtFrm5OnClick($event) (mouseDown)="onClickGrid($event)">
+        </kiss-uber-speicher>
+
+      </div>
+
+
+      <dx-popup class="popup" [showTitle]="true" [title]="'Uber.Title_Group.Memo'|translate" [dragEnabled]="false"
+        [closeOnOutsideClick]="false" [(visible)]="popupVisible" [width]="760" [height]="205">
+        <div *dxTemplate="let data of 'content'">
+          <div id='H003_uber_popup-content'>
+            <dx-scroll-view direction="both" height="62px" width="auto">
+              <pre id='H003_memo-editieren_label-content'>{{ this.dataMemoEditieren }}</pre>
+            </dx-scroll-view>
+            <div class="button-popup">
+              <dx-button id="H003_memo-editieren_abbruch" class="btnCtrl" type="submit" [text]="'Uber.Buttons.Abbruch'|translate"
+                (onClick)="closePopup()"></dx-button>
+              <dx-button id="H003_memo-editieren_ok" class="btnCtrl" type="submit" [text]="'Uber.Buttons.Ok'|translate"
+                name="btnAbbruch" (onClick)="closePopup()"></dx-button>
+            </div>
+          </div>
+        </div>
+      </dx-popup>
+    </div> <!-- /. right-content -->
+  </div> <!-- /. container -->
+  <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+</kiss-right-component>

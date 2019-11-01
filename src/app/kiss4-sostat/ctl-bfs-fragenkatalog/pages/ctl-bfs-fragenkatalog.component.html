@@ -1,0 +1,54 @@
+<kiss-right-component>
+    <app-navigator id="o006_fragenkatalog_header" [titleHeader]="pageTitle" [listBtn]="listBtn" (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+    <div class="container">
+      <div class="container__right-content">
+            <div class="remaining-message" *ngIf="isErrorClosed" id="o006_validate-message">
+                <span class="remaining-message__btn-container">
+                    <dx-button class="remaining-message__btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x"></dx-button>
+                </span>
+                <div class="remaining-message__content">
+                    <span class="remaining-message__icon"><i class="fa fa-exclamation-circle " aria-hidden="true"></i></span>
+                    <i class="remaining-message__text">{{messageErr}}</i>
+                </div>
+            </div>
+            <kiss-fragenkatalog-search
+                #formSearch (rowSelected)="onRowSelectedFormSearch($event)"
+                [isDisableViewModel]="!isDisableViewModel"
+                [ctlBfsFragenkatalog]="rowSelectedOfGrid"
+                (stateFormUpdate)="onStateFormUpdate($event)"
+                [dataInitSearch]="dataInitSearch"
+                (objectSearch)="doSearch($event)"
+                [resultUpdate]="resultUpdate"
+                (isDisableButtonSave)="changeButtonSave($event)">
+            </kiss-fragenkatalog-search>
+            <div class="grid-table-view">
+                <kiss-fragenkatalog-list #formList [rowSelectedGrid]="rowSelectedForGrid"
+                                         (rowSelected)="rowSelectChange($event)"
+                                         [ctlBfsFragenkatalogsInput]="ctlBfsFragenkatalogs"
+                                         [dataInitDropDraw]="dataInitSearch">
+
+                </kiss-fragenkatalog-list>
+            </div>
+            <div class="container-detail form-content-details" id="o006_detail">
+                <kiss-fragenkatalog-detail
+                    #formDetail [onChangeData]="isOnChangeData"
+                    [isDisableViewModel]="isDisableViewModel"
+                    (disableViewModelEventEmitter)="onDisableViewModel($event)"
+                    (addNewEventEmitter)="onObjectAddNew($event)"
+                    (deleteRowNewEventEmitter)="onDeleteRowNew()"
+                    (message)="onMessage($event)"
+                    (loadedGrid)="loadDataViewList()"
+                    [ctlBfsFragenkatalog]="rowSelectedOfGrid">
+                </kiss-fragenkatalog-detail>
+            </div>
+        </div>
+    </div>
+</kiss-right-component>
+<!-- Print component -->
+<kiss-printer #printer></kiss-printer>
+
+<!-- Confirm popup -->
+<app-popup-confirm [popUpModel]="popUpModelChangeForm"></app-popup-confirm>
+
+<!-- Progressbar -->
+<app-progressbar #fragenkatalogProgressBar></app-progressbar>

@@ -1,0 +1,226 @@
+<div class="arbeit-content-view">
+  <dx-form [readOnly]="true" [showColonAfterLabel]="false" [colCount]="12" [screenByWidth]="getSizeQualifier">
+    <dxi-item itemType="group" [colSpan]="6">
+      <dxi-item [template]="'Erwerbssituation'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Erwerbssituation' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Beschaftigungsgrad'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Beschaftigungsgrad' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Teilzeitgrund'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Teilzeitgrund' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Branche'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Branche' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'ErlernterBeruf'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.ErlernterBeruf' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'LetzteTatigkeit'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.LetzteTatigkeit' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Arbeitgeber'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Arbeitgeber' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'HochsteAusbildung'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.HochsteAusbildung' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'LetzeAusb'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.LetzeAusb' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Integrationsstand'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Integrationsstand' | translate"></dxo-label>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colSpan]="6">
+      <dxi-item [template]="'ArbeitszeitWoche'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.ArbeitszeitWoche' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'VariableArbeitszeit'">
+        <dxo-label text=" "></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Stempenln'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Stempenln' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'Ausgesteuert'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Ausgesteuert' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'AusgesteuertSeit'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.AusgesteuertSeit' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item [template]="'arbeitslos'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.arbeitslos' | translate"></dxo-label>
+      </dxi-item>
+      <dxi-item editorType="dxTextArea" [template]="'Bemerkung'">
+        <dxo-label [text]="'Arbeit.ArbeitForm.Bemerkung' | translate"></dxo-label>
+      </dxi-item>
+    </dxi-item>
+    <div *dxTemplate="let data of 'Erwerbssituation'">
+      <div class="arbeit-view-group-field">
+          <span class="arbeit-view-group-field-left">{{ 'Arbeit.ArbeitForm.Number1' | translate }}</span>
+          <div class="arbeit-view-group-field-right">
+            <span >{{ arbeitModel.erwerbssituationStatus1Name }}</span>
+          </div>
+      </div>
+      <div class="arbeit-view-group-field padding-top">
+        <span class="arbeit-view-group-field-left">{{ 'Arbeit.ArbeitForm.Number2' | translate }}</span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.erwerbssituationStatus2Name }}</span>
+        </div>
+      </div>
+      <div class="arbeit-view-group-field padding-top">
+        <span class="arbeit-view-group-field-left">{{ 'Arbeit.ArbeitForm.Number3' | translate }}</span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.erwerbssituationStatus3Name }}</span>
+        </div>
+      </div>
+      <div class="arbeit-view-group-field padding-top">
+        <span class="arbeit-view-group-field-left">{{ 'Arbeit.ArbeitForm.Number4' | translate }}</span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.erwerbssituationStatus4Name }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Beschaftigungsgrad'">
+      <div class="arbeit-view-group-field">
+          <span class="arbeit-view-group-field-left"></span>
+          <div class="arbeit-view-group-field-right">
+            <span >{{ arbeitModel.beschaeftigungsGradName }}</span>
+          </div>
+        </div>
+    </div>
+    <div *dxTemplate="let data of 'Teilzeitgrund'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left">{{ 'Arbeit.ArbeitForm.Number1' | translate }}</span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.grundTeilzeitarbeit1Name }}</span>
+        </div>
+      </div>
+      <div class="arbeit-view-group-field padding-top">
+        <span class="arbeit-view-group-field-left">{{ 'Arbeit.ArbeitForm.Number2' | translate }}</span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.grundTeilzeitarbeit2Name }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Branche'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.brancheName }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'ErlernterBeruf'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.erlernterBeruf }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'LetzteTatigkeit'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.beruf }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Arbeitgeber'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.arbeitgeber }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'HochsteAusbildung'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.hoechsteAusbildungName }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'LetzeAusb'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.abgebrochenAusbildungName }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Integrationsstand'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.integrationsstandName }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *dxTemplate="let data of 'ArbeitszeitWoche'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.arbeitszeit }}</span>
+          <span> &nbsp;&nbsp; {{ 'Arbeit.ArbeitForm.Std' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'VariableArbeitszeit'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <dx-check-box
+            [readOnly]='true'
+            [(value)]="arbeitModel.isVariableArbeitszeit === undefined ? null : arbeitModel.isVariableArbeitszeit">
+          </dx-check-box>
+          <span> &nbsp;&nbsp; {{ 'Arbeit.ArbeitForm.Unregelmassig' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Stempenln'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.stempelDatum | date: dateFormat }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Ausgesteuert'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.ausgesteuertUnbekanntName }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'AusgesteuertSeit'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.ausgesteuertDatum | date: dateFormat }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'arbeitslos'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <span >{{ arbeitModel.wieOftArbeitslos }}</span>
+          <span> &nbsp;&nbsp; {{ 'Arbeit.ArbeitForm.mal' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    <div *dxTemplate="let data of 'Bemerkung'">
+      <div class="arbeit-view-group-field">
+        <span class="arbeit-view-group-field-left"></span>
+        <div class="arbeit-view-group-field-right">
+          <div [accessKey]="21" [froalaEditor]="froalaEditorConfig" [(froalaModel)]="arbeitModel.bemerkung" width="100%"></div>
+        </div>
+      </div>
+    </div>
+  </dx-form>
+</div>

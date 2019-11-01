@@ -1,0 +1,73 @@
+{
+  "PendenzenVerwaltung": {
+    "Title": "Dans l'attente d'administration"
+  },
+  "VerwaltungDetails": {
+    "TitleSearch": "Recherche",
+    "TitleDetail": "Détail",
+    "StatusCode": "Statut",
+    "TypeCode": "Type de pendence",
+    "Subject": "Respect",
+    "Sender": "Créateur",
+    "Receiver": "Récepteur",
+    "Name": "Nom du client",
+    "Vorname": "Prénom client",
+    "Fallnummer": "Numéro de dossier",
+    "Leistungsverantwortlicher": "Leistungsverantw.",
+    "FallLeistungBetrifftPerson": "Concerne la personne",
+    "DetailFallLeistungBetrifftPerson": "La personne",
+    "OrgUnit": "Unité organisationnelle",
+    "CreateDate": "Capturer",
+    "ExpirationDate": "Dû",
+    "StartDate": "Traitement",
+    "DoneDate": "Fini",
+    "Beschreibung": "La Description",
+    "Antwort": "Réponse",
+    "Leistung": "Puissance",
+    "Falltraeger": "Falltraeger",
+    "Pendent": "En suspens",
+    "Placeholder": "Sélectionner ...",
+    "ExcelExport": "Excel - Export ",
+    "SchnellGrid": "Afficher la ligne de filtrage rapide",
+    "GroupGrid": "Afficher/masquer la zone de regroupement",
+    "SucheGrid": "Afficher/masquer la recherche",
+    "FilterGrid": "Afficher/Afficher l'éditeur de filtres",
+    "Einstellungen": "Paramètres de la grille",
+    "emptyPanelText": "Faites glisser un en - tête de colonne ici pour le grouper par cette colonne ",
+
+    "DialogLookup": {
+      "Typ": "Type",
+      "Kuerzel": "Raccourci",
+      "Name": "Nom",
+      "Abteilung": "Département",
+      "VorName": "PreName",
+      "Benutzer": "Utilisateur"
+    },
+    "Validation": {
+      "NoData": "Informations: Aucun destinataire n'a été trouvé.",
+      "NoDataLeistungsverantw": "Informations: Aucun utilisateur n'a été trouvé.",
+      "NoDataFallfanger": "Informations: Aucun cas n'a été trouvé.",
+      "NoDataGrid": "Pas de données",
+      "Subject": "Le champ 'Respect' ne doit pas être vide !",
+      "Receiver": "Le champ 'Récepteur' ne doit pas être vide!",
+      "EmpfaengerEmpty": "Informations: Le champ 'Empfänger' ne doit pas être vide !",
+      "BetreffEmpty": "Informations: Le champ 'Betreff' ne doit pas être vide !",
+      "MaxLength": "Erreur: Le contenu d'un champ dépasse la longueure maximale autorisée. Veuillez saisir un contenu plus court et essayer de sauvegarder une nouvelle fois."
+    },
+
+    "RowCount": "Nb d'enregistrements"
+  },
+  "Button": {
+    "Add": "Nouveau",
+    "Edit": "Éditer",
+    "Save": "Sauver",
+    "Cancel": "Abandonner",
+    "Search": "Rechercher",
+    "Status": {
+      "Done": "Fini",
+      "Inprogress": "En cours",
+      "TotheMask": "Au masque",
+      "Forward": "Avant"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@import 'settings/variables.scss';
+
+#H003_uber_popup-content {
+    /deep/ .button-popup {
+        padding-top: $padding-content;
+        .btnCtrl {
+            float: right;
+            margin-right: $margin-content;
+        }
+    }
+}
+
+#form-uber-datenbank .dx-fieldset-header {
+    font-size: $base-fz+2;
+    font-weight: $label-detail-font-weight;
+}
+
+#form-uber-datenbank .uber-label {
+    padding-top: 15px;
+}

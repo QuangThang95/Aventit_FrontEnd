@@ -1,0 +1,294 @@
+/*
+* The settings-layer contains all our global Design System variables.
+* It defines colors, spacings, font-sizes, breakpoints settings and many more.
+*/
+$pxs: 320px;
+$ps: 600px;
+$pm: 780px;
+$pml: 900px;
+$pl: 1000px;
+$xl: 1440px;
+
+$color-base-hover: lighten(#337ab7, 35%); //#337ab7;//06c5fb
+$color-base: #337ab7;
+$color-black: #000000;
+$color-base-secondary: #abd0f6;
+$color-white: #ffffff;
+$color-lightgray: #ebebeb;
+$color-gray: #ebebeb;
+$color-text-control: #333;
+$break-word: break-word;
+$color-grey-verylight: #ebebeb;
+$color-bg-body: #f1f1f1;
+$color-theme-violet: #353535;
+$color-theme-darkviolet: #2a2a2a;
+
+$base-ft: 'Helvetica Neue', 'Segoe UI', Helvetica, Verdana, sans-serif;
+$base-fz: 12px;
+$base-fw: 500;
+$padding-content: 15px;
+$margin-content: 15px;
+$container-border-color: #ebebeb;
+$header-height: 60px;
+$dx-border-color: #dddddd;
+$dx-focus-border-color: $color-base;
+$base-border-color: $color-base;
+$color-text-navigator: #3d80cc;
+$background-header-card: #e4eef8;
+$color-grey: gray;
+$color-theme-lightBlue: #def5ff;
+// data grid
+$table-heade-bg: #cccccc; //b7b7b7-6a6a6a
+$table-head-fz: $base-fz + 2;
+$table-head-color: #ffffff;
+$table-row-border-color: #ebebeb;
+$table-row-color: #000000;
+$table-row-hover: #ceecff;
+$table-row-selected: #ceecff; //fff8e8
+$table-row-font-weight: $base-fw;
+$border-color-transparent: transparent;
+
+//Header
+$color-total-notification: #c74204; //f05a1f
+$color-lable-user: #3e5876; //989898
+$url-icon-user: '../icon/user-male-black-shape.png';
+$url-icon-bell: '../icon/bell.png';
+$min-width-search-box: 140px;
+$margin-badge-layout: 30px;
+$padding-horizontal: 3px;
+$spacing-layout: 10px;
+$width-logo-layout: 130px;
+$popup-background-header: #c4c4c4;
+
+//search Box
+$searchbox-input-color-bg: #ebebeb;
+$searchbox-popup-content-color-bg: #004a63;
+$searchbox-header-group-color-border-bottom: #003040;
+$searchbox-header-group-color-bg: #004a63;
+$searchbox-body-group-color-bg: #016587;
+$searchbox-item-body-color-bg: #016584;
+$searchbox-item-selected-active-color-bg: #e9f8ff;
+$searchbox-transition-width: 0.2s;
+//search check box style
+$search-checkbox-fw: 13px;
+$search-checkbox-mw: 160px;
+$search-checkbox-minh: 36px;
+//search drop down box style
+$search-drop-down-box-minw: 140px;
+$search-drop-down-box-maxw: 500px;
+//search drop down box style
+$search-input-box-minw: 140px;
+$search-input-box-maxw: 350px;
+
+// Filter builder
+$filter-builder-bg-color:  rgba(191, 191, 191, 0.15);
+
+//Layout Left
+$color-layout-left-bg: #eeeeee;
+$menulefft-title-color-bg: #337ab7; //06c5fb
+
+//Layout right
+$color-layout-right-bg: #f9f9f9;
+
+// Component Menu Dosiers
+$color-border-top-node-treeview: #f1f1f1;
+$icon-treeview-toggle-opened: '\f016';
+$icon-treeview-toggle-close: '\f010';
+$color-node-treeview-focused: #ceecff;
+$url-icon-popover: '../icon/menu-ver.png';
+$url-icon-popover-white: '../icon/menu-ver-w.png';
+$height-left-menu-dosiers: 220px;
+$height-left-menu-dosiers-scenario: 100px;
+
+// form details
+$form-detail-label-color: #3e5876;
+$col-padding-right-not-last-col: 85px;
+$dxform-detail-border-color: $color-lightgray;
+$label-detail-color: #000000;
+$label-detail-font-size: 14px;
+$label-detail-label-margin-top: 10px;
+$label-detail-label-padding-left: 10px;
+$label-detail-font-size: 600;
+$button-detail-background-color: #337ab7;
+$button-detail-color: white;
+$form-detail-border: 1px solid #000000;
+$form-field-height: 44px;
+$form-line: 36px;
+$form-arrowkey-width: 85px;
+$label-detail-font-weight: 600;
+
+// Bo het...........
+$form-detail-border-radius: 0px;
+$form-detail-margin-left: 0.8%;
+$form-detail-margin-right: 0.8%;
+$form-detail-margin-bottom: 0.8%;
+$form-detail-label-font-weight: bold;
+$toolbar-detail-background-color: #c4c4c4;
+$toolbar-detail-color: black;
+$toolbar-detail-height: 44px;
+$toolbar-detail-line-height: 40px;
+$toolbar-detail-after-padding-left: 15px;
+$toolbar-detail-after-padding-right: 0.8%;
+$detail-mid-content: 0.8% 0 0.8% 0.8%;
+$detail-select-file-width-90: 90px;
+$detail-select-file-width: 140px;
+$detail-select-file-width-180: 180px;
+$detail-select-file-width-170: 170px;
+$detail-select-file-width-160: 160px;
+$detail-select-file-height-160: 39px;
+$detail-select-file-width-40: 40%;
+$detail-grid-mid-width-33: 33%;
+$detail-grid-mid-width-44: 44%;
+$detail-grid-mid-width-90: 90%;
+$detail-grid-mid-width-100: 100%;
+$detail-grid-mid-height-100: 100%;
+$detail-margin-left-55: -55px;
+$detail-margin-left-21: -21px;
+$detail-display-unset: unset;
+$detail-display-inline-flex: inline-flex;
+$detail-select-file-height-auto: auto;
+$detail-select-file-margin: 5px 0;
+$detail-select-float-right: right;
+$detail-hide-grid: none;
+$detail-margin-top: 20px;
+$detail-margin-bottom: 5px;
+$detail-grid-height: 300px;
+$detail-grid-height-500: 500px;
+$detail-grid-height-600: 600px;
+$detail-grid-height-45: 45px;
+$progress-bar-width-100: 100%;
+$progress-bar-margin: 300px;
+$progress-bar-width: 200px;
+$progress-bar-height: 100%;
+$progress-bar-margin-left: 22px;
+$detail-display-flex: flex;
+$detail-flex-direction-row: row;
+$detail-justify-content: flex-end;
+$detail-vertical-align: middle;
+$detail-border-3: 3px;
+$detail-border-4: 4px;
+$detail-border-2-red: 2px solid red;
+$detail-padding-1: 1;
+$detail-border-1-solid-ccc: 1px solid #ccc;
+$detail-container-margin-0-0-10-0: 0 0 10px 0;
+$detail-width-1: 1px;
+$detail-color-e7eff1: #e7eff1;
+$detail-color-2d6da3d1: rgba(45, 109, 163, 0.82);
+$detail-color-e6e6e6: #e6e6e6;
+// ebebebeb
+// popup confirm
+$popup-confirm-text-align: center;
+$popup-confirm-padding-1em: 1em;
+$popup-confirm-padding-bottom: 1em;
+$popup-confirm-float-right: right;
+$popup-confirm-float-left: left;
+$popup-confirm-padding-right-1em: 1em;
+$popup-confirm-icon-color: white;
+$popup-border-0: 0px;
+$popup-border: 1px solid #3d80cc;
+$popup-overflow-y: scroll;
+$popup-padding-bottom: 25px;
+$popup-margin-bottom: 25px;
+$popup-border-5: 5px solid rgba(191, 191, 191, 0.15);
+$popup-width: 27px;
+$popup-transform: translate(0px, 5px);
+$popup-pointer-events: visiblefill;
+
+//Pop up confirm
+$margin-top-5: 5px;
+$padding-10: 10px;
+$padding-bottom-0: 0px;
+$text-align-center: center;
+$padding-5-10: 5px 10px;
+$float-right: right;
+$margin-bottom-10: 10px;
+$popup-title-background: #3e7abb;
+$popup-title-color: beige;
+$popup-padding: 15px 15px 30px 15px;
+
+//Progessbar
+$progressbar-background: rgba(247, 247, 247, 0.6);
+
+//font size
+$font-size: 14px;
+$dx-row-height: 50px;
+
+// checkbox
+$checkbox-margin-left: 140px;
+$checkbox-margin-right: 50px;
+$checkbox-margin-left-50: 50px;
+$checkbox-margin-0: 0px;
+$checkbox-top: top;
+
+// Label
+$label-detail-checkbox-width: 190px;
+$label-detail-checkbox-float: left;
+$label-detail-checkbox-height-label: 20px;
+$label-detail-box-height: 40px;
+
+//button
+$button-background-color: #ededed;
+$button-align-center: center;
+$mid-button-padding-2em: 2em;
+$mid-button-border: 2px solid #cdcdcd;
+$mid-button-radius: 0px 5px 5px 0px;
+$mid-button-position-relative: relative;
+$mid-button-background-transparent: transparent;
+$mid-button-margin-bottom-6: 6px;
+$button-padding-top: 25px;
+$button-margin-bottom: 5px;
+
+// J003
+$margin-right-datebox: 10px;
+$font-size-title-group: 14px;
+
+$border-color-highlight: 1px solid #337ab7;
+$toolbar-detail-background-color-highlight: unquote('#378de96b');
+$border-color-grid: 1px solid #f9f9f9;
+
+// O006
+$font-weight-title: 600;
+
+// header
+$badge-item: -28px 0 0 12px;
+
+// language item
+$height-popover-row: 14px;
+$padding-y-popover-row: 8px;
+
+// remaining message
+$icon-error: red;
+
+// default value for border radius
+$rounded-pill: 10px !default;
+$border-radius: 3px !default;
+
+// C008
+$c008-group-field-padding: 8px;
+$c008-group-field-left-width: 20px;
+// numberbox
+$width-number-box: 160px;
+
+// C007
+$c007-drop-down-box-width: 400px;
+$c007-text-area: calc(100vw - 836px);
+$c007-margin-bottom: 7px;
+$c007-text-align: left;
+// H005
+$h005-grid-min-height: 400px;
+$h005-grid-height: calc(100vh - 455px);
+$h005-tree-header-color: black;
+
+// R008
+$min-multiple-select: 360px;
+$rotate-deg: 90deg;
+
+// kiss-card-title
+$size-button: 41px;
+$font-weight-normal: 400;
+
+// D005
+$d005-text-area: calc(100vw - 550px);
+
+// layout
+$footer-height: 44px;

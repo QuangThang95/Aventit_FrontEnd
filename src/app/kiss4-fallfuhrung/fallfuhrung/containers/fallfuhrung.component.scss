@@ -1,0 +1,42 @@
+@import 'settings/variables.scss';
+.buttonConfirm{
+    margin-bottom: $margin-bottom-10;
+    margin-top: $margin-top-5;
+    float: $float-right;
+    .dx-button {
+      ::ng-deep i {
+          color: $color-white
+        }
+    }
+  }
+
+::ng-deep .d001-fallfuhrung-groupbottom .dx-form-group-with-caption .dx-form-group-content {
+  padding-bottom: $padding-bottom-0;
+}
+
+.content-center{
+  text-align: $text-align-center;
+}
+
+.custom-title {
+padding: $padding-10;
+}
+
+.form-padding {
+  padding: $padding-5-10;
+}
+
+.d001-fallfuhrung-popup-tmp-template { 
+  text-align: $text-align-center;
+  padding: $padding-10;
+}
+
+.button-background {
+  background-color: $color-base;
+  color: white;
+}
+
+.dx-select-box-width,.form_text_area {
+  min-width: 400px;
+  max-width: 100%;
+}

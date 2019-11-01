@@ -1,0 +1,46 @@
+<!--Grid kurs-->
+<div class="grid-table-view">
+  <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container">
+      <dx-filter-builder [fields]="filterColumns" [(value)]="filter"></dx-filter-builder>
+      <dx-button [text]="'CtlBfsFragenkatalog.ApplyFilter' | translate" type="default" (onClick)="gridCtlBfsFragenkatalog.instance.filter(filter)"></dx-button>
+      <div class="dx-clearfix"></div>
+  </div>
+  <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+  <div class="grid-margin-top">
+      <dx-data-grid id="o006_fragenkatalog_data-grid"
+          #gridCtlBfsFragenkatalog
+          [dataSource]="ctlBfsFragenkatalogs"
+          [allowColumnResizing]="true"
+          [showRowLines]="true"
+          [showBorders]="true"
+          [height]="300"
+          [wordWrapEnabled]="true"
+          [allowColumnReordering]="true"
+          [noDataText]="'CtlBfsFragenkatalog.Validation.NoDataGrid' | translate"
+          (onRowClick)="onRowClick($event)"
+          (onKeyDown)="onKeyDown($event)"
+          keyExpr="BFSFrageID"
+          (onContentReady)="onContentReady($event)">
+          <dxo-selection mode="single"></dxo-selection>
+          <dxo-paging [pageSize]="99999"></dxo-paging>
+          <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" highlightCaseSensitive="true" [placeholder]="'CtlBfsFragenkatalog.Placeholder' | translate"></dxo-search-panel>
+          <dxo-column-chooser #columnChooser emptyPanelText="" [title]="'CtlBfsFragenkatalog.ColumnChooser.Title' | translate" [enabled]="false"></dxo-column-chooser>
+          <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+          <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+          <dxo-load-panel [enabled]="false"></dxo-load-panel>
+          <dxo-scrolling mode="virtual"></dxo-scrolling>
+          <dxo-sorting mode="single"></dxo-sorting>
+          <dxo-group-panel [visible]="gridFunctionModel.isGrouping" [emptyPanelText]="'CtlBfsFragenkatalog.emptyPanelText' | translate"></dxo-group-panel>
+          <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunctionModel.isGrouping"></dxo-grouping>
+          <dxi-column [minWidth]="50" width="auto" dataField="BFSKategorieCode" [caption]="'CtlBfsFragenkatalog.Column.Kategorie' | translate">
+            <dxo-lookup [dataSource]="suchens" valueExpr="code" displayExpr="text"></dxo-lookup>
+          </dxi-column>
+          <dxi-column [minWidth]="50" width="auto" dataField="Variable" [caption]="'CtlBfsFragenkatalog.Column.Variable' | translate"></dxi-column>
+          <dxi-column [minWidth]="50" width="auto" dataField="Frage" [caption]="'CtlBfsFragenkatalog.Column.Frage' | translate"></dxi-column>
+          <dxi-column [minWidth]="50" width="auto" dataField="BFSPersonCode" [caption]="'CtlBfsFragenkatalog.Column.Personentyp' | translate">
+            <dxo-lookup [dataSource]="personTyps" displayExpr="text" valueExpr="code"></dxo-lookup>
+          </dxi-column>
+          <dxi-column [minWidth]="50" dataType="number" dataField="PersonIndex" [caption]="'CtlBfsFragenkatalog.Column.Idx' | translate" alignment="right"></dxi-column>
+        </dx-data-grid>
+  </div>
+</div>

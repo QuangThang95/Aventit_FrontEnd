@@ -1,0 +1,22 @@
+<dx-popup #popover width="auto" height="auto" [showTitle]="false" [dragEnabled]="false" [closeOnOutsideClick]="true"
+    [visible]="false" [showCloseButton]="false" [shading]="false"  [(position)]='popupPosition'>
+    <div *dxTemplate="let data of 'content'">
+        <div class="list-container">
+            <dx-list [items]="buttons" [height]="popoverHeight" width="40px" selectionMode='single' (onItemClick)="onButtonClick($event)">
+                <div *dxTemplate="let item of 'item'">
+                    <div class="button">
+                        <div class="img" title="{{item.tooltipText}}" style.background-image="url('{{item.imagePath}}')"></div>
+                    </div>
+                </div>
+            </dx-list>
+        </div>
+    </div>
+</dx-popup>
+<dx-popup title="{{popupData.title}}" [width]="500" [height]="170" [(visible)]="popupData.visible" [dragEnabled]="false" [closeOnOutsideClick]="false">
+    <div *dxTemplate="let data of 'content'">
+        <div class="overlay-message">{{popupData.message}}</div>
+        <div class="overlay-button-bar">
+            <dx-button text="{{ popupData.ok }}" (onClick)="buttonClicked()"></dx-button>
+        </div>
+    </div>
+</dx-popup>

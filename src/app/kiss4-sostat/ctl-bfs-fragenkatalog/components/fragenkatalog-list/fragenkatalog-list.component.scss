@@ -1,0 +1,16 @@
+@import 'settings/variables.scss';
+div.grid-table-view:hover {
+    .grid-margin-top {
+        border: $border-color-highlight;
+    }
+    dx-data-grid .dx-datagrid-headers .dx-datagrid-table .dx-header-row>td {
+        background-color: $toolbar-detail-background-color-highlight;
+    }
+}
+
+#o006_fragenkatalog_data-grid {
+    /deep/ .dx-datagrid {
+        text-overflow: ellipsis;
+        white-space: nowrap !important;
+    }
+}

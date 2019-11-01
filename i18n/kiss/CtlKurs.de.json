@@ -1,0 +1,62 @@
+{
+  "Kurs": {
+    "Title": "Kurs",
+    "NeueKurs": "Neue Kurs",
+    "Bearbeiten": "Bearbeiten",
+    "Speichern": "Speichern",
+    "Abbrechen": "Abbrechen",
+    "Search": "Search",
+    "Spaltenauswahl": "Spaltenauswahl",
+    "ExcelExport": "Excel Export",
+    "GridDrucken": "Grid drucken",
+    "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden",
+    "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden",
+    "Suche": "Suche anzeigen/ausblenden",
+    "Filtereditor": "Filtereditor anzeigen/ausblenden",
+    "Loschen": "Löschen",
+    "GridEinstellungen": "Grid Einstellungen",
+    "ApplyFilter": "Filter anwenden",
+    "_comment": "Caption",
+    "Nr": "Nr.",
+    "Kursname": "Kursname",
+    "Sektion": "Sektion",
+    "Platze": "Plätze",
+    "Lektionen": "Lektionen",
+    "geschlossen": "geschlossen",
+    "nachDieser": "Nach dieser Spalte gruppieren",
+    "spalteAusblenden": "Spalte ausblenden",
+    "alle": "Alle Gruppierung entfernen",
+    "allesErweitern": "Alles erweitern",
+    "allesReduzieren": "Alles reduzieren",
+    "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen",
+    "Validation": {
+      "NoDataGrid": "Keine Daten",
+      "Required": {
+        "Nr": "Nr is required",
+        "Kursname": "Kursname is required"
+      }
+    },
+    "Placeholder": "Placeholder",
+    "ColumnChooser": {
+      "Title": "Benutzerdefiniert",
+      "EmptyPanelText": "NoData"
+    },
+    "Message": {
+      "MessageDelete": "Soll der Datensatz gelöscht werden ?",
+      "MessageDeleteNew": "Neuen Datensatz wieder löschen ?",
+      "MessageConfirmCancel": "Fenster trotz der nicht gespeicherten Daten schliessen ?",
+      "MessageError": "Nicht alle Mussfelder sind ausgefüllt.",
+      "MessageErrorValidate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein.",
+      "Yes": "Ja",
+      "No": "Nein",
+      "Title": "Bestätigung",
+      "Message": "Änderungen an diesem Datensatz rückgängig machen ?",
+      "Confirmation": "Confirmation",
+      "MessageCloseBrowse": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?",
+      "Discard": "Discard",
+      "Abbrechen": "Abbrechen",
+      "EditNumberOverLengthMessage": "Ungültiger Wert.",
+      "KursNameOverLength" : "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.\nBitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern."
+    }
+  }
+}

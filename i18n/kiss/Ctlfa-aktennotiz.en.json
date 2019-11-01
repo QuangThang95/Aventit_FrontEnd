@@ -1,0 +1,84 @@
+﻿
+{
+  "FaAktennotiz": {
+    "Title": "Pending Administrative[en]",
+    "Button": {
+      "Add": "Neue Besprechung[en]",
+      "Edit": "Bearbeiten[en]",
+      "Save": "Speichern[en]",
+      "Search": "Suchen[en]",
+      "Cancel": "Abbrechen[en]",
+      "Document": "Dokument[en]",
+      "GeloschterDatensatz":"gelöschter Datensatz wiederherstellen[en]",
+      "Loschen":"Löschen[en]"
+    },
+    "Message": {
+      "TitleConfirmCancelCreate": "Bestätigung[en]",
+      "MessageConfirmCancelCreate": "Neuen Datensatz wieder löschen ?[en]",
+      "TitleConfirmCancelEdit": "Bestätigung[en]",
+      "MessageConfirmCancelEdit": "Änderungen an diesem Datensatz rückgängig machen [en]?",
+      "TitleConfirmDelete": "Bestätigung[en]",
+      "MessageConfirmDelete": "Wollen Sie den Datensatz wirklich löschen?[en]",
+      "MessageValidateMaxLength": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.\n\nBitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern.[en]",
+      "TitleConfirm": "Bestätigung[en]"
+    },
+    "DropDownNoData":"Keine zutreffenden MitarbeiterInnen gefunden[en]",
+    "LabelDatumVon": "Datum von[en]",
+    "LabelDatumBis": " bis[en]",
+    "LabelKontaktart": "Kontaktart[en]",
+    "LabelMitarbeiter": "Mitarbeiter[en]",
+    "LabelStichworte": "Stichworte[en]",
+    "LabelTheMen": "Themen[en]",
+    "TextThemenFilter": "Themen filtern (ein/aus)[en]",
+    "LabelStatus": "Status[en]",
+    "TextRadioActive": "nur aktive[en]",
+    "TextRadioInActive": "nur gelöschte[en]",
+    "TextRadioAll": "alle",
+    "TextColumnDatum": "Datum[en]",
+    "TextColumnStichwort": "Stichwort[en]",
+    "TextColumnThemen": "Themen[en]",
+    "TextColumnKontaktpartner": "Kontaktpartner[en]",
+    "TextColumnAutor": "Autor[en]",
+    "TextColumnGeloscht": "gelöscht[en]"
+  },
+  "FaAktennotizDetails": {
+    "TitleSearch": "Suchen[en]",
+    "TitleDetail": "Detail[en]",
+    "Placeholder": "Select ...[en]",
+    "ExcelExport": "Excel - Export [en]",
+    "SchnellGrid": "Show quick filter line[en]",
+    "GroupGrid": "Show/Hide Grouping Area[en]",
+    "SucheGrid": "Show/Hide search[en]",
+    "FilterGrid": "Show/Hide filter[en]",
+    "Einstellungen": "Grid Settings[en]",
+    "emptyPanelText": "Drag a column header here to group by that column[en]",
+    
+    "DialogLookup": {
+      "Typ": "Type[en]",
+      "Kuerzel": "Logon name[en]",
+      "Name": "Name[en]",
+      "Abteilung": "Department[en]",
+      "VorName": "VorName[en]",
+      "Benutzer": "User[en]"
+    },
+    "Validation": {
+      "NoData": "Keine Daten[en]",
+      "Subject": "The field 'Subject' must not be empty![en]",
+      "BetreffEmpty": "Information: The field 'Betreff' must not be empty![en]",
+      "MaxLength": "The content of a field exceeds the maximum allowed length.[en]"
+    },
+    "RowCount": "Number of records[en]",
+    "LabelDatum": "Datum[en]",
+    "LabelKontaktpartner": "Kontaktpartner[en]",
+    "LabelKontaktart": "Kontaktart[en]",
+    "LabelDauer": "Dauer[en]",
+    "LabelAutor": "Autor[en]",
+    "LabelStichwort": "Stichwort[en]",
+    "LabelInhalt": "Inhalt[en]",
+    "LabelThemen": "Themen[en]",
+    "LabelErfassung": "Erfassung[en]",
+    "LabelMutation": "Mutation[en]",
+    "MessageDokumentNoTemplate": "Es ist ein Fehler aufgetreten.\nSie sollten KiSS möglichst bald neu starten.[en]"
+  }
+}
+

@@ -1,0 +1,18 @@
+<dx-popup [title]="popUpConcurrencyModel.title" [(showTitle)]="popUpConcurrencyModel.isVisibleTitle" #popupComfirm [width]="'auto'" [minWidth] ="500" [maxWidth] = "700" [height]="'auto'" [resizeEnabled]="true"
+  [(visible)]="popUpConcurrencyModel.isVisible" [dragEnabled]="false" (onShown) = "onShown($event)" [closeOnOutsideClick]="false" (onHiding)="onHiding($event)"
+  (onHidden)="onHidden($event)" [showCloseButton]="false">
+  <div *dxTemplate="let data of 'content'" class="content-container" id="popup-content-common">
+    <h3 class="message-content err-messeger">{{popUpConcurrencyModel.message}}</h3>
+    <div class="btn-content">
+      <dx-button [(visible)]="popUpConcurrencyModel.isVisibleYes" #buttonYesconcurrency [elementAttr]="{ class: 'btn-detail' }" text="{{popUpConcurrencyModel.textYes}}"
+        (onClick)="buttonClicked('abbrechen')" icon="remove">
+      </dx-button>&nbsp;
+      <dx-button [(visible)]="popUpConcurrencyModel.isVisibleNo" [elementAttr]="{ class: 'btn-detail' }" text="{{popUpConcurrencyModel.textNo}}"
+        (onClick)="buttonClicked('daten')" icon="refresh">
+      </dx-button>
+    </div>
+    <div class="close-popup-common-content">
+      <dx-button id="button-close-popup-common" icon="close" (onClick)="buttonClicked('no')"></dx-button>
+    </div>
+  </div>
+</dx-popup>

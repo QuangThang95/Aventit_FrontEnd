@@ -1,0 +1,43 @@
+<kiss-right-component id="c008_arbeit">
+  <app-navigator id="c008_arbeit_header" [titleHeader]="pageTitle" [customizeBtn]="customizeBtn" (dblclick)="doubleClickHeader($event)"
+    [listBtn]="listBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopHeader($event)"></app-navigator>
+  <section id="wrapper-content">
+    <div class="container volagen-kontext-container">
+      <div class="right-content">
+        <!-- show error message format remainning -->
+        <div id="c008_validate-message" class="error" *ngIf="!isErrorClosed && messageErr">
+          <span class="btn-close-error">
+            <dx-button (onClick)="isErrorClosed=false;messageErr=''" class="btn-close" icon="fa fa-times fa-2x">
+            </dx-button>
+          </span>
+          <div class="error-messege">
+            <span class="ico-error">
+              <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+            </span>
+            <i id="err-messeger">{{ messageErr }}</i>
+          </div>
+        </div>
+        <app-arbeit-edit *ngIf="isEditMode"
+        #arbeitEdit
+        [arbeitModel]="arbeitModel"
+        [berufSuchens]="berufSuchens"
+        [institutionSuchens]="institutionSuchens"
+        [arbeitErwerbssituation1]="arbeitErwerbssituation1"
+        [arbeitErwerbssituation2]="arbeitErwerbssituation2"
+        [arbeitErwerbssituation3]="arbeitErwerbssituation3"
+        [arbeitErwerbssituation4]="arbeitErwerbssituation4"
+        [arbeitBeschaeftigungsgrad]="arbeitBeschaeftigungsgrad"
+        [arbeitGrundteilzeit1]="arbeitGrundteilzeit1"
+        [arbeitGrundteilzeit2]="arbeitGrundteilzeit2"
+        [arbeitBranche]="arbeitBranche"
+        [arbeitAusbildungstyp]="arbeitAusbildungstyp"
+        [arbeitIntegrationsstand]="arbeitIntegrationsstand"
+        [arbeitNichtbekannt]="arbeitNichtbekannt"
+        ></app-arbeit-edit>
+        <app-arbeit-view *ngIf="!isEditMode" [arbeitModel]="arbeitModel"></app-arbeit-view>
+      </div>
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+    <app-popup-concurrency [popUpConcurrencyModel]="popUpConcurrencyModel"></app-popup-concurrency>
+    </div>
+  </section>
+</kiss-right-component>

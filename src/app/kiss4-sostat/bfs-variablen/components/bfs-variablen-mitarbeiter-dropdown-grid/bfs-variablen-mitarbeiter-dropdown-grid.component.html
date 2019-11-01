@@ -1,0 +1,35 @@
+<dx-drop-down-box 
+  class="container-search__drop-down-box"
+  id="o010_suchen_mitarbeiter-in"
+  [dataSource]="dataMitarbeiters"
+  [(value)]="userID" 
+  valueExpr="userID" 
+  [deferRendering]="false" 
+  displayExpr="name"
+  placeholder="" 
+  [showClearButton]="true" 
+  [(opened)]="openMitarbeiterGrid" 
+  (onValueChanged)="closeMitarbeiterInput($event)"
+  (onKeyDown)="onKeyDownSelectOption($event)">
+  <div *dxTemplate="let data of 'content'">
+      <dx-data-grid #gridMitarbeiter
+          [dataSource]="dataMitarbeiters" 
+          [selection]="{ mode: 'single' }"
+          [hoverStateEnabled]="true" 
+          [filterRow]="{ visible: true }" 
+          [scrolling]="{ mode: 'infinite' }"
+          [height]="400"
+          keyExpr="userID"
+          (onRowClick)="onClickRowMitarbeiterGrid($event)"
+          (onContentReady)="onMitarbeiterGridContentReady($event)" 
+          noDataText="{{ 'Variablen.NoDataMitarbeiter' | translate }}">
+          <dxi-column dataField="name" caption="{{ 'Variablen.GridMitarbeiter.Name' | translate }}"></dxi-column>
+          <dxi-column dataField="logonName" caption="{{ 'Variablen.GridMitarbeiter.LogonName' | translate }}"></dxi-column>
+      </dx-data-grid>
+      <br/>
+      <div class="grid-margin-top">
+          <span>{{ 'Variablen.AnzahlDatensatze' | translate }}</span>
+          <span>{{totalMitarbeiterRecords}}</span>
+      </div>
+  </div>
+</dx-drop-down-box>

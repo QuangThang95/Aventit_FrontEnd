@@ -1,0 +1,11 @@
+{
+    "CtlBfsDokumente": {
+        "TitleView": "Dokumente [it]",
+        "LeitfadenNameBtn": "Leitfaden [it]",
+        "LabelLeitfaden": "Leitfaden für die BFS-Statistik [it]",
+        "Title": "Information [it]",
+        "MessageError": {
+            "LeitfadenError": "Kein Link für den Kontext 'BFSLeitfaden' definiert!\r\n\r\n(Muss durch KiSS-Administrator eingerichtet werden) [it]"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+  "ServerError401": "Access not allowed. Please login.[it]",
+  "ServerError403": "Access forbidden. Please provide correct credentials[it]",
+  "ServerError404": "An error occurred. Please contact your administrator[it]",
+  "ServerError500": "An error occurred. Please contact your administrator[it]",
+  "ServerError502": "502 Bad Gate way. Please contact your administrator[it]",
+  "SuccessNotificationTitle": "Success[it]",
+  "ErrorNotificationTitle": "Error[it]",
+  "InfoNotificationTitle": "Info[it]",
+  "WarningNotificationTitle": "Warning[it]",
+  "SaveBtn": "Save[it]",
+  "EditBtn": "Edit[it]",
+  "CancelBtn": "Cancel[it]",
+  "BackBtn": "Back[it]",
+  "GridEmptyLabel": "No available items[it]",
+  "ConfirmDialog": {
+    "Title": "Please confirm[it]",
+    "Content": "Do you want to leave without saving the changes?[it]",
+    "SubmitBtn": "Yes[it]",
+    "CancelBtn": "No[it]"
+  },
+
+  "Printer": {
+    "HeaderLeftDefault": "Expression of the table[it]",
+    "FooterLeftDefault": "Print date[it]",
+    "FooterCenterDefault": "Aventis[it]"
+  },
+
+  "SelectedActions": {
+    "TitleComfirm": "Confirmation![it]",
+    "Message": "You have changed data. Do you want to close the form and discard the changes?[it]",
+    "Cancel": "Abort[it]",
+    "Ok": "Discard[it]"
+  }
+}

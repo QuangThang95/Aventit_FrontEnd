@@ -1,0 +1,62 @@
+{
+  "Kurs": {
+    "Title": "Kurs [fr]",
+    "NeueKurs": "Neue Kurs [fr]",
+    "Bearbeiten": "Bearbeiten [fr]",
+    "Speichern": "Speichern [fr]",
+    "Abbrechen": "Abbrechen [fr]",
+    "Search": "Search [fr]",
+    "Spaltenauswahl": "Spaltenauswahl [fr]",
+    "ExcelExport": "Excel Export [fr]",
+    "GridDrucken": "Grid drucken [fr]",
+    "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden [fr]",
+    "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden [fr]",
+    "Suche": "Suche anzeigen/ausblenden [fr]",
+    "Filtereditor": "Filtereditor anzeigen/ausblenden [fr]",
+    "Loschen": "Löschen [fr]",
+    "GridEinstellungen": "Grid Einstellungen [fr]",
+    "ApplyFilter": "Apply Filter [fr]",
+    "_comment": "Caption [fr]",
+    "Nr": "Nr. [fr]",
+    "Kursname": "Kursname [fr]",
+    "Sektion": "Sektion [fr]",
+    "Platze": "Plätze [fr]",
+    "Lektionen": "Lektionen [fr]",
+    "geschlossen": "geschlossen [fr]",
+    "nachDieser": "Nach dieser Spalte gruppieren [fr]",
+    "spalteAusblenden": "Spalte ausblenden [fr]",
+    "alle": "Alle Gruppierung entfernen [fr]",
+    "allesErweitern": "Alles erweitern [fr]",
+    "allesReduzieren": "Alles reduzieren [fr]",
+    "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen [fr]",
+    "Validation": {
+      "NoDataGrid": "Keine Daten [fr]",
+      "Required": {
+        "Nr": "Nr is required [fr]",
+        "Kursname": "Kursname is required [fr]"
+      }
+    },
+    "Placeholder": "Placeholder [fr]",
+    "ColumnChooser": {
+      "Title": "Benutzerdefiniert [fr]",
+      "EmptyPanelText": "NoData [fr]"
+    },
+    "Message": {
+      "MessageDelete": "Soll der Datensatz gelöscht werden ? [fr]",
+      "MessageDeleteNew": "Neuen Datensatz wieder löschen ? [fr]",
+      "MessageConfirmCancel": "Fenster trotz der nicht gespeicherten Daten schliessen ? [fr]",
+      "MessageError": "Nicht alle Mussfelder sind ausgefüllt. [fr]",
+      "MessageErrorValidate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [fr]",
+      "Yes": "Ja [fr]",
+      "No": "Nein [fr]",
+      "Title": "Bestätigung [fr]",
+      "Message": "Änderungen an diesem Datensatz rückgängig machen ? [fr]",
+      "Confirmation": "Confirmation [fr]",
+      "MessageCloseBrowse": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [fr]",
+      "Discard": "Discard [fr]",
+      "Abbrechen": "Abbrechen [fr]",
+      "EditNumberOverLengthMessage": "Ungültiger Wert. [fr]",
+      "KursNameOverLength" : "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.\nBitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern. [fr]"
+    }
+  }
+}

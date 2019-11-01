@@ -1,0 +1,37 @@
+<kiss-right-component>
+    <app-navigator 
+        id="c003_gemeinden-aktualisieren_header" 
+        [titleHeader]="'GemeindeDaten.Title' | translate"
+        [listBtn]="listBtn" 
+        [customizeBtn]="customizeBtn" 
+        (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)">
+    </app-navigator>
+    <div class="container" id="c003_gemeinden-aktualisieren">
+        <div class="container__right-content">
+            <app-remaining-message #remainingMessage></app-remaining-message>
+            <div class="dx-clearfix"></div>
+            <kiss-gemeinde-daten-grid 
+                #gemeindeDatenGrid
+                [dataSource]="dsGemeindeDatens" 
+                [expand]="expand"
+                (selectData)="onSelectData($event)">
+            </kiss-gemeinde-daten-grid>
+            <kiss-gemeinde-daten-detail #gemeindeDatenDetail></kiss-gemeinde-daten-detail>
+            <kiss-gemeinde-daten-upload
+                #gemeindeDatenUpload
+                [remainingMessage]="remainingMessage"
+                (uploadSuccess)="onUploadSuccess($event)"
+                (showProgressBar)="onShowProgressBar($event)">
+            </kiss-gemeinde-daten-upload>
+        </div>
+    </div>
+</kiss-right-component>
+
+<!-- Print component -->
+<kiss-printer #printer></kiss-printer>
+
+<!-- Popup infomation -->
+<app-popup-confirm #popupModel></app-popup-confirm>
+
+<!-- Progressbar -->
+<app-progressbar #gemeindeDatenProgressBar></app-progressbar>

@@ -1,0 +1,258 @@
+<div class="container-detail form-content-details">
+  <div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+    <kiss-card-title [titleHeader]="'Uber.Title_Group.Database'| translate" [customizeBtn]="customizeBtn" [isCard]="true"
+      (onCustomizeBtnFn)="toolBarOnItemClick($event,div.innerText)">
+    </kiss-card-title>
+  </div>
+  <div #div>
+    <div [ngClass]="{'container__hide': !isExpandTabDatenBank}" class="container-detail__form">
+      <dx-form [formData]="databaseInfo" [colCount]="1" [showColonAfterLabel]="false">
+
+        <dxi-item>
+          <span class="dx-fieldset-header" id='H003_server_label'>{{'Uber.Title_Grid.ServerInformation'|translate}}</span>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Name'|translate "></dxo-label>
+          <span>{{databaseInfo.serverName}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Product'|translate "></dxo-label>
+          <span>{{databaseInfo.serverProduct}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.OperatingSystem'|translate "></dxo-label>
+          <span>{{databaseInfo.serverOperatingSystem}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Platform'|translate "></dxo-label>
+          <span>{{databaseInfo.serverPlatform}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Edition'|translate "></dxo-label>
+          <span>{{databaseInfo.serverEdition}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Version'|translate"></dxo-label>
+          <span>{{databaseInfo.serverVersion}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.ProductLevel'|translate"></dxo-label>
+          <span>{{databaseInfo.serverProductLevel}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Language'|translate"></dxo-label>
+          <span>{{databaseInfo.serverLanguage}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Memory'|translate"></dxo-label>
+          <span>{{databaseInfo.serverMemory}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Processors'|translate"></dxo-label>
+          <span>{{databaseInfo.serverProcessors}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.RootDirectory'|translate "></dxo-label>
+          <span>{{databaseInfo.serverRootDirectory}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.ServerCollation'|translate "></dxo-label>
+          <span>{{databaseInfo.serverCollation}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.IsClustered'|translate "></dxo-label>
+          <span *ngIf="databaseInfo.serverIsClustered">True</span>
+          <span *ngIf="!databaseInfo.serverIsClustered">False</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.DateTime'|translate "></dxo-label>
+          <span>{{databaseInfo.serverDateTime | date :'dd.MM.yyyy HH:mm:ss'}}</span>
+        </dxi-item>
+
+        <dxi-item class="uber-label">
+          <span class="dx-fieldset-header" id='H003_datenbank_label'>{{'Uber.Title_Grid.Databaseinformation'|translate}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Name2'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseName}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Collation'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseCollation}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.RecoveryModel'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseRecoveryModel}}</span>
+        </dxi-item>
+
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.CompatibilityLevel'|translate "></dxo-label>
+          <span>{{databaseInfo.databasseCompatibility}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.PageVerify'|translate "></dxo-label>
+          <span>{{databaseInfo.databasePageVerify}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.DatabaseRead-Only'|translate "></dxo-label>
+          <span *ngIf="databaseInfo.databaseReadOnly">True</span>
+          <span *ngIf="!databaseInfo.databaseReadOnly">False</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.RestrictAccess'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseRestrictAccess}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.DateCreated'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseDateCreated | date :'dd.MM.yyyy HH:mm:ss'}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.LastDatabaseBackup'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseLastBackup | date :'dd.MM.yyyy HH:mm:ss'}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.LastDatabaseLogBackup'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseLastLogBackup}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Owner'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseOwner}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Status'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseStatus}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.NumberofUsers'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseNumberOfUsers}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.ActiveConnections'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseActiveConn}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Size'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseSize}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.SpaceAvailable'|translate "></dxo-label>
+          <span>{{databaseInfo.databaseSpaceAvailable}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Primary-FilePath'|translate "></dxo-label>
+          <span>{{databaseInfo.databasePrimaryFile}}</span>
+        </dxi-item>
+
+        <dxi-item class="uber-label">
+          <span class="dx-fieldset-header" id='H003_session_label'>{{'Uber.Title_Grid.Sessioninformation'|translate}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.SessionID'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionID}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.LoginName'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionLoginName}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.LoginTime'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionLoginTime | date :'dd.MM.yyyy HH:mm:ss' }}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Database'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionDatabase}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.UserName'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionUserName}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Host'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionHostNamePID}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Application'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionAppNameInterf}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Language2'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionLanguage}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.DateFormat'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionDateformat}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.DateFirst'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionDateFirst}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.CPUTime'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionCPUTime}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.MemoryUsage'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionMemoryUsage}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Reads'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionReads}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.Writes'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionWrites}}</span>
+        </dxi-item>
+
+        <dxi-item>
+          <dxo-label [text]="'Uber.Title_Grid.LogicalReads'|translate "></dxo-label>
+          <span>{{databaseInfo.sessionLogicalReads}}</span>
+        </dxi-item>
+
+      </dx-form>
+    </div>
+  </div>
+</div>

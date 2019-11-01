@@ -1,0 +1,36 @@
+<kiss-right-component>
+  <app-navigator id="r008_kontext_header" [titleHeader]="'VorlagenKontext.Title'|translate" [listBtn]="listBtn"
+    (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+  <section id="wrapper-content">
+    <!-- =========  Container  ========== -->
+    <!-- ==================  End toolbar header  grid  volagen kontext    ======================== -->
+    <div class="container" id="r008_kontext-container">
+      <div class="right-content">
+        <!-- show error message format remainning -->
+        <div #errorArea>
+          <kiss-vorlagen-kontext-error [isErrorClosed]="isErrorClosed" [messageErr]="messageErr"></kiss-vorlagen-kontext-error>
+        </div>
+        <!-- show data grid [selectedRowKeys]="selectedKeys" -->
+        <kiss-vorlagen-kontext-data-grid #listData [data]="vorlagenkontextData" keyExpr="id" [listCol]="listCol"
+          [isViewDetail]="isViewDetail" (focusedRowChanged)="initVorlagentModel($event.row.data)" (contentReady)="setSelectedGridElement($event.component, 0)"></kiss-vorlagen-kontext-data-grid>
+        <div class="form-content-details container-detail" id='r008_detail'>
+          <div class="toolbar-header">
+            <kiss-card-title id="r008_detail_header" [titleHeader]="'VorlagenKontext.VorlagenkontextDetails.TitleDetail' | translate" [listBtn]="listBtnDetail"
+              [customizeBtn]="customizeBtnDetail" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClickEdit($event)">
+            </kiss-card-title>
+          </div>
+          <div class="form-body">
+            <!-- ==================  Form Detail  ========================= -->
+            <kiss-vorlagen-kontext-detail #vorlagenkontextDetail [vorlagenkontextModel]="vorlagenkontextModel"
+              [options]="gridFunctionModelVerfugbare" [isEdit]="isEditMode" [isSave]="isSave" [isAddMode]="isAddMode"
+              (updatePopup)="onUpdatePopup($event)" (formChange)="onFormChange($event)" (showPopUpMulti)="showPopUpMulti($event)"
+              (sourceChange)="updateDirtyForm()">
+            </kiss-vorlagen-kontext-detail>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- =========  Container  ========== -->
+  </section>
+  <app-popup-confirm #popupConfirm [popUpModel]="popUpModel"></app-popup-confirm>
+</kiss-right-component>

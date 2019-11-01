@@ -1,0 +1,22 @@
+@import 'settings/variables.scss';
+/******* Set css class for form's content ***************************/
+.d005-beratungsphase-popup-tmp-template { 
+  text-align: $text-align-center;
+  padding: $padding-10;
+}
+::ng-deep .d005-beratungsphase-groupbottom .dx-form-group-with-caption .dx-form-group-content {
+  padding-bottom: $padding-bottom-0;
+}
+.form-padding {
+  padding: $padding-5-10;
+}
+.select-box-class {
+  width: auto;
+  min-width: 500px;
+  max-width: 1000px;
+}
+.form_text_area {
+  min-width: $c007-drop-down-box-width;
+  max-width: $d005-text-area;
+}
+/******* the end set css class for form's content ***************************/

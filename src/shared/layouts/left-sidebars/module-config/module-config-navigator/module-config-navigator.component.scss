@@ -1,0 +1,18 @@
+.r034_navigation-container {
+    height: calc(100% - 260px);
+    padding-left: 10px;
+}
+
+/deep/ .r034_navigation-tree-view.dx-widget * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.r034_navigation-confirm-button {
+    text-align: right;
+}
+
+/deep/ .theme--custom .sidebar .r034_navigation-container .dx-treeview .dx-treeview-item {
+    padding: 4px 3px !important;
+}

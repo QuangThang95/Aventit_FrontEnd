@@ -1,0 +1,307 @@
+﻿<kiss-right-component>
+  <app-navigator id="c007_klientensystem_header" titleHeader="{{pageTitle}} {{'Klientensystem.Title'| translate}}"
+    [listBtn]="listBtn" [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClick($event)" (dblclick)="onCopyTitle()"></app-navigator>
+  <section id="wrapper-content">
+    <div class="container">
+      <div class="right-content">
+        <div class="error" *ngIf="remainMessage?.visible">
+          <span class="btn-close-error">
+            <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+            </dx-button>
+          </span>
+          <div class="error-messege">
+            <span class="ico-error">
+              <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+            </span>
+            <i id="r009_errors-messeger">{{remainMessage?.message}}</i>
+          </div>
+        </div>
+
+        <div id="c007_form_falltrager">
+          <dx-form [formData]="falltraegerData" [colCount]="2" [showColonAfterLabel]="false">
+            <dxi-item itemType="group" [colSpan]="1">
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Falltrager' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Falltrager' | translate }}"></dxo-label>
+                <span>{{falltraegerData.person}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.WohnsitzZivilr' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.WohnsitzZivilr' | translate }}"></dxo-label>
+                <span>{{falltraegerData.wohnsitz}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Aufenthaltsort' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Aufenthaltsort' | translate }}"></dxo-label>
+                <span>{{falltraegerData.aufenthaltsort}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Heimatort' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Heimatort' | translate }}"></dxo-label>
+                <span>{{falltraegerData.heimatort}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Nationalitat' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Nationalitat' | translate }}"></dxo-label>
+                <span>{{falltraegerData.nationalitaet}}</span>
+              </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="1">
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Alter' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Alter' | translate }}"></dxo-label>
+                <span>{{falltraegerData.alter}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Geburtstag' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Geburtstag' | translate }}"></dxo-label>
+                <span>{{falltraegerData.geburtstag}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Geschiecht' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Geschiecht' | translate }}"></dxo-label>
+                <span>{{falltraegerData.geschlecht}}</span>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionKlientensystem.Zivilstand' | translate}}">
+                <dxo-label text="{{ 'Klientensystem.SectionKlientensystem.Zivilstand' | translate }}"></dxo-label>
+                <span>{{falltraegerData.zivilstand}}</span>
+              </dxi-item>
+            </dxi-item>
+          </dx-form>
+        </div>
+
+        <div id="c007_label_bezungspersonen" class="section_title">{{'Klientensystem.SectionBezugspersonen.Bezungspersonen'
+          | translate}}
+        </div>
+        <hr class="c007_breakline">
+        <div id="c007_grid_data">
+          <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container" id="c007_filter-builder">
+            <dx-filter-builder [fields]="filterColumnsTop" [(value)]="filter">
+            </dx-filter-builder>
+            <dx-button text="{{'Klientensystem.SectionBezugspersonen.FilterAnwenden' | translate}}" type="default"
+              (onClick)="dataGrid.instance.filter(filter)">
+            </dx-button>
+            <div class="dx-clearfix"></div>
+          </div>
+          <dx-data-grid id="c007_data-grid" #dataGrid [dataSource]="bezugspersonenData" [showBorders]="true" width="100%"
+            [showColumnLines]="true" [showRowLines]="true" [allowColumnReordering]="true" [allowColumnResizing]="true"
+            [columnAutoWidth]="true" columnResizingMode="widget" (onContentReady)="gridOnContentReady($event)"
+            [hoverStateEnabled]="true" (onSelectionChanged)="selectedItem($event)" (onCellClick)="checkGlFocusOut($event)"
+            (onContextMenuPreparing)=onContextMenuPreparing($event) [customizeExportData]="customizeExportData">
+            <dxi-column [allowResizing]="false" [allowFiltering]="false" [allowHiding]="false" [allowReordering]="false"
+              caption="" width="30" cellTemplate="cellTemplateTop"></dxi-column>
+            <div *dxTemplate="let data of 'cellTemplateTop'" width="40">
+              <i *ngIf="data?.data.personID == selectedRow?.personID && data.data.isEdit == false" class="fa fa-caret-right"></i>
+              <i *ngIf="data?.data.personID == selectedRow?.personID && data.data.isEdit == true" class="fa fa-pencil"></i>
+            </div>
+            <dxi-column minWidth="120" dataField="person" [allowEditing]="false" caption="{{'Klientensystem.SectionBezugspersonen.Name' | translate}}"
+              alignment="left"></dxi-column>
+            <dxi-column minWidth="250" dataField="beziehung" [allowEditing]="false" caption="{{'Klientensystem.SectionBezugspersonen.Beziehung' | translate}}"
+              alignment="left" cellTemplate="dropdownTemplate">
+              <div *dxTemplate="let option of 'dropdownTemplate'">
+                <dx-select-box [dataSource]="option.data.dropdownboxData" [(value)]="option.data.relationID" [disabled]="!isReadOnly"
+                  valueExpr="code" displayExpr="text" (onKeyDown)="onSelectBoxKeyDown($event)">
+                </dx-select-box>
+              </div>
+            </dxi-column>
+            <dxi-column minWidth="70" dataField="age" [allowEditing]="false" caption="{{'Klientensystem.SectionBezugspersonen.Alter' | translate}}"
+              alignment="left"></dxi-column>
+            <dxi-column minWidth="115" dataField="unterstuetzt" [allowEditing]="false" caption="{{'Klientensystem.SectionBezugspersonen.Unterstutzt' | translate}}"
+              alignment="left" cellTemplate="cellTemplateUnterstutzt"></dxi-column>
+            <div *dxTemplate="let data of 'cellTemplateUnterstutzt'" class="grid-content-center">
+              <dx-check-box [disabled]="!isReadOnly" [(value)]="data.data.unterstuetzt" class="custom-checkbox"
+                (onValueChanged)="unterstuetztChange(data.data,data.data.person,data.data.klient,data.data.glHaushalt)">
+              </dx-check-box>
+            </div>
+            <dxi-column minWidth="115" dataField="glHaushalt" [allowEditing]="false" caption="{{'Klientensystem.SectionBezugspersonen.Haushalt' | translate}}"
+              alignment="left" cellTemplate="cellTemplateHaushalt"></dxi-column>
+            <div *dxTemplate="let data of 'cellTemplateHaushalt'" class="grid-content-center">
+              <dx-check-box [disabled]="!isReadOnly" [(value)]="data.data.glHaushalt" class="custom-checkbox"
+                (onValueChanged)="glHaushaltChange(data.data,data.data.person,data.data.klient,data.data.glHaushalt)">
+              </dx-check-box>
+            </div>
+            <dxi-column minWidth="115" dataField="klient" [allowEditing]="false" caption="{{'Klientensystem.SectionBezugspersonen.Klientln' | translate}}"
+              alignment="left" cellTemplate="cellTemplateKlientln"></dxi-column>
+            <div *dxTemplate="let data of 'cellTemplateKlientln'" class="grid-content-center">
+              <dx-check-box [disabled]="true" [value]="data.data.klient" class="custom-checkbox">
+              </dx-check-box>
+            </div>
+            <dxo-paging [pageSize]="10000000" [enabled]="false"></dxo-paging>
+            <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" [highlightCaseSensitive]="false" placeholder="{{ 'Klientensystem.SearchSuche' | translate }}"></dxo-search-panel>
+            <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+            <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+            <dxo-selection selectAllMode="allPages" showCheckBoxesMode="onClick" mode="single"></dxo-selection>
+            <dxo-group-panel [visible]="gridFunctionModel.isGrouping"></dxo-group-panel>
+            <dxo-scrolling mode="virtual"></dxo-scrolling>
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-grouping #gridOption [autoExpandAll]="true" [contextMenuEnabled]="true"></dxo-grouping>
+            <dxo-column-chooser #columnChooser emptyPanelText="" title="{{'Klientensystem.Benutzerdefiniert' | translate}}"
+              [enabled]="false"></dxo-column-chooser>
+            <dxo-editing mode="cell" [allowUpdating]="isReadOnly"></dxo-editing>
+            <dxo-export [enabled]="false" fileName="Klientensystem" [allowExportSelectedData]="true"></dxo-export>
+          </dx-data-grid>
+        </div>
+        <div id="c007_label_Mietvertrag" class="section_title">{{'Klientensystem.SectionMietvertrag.Mietvertrag' |
+          translate}}
+        </div>
+        <hr class="c007_breakline" />
+        <div id="c007_form">
+          <dx-form id="form" [formData]="mietvertragData" [readOnly]="false" [showColonAfterLabel]="false"
+            [showValidationSummary]="true" [colCount]="12" [screenByWidth]="getSizeQualifier">
+            <dxi-item dataField="" itemType="group" [colSpan]="10">
+              <dxi-item dataField="{{ 'Klientensystem.SectionMietvertrag.Vermieter' | translate }}" [template]="'vermieter'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.Vermieter' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{ 'Klientensystem.SectionMietvertrag.Bemerkung' | translate }}" [template]="'bemerkung'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.Bemerkung' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+            <dxi-item dataField="" itemType="group" [colSpan]="2">
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.MietkostenNetto' | translate}}" [editorOptions]="{width: widthNumberAndDateBox}"
+                [template]="'mietkostenNetto'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.MietkostenNetto' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.Nebenkosten' | translate}}" [editorOptions]="{width: widthNumberAndDateBox}"
+                [template]="'nebenkosten'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.Nebenkosten' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.KostenanteilUE' | translate}}" [editorOptions]="{width: widthNumberAndDateBox}"
+                [template]="'kostenanteilUE'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.KostenanteilUE' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.Mietdepot' | translate}}" [editorOptions]="{width: widthNumberAndDateBox}"
+                [template]="'mietdepot'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.Mietdepot' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.Mietzinsgarantie' | translate}}"
+                [editorOptions]="{width: widthNumberAndDateBox}" [template]="'mietzinsgarantie'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.Mietzinsgarantie' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.GarantieGultigBis' | translate}}"
+                [editorOptions]="{ width: widthNumberAndDateBox }" [template]="'garantieGultigBis'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.GarantieGultigBis' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.Miete' | translate}}" [editorOptions]="{ width: widthNumberAndDateBox }"
+                [template]="'miete'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.Miete' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.bis' | translate}}" [editorOptions]="{width: widthNumberAndDateBox}"
+                [template]="'bis'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.bis' | translate }}"></dxo-label>
+              </dxi-item>
+              <dxi-item dataField="{{'Klientensystem.SectionMietvertrag.MieteAbgetreten' | translate}}" [editorOptions]="{width: widthNumberAndDateBox}"
+                [template]="'mieteAbgetreten'">
+                <dxo-label text="{{ 'Klientensystem.SectionMietvertrag.MieteAbgetreten' | translate }}"></dxo-label>
+              </dxi-item>
+            </dxi-item>
+            <div *dxTemplate="let data of 'vermieter'" class="mietvertrag_item_height">
+              <span *ngIf="!isReadOnly">{{mietvertragData.vermieter}} &nbsp; </span>
+              <dx-drop-down-box #vermieter [tabIndex]="24" [disabled]="!isReadOnly" [(value)]="mietvertragData.baInstitutionID"
+                [visible]="isReadOnly" class="dx-drop-down-box-width" [accessKey]="1" [(opened)]="isDropDownBoxOpened"
+                valueExpr="baInstitutionID" displayExpr="name" placeholder="{{'Klientensystem.SectionMietvertrag.Auswahlen' | translate}}"
+                (onFocusIn)="onFocusIn(vermieter,'Vermieter','dropdownbox')" (onFocusOut)="onFocusOut()" (onKeyDown)="onKeyDown($event)"
+                [showClearButton]="true" [dataSource]="comboboxVermieter" (onOpened)="onVermieterOpened($event)">
+                <div *dxTemplate="let data of 'content'">
+                  <dx-data-grid #vermieterGrid [dataSource]="comboboxVermieter" [columns]="['name', 'adresse', 'typen']"
+                    [selectedRowKeys]="selectedKeys" keyExpr="baInstitutionID" [selection]="{ mode: 'single' }"
+                    [hoverStateEnabled]="true" [paging]="{ enabled: true, pageSize: 100000 }" [filterRow]="{ visible: true }"
+                    [scrolling]="{ mode: 'infinite' }" [height]="345" noDataText="{{'Klientensystem.SectionMietvertrag.NoDataText' | translate}}"
+                    (onRowClick)="onVermieterGridRowSelected($event)" (onKeyDown)="onVermieterGridRowEnter($event)"
+                    (onInitialized)="onVermieterInitialized($event)">
+                  </dx-data-grid>
+                </div>
+              </dx-drop-down-box>
+            </div>
+            <div *dxTemplate="let data of 'bemerkung'">
+              <div id="c007_form_datebox_bemerkung" class="form_text_area">
+                <div [tabIndex]="31" [froalaEditor]="froalaEditorConfig" [(froalaModel)]="mietvertragData.bemerkung"
+                  [accessKey]="11" id="froalaEditor"></div>
+              </div>
+            </div>
+            <div *dxTemplate="let data of 'mietkostenNetto'" class="mietvertrag_item_height mietvertrag_right_item_width mietvertrag_right_item_content">
+              <span *ngIf="!isReadOnly">{{mietvertragData.mietkosten | number : '3.2-2' : 'de-CH'}} &nbsp; </span>
+              <dx-number-box class="kiss-input-right" width="160" [format]="numberFormat" [tabIndex]="25"
+                #mietkostenNetto [visible]="isReadOnly" [disabled]="!isReadOnly" [value]="mietvertragData.mietkosten"
+                [accessKey]="4" (onKeyDown)="onKeyDown($event)" [step]="0" (onFocusIn)="onFocusIn(mietkostenNetto,'MietkostenNetto','numberbox')"
+                (onFocusOut)="onFocusOut()" (onValueChanged)="getMietkosten($event.value)">
+                <dx-validator>
+                  <dxi-validation-rule type="range" [min]="minNumber" [max]="maxNumber" message="{{ 'Klientensystem.Message.BemerkungMaxlength' | translate }}"></dxi-validation-rule>
+                </dx-validator>
+              </dx-number-box>
+            </div>
+            <div *dxTemplate="let data of 'nebenkosten'" class="mietvertrag_item_height mietvertrag_right_item_width mietvertrag_right_item_content">
+              <span *ngIf="!isReadOnly">{{mietvertragData.nebenkosten | number : '3.2-2' : 'de-CH'}} &nbsp; </span>
+              <dx-number-box class="kiss-input-right" width="160" [format]="numberFormat" [tabIndex]="26" #nebenkosten
+                [visible]="isReadOnly" [disabled]="!isReadOnly" [value]="mietvertragData.nebenkosten" [accessKey]="5"
+                (onKeyDown)="onKeyDown($event)" [step]="0" (onFocusIn)="onFocusIn(nebenkosten,'Nebenkosten','numberbox')"
+                (onFocusOut)="onFocusOut()" (onValueChanged)="getNebenkosten($event.value)">
+                <dx-validator>
+                  <dxi-validation-rule type="range" [min]="minNumber" [max]="maxNumber" message="{{ 'Klientensystem.Message.BemerkungMaxlength' | translate }}"></dxi-validation-rule>
+                </dx-validator>
+              </dx-number-box>
+            </div>
+            <div *dxTemplate="let data of 'kostenanteilUE'" class="mietvertrag_item_height mietvertrag_right_item_width mietvertrag_right_item_content">
+              <span *ngIf="!isReadOnly">{{mietvertragData.kostenanteilUE | number : '3.2-2' : 'de-CH'}} &nbsp; </span>
+              <dx-number-box class="kiss-input-right" width="160" [format]="numberFormat" [tabIndex]="27"
+                #kostenanteilUE [visible]="isReadOnly" [disabled]="!isReadOnly" [value]="mietvertragData.kostenanteilUE"
+                [accessKey]="6" (onKeyDown)="onKeyDown($event)" [step]="0" (onFocusIn)="onFocusIn(kostenanteilUE,'KostenanteilUE','numberbox')"
+                (onFocusOut)="onFocusOut()" (onValueChanged)="getKostenanteilUE($event.value)">
+                <dx-validator>
+                  <dxi-validation-rule type="range" [min]="minNumber" [max]="maxNumber" message="{{ 'Klientensystem.Message.BemerkungMaxlength' | translate }}"></dxi-validation-rule>
+                </dx-validator>
+              </dx-number-box>
+            </div>
+            <div *dxTemplate="let data of 'mietzinsgarantie'" class="mietvertrag_item_height mietvertrag_right_item_width mietvertrag_right_item_content">
+              <span *ngIf="!isReadOnly">{{mietvertragData.mietzinsgarantie | number : '3.2-2' : 'de-CH'}} &nbsp; </span>
+              <dx-number-box class="kiss-input-right" width="160" [format]="numberFormat" [tabIndex]="33"
+                #mietzinsgarantie [visible]="isReadOnly" [disabled]="!isReadOnly" [value]="mietvertragData.mietzinsgarantie"
+                [accessKey]="8" (onKeyDown)="onKeyDown($event)" [step]="0" (onFocusIn)="onFocusIn(mietzinsgarantie,'Mietzinsgarantie','numberbox')"
+                (onFocusOut)="onFocusOut()" (onValueChanged)="getMietzinsgarantie($event.value)">
+                <dx-validator>
+                  <dxi-validation-rule type="range" [min]="minNumber" [max]="maxNumber" message="{{ 'Klientensystem.Message.BemerkungMaxlength' | translate }}"></dxi-validation-rule>
+                </dx-validator>
+              </dx-number-box>
+            </div>
+            <div *dxTemplate="let data of 'mietdepot'" class="mietvertrag_item_height mietvertrag_right_item_width mietvertrag_right_item_content">
+              <span *ngIf="!isReadOnly">{{mietvertragData.mietdepot | number : '3.2-2' : 'de-CH'}} &nbsp; </span>
+              <dx-number-box class="kiss-input-right" width="160" [format]="numberFormat" [tabIndex]="30" #mietdepot
+                [visible]="isReadOnly" [disabled]="!isReadOnly" [value]="mietvertragData.mietdepot" [accessKey]="7"
+                [step]="0" (onKeyDown)="onKeyDown($event)" (onFocusIn)="onFocusIn(mietdepot,'Mietdepot','numberbox')"
+                (onFocusOut)="onFocusOut()" (onValueChanged)="getMietdepot($event.value)">
+                <dx-validator>
+                  <dxi-validation-rule type="range" [min]="minNumber" [max]="maxNumber" message="{{ 'Klientensystem.Message.BemerkungMaxlength' | translate }}"></dxi-validation-rule>
+                </dx-validator>
+              </dx-number-box>
+            </div>
+            <div *dxTemplate="let data of 'garantieGultigBis'" class="mietvertrag_item_height mietvertrag_right_item_width">
+              <span *ngIf="!isReadOnly">{{mietvertragData.garantieBis | date:[dateFormat]}} &nbsp; </span>
+              <dx-date-box [displayFormat]="dateFormat" width="160" [tabIndex]="32" #garantieBis [disabled]="!isReadOnly"
+                [visible]="isReadOnly" [value]="mietvertragData.garantieBis" [min]="minDate" [max]="maxDate" type="date"
+                (onKeyDown)="onKeyDown($event)" [accessKey]="9" (onFocusIn)="onFocusIn(garantieBis,'GarantieBis','datebox')"
+                (onFocusOut)="onFocusOut()" class="arrowKey" (onValueChanged)="getGarantieBis($event.value)">
+              </dx-date-box>
+            </div>
+            <div *dxTemplate="let data of 'miete'" class="mietvertrag_item_height mietvertrag_right_item_width">
+              <span *ngIf="!isReadOnly">{{mietvertragData.datumVon | date:[dateFormat]}} &nbsp; </span>
+              <dx-date-box [tabIndex]="28" #miete width="160" [displayFormat]="dateFormat" #datumVon [disabled]="!isReadOnly"
+                [visible]="isReadOnly" (onKeyDown)="onKeyDown($event)" [accessKey]="2" [value]="mietvertragData.datumVon"
+                type="date" [min]="minDate" [max]="maxDate" (onValueChanged)="getMiete($event.value)" (onFocusIn)="onFocusIn(miete,'Miete','datebox')"
+                (onFocusOut)="onFocusOut()">
+              </dx-date-box>
+            </div>
+            <div *dxTemplate="let data of 'bis'" class="mietvertrag_item_height mietvertrag_right_item_width">
+              <span *ngIf="!isReadOnly">{{mietvertragData.datumBis | date:[dateFormat]}} &nbsp; </span>
+              <dx-date-box [displayFormat]="dateFormat" width="160" [tabIndex]="29" #datumBis [disabled]="!isReadOnly"
+                [visible]="isReadOnly" [accessKey]="3" [min]="minDate" [max]="maxDate" (onKeyDown)="onKeyDown($event)"
+                class="arrowKey" (onFocusIn)="onFocusIn(datumBis,'DatumBis','date-box')" (onFocusOut)="onFocusOut()"
+                [value]="mietvertragData.datumBis" type="date" (onValueChanged)="getBis($event.value)">
+              </dx-date-box>
+            </div>
+            <div *dxTemplate="let data of 'mieteAbgetreten'" class="mietvertrag_item_height mietvertrag_right_item_width">
+              <dx-check-box [disabled]="!isReadOnly" #mieteAbgetreten1 [value]="mietvertragData.mieteAbgetreten ? mietvertragData.mieteAbgetreten : false"
+                [tabIndex]="34" [accessKey]="10" (onKeyDown)="onKeyDown($event)" (focus)="onFocusIn(mieteAbgetreten1,'MieteAbgetreten','checkbox');"
+                (focusout)="onFocusOut()" (onValueChanged)="getMieteAbgetreten($event.value)">
+              </dx-check-box>
+            </div>
+          </dx-form>
+        </div>
+      </div>
+    </div>
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+    <app-popup-concurrency [popUpConcurrencyModel]="popUpConcurrencyModel"></app-popup-concurrency>
+    <app-grid-function #gridFunction (onchange)="onChangeGridSetting()" [keyStorage]="gridFunctionKey"></app-grid-function>
+    <kiss-printer #printer></kiss-printer>
+  </section>
+</kiss-right-component>

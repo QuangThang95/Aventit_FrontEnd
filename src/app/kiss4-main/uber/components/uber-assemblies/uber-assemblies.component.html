@@ -1,0 +1,26 @@
+<div id="H003_assemblies" class="container-detail form-content-details">
+  <div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+    <kiss-card-title [titleHeader]="'Uber.Title_Group.Assemblies'| translate" [customizeBtn]="customizeBtn"
+      [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)">
+    </kiss-card-title>
+  </div>
+  <div [ngClass]="{'container__hide': !isExpandTabAssemblies}" class="form-body" id='form-uber-assemblies'>
+    <div class="dx-field" id='H003_assemblies_descriptions'>
+      <span> {{'Uber.Detail.Assemblies'| translate}}</span>
+    </div>
+    <div class="grid-table-view">
+      <dx-data-grid #gridKiss4WebVersions id="H003_assemblies_grid" [dataSource]="kiss4WebVersions" [showBorders]="true"
+        class="data-grid-wrapper" [allowColumnResizing]="true" [columnAutoWidth]="true" [columnMinWidth]="50"
+        (mousedown)="onClickGrid()" [selectedRowKeys]="selectedGridKiss4WebVersionsKeys" [allowColumnReordering]="true"
+        [columnResizingMode]="'widget'">
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-paging [pageSize]="10000"></dxo-paging>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-selection mode="single"></dxo-selection>
+        <dxi-column dataField="name" [caption]="'Uber.Caption.Name'|translate" dataType="string"></dxi-column>
+        <dxi-column dataField="version" [caption]="'Uber.Caption.Version'|translate" dataType="string"></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>

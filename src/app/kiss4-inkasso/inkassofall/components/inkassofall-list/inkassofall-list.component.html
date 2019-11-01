@@ -1,0 +1,44 @@
+<div class="grid-table-view">
+    <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container">
+        <dx-filter-builder [fields]="filterColumns" [(value)]="filter"></dx-filter-builder>
+        <dx-button [text]="'Inkassofall.ApplyFilter' | translate" type="default" (onClick)="gridInkassofall.instance.filter(filter)"></dx-button>
+        <div class="dx-clearfix"></div>
+    </div>
+    <dx-data-grid
+        #gridInkassofall
+        [dataSource]="inkassofalls"
+        [showBorders]="true"
+        [showColumnLines]="true"
+        [allowColumnResizing]="true"
+        [allowColumnReordering]="true"
+        [showRowLines]="true"
+        [focusedRowEnabled]="true"
+        [columnAutoWidth]="true"
+        [noDataText]="'Inkassofall.Validation.NoDataGrid' | translate"
+        (onRowClick)="onRowClick($event)"
+        (onContentReady)="onContentReady($event)">
+        <dxo-paging [enabled]="false"></dxo-paging>
+        <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+        <dxo-load-panel [enabled]="false"></dxo-load-panel>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-selection mode="single"></dxo-selection>
+        <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+        <dxo-group-panel [visible]="gridFunctionModel.isGrouping" [emptyPanelText]="'Inkassofall.emptyPanelText' | translate"></dxo-group-panel>
+        <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunctionModel.isGrouping"></dxo-grouping>
+        <dxo-export [fileName]="'Inkassofall.Title' | translate" [allowExportSelectedData]="true"></dxo-export>
+        <dxo-column-chooser #columnChooser [title]="'Inkassofall.ColumnChooser.Title' | translate" emptyPanelText=""></dxo-column-chooser>
+        <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" highlightCaseSensitive="true"
+        [placeholder]="'Inkassofall.Placeholder' | translate"></dxo-search-panel>
+        <dxo-sorting mode="multiple"></dxo-sorting>
+
+        <dxi-column dataField="eroffnetAm" width="auto" [minWidth]="50" [caption]="'Inkassofall.eroffnetAm' | translate"></dxi-column>
+        <dxi-column dataField="typ" width="auto" [minWidth]="50" [caption]="'Inkassofall.typ' | translate">
+            <dxo-lookup [dataSource]="" displayExpr="text" valueExpr="code">
+            </dxo-lookup>
+        </dxi-column>
+        <dxi-column dataField="abgeschlossenAm" [minWidth]="50" [caption]="'Inkassofall.abgeschlossenAm' | translate"></dxi-column>
+    </dx-data-grid>
+</div>
+
+<!-- Grid setting component -->
+<app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>

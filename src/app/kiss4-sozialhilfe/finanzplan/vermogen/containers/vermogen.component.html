@@ -1,0 +1,32 @@
+<kiss-right-component>
+  <kiss-header-bar (action)="onHeaderAction($event)" (dblclick)="onDblClickMessage()" [isShiftKeyDown]="isShiftKeyDown"></kiss-header-bar>
+  <section id="wrapper-content">
+    <div class="container kennzahlen-aktualisieren-container" id="i006_vermogen">
+      <div class="right-content">
+        <kiss-vermogen-list #vermogenList
+          [dataSource]="vermogens"
+          (rowSelected)="rowSelectChange($event)"
+          [disableGrid]="isDisableGrid"
+        >
+        </kiss-vermogen-list>
+
+        <div class="container-detail form-content-details" id="i006_detail">
+          <kiss-vermogen-detail #formDetail
+            (action)="onHandleDetailAction($event)"
+            [dataVermogenDetail]="rowSelectedOfGrid"
+            (disableGridEventEmitter)="onDisableGrid($event)"
+            [dataSelectBoxPerson]="persons"
+            [dataSelectBoxArtDesVermogen]="artDesVermogens"
+          >
+          </kiss-vermogen-detail>
+        </div>
+      </div>
+    </div>
+  </section>
+</kiss-right-component>
+
+<!-- Print component -->
+<kiss-printer #printer></kiss-printer>
+
+<!-- Confirm popup -->
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>

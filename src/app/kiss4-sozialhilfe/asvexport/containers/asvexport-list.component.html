@@ -1,0 +1,256 @@
+<kiss-right-component>
+    <app-navigator id="i025_asv" titleHeader="{{'Asvexport.Title' | translate}}" [listBtn]="listBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+    <section id="wrapper-content">
+        <div class="container asvexport-container">
+            <div class="right-content rounded-0">
+                <div class="error" *ngIf="isErrorClosed">
+                    <span class="btn-close-error">
+                        <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+                        </dx-button>
+                    </span>
+                    <div class="error-messege">
+                        <span class="ico-error">
+                            <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                        </span>
+                        <i>{{messageErr}}</i>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------>
+                <!-------------------------------- Gridview 1: Asv-Datenerfassung -------------------------------------->
+                <!------------------------------------------------------------------------------------------------>
+                <div class="grid-table-view">
+                    <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container" >
+                        <dx-filter-builder [fields]="gridAsvexportTop.instance.option('columns')" [(value)]="filterAvs" [disabled] = "isDisabledGridTop">
+                        </dx-filter-builder>
+                        <dx-button text="{{ 'Asvexport.GridTop.FilterBuilderButton' | translate}}" type="default"
+                            (onClick)="gridAsvexportTop.instance.filter(filterAvs)" [disabled] = "isDisabledGridTop">
+                        </dx-button>
+
+                        <div class="dx-clearfix"></div>
+                    </div>
+                    <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+                    <!---------------------Area for gridview -------------------------->
+                    <dx-data-grid id="i025_asv-datenerfassung_grid" #gridAsvexportTop class="gridContainer"
+                        [dataSource]="dataExportAllGridTop" [showBorders]="true" [showColumnLines]="true"
+                        [showRowLines]="true" (onRowClick)="getDetailGridBottom($event)" [selectedRowKeys]="selectedKeys"
+                        [wordWrapEnabled]="false" keyExpr="sstASVSExportID" (mousedown)="onClickGrid($event, 'gridAsvexportTop')"
+                        [disabled]='isDisabledGridTop' (onContextMenuPreparing)="onContextMenuPreparing($event, 'gridAsvexportTop')"
+                        [columnAutoWidth]="true" [allowColumnResizing]="true" [columnResizingMode]="'widget'"
+                        [columnMinWidth]="50" [allowColumnReordering]="true" (onContentReady) = onContentReady($event)>
+                        <dxo-paging [enabled]="false"></dxo-paging>
+                        <dxo-paging [pageSize]="99999"></dxo-paging>
+                        <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                        <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+                        <dxo-sorting mode="multiple"></dxo-sorting>
+                        <dxo-selection mode="single"></dxo-selection>
+                        <dxo-group-panel [visible]="gridFunction.model.isGrouping" emptyPanelText="{{ 'Asvexport.EmptyPanelText' | translate }}"></dxo-group-panel>
+                        <dxo-grouping [contextMenuEnabled]="true" #expandGridTop
+                            [autoExpandAll]="false"></dxo-grouping>
+                        <dxi-column dataField="datumExport" caption="{{ 'Asvexport.GridTop.TitleExportDatum' | translate}}"
+                            dataType="date" [format]="{ type: 'dd.MM.yyyy' }" [tabIndex]="2"></dxi-column>
+                        <dxi-column [allowFiltering]="true" dataField="creator" caption="{{ 'Asvexport.GridTop.TitleBenutzer' | translate}}"
+                            [tabIndex]="3"></dxi-column>
+                        <dxi-column [allowFiltering]="true" dataField="bemerkung" caption="{{ 'Asvexport.GridTop.TitleBemerkung' | translate}}"></dxi-column>
+                        <dxo-column-chooser #columnChooser [title]="titleBenutzerdefiniert" [enabled]="false" emptyPanelText = ""
+                            [tabIndex]="4"></dxo-column-chooser>
+                        <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+                    </dx-data-grid>
+                    <!-- -------------------------Area for gridview ------------------- -->
+
+                </div>
+                <!-- <div class="dx-clearfix"></div> -->
+                <!------------------------------------------------------------------------------------------------>
+                <!-------------------------The End Gridview 1: Asv-Datenerfassung -------------------------------------->
+                <!------------------------------------------------------------------------------------------------>
+
+                <!------------------------------------------------------------------------------------------------>
+                <!------------------------ Gridview 2: Detail for each of ASV-Datenerfassung --------------------------->
+                <!------------------------------------------------------------------------------------------------>
+                <div class="form-content-details">
+                    <div class="toolbar-header">
+                        <dx-toolbar id="i025_detail_header" (onItemClick)="toolBarOnItemClickBottomGrd($event)">
+                            <dxi-item [template]="'titleGridview'" name="toolbar-header" location="before" [tabIndex]="1"></dxi-item>
+                            <div id="i025_detail_label-detail" *dxTemplate="let temp of 'titleGridview'">
+                                <span class="toolbar-header-title"> {{ 'Asvexport.TitleDetail'|
+                                    translate
+                                    }}</span>
+                            </div>
+                            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemSpeichernUnderTemplate'"></dxi-item>
+                            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemNeueAsvDatenfassungTemplate'"></dxi-item>
+                            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemBearbeitenTemplate'"></dxi-item>
+                            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemNeueEintrageExportierenTemplate'"></dxi-item>
+                            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemSpeichernTemplate'"></dxi-item>
+                            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemAbbrechenTemplate'"></dxi-item>
+                            <!-- Neue ASV-Datenfassung button-->
+                            <div *dxTemplate="let temp of 'itemNeueAsvDatenfassungTemplate'">
+                                <dx-button id="i025_detail_neue-asv-datenfassung" name="neue-asv-datenfassung" text="{{ 'Asvexport.Button.Add' | translate }}"
+                                    width="100%" [visible]="visibleAddNewBtn" (onClick)="onClickAddNewBtnGrdTop()">
+                                </dx-button>
+                            </div>
+                            <!-- Bearbeiten button-->
+                            <div *dxTemplate="let temp of 'itemBearbeitenTemplate'">
+                                <dx-button id="i025_detail_bearbeiten" name="bearbeiten" text="{{ 'Asvexport.Button.Edit' | translate }}"
+                                    width="100%" (onClick)="onClickEditBtnGrdTop($event)" [visible]="visibleEditBtn">
+                                </dx-button>
+                            </div>
+                            <!-- Speichern under... button-->
+                            <div *dxTemplate="let temp of 'itemSpeichernUnderTemplate'">
+                                <dx-button id="i025_detail_speichern-unter" name="neue-monatswerte-erfassen" text="{{ 'Asvexport.Button.ExportXml' | translate }}"
+                                    width="100%" [visible]="visibleSaveAsBtn" type="file" (onClick)="ExportFileXml()"
+                                    [disabled]="disableSpeichernUnterBtn">
+                                </dx-button>
+                            </div>
+                            <!-- Neue Eintrage exportieren button-->
+                            <div *dxTemplate="let temp of 'itemNeueEintrageExportierenTemplate'">
+                                <dx-button id="i025_detail_neue-eintrage-exportieren" name="neue-eintrage-exportieren"
+                                    text="{{ 'Asvexport.Button.CreateExport' | translate }}" width="100%" [visible]="visibleExportBtn"
+                                    [disabled]="disableExportBtn" (onClick)="CreateExport()">
+
+                                </dx-button>
+                            </div>
+                            <!-- Speichern button-->
+                            <div *dxTemplate="let temp of 'itemSpeichernTemplate'">
+                                <dx-button id="i025_detail_speichern" name="speichern" text="{{ 'Asvexport.Button.Save'  | translate }}"
+                                    width="100%" [visible]="visibleSaveBtn" [disabled]="isDisabledSpeichern" (onClick)="saveDataGridTop()">
+                                </dx-button>
+                            </div>
+                            <!-- Abbrechen button-->
+                            <div *dxTemplate="let temp of 'itemAbbrechenTemplate'">
+                                <dx-button id="i025_detail_abbrechen" name="abbrechen" text="{{ 'Asvexport.Button.Cancel' | translate }}"
+                                    width="100%" (onClick)="onClickCancelBtnGrdTop()" [visible]="visibleCancelBtn">
+                                </dx-button>
+                            </div>
+                            <!-- i025_zu-exportierende-eintrage_additional-functions -->
+                        </dx-toolbar>
+
+                    </div>
+                    <!-------------------------------- Add Detail panel ------------------------------------------------>
+
+                    <!---------------------------- The End Add Detail panel ------------------------------------------------>
+                    <!----------------------Area for Bemerkung textbox(i025_Detail_bemerkung) and Sektion combobox (i025_Detail_sektion) ------------------------>
+                    <div class="form-body">
+                        <dx-validation-group #validationGroup>
+                            <dx-form [showColonAfterLabel]="false">
+                                <dxi-item itemType="group" cssClass="second-group" [colCount]="2">
+                                    <dxi-item [template]="'textBoxBemerkungTemplate'" [colSpan]="2">
+                                        <dxo-label text="{{ 'Asvexport.TitleBemerkung' | translate }}"></dxo-label>
+                                    </dxi-item>
+                                    <dxi-item itemType="group" cssClass="second-group" [colSpan]="1">
+                                        <dxi-item [template]="'selectBoxSektionTemplate'">
+                                            <dxo-label text="{{ 'Asvexport.TitleSektion' | translate }}" [visible]="isAddNew"></dxo-label>
+                                        </dxi-item>
+                                    </dxi-item>
+                                </dxi-item>
+                                <div *dxTemplate="let data of 'textBoxBemerkungTemplate'">
+                                    <dx-text-box #bemerkung *ngIf="!isReadOnly" class="i025-text-box" id="i025_detail_bemerkung"
+                                        [disabled]="disablebemerkungtb" [(value)]="txtBemerkung" (onFocusIn)="onFocusIn(bemerkung,'textbox')"
+                                        (onFocusOut)="onFocusOut($event)" [accessKey]="1" (onValueChanged)="onValueChanged($event)">
+                                        <dx-validator>
+                                            <dxi-validation-rule type="stringLength" [max]="lengthInput" message="{{ 'Asvexport.MessageError.ValidateBemerkung' | translate }}"></dxi-validation-rule>
+                                        </dx-validator>
+                                    </dx-text-box>
+                                    <span *ngIf="isReadOnly">{{this.txtBemerkung}}</span>
+                                </div>
+
+                                <div *dxTemplate="let data of 'selectBoxSektionTemplate'">
+                                    <dx-select-box #sektion id="i025_detail_sektion" [showClearButton]="true" valueExpr="code"
+                                        displayExpr="text" [visible]="isAddNew" (onItemClick)="selectDropdownValue($event)"
+                                        (onValueChanged)="onChangeSelectBox($event)" [dataSource]="xOrgUnitData"
+                                        (onFocusIn)="onFocusIn(sektion,'selectbox')" (onFocusOut)="onFocusOut($event)"
+                                        [accessKey]="2" (onKeyDown)="onKeyDownSelectbox($event)" [searchEnabled]="true" [showClearButton]="true"></dx-select-box>
+                                </div>
+                            </dx-form>
+                        </dx-validation-group>
+                    </div>
+                    <!------------------ End Area for Bemerkung textbox and Sektion combobox ---------------------->
+
+                    <div>
+                        <div class="toolbar-header">
+                            <kiss-card-title *ngIf="!isAddNew" id="i025_detail_label-zu-exportierende-eintrage"
+                                titleHeader="{{ 'Asvexport.TitleGridBottom' | translate }}" [listBtn]="listBtnBottom"
+                                [customizeBtn]="customizeBtnBottom" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClickBottomGrd($event)"></kiss-card-title>
+                            <kiss-card-title *ngIf="isAddNew" id="i025_detail_label-zu-exportierende-eintrage"
+                                titleHeader="{{ 'Asvexport.TitleGridBottomAdd' | translate }}" [listBtn]="listBtnBottom"
+                                [customizeBtn]="customizeBtnBottom" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClickBottomGrd($event)"></kiss-card-title>
+                        </div>
+
+                        <div *ngIf="gridFunctionBottom.model.isFilterBuilder" class="filter-container">
+                            <dx-filter-builder [fields]="gridZuExportierendeEintrageBottom.instance.option('columns')"
+                                [(value)]="filterAvsBottom">
+                            </dx-filter-builder>
+                            <dx-button text="Apply Filter" type="default" (onClick)="gridZuExportierendeEintrageBottom.instance.filter(filterAvsBottom)">
+                            </dx-button>
+                            <div class="dx-clearfix"></div>
+                        </div>
+                        <app-grid-function #gridFunctionBottom (onchange)="gridFunctionBottom.model" [keyStorage]="gridFunctionKeyBottom"></app-grid-function>
+                        <!--------------------------------------- Area for gridview ------------------------------------------------>
+                        <div class="data-grid-bottom-class">
+                            <dx-data-grid id="i025_zu-exportierende-eintrage_grid" #gridZuExportierendeEintrageBottom
+                                [dataSource]="dataExportAllGridBottom" [showBorders]="true" [showColumnLines]="true"
+                                [showRowLines]="true" (mousedown)="onClickGrid($event, 'gridZuExportierendeEintrageBottom')"
+                                (onContextMenuPreparing)="onContextMenuPreparing($event, 'gridAsvexportBottom')" class="gridBottom"
+                                [columnAutoWidth]="true" [allowColumnResizing]="true" [columnResizingMode]="'widget'"
+                                [columnMinWidth]="50" (onRowClick)="onRowClick($event)" (onSelectionChanged)="onSelectionChanged()" [allowColumnReordering]="true" [customizeExportData]="customizeExportData">
+                                <dxo-column-chooser #columnChooser [title]="titleBenutzerdefiniert" id="columnChooser"
+                                    class="column" [enabled]="false" emptyPanelText = ""></dxo-column-chooser>
+                                <dxo-paging [enabled]="false"></dxo-paging>
+                                <dxo-paging [pageSize]="99999"></dxo-paging>
+                                <dxo-filter-row [visible]="gridFunctionBottom.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                                <dxo-header-filter [visible]="gridFunctionBottom.model.isFilter"></dxo-header-filter>
+                                <dxo-group-panel [visible]="gridFunctionBottom.model.isGrouping" emptyPanelText="{{ 'Asvexport.EmptyPanelText' | translate }}"></dxo-group-panel>
+                                <dxo-grouping [contextMenuEnabled]="true"
+                                    #expandGridBottom [autoExpandAll]="false"></dxo-grouping>
+                                <dxo-selection mode="multiple"></dxo-selection>
+                                <dxo-sorting mode="multiple"></dxo-sorting>
+                                <dxi-column dataField="nameVorname" caption="{{ 'Asvexport.GridBottom.TitleName' | translate}}" [width] = "'auto'"></dxi-column>
+                                <dxi-column dataField="baPersonID" caption="{{ 'Asvexport.GridBottom.TitlePersonID' | translate}}" [width] = "'auto'"></dxi-column>
+                                <dxi-column dataField="datumVon" caption="{{ 'Asvexport.GridBottom.TitleAnmeldung' | translate}}"
+                                    dataType="date" [format]="{ type: 'dd.MM.yyyy' }" [width] = "'auto'"></dxi-column>
+                                <dxi-column dataField="datumBis" caption="{{ 'Asvexport.GridBottom.TitleAbmeldung' | translate}}"
+                                    dataType="date" [format]="{ type: 'dd.MM.yyyy' }" [width] = "'auto'"></dxi-column>
+                                <dxi-column  dataField="widerruf" caption="{{ 'Asvexport.GridBottom.TitleWiderruf' | translate}}" cellTemplate = "cellWiderruf" alignment="left"></dxi-column>
+                                <div *dxTemplate="let data of 'cellWiderruf'" class="grid-content-center" >
+                                    <dx-check-box [disabled]="true" [(value)]="data.data.widerruf" class="custom-checkbox">
+                                    </dx-check-box>
+                                  </div>
+                                <dxi-column dataField="problem" caption="{{ 'Asvexport.GridBottom.TitleProblem' | translate}}"
+                                    [visible]="isAddNew"></dxi-column>
+                                <dxo-search-panel [visible]="gridFunctionBottom.model.isSearchPanel"
+                                    highlightCaseSensitive="true"></dxo-search-panel>
+                                <dxo-export [enabled]="false"  [allowExportSelectedData]="true"></dxo-export>
+                            </dx-data-grid>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!----------------------------------- The End Area for gridview ------------------------------------------------->
+                </div>
+                <!---------------------------------------------------------------------------------------------------->
+                <!-------------------- The End Gridview 2: Detail for each of ASV-Datenerfassung --------------------------->
+                <!---------------------------------------------------------------------------------------------------->
+            </div>
+
+            <!-- Concurrency popup -->
+            <dx-popup id="i025_popup" title="{{popupConcurrency.title}}" [width]="680" [height]="'auto'" [(visible)]="popupConcurrency.visible"
+                [dragEnabled]="false" [closeOnOutsideClick]="false" (onHiding)="onHiding($event)">
+                <div *dxTemplate="let data of 'content'">
+                    <h3 class="custom-title">
+                        <pre>{{popupConcurrency.message}}</pre>
+                    </h3>
+                    <div class="button-confirm">
+                        <dx-button id="i025_asvexport_abbrechen" class="button-background dx-button" text="{{ popupConcurrency.abbrechen }}"
+                            (onClick)="popupConcurrencyAbbrechen('abbrechen')" icon="remove">
+                        </dx-button>&nbsp;
+                        <dx-button id="i025_asvexport_daten-aktualisieren" class="button-background dx-button" text="{{ popupConcurrency.datenAktualisieren }}"
+                            (onClick)="popupConcurrencyAbbrechen('daten')" icon="refresh">
+                        </dx-button>
+                    </div>
+                </div>
+            </dx-popup>
+            
+        </div>
+    </section>
+    <kiss-printer #printer></kiss-printer>
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+</kiss-right-component>

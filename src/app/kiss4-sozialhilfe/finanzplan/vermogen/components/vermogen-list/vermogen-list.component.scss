@@ -1,0 +1,8 @@
+@import 'settings/variables.scss';
+#clientList {
+  ::ng-deep dx-data-grid:hover {
+    ::ng-deep .dx-datagrid-rowsview {
+      border-bottom: 1px solid #ddd; // overwrite color border when hover
+    }
+  }
+}

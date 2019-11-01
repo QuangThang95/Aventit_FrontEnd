@@ -1,0 +1,60 @@
+<!--Grid basis textmarken-->
+<div class="grid-table-view">
+    <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container">
+        <dx-filter-builder [fields]="gridTextMarken.instance.option('columns')" [(value)]="filter"></dx-filter-builder>
+        <dx-button [text]="'CtlBfsFragenkatalog.ApplyFilter' | translate" type="default" (onClick)="gridTextMarken.instance.filter(filter)"></dx-button>
+        <div class="dx-clearfix"></div>
+    </div>
+    <app-grid-function #gridFunction (onchange)="gridFunction.model"></app-grid-function>
+    <div class="grid-margin-top">
+        <dx-data-grid id="r011_data-grid"
+            #gridBasisTextmarken 
+            [columnAutoWidth]="true" 
+            (onRowClick)="onClickRowGrid($event)"
+            [dataSource]="textmarkenData" 
+            [allowColumnResizing]="true" 
+            [hoverStateEnabled]="true" 
+            [showColumnLines]="true"
+            columnResizingMode="widget" 
+            [showRowLines]="true" 
+            [showBorders]="true" 
+            keyExpr="id" 
+            [height]="300"
+            [noDataText]="'BasisTextmarken.BasisTextmarkenDetails.KeineDaten' | translate" 
+            [editing]="{allowDeleting: false, texts: {confirmDeleteMessage: ''}}"
+            [customizeExportData]="customizeExportData"
+            [allowColumnReordering]="true" 
+            [columnMinWidth]="70"
+            [focusedRowEnabled]="true"
+            [focusedRowKey]="rowIndex"
+            (onFocusedRowChanged)="onFocusedRowChanged($event)"
+            [disabled]="isDisable">
+            <dxi-column minWidth="70" dataField="category" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Kategorie' | translate"></dxi-column>
+            <dxi-column minWidth="70" dataField="displayName" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Textmarke' | translate"></dxi-column>
+            <dxi-column minWidth="70" dataField="bookmarkCodeText" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Typ' | translate"></dxi-column>
+            <dxi-column minWidth="70" dataField="tableName" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Tabelle' | translate"></dxi-column>
+            <dxi-column minWidth="70" dataField="description" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Beschreibung' | translate"></dxi-column>
+            <dxi-column minWidth="70" dataField="modul" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Modul' | translate"></dxi-column>
+            <dxi-column minWidth="70" dataField="alwaysVisible" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.ImmerSichtbar' | translate"
+                dataType="boolean"></dxi-column>
+            <dxi-column minWidth="70" dataField="system" [caption]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.System' | translate"
+                dataType="boolean"></dxi-column>
+            <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" [highlightCaseSensitive]="false"
+                [placeholder]="'BasisTextmarken.BasisTextmarkenDetails.SearchSuche' | translate"></dxo-search-panel>
+            <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+            <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+            <dxo-paging [enabled]="false"></dxo-paging>
+            <dxo-group-panel [visible]="gridFunctionModel.isGrouping"></dxo-group-panel>
+            <dxo-scrolling mode="infinite"></dxo-scrolling>
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="true"></dxo-grouping>
+            <dxo-column-chooser #columnChooser emptyPanelText="" [title]="'BasisTextmarken.BasisTextmarkenDetails.menuGrid.Benutzerdefiniert' | translate"
+                [enabled]="false"></dxo-column-chooser>
+            <dxo-export [enabled]="false" fileName="Basis Textmarken" [allowExportSelectedData]="true"></dxo-export>
+        </dx-data-grid>
+        <div class="row count-datagrid" *ngIf="textmarkenData?.length > 0">
+            <p id="r011_text-box_count-data">{{
+                'BasisTextmarken.BasisTextmarkenDetails.menuGrid.listGrid' | translate }}: <span>{{textmarkenData.length}}</span></p>
+        </div>
+    </div>
+</div>

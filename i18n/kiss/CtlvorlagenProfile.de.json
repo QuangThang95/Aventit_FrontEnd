@@ -1,0 +1,57 @@
+﻿{
+  "VorlagenProfile": {
+    "Title": "Vorlagen Profile",
+    "FilterAnwendenButton" : "Filter anwenden",
+    "Suche": {
+      "TitleSearch": "Profilename"
+    },
+    "Liste": {
+      "xProfileIDCaption": "ID",
+      "NameCaption": "Profilname",
+      "TagsCaption": "Merkmale"
+    },
+    "Detail": {
+      "Title": "Detail",
+      "Add": "Neues Vorlagen Profil",
+      "Edit": "Bearbeiten",
+      "Save": "Speichern",
+      "Cancel": "Abbrechen",
+      "Delete": "Löschen",
+      "NameCaption": "Profilname",
+      "TagsCaption": "Merkmale",
+      "TextAreaCaption": "Beschreibung"
+    },
+    "Toolbar": {
+      "GridDrucken": "Grid drucken",
+      "ExcelExport": "Excel Export",
+      "Spaltenauswahl": "Spaltenauswahl",
+      "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden",
+      "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden",
+      "Suche": "Suche anzeigen/ausblenden",
+      "Filtereditor": "Filtereditor anzeigen/ausblenden",
+      "GridEinstellungen": "Grid Einstellungen"
+    },
+    "Message": {
+      "Title": "Bestätigung!",
+      "Infomation": "Infomation",
+      "Add": "Neuen Datensatz wieder löschen ?",
+      "Edit": "Änderungen an diesem Datensatz rückgängig machen ?",
+      "Delete": "Soll der Datensatz gelöscht werden ?",
+      "NameRequired": "Das Feld 'Profilname' darf nicht leer bleiben !",
+      "Information": "Information",
+      "MaxLenght": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein.",
+      "Placeholder": "Wählen..."
+    },
+    "PopupButton": {
+      "Yes": "Ja",
+      "No": "Nein",
+      "Language": "de-CH",
+      "Abbrechen": "Abbrechen",
+      "DatenAktualisieren": "Daten aktualisieren",
+      "Ok": "Ok"
+    },
+    "Grid": {
+      "Suche": "Suche..."
+    }
+  }
+}

@@ -1,0 +1,4 @@
+<kiss-right-component>
+    <app-navigator [titleHeader]="pageTitle" [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+</kiss-right-component>
+<kiss-demografie-history-detail [isPopupVisible]="isPopupVisible" (emitCloseHistory)="isPopupVisible = $event"></kiss-demografie-history-detail>

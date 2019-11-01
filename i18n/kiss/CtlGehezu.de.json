@@ -1,0 +1,31 @@
+{
+    "Gehezu": {
+        "TitlePopup": "Gehe zu ...",
+        "TitleGroupSozialhilfe": "Sozialhilfe",
+        "TitleGroupAsyl": "Asyl",
+        "TitleGroupFallfuhrung": "Fallführung",
+        "TitleInformation":"Information",
+        "LabelWhFinanzplan": "Finanzplan Nr.",
+        "LabelWhEinzelzahlung": "EZ oder ZL Nr.",
+        "LabelWhFinanzplanSIL": "Finanzplan SIL",
+        "LabelFaLeistung": "Fall Nr.",
+        "ButtonGehezu": "Gehe zu",
+        "ButtonAbbruch": "Abbruch",
+        "MsgErrorWhFinanzplanFirst": "Der Sozialhilfe-Finanzplan mit der Nummer ",
+        "MsgErrorWhFinanzplanLast": " konnte nicht gefunden werden.",
+
+        "MsgErrorWhEinzelzahlungFirst": "Die Sozialhilfe-Einzelzahlung mit der Nummer ",
+        "MsgErrorWhEinzelzahlungLast": " konnte nicht gefunden werden.",
+
+        "MsgErrorAyFinanzplanFirst": "Der Asyl-Finanzplan mit der Nummer ",
+        "MsgErrorAyFinanzplanLast": " konnte nicht gefunden werden.",
+
+        "MsgErrorAyEinzelzahlungFirst": "Die Asyl-Einzelzahlung mit der Nummer ",
+        "MsgErrorAyEinzelzahlungLast": " konnte nicht gefunden werden.",
+
+        "MsgErrorFaLeistungFirst": "Die Fallführung mit der Nummer ",
+        "MsgErrorFaLeistungLast": " konnte nicht gefunden werden.",
+        "MsgErrorInvalidForm": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein.",
+        "MsgErrorMaxLength": "Beim beim Aufruf  mit der Nummer 0 ist ein Fehler aufgetreten."
+    }
+}

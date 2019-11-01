@@ -1,0 +1,110 @@
+<kiss-right-component>
+    <app-navigator id="o007_konfiguration_header" titleHeader="{{ 'Konfiguration.Title' | translate }}" [listBtn]="listBtn"
+        (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+    <section id="wrapper-content">
+        <div class="container">
+            <div id="o007_konfiguration" class="right-content">
+                <div class="dx-fieldset" id="o007_detail">
+                        <div class="error" *ngIf="isErrorClosed">
+                            <span class="btn-close-error">
+                                <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+                                </dx-button>
+                            </span>
+                            <div class="error-messege">
+                                <span class="ico-error">
+                                    <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                                </span>
+                                <i id="err-messeger">{{messageErr}}</i>
+                            </div>
+                        </div>
+                    <dx-form [showColonAfterLabel]="false">
+                            <dxi-item [label]="{text: 'Konfiguration.Erhebungsjahr'| translate}" [template]="'erhebungsjahrTemplate'"></dxi-item>
+                            <dxi-item [label]="{text: 'Konfiguration.InstitutionNr'| translate}" [template]="'institutionNrTemplate'"></dxi-item>
+                            <dxi-item [label]="{text: 'Konfiguration.DSN'| translate}" [template]="'dsnTemplate'"></dxi-item>
+                            <dxi-item [label]="{text: 'Konfiguration.ExportPfad'| translate}" [template]="'exportPfadTemplate'"></dxi-item>
+                            <dxi-item [label]="{text: 'Konfiguration.ExportPfadXML'| translate}" [template]="'exportPfadXMLTemplate'"></dxi-item>
+                            <dxi-item [label]="{text: 'Konfiguration.Gemeinden'| translate}" [template]="'gemeindenTemplate'"></dxi-item>
+                            <dxi-item [label]="{text: ' '}" [template]="'gridTemplate'"></dxi-item>            
+
+                            <div *dxTemplate="let data of 'erhebungsjahrTemplate'">
+                                <span id="o007_konfiguration_erhebungsjahr">{{dataKonfiguration.sostatJahr}}</span>
+                            </div>
+                            <div *dxTemplate="let data of 'institutionNrTemplate'">
+                                <span id="o007_konfiguration_institution-nr">{{dataKonfiguration.sostatInstitutionNr}}</span>
+                            </div>
+                            <div *dxTemplate="let data of 'dsnTemplate'">
+                                <span id="o007_konfiguration_konfiguration_dsn">{{dataKonfiguration.sostatDsn}}</span>
+                            </div>
+                            <div *dxTemplate="let data of 'exportPfadTemplate'">
+                                <span id="o007_konfiguration_export-pfad">{{dataKonfiguration.sostatExportPfad}}</span>
+                            </div>
+                            <div *dxTemplate="let data of 'exportPfadXMLTemplate'">
+                                <span id="o007_konfiguration_export-pfad-xml">{{dataKonfiguration.sostatExportPfadXml}}</span>
+                            </div>
+                            <div *dxTemplate="let data of 'gemeindenTemplate'">
+                                    <span> </span>
+                            </div>    
+                            <div *dxTemplate="let data of 'gridTemplate'">
+                                    <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container">
+                                            <dx-filter-builder [fields]="filterColumns" [(value)]="filter">
+                                            </dx-filter-builder>
+                                            <dx-button text="{{ 'Konfiguration.Button.Filter' | translate }}" type="default"
+                                                (onClick)="konfigurationGrid.instance.filter(filter)">
+                                            </dx-button>
+                                            <div class="dx-clearfix"></div>
+                                    </div>
+                                        <app-grid-function #gridFunction></app-grid-function>
+                                        <dx-data-grid id="o007_konfiguration_data-grid" #konfigurationGrid 
+                                            [dataSource]="konfigurationForGrid"
+                                            [allowColumnResizing]="true"
+                                            [hoverStateEnabled]="true"
+                                            [showRowLines]="true"
+                                            [showBorders]="true"
+                                            [height]="300"
+                                            [width]="700"
+                                            [columnAutoWidth]="true"
+                                            noDataText="{{ 'Konfiguration.Validation.NoDataGrid' | translate }}"
+                                            (onKeyDown)="onKeyDown($event)"
+                                            (onRowClick)="onRowClickKonfigurationGrid($event)"
+                                            class="custom-grid-container"
+                                            (onContextMenuPreparing)="onContextMenuPreparing($event)">
+                                            <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel"
+                                                highlightCaseSensitive="true" placeholder="{{ 'Konfiguration.Placeholder' | translate }}"></dxo-search-panel>
+                                            <dxo-column-chooser #columnChooser emptyPanelText="" title="{{ 'Konfiguration.ColumnChooser.Title' | translate }}"
+                                                [enabled]="false"></dxo-column-chooser>
+                                            <dxo-selection mode="single"></dxo-selection>
+                                            <dxo-paging [pageSize]="100"></dxo-paging>
+                                            <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                                            <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+                                            <dxo-scrolling mode="virtual"></dxo-scrolling>
+                                            <dxo-sorting mode="multiple"></dxo-sorting>
+                                            <dxo-selection mode="single"></dxo-selection>
+                                            <dxo-group-panel [visible]="gridFunctionModel.isGrouping" emptyPanelText="{{ 'Konfiguration.emptyPanelText' | translate }}"></dxo-group-panel>
+                                            <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunctionModel.isGrouping"></dxo-grouping>
+                                            <dxi-column dataField="code" dataType="number" caption="{{ 'Konfiguration.Code' | translate }}" width="auto" minWidth="50"></dxi-column>
+                                            <dxi-column dataField="text" caption="{{ 'Konfiguration.Gemeinde' | translate }}" minWidth="50"></dxi-column>
+                                        </dx-data-grid>
+                                    </div>
+                    </dx-form>
+                    <br>
+                    <label id="o007_konfiguration_label-sie-konnen-diese" class="dx-field-value-static custom-label">{{ 'Konfiguration.LabelSie' | translate }}</label>
+                </div>
+                <br>
+                <!-- Print component -->
+                <kiss-printer #printer></kiss-printer>
+                <!-- Synchronize popup -->
+                <dx-popup title="{{ 'Konfiguration.Message.Information' | translate }}" [width]="500" [height]="'auto'"
+                    [(visible)]="popupDataVisible" [dragEnabled]="false" [closeOnOutsideClick]="false">
+                    <div *dxTemplate="let data of 'content'" class="textAlignCenter">
+                        <h3 class="paddingH3">{{ this.popupData }}</h3>
+                        <div class="dx-clearfix"></div>
+                        <div class="button-confirm">
+                            <dx-button class="btn-close" text="{{ 'Konfiguration.Message.Ok' | translate }}" (onClick)="closePopup()">
+                            </dx-button>
+                        </div>
+                    </div>
+                </dx-popup>
+            </div>
+        </div>
+    </section>
+</kiss-right-component>

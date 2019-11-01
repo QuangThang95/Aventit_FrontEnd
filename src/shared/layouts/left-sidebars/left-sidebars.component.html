@@ -1,0 +1,40 @@
+<div class="widgets-menu-container">
+  <div class="sidebar">
+    <div class="sider-bar-panel-content">
+      <div class="sidebar-header">
+        <div class='title'>{{ 'Navigator.Title' | translate }}</div>
+      </div>
+      <div class="sidebar-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+    <div class="sider-bar-panel-hidden">
+      <div class="sidebar-header">
+        <!-- <app-popover-list [targetId]="'popover-header-id'" class="header-popover-list" [tabIndexHtml]="6">Loading popover...</app-popover-list> -->
+        <a id="H011_main-sticky-area_sidebars-menu-overflow" (click)="showPopover()"></a>
+      </div>
+    </div>
+    <dx-popover target="#H011_main-sticky-area_sidebars-menu-overflow" position="bottom" [(visible)]="popoverVisible">
+      <div *dxTemplate="let dataPopup = model of 'content'">
+        <div class="selected-actions-container">
+          <dx-scroll-view [height]="150" [width]="350" direction="both" showScrollbar="onScroll">
+            <dx-list [(dataSource)]="popoverSelectedActionsData" [allowItemDeleting]="allowDeleting" focusStateEnabled="false"
+              [itemDeleteMode]="deleteType" [showSelectionControls]="false" [selectionMode]="selectionMode" [height]="height"
+              (onItemClick)="onClickItem($event.itemData)" (onItemDeleted)="onDeleteItem($event.itemData)">
+              <div *dxTemplate="let data of 'item'" class="sidebar-item"
+                [routerLinkActive]="'current'">
+                <div class="item">
+                  <div class="icon"> <img src="{{ iconUrl }}{{ data.data.iconId }}.png"> </div>
+                  <div class="name">{{ data.name }}</div>
+                  <div class="age" *ngIf="data.data.type==='flag_menu'">{{ data.time | timeago }}</div>
+                  <div class="age" *ngIf="data.data.type!=='flag_menu'">({{ data.gender }} {{ data.age }})</div>
+                </div>
+              </div>
+            </dx-list>
+          </dx-scroll-view>
+        </div>
+      </div>
+
+    </dx-popover>
+  </div>
+</div>

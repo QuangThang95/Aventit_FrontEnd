@@ -1,0 +1,9 @@
+@import 'settings/variables.scss';
+
+::ng-deep #r008_kontext-container {
+  .kiss-card {
+    .dx-button-mode-contained {
+      border-color: transparent;
+    }
+  }
+}

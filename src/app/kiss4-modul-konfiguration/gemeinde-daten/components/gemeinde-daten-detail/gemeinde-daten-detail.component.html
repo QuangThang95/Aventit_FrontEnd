@@ -1,0 +1,81 @@
+<div class="container-detail" id="c003_detail">
+    <div class="toolbar-header">
+        <dx-toolbar id="c003_detail_header">
+            <dxi-item [template]="'detail-header'" name="toolbar-header" location="before"></dxi-item>
+            <span class="toolbar-header-title" id="c003_detail_label-detail" (click)="onCollapseDetailContainer($event)" *dxTemplate="let temp of 'detail-header'">
+                {{ 'GemeindeDaten.Detail' | translate }}</span>
+        </dx-toolbar>
+    </div>
+    <div class="dx-fieldset" *ngIf="isExpand">
+        <dx-responsive-box singleColumnScreen="sm" [(screenByWidth)]="screen">
+            <dxi-row [ratio]="1"></dxi-row>
+            <dxi-row [ratio]="1" screen="sm"></dxi-row>
+            <dxi-col [ratio]="1"></dxi-col>
+            <dxi-col [ratio]="1" screen="lg"></dxi-col>
+            <dxi-item>
+                <dxi-location [row]="0" [col]="0" [colspan]="1" screen="lg"></dxi-location>
+                <dxi-location [row]="0" [col]="0" [colspan]="2" screen="sm"></dxi-location>
+                <div *dxTemplate class=" item">
+                    <div class="dx-fieldset-column">
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.PLZ' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_plz">{{selectedGemeindeDaten.plz}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.Name' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_name">{{selectedGemeindeDaten.name}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.NameLang' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_name-lang">{{selectedGemeindeDaten.nameLang}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.Kanton' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_kanton">{{selectedGemeindeDaten.kantonNameLang}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.Bezirk' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_bezirk">{{selectedGemeindeDaten.bezirkNameLang}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.BFSCode' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_bfs-code">{{selectedGemeindeDaten.bfsCode}}</span>
+                        </div>
+                    </div>
+                </div>
+            </dxi-item>
+            <dxi-item>
+                <dxi-location [row]="0" [col]="1" screen="lg"></dxi-location>
+                <dxi-location [row]="1" [col]="0" [colspan]="2" screen="sm"></dxi-location>
+                <div *dxTemplate class=" item">
+                    <div class="dx-fieldset-column">
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.GemAufnahmedatum' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_gem-aufnahmedatum">{{selectedGemeindeDaten.gemeindeAufnahmeDatum | date : formatDate}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.GemAufhebungsdatum' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_gem-aufhebungsdatum">{{selectedGemeindeDaten.gemeindeAufhebungDatum | date : formatDate}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.GemAnderungsdatum' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_gem-anderungsdatum">{{selectedGemeindeDaten.gemeindeAenderungDatum | date : formatDate}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.BezAufnahmedatum' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_bez-aufnahmedatum">{{selectedGemeindeDaten.bezirkAufnahmeDatum | date : formatDate}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.BezAufhebungsdatum' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_bez-aufhebungsdatum">{{selectedGemeindeDaten.bezirkAufhebungDatum | date : formatDate}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'GemeindeDaten.BezAnderungsdatum' | translate }}</span>
+                            <span class="dx-field-value-static" id="c003_detail_bez-anderungsdatum">{{selectedGemeindeDaten.bezirkAenderungDatum | date : formatDate}}</span>
+                        </div>
+                    </div>
+                </div>
+            </dxi-item>
+        </dx-responsive-box>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="container-search" id="o010_suchen">
+    <dx-toolbar id="o010_suchen_header" class="container-search__header">
+        <dxi-item [template]="'searchHeaderTemplate'" name="toolbar-header" location="before"></dxi-item>
+        <div *dxTemplate="let temp of 'searchHeaderTemplate'">
+            <span class="container-search__header-title" (click)="onCollapseSearchContainer($event)">{{ 'Variablen.Suchen' | translate }}</span>
+        </div>
+        <dxi-item location="after" widget="dxButton" [options]="options" [visible]="true"></dxi-item>
+    </dx-toolbar>
+    <div *ngIf="isExpand" class="container-search__form">
+        <dx-form 
+            #VariablenSearchFormInstance labelLocation="left" 
+            [showColonAfterLabel]="false" [colCount]="12"  
+            [screenByWidth]="getSizeQualifier"
+            (keyup.enter)="onSearchByEnter($event)">
+            <!-- Jahr number box -->
+            <dxi-item dataField="" itemType="group" [colSpan]="6">
+                <dxi-item [dataField]="'Variablen.SearchContainer.Jahr' | translate" class="field-label" [template]="'jahrTemplate'" [colSpan]="8">
+                    <dxo-label [text]="'Variablen.SearchContainer.Jahr' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [dataField]="'Variablen.SearchContainer.Mitarbeiter' | translate"  [colSpan]="8" [template]="'mitarbeiterTemplate'">
+                    <dxo-label [text]="'Variablen.SearchContainer.Mitarbeiter' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [dataField]="'Variablen.SearchContainer.Klient' | translate"  [colSpan]="7" [template]="'klientTemplate'">
+                    <dxo-label [text]="'Variablen.SearchContainer.Klient' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [dataField]="'Variablen.SearchContainer.Leistungsart' | translate"  [colSpan]="7" [template]="'leistungsartTemplate'" >
+                    <dxo-label [text]="'Variablen.SearchContainer.Leistungsart' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item [dataField]="'Variablen.SearchContainer.SektionTeam' | translate"  [colSpan]="7" [template]="'sektionTemplate'">
+                    <dxo-label [text]="'Variablen.SearchContainer.SektionTeam' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+            <dxi-item dataField="" itemType="group" [colSpan]="6">
+                    <dxi-item dataField="" [colSpan]="2" [template]="'stichtagTemplate'"></dxi-item>
+                    <dxi-item  dataField="" [colSpan]="4" [template]="'nurDossiertragerTemplate'"></dxi-item>
+                    <dxi-item dataField="" [colSpan]="4" [template]="'excelExportTemplate'"></dxi-item>
+            </dxi-item>
+                <!-- end row -->
+                <div *dxTemplate="let data of 'jahrTemplate'">
+                <dx-number-box 
+                    #textBoxJahr
+                    max = "9999"
+                    min = "-9999"
+                    [width] ="fixwidth"
+                    format = '#0'
+                    name="suchen_gemeinde" 
+                    placeholder=""  
+                    id="o010_suchen_jahr" 
+                    [(value)]="searchInitJahr">
+                </dx-number-box>
+            </div>
+
+            <div *dxTemplate="let data of 'stichtagTemplate'">
+                <dx-check-box #stichtagCbx class="container-search__check-box" [(value)]="stichtag" [text]="'Variablen.SearchContainer.Stichtag' | translate" id="o010_suchen_stichtag"></dx-check-box>
+                <dx-check-box #anfangszustandCbx class="container-search__check-box" width = "160px" [(value)]="anfangszustand" [text]="'Variablen.SearchContainer.Anfangszustand' | translate" id="o010_suchen_anfangszustand"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'nurDossiertragerTemplate'">
+                <dx-check-box #nurDossiertragerCbx class="container-search__check-box" [(value)]="nurDossiertrager" [text]="'Variablen.SearchContainer.NurDossiertrager' | translate" id="o010_suchen_nur-dossiertrager"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'excelExportTemplate'">
+                <dx-check-box #excelExportCbx class="container-search__check-box" [(value)]="excelExport" [text]="'Variablen.SearchContainer.ExportExcel' | translate" id="o010_suchen_formatierung-fur-excel-export"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'mitarbeiterTemplate'">
+                <kiss-bfs-variablen-mitarbeiter-dropdown-grid [dataMitarbeiters]="dataMitarbeiters" (selectMitarbeiterEventEmitter)="setSelectedMitarbeiter($event)"></kiss-bfs-variablen-mitarbeiter-dropdown-grid>
+            </div>
+            <div *dxTemplate="let data of 'klientTemplate'">
+                <kiss-bfs-variablen-klient-dropdown-grid [dataPersons]="dataPersons" (selectPersonEventEmitter)="setSelectedPerson($event)"></kiss-bfs-variablen-klient-dropdown-grid>
+            </div>
+            <div *dxTemplate="let data of 'leistungsartTemplate'">
+                <dx-select-box
+                    id="o010_suchen_leistungsart"
+                    [dataSource]="searchInitLeistungsart"
+                    [(selectedItem)]="selectedLeistungsart"
+                    [value]="2"
+                    displayExpr="text"
+                    valueExpr="code"
+                    class="drop-down-box"
+                    searchEnabled="true"
+                    (onKeyDown)="onKeyDownSelectOption($event)">
+                </dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'sektionTemplate'">
+                <dx-select-box
+                    id="o010_suchen_sektion-team"
+                    [dataSource]="searchInitSektion"
+                    [(selectedItem)]="selectedSektion"
+                    [value]="0"
+                    displayExpr="text"
+                    valueExpr="code"
+                    placeholder=""
+                    searchEnabled="true"
+                    (onKeyDown)="onKeyDownSelectOption($event)"
+                    class="drop-down-box">
+                </dx-select-box>
+            </div>
+        </dx-form>
+    </div>
+</div>
+<br>

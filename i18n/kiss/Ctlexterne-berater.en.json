@@ -1,0 +1,45 @@
+{
+    "ExterneBerater": {
+        "ColumnChooser": "Benutzerdefiniert [en]",
+        "TitlePage": "KA externe Berater [en]",
+        "SearchSuche": "Suche... [en]",
+        "ExterneBeraterDetail": {
+            "ConfirmPopupTitle": "Bestätigung [en]",
+            "PopupYes": "Ja [en]",
+            "PopupNo": "Nein [en]",
+            "InstitutionRequireMessage": "Das Feld 'Institution' darf nicht leer bleiben ! [en]",
+            "NameRequireMessage": "Das Feld 'Name' darf nicht leer bleiben ! [en]",
+            "VornameRequireMessage": "Das Feld 'Vorname' darf nicht leer bleiben ! [en]",
+            "AbbrechenAddnew": "Neuen Datensatz wieder löschen ? [en]",
+            "AbbrechenDetail": "Änderungen an diesem Datensatz rückgängig machen ? [en]",
+            "LoschenMessage": "Soll der Datensatz gelöscht werden ? [en]"
+        },
+        "ExterneBeraterSucheBox": {
+            "TitleSuche": "Suchen [en]",
+            "Detail": "Detail [en]",
+            "Institution" : "Institution [en]",
+            "Name": "Name [en]",
+            "Vorname": "Vorname [en]",
+            "Email": "Email [en]",
+            "Telefon": "Telefon [en]",
+            "Sprache": "Sprache [en]",
+            "Bemerkung": "Bemerkung [en]",
+            "Fax": "Fax [en]",
+            "Anrede": "Anrede [en]",
+            "Speichern": "Speichern [en]",
+            "Abbrechen": "Abbrechen [en]",
+            "NeuerExternerBerater": "Neuer externer Berater [en]",
+            "Bearbeiten": "Bearbeiten [en]",
+            "Delete": "Löschen [en]"
+        },
+        "Messgage": {
+            "DeleteError": "Es bestehen noch abhängige Daten. Diese müssen zuerst gelöscht werden [en]",
+            "ValidateForm": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [en]",
+            "NoDataText": "Keine zutreffenden Institutionen gefunden [en]",
+            "CheckMaxLength": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge. Bitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern. [en]",
+            "MessageErrorEdit": "Beim Speichern des veränderten Datensatzes ist ein Fehler aufgetreten ! [en]",
+            "MessageConcurency": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht. Aktualisieren sie die Daten zuerst, um Ihre Änderungen zu speichern. [en]",
+            "MessageDelError": "Beim Löschen des Datensatzes ist ein Fehler aufgetreten ! [en]"
+        }
+    }
+}

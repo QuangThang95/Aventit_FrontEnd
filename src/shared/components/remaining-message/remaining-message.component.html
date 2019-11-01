@@ -1,0 +1,9 @@
+<div class="remaining-message" *ngIf="isMessageClosed">
+    <span class="remaining-message__btn-container">
+        <dx-button class="remaining-message__btn-close" (onClick)="hideMessage()" icon="fa fa-times fa-2x"></dx-button>
+    </span>
+    <div class="remaining-message__content">
+        <span class="remaining-message__icon"><i class="fa fa-exclamation-circle " aria-hidden="true"></i></span>
+        <i class="remaining-message__text">{{message}}</i>
+    </div>
+</div>

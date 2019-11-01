@@ -1,0 +1,89 @@
+<div class="container-search" id="o006_suchen">
+    <dx-toolbar [disabled]="isDisableViewModel" id="o006_suchen_header" class="container-search__header">
+        <dxi-item [template]="'titleGridview'" name="toolbar-header" location="before"></dxi-item>
+        <div id="j001_detail_label-detail" *dxTemplate="let temp of 'titleGridview'">
+            <span id="personalStamp-title-gridview" class="container-search__header-title" (click)="onCollapseSearchContainer($event)"> {{'CtlBfsFragenkatalog.Suchen'| translate}}</span>
+        </div>
+        <dxi-item location="after" widget="dxButton" [options]="options" [visible]="true"></dxi-item>
+    </dx-toolbar>
+<div *ngIf="isExpand" class="container-search__form">
+  <dx-form id="form-search-o006"
+           [disabled]="isDisableViewModel" [showColonAfterLabel]=false (keyup.enter)="onSearch()"
+           #fragenkatalogSearchFormInstance>
+    <dxi-item itemType="group" [colCount]="3">
+        <dxi-item itemType="group" [colSpan]="1">
+            <dxi-item [template]="'Kategorie'" editorType="dxSelectBox">
+              <dxo-label [text]="'CtlBfsFragenkatalog.Column.Kategorie' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'Variable'">
+              <dxo-label [text]="'CtlBfsFragenkatalog.Column.Variable' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'Frage'">
+              <dxo-label [text]="'CtlBfsFragenkatalog.Column.Frage' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'Attribute'">
+              <dxo-label [text]="'CtlBfsFragenkatalog.Column.Export-Attribute' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item [template]="'Version'" editorType="dxSelectBox">
+              <dxo-label [text]="'CtlBfsFragenkatalog.Column.Katalog-Version' | translate"></dxo-label>
+            </dxi-item>
+          </dxi-item>
+    </dxi-item>
+    <div *dxTemplate="let data of 'Kategorie'">
+        <dx-select-box
+            id="o006_suchen_kategorie"
+            class="suchen-texbox-range"
+            placeholder=""
+            [dataSource]="suchens"
+            valueExpr="code"
+            displayExpr="text"
+            [(value)]="dataSuchen.bFSKategorieCode"
+            (onKeyDown)="onKeyDownSelectOpption($event)"
+            [disabled]="isDisableViewModel"
+            searchEnabled="true">
+          </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'Variable'">
+          <dx-text-box id="o006_suchen_variable" [(value)]="dataSuchen.variable" class="suchen-texbox-range" [disabled]="isDisableViewModel"></dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Frage'">
+          <dx-text-box id="o006_suchen_frage" [(value)]="dataSuchen.frage" class="suchen-texbox-range" [disabled]="isDisableViewModel"></dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Attribute'">
+          <dx-text-box id="o006_suchen_export-attribute" [(value)]="dataSuchen.ExportAttribute"
+          class="suchen-texbox-range" [disabled]="isDisableViewModel"></dx-text-box>
+      </div>
+      <div *dxTemplate="let data of 'Version'">
+          <dx-select-box
+          class="suchen-texbox-range"
+          id="o006_suchen_katalog-version"
+          [dataSource]="katalogVersions"
+          valueExpr="code"
+          displayExpr="text"
+          placeholder=""
+          [(value)]="dataSuchen.bFSKatalogVersionID"
+          (onKeyDown)="onKeyDownSelectOpption($event)"
+          [disabled]="isDisableViewModel">
+        </dx-select-box>
+      </div>
+
+  </dx-form>
+</div>
+<!-- Concurrency popup -->
+<dx-popup id="o006_popup" [title]="popupConcurrency.title" [width]="500" [height]="'auto'"
+          [(visible)]="popupConcurrency.visible"
+          [dragEnabled]="false" [closeOnOutsideClick]="false" (onHiding)="onHiding($event)">
+  <div *dxTemplate="let data of 'content'">
+    <h3 class="message-concurrency">{{popupConcurrency.message}}</h3>
+    <div class="dx-popup-content button-confirm" *ngIf="popupConcurrency.visibleBtn">
+      <dx-button #buttonAbbrechen id="o006_fragenkatalog_abbrechen" class="dx-button" type="default" [text]="popupConcurrency.abbrechen"
+                icon="remove" (onClick)="popupConcurrencyAbbrechen(true)">
+      </dx-button>
+      <dx-button id="o006_fragenkatalog_daten-aktualisieren" class="dx-button"
+                 [text]="popupConcurrency.datenAktualisieren" icon="refresh" type="default"
+                 (onClick)="popupConcurrencyAbbrechen(false)">
+      </dx-button>
+    </div>
+  </div>
+</dx-popup>
+</div>

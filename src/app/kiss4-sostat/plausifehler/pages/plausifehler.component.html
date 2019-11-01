@@ -1,0 +1,26 @@
+<kiss-right-component>
+    <app-navigator id="o011_plausifehler_header" [titleHeader]="'plausifehler.TitleHeader' | translate" [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+          <div class="container">
+            <div class="container__right-content">
+              <div class="remaining-message" *ngIf="isErrorClosed">
+                      <span class="remaining-message__btn-container">
+                          <dx-button class="remaining-message__btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+                          </dx-button>
+                      </span>
+                  <div class="remaining-message__content">
+                    <span class="remaining-message__icon"><i class="fa fa-exclamation-circle " aria-hidden="true"></i></span>
+                    <i class="remaining-message__text">{{messageErr}}</i>
+                  </div>
+                </div>
+
+                <kiss-plausifehler-search [jahr]="plausifehlerJahr" [persons]="persons" [mitarbeiters]="mitarbeiters" (objectSearch)="doSearch($event)"
+                (messageErrorChanged)="handleMessageError($event)"></kiss-plausifehler-search>
+                <br>
+
+                <kiss-plausifehler-list #plausifehlerList></kiss-plausifehler-list>
+            </div>
+        </div>
+
+    <kiss-printer #printer></kiss-printer>
+</kiss-right-component>

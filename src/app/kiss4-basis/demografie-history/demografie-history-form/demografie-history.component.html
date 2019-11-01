@@ -1,0 +1,391 @@
+<dx-popup id="c012_history" [dragEnabled]="false" [closeOnOutsideClick]="false" [resizeEnabled]="false"
+    [(visible)]="isPopupVisible">
+    <div class="demografie-history" *dxTemplate="let data of 'title'">
+        <kiss-card-title id="c012_demografie-history_header" titleHeader="{{ 'DemografieHistory.Header.Title' | translate }}"
+            [listBtn]="listBtn" [isCard]="true" [closeBtn]="true" (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></kiss-card-title>
+    </div>
+    <div class="demografie-history" *dxTemplate="let data of 'content'">
+        <dx-scroll-view direction="Vertical" class="history-scroll">
+            <section id="wrapper-content">
+                <div class="container">
+                    <div class="right-content">
+                        <div class="c012-form-content">
+                            <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container" id="c012_filter-builder">
+                                <dx-filter-builder [fields]="gridDemografie.instance.option('columns')" [(value)]="filter">
+                                </dx-filter-builder>
+                                <dx-button text="{{ 'DemografieHistory.Grid.FilterAnwenden' | translate }}" type="default" (onClick)="gridDemografie.instance.filter(filter)">
+                                </dx-button>
+                                <div class="dx-clearfix"></div>
+                            </div>
+                            <div id="c012_grid_textmarken">
+                                <dx-data-grid id="c012_history_grid-history" #gridDemografie (focusin)="onFocusGridBasisTextmarken($event)"
+                                    (focusout)="outFocusGridBasisTextmarken($event)" [columnAutoWidth]="true" [showColumnLines]="true" columnResizingMode="widget"
+                                    (onRowClick)="onClickRowGrid($event)" [dataSource]="xUserHistory"
+                                    [allowColumnResizing]="true" [hoverStateEnabled]="true" [showRowLines]="true"
+                                    [showBorders]="true" [height]="300" width="100%" noDataText="{{ 'DemografieHistory.Grid.KeineDaten' | translate }}" [editing]="{allowDeleting: false, texts: {confirmDeleteMessage: ''}}"
+                                    [selectedRowKeys]="selectedKeys" (onContextMenuPreparing)=onContextMenuPreparing($event)
+                                    [allowColumnReordering]="true" [columnMinWidth]="150">
+                                    <dxi-column alignment="left" width="150" dataField="datum" dataType="date" format="dd.MM.yyyy"
+                                        caption="{{ 'DemografieHistory.Grid.Datum' | translate }}"></dxi-column>
+                                    <dxi-column alignment="left" width="150" dataField="zeit" [format]="{ type: 'hh:mm:ss' }"
+                                        caption="{{ 'DemografieHistory.Grid.Zeit' | translate }}"></dxi-column>
+                                    <dxi-column alignment="left" width="200" dataField="benutzer" caption="{{ 'DemografieHistory.Grid.Benutzer' | translate }}"></dxi-column>
+                                    <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel"
+                                        [highlightCaseSensitive]="false" placeholder="{{ 'DemografieHistory.Grid.Suchen' | translate }}"></dxo-search-panel>
+                                    <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                                    <dxo-header-filter [visible]="true"></dxo-header-filter>
+                                    <dxo-selection selectAllMode="allPages" showCheckBoxesMode="onClick" mode="single"></dxo-selection>
+                                    <dxo-group-panel [visible]="gridFunctionModel.isGrouping" emptyPanelText="{{ 'DemografieHistory.Grid.emptyPanelText' | translate }}"></dxo-group-panel>
+                                    <dxo-scrolling mode="virtual"></dxo-scrolling>
+                                    <dxo-sorting mode="multiple"></dxo-sorting>
+                                    <dxo-grouping #gridOption [autoExpandAll]="true" [contextMenuEnabled]="true"></dxo-grouping>
+                                    <dxo-column-chooser #columnChooser emptyPanelText="" title="{{ 'DemografieHistory.Grid.Benutzerdefiniert' | translate }}"
+                                        [enabled]="false"></dxo-column-chooser>
+                                    <dxo-export [enabled]="false" fileName="History" [allowExportSelectedData]="true"></dxo-export>
+                                </dx-data-grid>
+                            </div>
+                        </div>
+                        <div id="c018-detail">
+                            <div class="c018_detail_header">
+                                <dx-toolbar id="c018_detail_header">
+                                    <dxi-item [template]="'titleGridview'" name="toolbar-header" location="before"></dxi-item>
+                                    <div *dxTemplate="let temp of 'titleGridview'">
+                                        <span id="c018_detail_label-detail">{{ 'DemografieHistory.Detail.Detail' |
+                                            translate }}</span>
+                                    </div>
+                                </dx-toolbar>
+                            </div>
+                            <div class="c018_container">
+                                <dx-form id="form" [formData]="personalien" [colCount]="2" [showColonAfterLabel]="false"
+                                    [screenByWidth]="getSizeQualifier">
+                                    <dxi-item itemType="group" caption="{{ 'DemografieHistory.Detail.Demografie' | translate }}">
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Title'|translate}}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Title'|translate}}"></dxo-label>
+                                            <span id="c018_demografie_anrede-titel">{{ this.personalien?.titel }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.BaPersonID' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.BaPersonID' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_id">{{ this.personalien?.baPersonID }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Name' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Name' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_name">{{ this.personalien?.name }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Vorname' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Vorname' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_vorname">{{ this.personalien?.vorname }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.FruehererName' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.FruehererName' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_fruherer-name">{{ this.personalien?.fruehererName
+                                                }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Telefon_P' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Telefon_P' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_telefon-privat">{{ this.personalien?.telefon_P }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Telefon_G' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Telefon_G' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_telefon-geschaft">{{ this.personalien?.telefon_G
+                                                }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.MobilTel' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.MobilTel' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_telefon-mobil">{{ this.personalien?.mobilTel }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Fax' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Fax' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_fax">{{ this.personalien?.fax }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.EMail' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.EMail' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_email">{{ this.personalien?.eMail }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.AHVNummer' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.AHVNummer' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_ahv-nr">{{ this.personalien?.ahvNummer }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Versichertennummer' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Versichertennummer' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_versichertennr">{{
+                                                this.personalien?.versichertennummer }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.NNummer' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.NNummer' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_n-nummer">{{ this.personalien?.nNummer }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.BFFNummer' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.BFFNummer' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_bfm-nummer">{{ this.personalien?.bffNummer }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.ZEMISNummer' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.ZEMISNummer' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_zemisnummer">{{ this.personalien?.zemisNummer }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Geburtsdatum' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Geburtsdatum' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_geburt">{{ this.personalien?.geburtsdatum |
+                                                date:'dd.MM.yyyy' }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Sterbedatum' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Sterbedatum' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_tod">{{ this.personalien?.sterbedatum |
+                                                date:'dd.MM.yyyy' }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.NavigatorZusatz' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.NavigatorZusatz' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_nav-zusatz">{{ this.personalien?.navigatorZusatz
+                                                }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.NationalitaetCode' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.NationalitaetCode' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_nation">{{ this.personalien?.nationalitaetName }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Heimatort' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Heimatort' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_heimatort">{{ this.personalien?.heimatort }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.SprachCode' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.SprachCode' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_sprache">{{ this.personalien?.sprachName }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.InCHSeit' | translate }}"
+                                            [template]="'InSchweizSeit'">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.InCHSeit' | translate }}"></dxo-label>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.AuslaenderStatusCode' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.AuslaenderStatusCode' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_ausl-status">{{
+                                                this.personalien?.auslaenderStatusName }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.AuslaenderStatusGueltigBis' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.AuslaenderStatusGueltigBis' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_status-gultig-bis">{{
+                                                this.personalien?.auslaenderStatusGueltigBis | date: 'dd.MM.yyyy'
+                                                }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.GeschlechtCode' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.GeschlechtCode' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_geschlecht">{{ this.personalien?.geschlechtName
+                                                }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.ZivilstandCode' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.ZivilstandCode' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_zivilstand">{{ this.personalien?.zivilstandName
+                                                }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.KonfessionCode' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.KonfessionCode' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_religion">{{ this.personalien?.konfessionName }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.ErteilungVA' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.ErteilungVA' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_erteilung-va">{{ this.personalien?.erteilungVA |
+                                                date: 'dd.MM.yyyy' }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.CAusweisDatum' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.CAusweisDatum' | translate }}"></dxo-label>
+                                            <span id="c018_demografie-zuzug_gemeinde-datum">{{
+                                                this.personalien?.cAusweisDatum | date: 'dd.MM.yyyy' }}</span>
+                                        </dxi-item>
+                                        <dxi-item dataField="" [template]="'FiktivTestperson'">
+                                        </dxi-item>
+                                        <dxi-item dataField="{{ 'DemografieHistory.Detail.Bemerkung' | translate }}">
+                                            <dxo-label text="{{ 'DemografieHistory.Detail.Bemerkung' | translate }}"></dxo-label>
+                                            <span id="c018_demografie_bemerkung">{{ this.personalien?.bemerkung }}</span>
+                                        </dxi-item>
+                                    </dxi-item>
+                                    <dxi-item itemType="group">
+                                        <dxi-item itemType="group" caption="{{ 'DemografieHistory.Detail.Wohnsitz' | translate }}">
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.Zusatz' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.Zusatz' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-zusatz">{{ this.wohnsitz?.zusatz }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.Strasse' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.Strasse' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-strasse">{{ this.wohnsitz?.strasse }}</span>
+                                                <span *ngIf="this.wohnsitz?.hausNr">, </span>
+                                                <span id="c018_wohnsitz-haus-nr">{{ this.wohnsitz?.hausNr }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.Postfach' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.Postfach' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-postfach">{{ this.wohnsitz?.postfach }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-plz">{{ this.wohnsitz?.plz }}</span>
+                                                <span *ngIf="this.wohnsitz?.ort">, </span>
+                                                <span id="c018_wohnsitz-ort">{{ this.wohnsitz?.ort }}</span>
+                                                <span *ngIf="this.wohnsitz?.kanton">, </span>
+                                                <span id="c018_wohnsitz-kt">{{ this.wohnsitz?.kanton }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.BaLandID' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.BaLandID' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-land">{{ this.wohnsitz?.baLandName }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.WohnStatusCode' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.WohnStatusCode' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-wohnstatus">{{ this.wohnsitz?.wohnStatusName }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.WohnungsgroesseCode' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.WohnungsgroesseCode' | translate }}"></dxo-label>
+                                                <span id="c018_wohnsitz-wohnungsgroesse">{{
+                                                    this.wohnsitz?.wohnungsgroesseName }}</span>
+                                            </dxi-item>
+                                        </dxi-item>
+                                        <dxi-item itemType="group" caption="{{ 'DemografieHistory.Detail.Aufenthaltsort' | translate }}">
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.Zusatz' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.Zusatz' | translate }}"></dxo-label>
+                                                <span id="c018_aufenthaltsort_zusatz">{{ this.aufenthaltsort?.zusatz }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.HausNr' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.HausNr' | translate }}"></dxo-label>
+                                                <span id="c018_aufenthaltsort_strasse">{{
+                                                    this.aufenthaltsort?.strasse}}</span>
+                                                <span *ngIf="this.aufenthaltsort?.hausNr">, </span>
+                                                <span id="c018_aufenthaltsort_haus-nr">{{ this.aufenthaltsort?.hausNr}}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.Postfach' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.Postfach' | translate }}"></dxo-label>
+                                                <span id="c018_aufenthaltsort_postfach">{{
+                                                    this.aufenthaltsort?.postfach }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}"></dxo-label>
+                                                <span id="c018_aufenthaltsort_plz">{{ this.aufenthaltsort?.plz }}</span>
+                                                <span *ngIf="this.aufenthaltsort?.ort">, </span>
+                                                <span id="c018_aufenthaltsort_ort">{{ this.aufenthaltsort?.ort }}</span>
+                                                <span *ngIf="this.aufenthaltsort?.kanton">, </span>
+                                                <span id="c018_aufenthaltsort_kt">{{ this.aufenthaltsort?.kanton }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.BaLandID' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.BaLandID' | translate }}"></dxo-label>
+                                                <span id="c018_aufenthaltsort_land">{{ this.aufenthaltsort?.baLandName
+                                                    }}</span>
+                                            </dxi-item>
+                                        </dxi-item>
+                                        <dxi-item itemType="group" caption="{{ 'DemografieHistory.Detail.Unterstutzungswohnsitz' | translate }}">
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}"></dxo-label>
+                                                <span id="c018_personalien-unt-wohnsitz_plz">{{
+                                                    this.personalien?.untWohnsitzPLZ }}</span>
+                                                <span *ngIf="this.personalien?.untWohnsitzOrt">, </span>
+                                                <span id="c018_personalien-unt-wohnsitz_ort">{{
+                                                    this.personalien?.untWohnsitzOrt }}</span>
+                                                <span *ngIf="this.personalien?.untWohnsitzKanton">, </span>
+                                                <span id="c018_personalien-unt-wohnsitz_kt">{{
+                                                    this.personalien?.untWohnsitzKanton }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.UntWohnsitzLandCode' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.UntWohnsitzLandCode' | translate }}"></dxo-label>
+                                                <span id="c018_personalien-unt-wohnsitz_land">{{
+                                                    this.personalien?.untWohnsitzLandName }}</span>
+                                            </dxi-item>
+                                        </dxi-item>
+                                        <dxi-item itemType="group" caption="{{ 'DemografieHistory.Detail.Zuzug' | translate }}">
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.InDieGemeindeVon' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.InDieGemeindeVon' | translate }}"></dxo-label>
+                                                <span id="c018_personalien-zuzug-gde_plz">{{
+                                                    this.personalien?.zuzugGdePLZ }}</span>
+                                                <span *ngIf="this.personalien?.zuzugGdeOrt">, </span>
+                                                <span id="c018_personalien-zuzug-gde_ort">{{
+                                                    this.personalien?.zuzugGdeOrt }}</span>
+                                                <span *ngIf="this.personalien?.zuzugGdeKanton">, </span>
+                                                <span id="c018_personalien-zuzug-gde_kt">{{
+                                                    this.personalien?.zuzugGdeKanton }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.ZuzugGdeDatum' | translate }}"
+                                                [template]="'ZuzugGdeDatum'">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.ZuzugGdeDatum' | translate }}"></dxo-label>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.ZuzugGdeLandCode' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.ZuzugGdeLandCode' | translate }}"></dxo-label>
+                                                <span id="c018_zuzug_gde-land">{{ this.personalien?.zuzugGdeLandName }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.IndenKantonvon' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.IndenKantonvon' | translate }}"></dxo-label>
+                                                <span id="c018_personalien-zuzug-plz">{{ this.personalien?.zuzugKtPLZ
+                                                    }}</span>
+                                                <span *ngIf="this.personalien?.zuzugKtOrt">, </span>
+                                                <span id="c018_personalien-zuzug-ort">{{ this.personalien?.zuzugKtOrt
+                                                    }}</span>
+                                                <span *ngIf="this.personalien?.zuzugKtKanton">, </span>
+                                                <span id="c018_personalien-zuzug-kt">{{ this.personalien?.zuzugKtKanton
+                                                    }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.ZuzugKtDatum' | translate }}"
+                                                [template]="'ZuzugKtDatum'">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.ZuzugKtDatum' | translate }}"></dxo-label>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{'DemografieHistory.Detail.ZuzugKtLandCode' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.ZuzugKtLandCode' | translate }}"></dxo-label>
+                                                <span id="c018_zuzug_kt-land">{{ this.personalien?.zuzugKtLandName }}</span>
+                                            </dxi-item>
+                                        </dxi-item>
+                                        <dxi-item itemType="group" caption="{{ 'DemografieHistory.Detail.Wegzug' | translate }}">
+                                            <dxi-item dataField="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.PLZOrtKt' | translate }}"></dxo-label>
+                                                <span id="c018_personalien-wegzug-plz">{{this.personalien?.wegzugPLZ }}</span>
+                                                <span *ngIf="this.personalien?.wegzugOrt">, </span>
+                                                <span id="c018_personalien-wegzug-ort">{{this.personalien?.wegzugOrt }}</span>
+                                                <span *ngIf="this.personalien?.wegzugKanton">, </span>
+                                                <span id="c018_personalien-wegzug-kt">{{this.personalien?.wegzugKanton}}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{'DemografieHistory.Detail.WegzugDatum' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.WegzugDatum' | translate }}"></dxo-label>
+                                                <span id="c018_wegzug_datum">{{ this.personalien?.wegzugDatum
+                                                    | date:
+                                                    'dd.MM.yyyy' }}</span>
+                                            </dxi-item>
+                                            <dxi-item dataField="{{
+                                                'DemografieHistory.Detail.WegzugLandCode' | translate }}">
+                                                <dxo-label text="{{ 'DemografieHistory.Detail.WegzugLandCode' | translate }}"></dxo-label>
+                                                <span id="c018_wegzug_land">{{
+                                                    this.personalien?.wegzugLandName
+                                                    }}</span>
+                                            </dxi-item>
+                                        </dxi-item>
+                                    </dxi-item>
+                                    <div *dxTemplate="let temp of 'InSchweizSeit'">
+                                        <span id="c018_demografie_in-chseit">{{ this.personalien?.inCHSeit |
+                                            date:'dd.MM.yyyy'}}</span>
+                                        <span id="c018_demografie-margin" *ngIf="this.personalien?.inCHSeit"></span>
+                                        <dx-check-box class="c018_detail_checkbox_inCHSeit" id="c018_demografie-in-schweiz-seit-geburt"
+                                            readOnly="true" text="{{ 'DemografieHistory.Detail.InCHSeitGeburts' | translate }}"
+                                            [(value)]="inCHSeitGeburts"></dx-check-box>
+                                    </div>
+                                    <div *dxTemplate="let temp of 'FiktivTestperson'">
+                                        <span id="c018_demografie-margin-checkbox"></span>
+                                        <dx-check-box id="c018_demografie_fiktiv" readOnly="true" text="{{ 'DemografieHistory.Detail.Fiktivs' | translate }}"
+                                            [(value)]="fiktivs"></dx-check-box>
+                                        <span id="c018_demografie-margin-checkbox"></span>
+                                        <dx-check-box id="c018_demografie_testperson" readOnly="true" text="{{ 'DemografieHistory.Detail.TestPerson' | translate }}"
+                                            [(value)]="testPersons"></dx-check-box>
+                                    </div>
+                                    <div *dxTemplate="let temp of 'ZuzugGdeDatum'">
+                                        <span id="c018_zuzug-gde-datum">{{ this.personalien?.zuzugGdeDatum |
+                                            date:'dd.MM.yyyy' }}</span>
+                                        <span id="c018_demografie-margin" *ngIf="this.personalien?.zuzugGdeDatum"></span>
+                                        <dx-check-box id="c018_personalien-zuzug-gde-seit-geburt" class="c018_detail_checkbox_inCHSeit"
+                                            readOnly="true" text="{{ 'DemografieHistory.Detail.InCHSeitGeburts' | translate }}"
+                                            [(value)]="zuzugGdeSeitGeburt"></dx-check-box>
+                                    </div>
+                                    <div *dxTemplate="let temp of 'ZuzugKtDatum'">
+                                        <span id="c018_zuzug-kt-datum">{{ this.personalien?.zuzugKtDatum | date:
+                                            'dd.MM.yyyy' }}</span>
+                                        <span id="c018_demografie-margin" *ngIf="this.personalien?.zuzugKtDatum"></span>
+                                        <dx-check-box id="c018_personalien-zuzug-kt-seit-geburt" class="c018_detail_checkbox_inCHSeit"
+                                            readOnly="true" text="{{ 'DemografieHistory.Detail.InCHSeitGeburts' | translate }}"
+                                            [(value)]="zuzugKtSeitGeburt"></dx-check-box>
+                                    </div>
+                                </dx-form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+            </section>
+        </dx-scroll-view>
+    </div>
+</dx-popup>
+<kiss-printer #printer></kiss-printer>

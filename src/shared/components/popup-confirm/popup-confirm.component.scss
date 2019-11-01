@@ -1,0 +1,42 @@
+@import 'settings/variables.scss';
+.content-container {
+    text-align: left;
+    position: relative;
+    .close-popup-common-content {
+        position: absolute;
+        top: -63px;
+        right: -14px;
+        #button-close-popup-common {
+            background: none;
+            border: none;
+            &:focus {
+                background: $table-heade-bg;
+            }
+        }
+    }
+}
+
+.message-content {
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+
+.btn-content {
+    text-align: right;
+    .btn-detail {
+        background-color: $color-base;
+        color: $color-white;
+        ::ng-deep i {
+            color: $color-white
+        }
+        &:focus {
+            background: $searchbox-header-group-color-bg
+        }
+    }
+}
+
+
+
+.err-messeger {
+    white-space: pre-line;
+  }

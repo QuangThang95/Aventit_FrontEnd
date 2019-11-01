@@ -1,0 +1,80 @@
+@import 'settings/variables.scss';
+.demografie-history {
+    #c012_demografie-history_header {
+      background: $color-base;
+      height: $toolbar-detail-height;
+      line-height: 40px;
+    }
+    .header-title {
+        color: $color-white;
+        font-size: $label-detail-font-size;
+        padding-left: $label-detail-label-padding-left;
+        font-weight: $label-detail-font-size;
+    }
+    #bar-content {
+        display: flex;
+        .button-close-popup {
+            background: $color-base;
+        }
+    }
+    #c018_detail_label-detail {
+      color: $color-black;
+      font-size: $label-detail-font-size;
+      padding-left: $label-detail-label-padding-left;
+      font-weight: $label-detail-font-size;
+    }
+    #c018_detail_header {
+      background:  $popup-background-header;
+      height: 44px;
+      line-height: $checkbox-margin-right;
+    }
+}
+.c018_container {
+    padding: $padding-content;
+    span {
+        word-break: $break-word;
+    }
+}
+#c018-detail {
+    margin-top: $padding-content;
+    border: 1px solid $color-gray;
+}
+
+#c018_demografie-margin {
+    margin-right: $checkbox-margin-right;
+}
+#c018_demografie-margin-checkbox {
+    margin-right: 141px;
+}
+#c018_demografie_fiktiv, #c018_demografie_testperson{
+    margin-top: 7px;
+    margin-bottom: 4px;
+}
+.demografie-history:hover {
+    #c018-detail:hover {
+        border: 1px solid $color-base;
+        #c018_detail_header {
+            background:  $color-base-secondary;
+            height: 44px;
+            line-height: $checkbox-margin-right;
+        }
+    }
+    #c012_grid_textmarken:hover {
+        /deep/ dx-data-grid .dx-datagrid-headers .dx-datagrid-table .dx-header-row > td {
+            background:  $color-base-secondary;
+        }
+    }
+    #bar-content {
+    }
+}
+.close-popup {
+    margin: 4px 10px 0px 5px;
+    background: $color-base;
+    border: 0;
+    .dx-button-content:hover{
+        background-color: $dx-border-color;
+    }
+}
+.history-scroll {
+    height: 100%;
+}

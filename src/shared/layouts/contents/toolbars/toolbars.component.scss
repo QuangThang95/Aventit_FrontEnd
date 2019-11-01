@@ -1,0 +1,30 @@
+@import 'settings/variables.scss';
+#navbars-wrapper {
+    float: left;
+    height: 100%;
+    padding: 0 10px;
+    h3,
+    a {
+        float: left;
+        color: $color-white;
+    }
+    >h3 {
+        padding: 15px 0;
+    }
+    >a {
+        padding: 8px 0;
+        margin-right: 15px;
+    }
+    >.tool-bars {
+        height: 100%;
+        padding: 0 15px;
+        float: right;
+    }
+}
+
+.action-toolbar {
+    margin-top: 4px;
+    .dx-toolbar {
+        background: transparent;
+    }
+}

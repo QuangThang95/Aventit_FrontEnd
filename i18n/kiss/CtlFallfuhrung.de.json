@@ -1,0 +1,63 @@
+{
+    "Fallfuhrung": {
+        "Title": "Fallführung",
+        "GroupTop": "Fall-Eröffnung",
+        "GroupBottom": "Fall-Abschluss",
+        "TitleGrund": "Grund",
+        "TitleBemerkung": "Bemerkung",
+        "TitleGemeinde": "zust. Gemeinde",
+        "TitleDatum": "Datum",
+        "TitleSAR": "SAR",
+        "TitleBenutzerdefiniert": "Benutzerdefiniert",
+        "ColumnChooser": "Spaltenauswahl",
+        "ExportExcel": "Excel Export",
+        "GridPrint": "Grid drucken",
+        "Search": "Schnellfilterzeile anzeigen/ausblenden",
+        "Grouping": "Gruppierungsbereich anzeigen/ausblenden",
+        "SearchPanel": "Suche anzeigen/ausblenden",
+        "FilterBuilder": "Filtereditor anzeigen/ausblenden",
+        "GridSetting": "Grid Einstellungen",
+        "TitleAnmeldeart": "Anmeldeart",
+        "TitleKontaktveranl": "Kontaktveranl.",
+        "TitleFall": "Fall wieder öffnen",
+        "PopupConfirm": {
+            "Yes": "Ja",
+            "No": "Nein",
+            "Title": "Bestätigung",
+            "Message": "Änderungen an diesem Datensatz rückgängig machen ?",
+            "MessageFallWieder": "Soll der geschlossene Fallverlauf wieder geöffnet werden ?",
+            "Abbrechen": "Abbrechen",
+            "Daten": "Daten aktualisieren",
+            "MessageCancelConcurrency": "Fenster trotz der nicht gespeicherten Daten schliessen ?"
+        },
+        "MessageError": {
+            "DeleteMessageError": "Das Löschen dieses Datensatzes ist nicht erlaubt!",
+            "SaveMessageFirstError": "Es existieren noch ",
+            "SaveMessageLastError": " offene Pendenzen zu der abzuschliessenden Leistung."
+        },
+        "Message": {
+            "DoubleClickMessage": "Die Angaben wurden in den Zwischenspeicher kopiert.",
+            "ShiftClickMessage": "Die ID wurde in den Zwischenspeicher kopiert"
+        },
+        "PopupMessage": {
+            "Title": "Information",
+            "Yes": "OK"
+        },
+        "NavigatorPopupConfirm": {
+            "Yes": "Discard",
+            "No": "Abbrechen",
+            "Title": "Bestätigung",
+            "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?"
+        },
+        "MessageValidation": {
+            "Eroffnungsdatum": "Das Feld 'Eröffnungsdatum' darf nicht leer bleiben !",
+            "Validate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein."
+        },
+        "Toolbar": {
+            "Bearbeiten": "Bearbeiten",
+            "Speichern": "Speichern",
+            "Abbrechen": "Abbrechen",
+            "FallWieder": "Fall wieder öffnen"
+        }
+    }
+}

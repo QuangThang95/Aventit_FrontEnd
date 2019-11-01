@@ -1,0 +1,134 @@
+﻿<kiss-right-component>
+    <app-navigator id="c004_lander-aktualisieren_header" [titleHeader]="'VorlagenProfile.Title'| translate" [(listBtn)]="listBtn"
+        (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+    <div class="container">
+        <div class="container__right-content">
+            <div class="error" *ngIf="remainMessage?.visible">
+                <span class="btn-close-error">
+                    <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+                    </dx-button>
+                </span>
+                <div class="error-messege">
+                    <span class="ico-error">
+                        <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                    </span>
+                    <i id="r009_errors-messeger">{{remainMessage?.message}}</i>
+                </div>
+            </div>
+            <dx-box id="r009_search">
+                <dxi-item id="r009_label_search" [ratio]="0" [baseSize]="120" orientation="horizontal">
+                    <p>{{ 'VorlagenProfile.Suche.TitleSearch' | translate}}</p>
+                </dxi-item>
+                <dxi-item id="r009_box-search" [ratio]="1">
+                    <dx-text-box #searchBox [(value)]="profilename" (onFocusOut)="onProfilenameChange()" (onKeyDown)="onKeyDownSearch($event)"></dx-text-box>
+                    <dx-load-indicator id="r009-loading" height="20" width="20" [visible]="isVisible"></dx-load-indicator>
+                </dxi-item>
+                <dxi-item [ratio]="0" baseSize="25"></dxi-item>
+            </dx-box>
+            <div class="grid-table-view">
+
+                <div class="grid-table-view">
+                    <div *ngIf="gridFunctionModel.isFilterBuilder" class="filter-container" id="r009_filter-builder">
+                        <dx-filter-builder [fields]="dataGrid.instance.option('columns')" [(value)]="filter">
+                        </dx-filter-builder>
+                        <dx-button [text]=" 'VorlagenProfile.FilterAnwendenButton' | translate" type="default"
+                            (onClick)="dataGrid.instance.filter(filter)">
+                        </dx-button>
+                        <div class="dx-clearfix"></div>
+                    </div>
+                    <div class="grid-margin-top">
+                        <dx-data-grid id="r009_data-grid"
+                            class="vorlagenProfile_grid_height"
+                            #dataGrid 
+                            [dataSource]="gridData" 
+                            [showBorders]="true" 
+                            width="100%"
+                            [disabled]="!isReadOnly" 
+                            [allowColumnReordering]="true" 
+                            [allowColumnResizing]="true"
+                            [showRowLines]="true" 
+                            [columnAutoWidth]="true" 
+                            columnResizingMode="widget" 
+                            (onRowClick)="onSelected($event.data)"
+                            (onInitialized)="gridOnContentReady($event)" 
+                            (onContextMenuPreparing)=onContextMenuPreparing($event)
+                            [(selectedRowKeys)]="selectedKeys" 
+                            keyExpr="xProfileID" 
+                            [focusedRowEnabled]="true"
+                            [focusedRowKey]="selectedKeys[0]"
+                            (onFocusedRowChanged)="onFocusedRowChanged($event)">
+                            <dxi-column minWidth="50" width="220" dataField="xProfileID" [caption]=" 'VorlagenProfile.Liste.xProfileIDCaption' | translate"></dxi-column>
+                            <dxi-column minWidth="250" width="300" dataField="text" [caption]=" 'VorlagenProfile.Liste.NameCaption' | translate"></dxi-column>
+                            <dxi-column minWidth="250" dataField="tags" [caption]=" 'VorlagenProfile.Liste.TagsCaption' | translate"></dxi-column>
+                            <dxo-paging [pageSize]="10000000" [enabled]="false"></dxo-paging>
+                            <dxo-search-panel [visible]="gridFunctionModel.isSearchPanel" [highlightCaseSensitive]="false"
+                                [placeholder]=" 'VorlagenProfile.Grid.Suche' | translate"></dxo-search-panel>
+                            <dxo-filter-row [visible]="gridFunctionModel.isSearch" applyFilter="Immediately"></dxo-filter-row>
+                            <dxo-header-filter [visible]="gridFunctionModel.isFilter"></dxo-header-filter>
+                            <dxo-selection selectAllMode="allPages" mode="single"></dxo-selection>
+                            <dxo-group-panel [visible]="gridFunctionModel.isGrouping"></dxo-group-panel>
+                            <dxo-scrolling mode="virtual"></dxo-scrolling>
+                            <dxo-sorting mode="multiple"></dxo-sorting>
+                            <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="true"></dxo-grouping>
+                            <dxo-column-chooser #columnChooser emptyPanelText="" [title]=" 'VorlagenProfile.Toolbar.Spaltenauswahl' | translate"
+                                [enabled]="false"></dxo-column-chooser>
+                        </dx-data-grid>
+                    </div>
+                </div>
+            </div>
+            <div class="container-detail form-content-details" id="bar-header">
+                <div class="toolbar-header">
+                    <kiss-card-title id="r009_detail_header" [titleHeader]="'VorlagenProfile.Detail.Title' | translate "
+                        [customizeBtn]="customizeBtnDetail" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClickDetail($event)"></kiss-card-title>
+                </div>
+                <div class="container-detail__form">
+                    <dx-form id="r009_form" [formData]="vorlagenProfile">
+                        <dxi-item [dataField]=" 'VorlagenProfile.Detail.NameCaption' | translate" [template]="'detailProfilename'">
+                            <dxo-label [text]=" 'VorlagenProfile.Detail.NameCaption' | translate "></dxo-label>
+                            <dxi-validation-rule *ngIf="!isReadOnly" type="required"></dxi-validation-rule>
+                        </dxi-item>
+                        <dxi-item [dataField]=" 'VorlagenProfile.Detail.TagsCaption' | translate" [template]="'detailMerkmale'"
+                            class="vorlagenProfile_item_height">
+                            <dxo-label [text]=" 'VorlagenProfile.Detail.TagsCaption' | translate"></dxo-label>
+                        </dxi-item>
+                        <dxi-item [dataField]=" 'VorlagenProfile.Detail.TextAreaCaption' | translate" [template]="'detailBeschreibung'">
+                            <dxo-label [text]=" 'VorlagenProfile.Detail.TextAreaCaption' | translate"></dxo-label>
+                        </dxi-item>
+                        <div *dxTemplate="let data of 'detailProfilename'">
+                            <div *ngIf="isReadOnly" class="vorlagenProfile_item_height"> <span>{{vorlagenProfile?.text}}</span></div>
+                            <dx-text-box id="r009_detail_textbox_profilename" #detailTextBox [value]="vorlagenProfile?.text"
+                                [disabled]="isReadOnly" [visible]="!isReadOnly" (onKeyPress)="onTextChange()"
+                                [accessKey]="1" (onFocusIn)="onFocusIn(detailTextBox,'text','textbox')" (onFocusOut)="onFocusOut()">
+                                <dx-validator>
+                                    <dxi-validation-rule type="required" [message]=" 'VorlagenProfile.Message.NameRequired' | translate"></dxi-validation-rule>
+                                </dx-validator>
+                            </dx-text-box>
+                        </div>
+                        <div *dxTemplate="let data of 'detailMerkmale'">
+                            <div *ngIf="isReadOnly" class="vorlagenProfile_item_height"> <span>{{vorlagenProfile?.tags}}
+                                    &nbsp;</span></div>
+                            <dx-tag-box #detailTagBox [placeholder]=" 'VorlagenProfile.Message.Placeholder' | translate"
+                                [hideSelectedItems]="false" id="r009_detail_tagbox_merkmale" [visible]="!isReadOnly"
+                                [searchEnabled]="true" [showClearButton]="true" [items]="merkmaleTags"
+                                [showSelectionControls]="true" applyValueMode="useButtons" (onClosed)="onTagChange()"
+                                (onKeyDown)="onKeyDownTagBox($event)" [accessKey]="2" (onFocusIn)="onFocusIn(detailTagBox,'tags','tagbox')"
+                                (onFocusOut)="onFocusOut()" [(value)]="initTags" displayExpr="text" valueExpr="code">
+                            </dx-tag-box>
+                        </div>
+                        <div *dxTemplate="let data of 'detailBeschreibung'">
+                            <div *ngIf="isReadOnly" class="detailBeschreibungArea"><span>{{beschreibung}}
+                                    &nbsp;</span></div>
+                            <dx-text-area #formTextArea id="r009_detail_textarea_beschreibung" height="160" [visible]="!isReadOnly"
+                                [disabled]="isReadOnly" [(value)]="beschreibung" [accessKey]="3" (onFocusIn)="onFocusIn(formTextArea,'beschreibung','textarea')"
+                                (onFocusOut)="onFocusOut()"></dx-text-area>
+                        </div>
+                    </dx-form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-grid-function #gridFunction (onchange)="onChangeGridSetting()" [keyStorage]="gridFunctionKey"></app-grid-function>
+    <kiss-printer #printer></kiss-printer>
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+
+</kiss-right-component>

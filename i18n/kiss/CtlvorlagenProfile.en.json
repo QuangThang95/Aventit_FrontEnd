@@ -1,0 +1,49 @@
+﻿{
+  "VorlagenProfile": {
+    "Title": "Vorlagen Profile [en]",
+    "FilterAnwendenButton" : "Filter anwenden [en]",
+    "Suche": {
+      "TitleSearch": "Profilename [en]"
+    },
+    "Liste": {
+      "xProfileIDCaption": "ID [en]",
+      "NameCaption": "Profilname [en]",
+      "TagsCaption": "Merkmale [en]"
+    },
+    "Detail": {
+      "Title": "Detail [en]",
+      "Add": "Neues Vorlagen Profil [en]",
+      "Edit": "Bearbeiten [en]",
+      "Save": "Speichern [en]",
+      "Cancel": "Abbrechen [en]",
+      "Delete": "Löschen [en]",
+      "NameCaption": "Profilname [en]",
+      "TagsCaption": "Merkmale [en]",
+      "TextAreaCaption": "Beschreibung [en]"
+    },
+    "Toolbar": {
+      "GridDrucken": "Grid drucken [en]",
+      "ExcelExport": "Excel Export [en]",
+      "Spaltenauswahl": "Spaltenauswahl [en]",
+      "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden [en]",
+      "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden [en]",
+      "Suche": "Suche anzeigen/ausblenden [en]",
+      "Filtereditor": "Filtereditor anzeigen/ausblenden [en]",
+      "GridEinstellungen": "Grid Einstellungen [en]"
+    },
+    "Message": {
+      "Title": "Confirmation! [en]",
+      "Add": "Delete new record again ? [en]",
+      "Edit": "Close windows despite the unsaved data ? [en]",
+      "Delete": "Should the record be deleted ? [en]",
+      "NameRequired": "The field 'Profilname' can not be left empty ! [en]",
+      "MaxLenght": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [en]",
+      "Placeholder": "Wählen...[en]"
+    },
+    "PopupButton":{
+      "Yes": "Ja [en]",
+      "No": "Nein [en]",
+      "Language":"de-CH [en]"
+    }
+  }
+}

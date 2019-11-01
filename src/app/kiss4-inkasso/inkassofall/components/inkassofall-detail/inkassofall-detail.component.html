@@ -1,0 +1,32 @@
+<div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+    <kiss-card-title 
+        id="j007_detail_header"
+        titleHeader="Detail"
+        [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn"
+        [isCard]="true"
+        (onCustomizeBtnFn)="toolBarOnItemClick($event)"
+    ></kiss-card-title>
+</div>
+<!-- Form view -->
+<kiss-inkassofall-detail-view
+    *ngIf="isDisableViewModel"
+    [sizeQualifier]="getSizeQualifier"
+    [isCollapseFormDetail]="isCollapseFormDetail"
+    [dsInkassofalls]="dsInkassofalls"
+></kiss-inkassofall-detail-view>
+
+<!-- Form edit -->
+<kiss-inkassofall-detail-edit
+    *ngIf="!isDisableViewModel"
+    [sizeQualifier]="getSizeQualifier"
+    [minStringLength]="minStringLength"
+    [minIntValue]="minIntValue"
+    [maxIntValue]="maxIntValue"
+    [isCollapseFormDetail]="isCollapseFormDetail"
+    [dsInkassofalls]="dsInkassofalls"
+    (dsInkassofallsChange)="dsInkassofallsChange($event)"
+    (focusIn)="onFocusIn($event)"
+    (keyDownSelectOption)="onKeyDownSelectOption($event)"
+></kiss-inkassofall-detail-edit>
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>

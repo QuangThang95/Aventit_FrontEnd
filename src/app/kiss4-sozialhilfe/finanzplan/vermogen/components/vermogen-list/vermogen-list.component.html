@@ -1,0 +1,42 @@
+<div id="clientList">
+    <dx-check-box [text]="'Vermogen.Grid.NurAktiveAnzeigen' | translate"></dx-check-box>
+    <br /> <br />
+
+    <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container" id="filter-builder">
+        <dx-filter-builder [fields]="dataGrid.instance.option('columns')">
+        </dx-filter-builder>
+        <dx-button [text]="'PersonenImHaushalt.ClientList.ApplyFilter' | translate" type="default">
+        </dx-button>
+        <div class="dx-clearfix"></div>
+    </div>
+    <dx-data-grid #dataGrid [dataSource]="dataSource" keyExpr="Id" (onSelectionChanged)="onSelectRow($event)"
+        [showBorders]="true" noDataText="Keine Daten" [disabled]="disableGrid" [showRowLines]="true"
+        (onContextMenuPreparing)="onContextMenuPreparing($event)" [hoverStateEnabled]="true">
+        <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+        <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-group-panel [visible]="gridFunction.model.isGrouping" emptyPanelText="emptyPanelText"></dxo-group-panel>
+        <dxo-grouping #expandGrid [contextMenuEnabled]="gridFunction.model.isGrouping" [autoExpandAll]="false"></dxo-grouping>
+        <dxo-column-chooser #columnChooser emptyPanelText="" title="Benutzerdefiniert" [enabled]="false"></dxo-column-chooser>
+        <dxo-editing mode="cell" [allowUpdating]="false"></dxo-editing>
+        <dxo-selection mode="single"></dxo-selection>
+
+        <dxi-column dataField="Gultigab" [caption]="'Vermogen.Grid.GultigAb' | translate"></dxi-column>
+        <dxi-column dataField="Name" [caption]="'Vermogen.Grid.Name' | translate"></dxi-column>
+        <dxi-column dataField="Geburtsdatum" [caption]="'Vermogen.Grid.Geburtsdatum' | translate"></dxi-column>
+        <dxi-column dataField="ArtDesVermogens" [caption]="'Vermogen.Grid.ArtDesVermogens' | translate"></dxi-column>
+        <dxi-column dataField="Vermogen" format="#,###.00" [caption]="'Vermogen.Grid.Vermogen' | translate"></dxi-column>
+        <dxi-column dataField="Verbrauch" format="#,###.00" [caption]="'Vermogen.Grid.Verbrauch' | translate"></dxi-column>
+
+        <dxo-summary>
+            <dxi-total-item column="Vermogen" summaryType="sum" valueFormat="#,##0.00" displayFormat="Sum: {0}">
+            </dxi-total-item>
+            <dxi-total-item column="Verbrauch" summaryType="sum" valueFormat="#,##0.00" displayFormat="Sum: {0}">
+            </dxi-total-item>
+        </dxo-summary>
+
+    </dx-data-grid>
+    <!-- ------------------------- The End Area for gridview ------------------- -->
+    <app-grid-function #gridFunction (onchange)="gridFunction.model"></app-grid-function>
+    <kiss-printer #printer></kiss-printer>
+</div>

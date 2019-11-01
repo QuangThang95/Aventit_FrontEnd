@@ -1,0 +1,13 @@
+.filter-builder {
+    border: $popup-border-5;
+    padding: $padding-content;
+    margin-bottom: $margin-content;
+    background-color: $filter-builder-bg-color;
+    .dx-filterbuilder {
+      margin-bottom: $margin-content;
+      padding: $padding-10;
+    }
+    .dx-button {
+      float: right;
+    }
+}

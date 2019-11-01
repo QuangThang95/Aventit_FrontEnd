@@ -1,0 +1,58 @@
+<button id="btn-popover-menu" [ngClass]="{'active': checkIsShowMenu }" class="btn-popover-menu" [tabIndex]="2"
+  (keydown)="keydown($event)" (click)="onShowHeaderMenu($event)">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+<dx-popover #dxMenuHeaderPopover target="#btn-popover-menu" class="" position="bottom" width="auto" [(visible)]="checkIsShowMenu">
+  <div *dxTemplate="let data of 'content'">
+    <dx-menu #dxMenuHeaderHiden [dataSource]="itemMenus" displayExpr="name" [showFirstSubmenuMode]="{name: 'onHover',delay: { show: 0, hide: 0 }}"
+      [hideSubmenuOnMouseLeave]="true" orientation="vertical" [(visible)]="checkIsShowMenu" cssClass="menu-header-component"
+      (keydown)="dxMenuKeyDown($event)" (onItemClick)="selectMenu($event)"></dx-menu>
+  </div>
+</dx-popover>
+<dx-menu #dxMenuHeader id="customize-header" [dataSource]="itemMenus" displayExpr="name" (onItemClick)="selectMenu($event)" [tabIndex]="2"
+  showFirstSubmenuMode="onHover">
+</dx-menu>
+<!-- <dx-popup
+        class="popup"
+        [width]="500"
+        [height]="230"
+        [showTitle]="true"
+        title="Neue Pendenz"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="true"
+        [(visible)]="popupVisible"
+        (onHidden)="onHidden($event)">
+       
+        <div *dxTemplate="let data of 'content'">
+                <div class="lblDos">Dossier</div>
+                <p>
+                <dx-select-box #slPerson [value]="textSelectBox" [items]="betrifftPersons" [searchEnabled]="true"></dx-select-box>
+                </p>
+                <dx-toolbar class="toolbarFooter" [items]="toolbars"></dx-toolbar>
+        </div>
+</dx-popup>
+<dx-popup
+        class="popup"
+        [width]="500"
+        [height]="230"
+        [showTitle]="true"
+        title="Neue Person erstellen"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="true"
+        [(visible)]="popupPersonVisible"
+        (onHidden)="onHiddenPerson($event)">
+       
+        <div *dxTemplate="let data of 'content'">
+                <div class="lblDos">Dossier</div>
+                <p>
+                <dx-select-box #slBeziehungenPerson [value]="textSelectBoxPerson" [items]="beziehungenPersons" [searchEnabled]="true"></dx-select-box>
+                </p>
+                <dx-toolbar class="toolbarFooter" [items]="toolbarsPerson"></dx-toolbar>
+        </div>
+</dx-popup> -->
+<!-- <p style="float:right;">
+                <dx-button class="btnPopup" [text]="itemOK.text" [widget]="itemOK.widget" [type]="itemOK.type" (onClick)="itemOK.onClick()" tabindex=1></dx-button>
+                <dx-button class="btnPopup" [text]="itemCancel.text" [widget]="itemCancel.widget" [type]="itemCancel.type" (onClick)="itemCancel.onClick()" tabindex=2></dx-button>
+                </p> -->

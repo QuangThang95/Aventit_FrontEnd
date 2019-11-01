@@ -1,0 +1,70 @@
+{
+  "PendenzenVerwaltung": {
+    "Title": "Pending Administrative"
+  },
+  "VerwaltungDetails": {
+    "TitleSearch": "Search",
+    "TitleDetail": "Detail",
+    "StatusCode": "Status",
+    "TypeCode": "Pendency type",
+    "Subject": "Subject",
+    "Sender": "Creator",
+    "Receiver": "Receiver",
+    "Name": "Name client",
+    "Vorname": "First name client",
+    "Fallnummer": "Case number",
+    "Leistungsverantwortlicher": "Leistungsverantw.",
+    "FallLeistungBetrifftPerson": "Concerns person",
+    "DetailFallLeistungBetrifftPerson": "Concerns person",
+    "OrgUnit": "Organizational unit",
+    "CreateDate": "Detected",
+    "ExpirationDate": "Due",
+    "StartDate": "Processing",
+    "DoneDate": "Done",
+    "Beschreibung": "Description",
+    "Antwort": "Antwort",
+    "Leistung": "Leistung",
+    "Falltraeger": "Falltraeger",
+    "Pendent": "Pendent",
+    "Placeholder": "Select ...",
+    "ExcelExport": "Excel - Export ",
+    "SchnellGrid": "Show quick filter line",
+    "GroupGrid": "Show/Hide Grouping Area",
+    "SucheGrid": "Show/Hide search",
+    "FilterGrid": "Show/Hide filter",
+    "Einstellungen": "Grid Settings",
+    "emptyPanelText": "Drag a column header here to group by that column",
+
+    "DialogLookup": {
+      "Typ": "Type",
+      "Kuerzel": "Logon name",
+      "Name": "Name",
+      "Abteilung": "Department",
+      "VorName": "VorName",
+      "Benutzer": "User"
+    },
+    "Validation": {
+      "NoData": "No data display",
+      "Subject": "The field 'Subject' must not be empty!",
+      "Receiver": "The 'Receiver' field must not be empty!",
+      "EmpfaengerEmpty":
+        "Information: The field 'Empfänger' must not be empty!",
+      "BetreffEmpty": "Information: The field 'Betreff' must not be empty!",
+      "MaxLength": "The content of a field exceeds the maximum allowed length."
+    },
+    "RowCount": "Number of records"
+  },
+  "Button": {
+    "Add": "Add",
+    "Edit": "Edit",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "Search": "Search",
+    "Status": {
+      "Done": "Done",
+      "Inprogress": "In progress",
+      "TotheMask": "To the Mask",
+      "Forward": "Forward"
+    }
+  }
+}

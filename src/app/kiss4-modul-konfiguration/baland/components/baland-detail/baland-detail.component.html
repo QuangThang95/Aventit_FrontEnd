@@ -1,0 +1,77 @@
+<div class="container-detail" id="c004_detail">
+    <div class="toolbar-header">
+        <dx-toolbar id="c004_detail_header">
+            <dxi-item [template]="'detail-header'" name="toolbar-header" location="before"></dxi-item>
+            <span class="toolbar-header-title" id="c004_detail_label-detail" (click)="onCollapseDetailContainer($event)" *dxTemplate="let temp of 'detail-header'">
+                {{ 'Baland.Detail' | translate }}</span>
+        </dx-toolbar>
+    </div>
+    <div class="dx-fieldset" *ngIf="isExpand">
+        <dx-responsive-box singleColumnScreen="sm" [(screenByWidth)]="screen">
+            <dxi-row [ratio]="1"></dxi-row>
+            <dxi-row [ratio]="1" screen="sm"></dxi-row>
+            <dxi-col [ratio]="1"></dxi-col>
+            <dxi-col [ratio]="1" screen="lg"></dxi-col>
+            <dxi-item>
+                <dxi-location [row]="0" [col]="0" [colspan]="1" screen="lg"></dxi-location>
+                <dxi-location [row]="0" [col]="0" [colspan]="2" screen="sm"></dxi-location>
+                <div *dxTemplate class=" item">
+                    <div class="dx-fieldset-column fieldset-column">
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'Baland.Text' | translate }}</span>
+                            <span class="dx-field-value-static" id="c004_detail_text">{{selectedBaland.text}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'Baland.TextIT' | translate }}</span>
+                            <span class="dx-field-value-static" id="c004_detail_text-it">{{selectedBaland.textIT}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'Baland.Iso2' | translate }}</span>
+                            <span class="dx-field-value-static" id="c004_detail_iso2">{{selectedBaland.iso2Code}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'Baland.BFSCode' | translate }}</span>
+                            <span class="dx-field-value-static" id="c004_detail_bfs-code">{{selectedBaland.bfsCode}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label">{{ 'Baland.Datumvon' | translate }}</span>
+                            <span class="dx-field-value-static " id="c004_detail_datum-von">{{selectedBaland.datumVon | date : formatDate}}</span>
+                        </div>
+                    </div>
+                </div>
+            </dxi-item>
+            <dxi-item>
+                <dxi-location [row]="0" [col]="1" screen="lg"></dxi-location>
+                <dxi-location [row]="1" [col]="0" [colspan]="2" screen="sm"></dxi-location>
+                <div *dxTemplate class=" item">
+                    <div class="dx-fieldset-column fieldset-column">
+                        <div class="dx-field">
+                            <span class="dx-field-label ">{{ 'Baland.TextFR' | translate }}</span>
+                            <span class="dx-field-value-static " id="c004_detail_text-fr">{{selectedBaland.textFR}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label ">{{ 'Baland.TextEN' | translate }}</span>
+                            <span class="dx-field-value-static " id="c004_detail_text-en">{{selectedBaland.textEN}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label ">{{ 'Baland.Iso3' | translate }}</span>
+                            <span class="dx-field-value-static " id="c004_detail_iso3 ">{{selectedBaland.iso3Code}}</span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label ">{{ 'Baland.VomBFSgeliefert' | translate }}</span>
+                            <span class="dx-field-value-static ">
+                                <dx-check-box id="c004_detail_vom-bfs-geleifert" *ngIf="!selectedBaland.bfsDelivered" disabled="true" [value]="false"></dx-check-box>
+                                <dx-check-box id="c004_detail_vom-bfs-geleifert" *ngIf="selectedBaland.bfsDelivered" disabled="true" [value]="true"></dx-check-box>
+                            </span>
+                        </div>
+                        <div class="dx-field">
+                            <span class="dx-field-label ">{{ 'Baland.Datumbis' | translate }}</span>
+                            <span class="dx-field-value-static  " id="c004_detail_datum-bis">{{selectedBaland.datumBis | date : formatDate}}</span>
+                        </div>
+                    </div>
+                </div>
+            </dxi-item>
+            <div class="dx-clearfix"></div>
+        </dx-responsive-box>
+    </div>
+</div>

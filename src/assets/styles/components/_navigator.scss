@@ -1,0 +1,145 @@
+app-navigator{
+    // position: fixed;
+    height: 46px;
+    display: block;
+    // width: calc(100% - 360px);
+    z-index: 2;
+    a{
+        text-decoration: none;
+    }
+    .menu-state-button {
+        width: 30px;
+        height: 46px;
+        float: left;
+        background-color: #3e5876;
+        cursor: pointer;
+        z-index: 1000;
+        position: fixed;
+
+        &::after {
+            content: "";
+            width: 30px;
+            height: 46px;
+            background-image: url(../icon/svg/menu-icon-active.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+        }
+        &:focus {
+            background-color:darken(#3e5876, 35%) !important;
+        }
+
+    }
+
+    .toolbarHeader {
+        position: fixed !important;
+        z-index: 999;
+    }
+
+    dx-toolbar.dx-toolbar{
+        background-color: $color-base;
+        padding: 5px 15px 5px 15px!important;
+        .dx-toolbar-item{
+            line-height: 1;
+        }
+        .dx-toolbar-button{
+            .dx-button{
+                background-color: $color-white;
+                color: $color-black;
+                border: none;
+                font-weight: $base-fw;
+                .dx-icon{
+                    color: $color-black;
+                }
+                &.dx-button-has-text .dx-button-content{
+                    padding: 5px 16px 6px; 
+                }
+                &.dx-button-has-icon .dx-button-content{
+                    padding: 5px;
+                }
+                &.dx-state-focused {
+                    background-color:lighten($color-black, 85%) !important;
+                }
+                &.isNotShowEC {
+                    display: none !important;
+                }
+                &.isShowEC {
+                    display: block !important;
+                }
+            }
+        }
+        .dx-toolbar-menu-container{
+            display: inline-block;
+            padding: 4px 0 0 5px;
+            .dx-button{
+                background-color: transparent;
+                .dx-icon{
+                    color:  $color-white;
+                }
+                &.dx-state-focused {
+                    background-color:lighten($color-black, 80%) !important;
+                }
+            }
+        }
+        ul.navigator{
+            li{
+                color: $color-white;
+                white-space: nowrap;
+                display: inline-block;
+                a{
+                    color: $color-white;
+                    white-space: nowrap;
+                    &:focus {
+                        background: #0d3b63;
+                        box-shadow: 0px 0px 0px 5px #0d3b63;
+                        outline: none;
+                    }
+                }
+
+                small{font-size: 100%;padding-left: 10px;}
+                &+li:before{
+                    content: "\203A";
+                    color: $color-white;
+                    font-size: 120%;
+                    padding: 0 10px;
+                }
+                &:nth-child(2):before{
+                    content:"";
+                    padding: 0px 0px 0px 10px;
+                }
+            }
+        }
+        .dx-toolbar-after {
+            position: sticky;
+            z-index: 9999;
+            float: right;
+            right: 10px;
+        }
+    }
+    
+}
+.dx-popup-title {
+    .kiss-popup {
+        width: 100%;
+        background-color: initial;
+        ul {
+            padding-left: $button-margin-bottom !important;
+            font-size: $label-detail-font-size;
+            font-weight: $label-detail-font-size;
+            color: $color-white;
+        }
+    }
+}
+.kiss-btn-link,
+.kiss-btn-link.dx-state-focused {
+    background-color: initial !important;
+    color: $color-white !important;
+    font-weight: $font-weight-normal;
+    .dx-button-text {
+        font-weight: $font-weight-normal;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

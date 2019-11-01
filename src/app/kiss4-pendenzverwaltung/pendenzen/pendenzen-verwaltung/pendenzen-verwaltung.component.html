@@ -1,0 +1,783 @@
+<kiss-right-component>
+<section id="wrapper-content">
+  <div class="error" *ngIf="isErrorClosed && messageErr">
+    <span class="btn-close-error">
+      <dx-button (onClick)="isErrorClosed = false" class="btn-close" icon="fa fa-times fa-2x">
+      </dx-button>
+    </span>
+    <div class="error-messege">
+      <span class="ico-error">
+        <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+      </span>
+      <i id="err-messeger">{{ messageErr }}</i>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-content">
+      <dx-tree-view #navigationTree selectionMode="single" id="simple-treeview" [items]="pendenzenVerwaltungSandbox.pendenzenVerwaltungTreeNavigatorData$ | async"
+        [disabled]="!isViewDetail || isAddMode" dataStructure="plain" parentIdExpr="parentId" keyExpr="id" displayExpr="caption"
+        [selectByClick]="true" hasItemsExpr="expanded" [virtualModeEnabled]="true" (onContentReady)="navigationOnContentReady($event)"
+        (onItemClick)="navigationItemSelect($event)"></dx-tree-view>
+    </div>
+    <div class="right-content">
+      <div id="bar">
+        <dx-toolbar (onItemClick)="toolBarOnItemClick($event)">
+          <dxi-item [template]="'titleTemplate'" name="toolbar-header" location="before"></dxi-item>
+          <dxi-item widget="dxButton" location="after" name="printPdf" [options]="{icon: 'fa fa-print' }">
+          </dxi-item>
+          <dxi-item widget="dxButton" location="after" name="exportExcel" [options]="{icon: 'fa fa-file-excel-o'}">
+          </dxi-item>
+          <dxi-item widget="dxButton" location="after" name="chooserColumn" [options]="{icon: 'fa fa-clipboard'}">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.ColumnChooser.Title' | translate }}" name="chooserColumn" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.ExcelExport' | translate }}" name="exportExcel" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.GridPrint' | translate }}" name="gridprint" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.SchnellGrid' | translate }}" name="isSearchPanel" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.Filterbuilder' | translate }}" name="isFilterBuilder" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.SucheGrid' | translate }}" name="isSearch" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.FilterGrid' | translate }}" name="isFilter" locateInMenu="always">
+          </dxi-item>
+          <dxi-item text="{{ 'VerwaltungDetails.Einstellungen' | translate }}" locateInMenu="always">
+          </dxi-item>
+          <div *dxTemplate="let temp of 'titleTemplate'">
+            <span style="padding-left:10px;font-weight: 600" id="pendenzen-title"> {{ 'PendenzenVerwaltung.Title' |
+              translate }} {{treeSelectValue}}</span>
+          </div>
+        </dx-toolbar>
+      </div>
+      <div class="form-content">
+        <div id="bar">
+          <dx-toolbar (onItemRendered)="changedLanguage($event)">
+            <dxi-item text="{{ 'VerwaltungDetails.TitleSearch' | translate }}" id="toolbar-header" location="before"></dxi-item>
+          </dx-toolbar>
+        </div>
+
+        <div class="form-body">
+          <dx-form id="pendenzen-Search" #pendenzenVerwaltungSearchForm [(formData)]="queryData" colCount="auto"
+            labelLocation="left" [disabled]="!isViewDetail || isAddMode" [showColonAfterLabel]="false">
+
+            <dxi-item itemType="group" colCount="2">
+              <dxi-item itemType="group" colSpan="1" width="100%">
+
+                <dxi-item dataField="SucheTaskStatusCode" [editorOptions]="{ width: '100%' }" [template]="'StatusCodeTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.StatusCode' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheTaskTypeCode" [editorOptions]="{ width: '100%' }" [template]="'TypeCodeTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.TypeCode' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheSubject" [editorOptions]="{ width: '100%' }" [template]="'SubjectTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Subject' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheSenderId" [editorOptions]="{ width: '100%' }" [template]="'SenderTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Sender' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheReceiverId" [editorOptions]="{ width: '100%' }" [template]="'ReceiverTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Receiver' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheName" [editorOptions]="{ width: '100%' }" [template]="'NameTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Name' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheVorname" [editorOptions]="{ width: '100%' }" [template]="'VornameTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Vorname' | translate }}"></dxo-label>
+
+                </dxi-item>
+
+              </dxi-item>
+
+              <dxi-item itemType="group" colSpan="1" width="100%">
+
+                <dxi-item dataField="SucheFallId" [editorOptions]="{ width: '100%' }" [template]="'FallnummerTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Fallnummer' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="SucheLeistungId" [editorOptions]="{ width: '100%' }" [template]="'LeistungsverantwortlicherTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Leistungsverantwortlicher' | translate }}"></dxo-label>
+
+                </dxi-item>
+
+                <dxi-item dataField="SucheOrgUnit" itemType="group" [editorOptions]="{ width: '100%' }" [template]="'OrgUnitTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.OrgUnit' | translate }}"></dxo-label>
+
+                </dxi-item>
+
+                <dxi-item itemType="group" colSpan="1">
+
+                  <dxi-item itemType="group" [template]="'ErfasstTemplate'">
+                    <dxo-label text="{{ 'VerwaltungDetails.CreateDate' | translate }}"></dxo-label>
+                  </dxi-item>
+
+                  <dxi-item itemType="group" [template]="'FalligTemplate'">
+                    <dxo-label text="{{ 'VerwaltungDetails.ExpirationDate' | translate }}"></dxo-label>
+                  </dxi-item>
+
+                  <dxi-item itemType="group" [template]="'BearbeitungTemplate'">
+                    <dxo-label text="{{ 'VerwaltungDetails.StartDate' | translate }}"></dxo-label>
+                  </dxi-item>
+
+                  <dxi-item itemType="group" [template]="'ErledigtTemplate'">
+                    <dxo-label text="{{ 'VerwaltungDetails.DoneDate' | translate }}"></dxo-label>
+                  </dxi-item>
+
+                  <dxi-item itemType="group" [template]="'btnSearchTemplate'">
+                    <dxo-label text=""></dxo-label>
+                  </dxi-item>
+
+                </dxi-item>
+
+              </dxi-item>
+
+            </dxi-item>
+
+
+            <div *dxTemplate="let data of 'StatusCodeTemplate'">
+              <dx-select-box name="input-status-search" [dataSource]="getData" [items]="getData.status" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"
+                (onContentReady)="selectContentReady($event)" valueExpr="value" displayExpr="name" (onItemClick)="selectDropdownValue($event.itemData.code,'SucheTaskStatusCode')">
+              </dx-select-box>
+            </div>
+
+            <div *dxTemplate="let data of 'TypeCodeTemplate'">
+              <dx-select-box name="input-pendenzTyp-search" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungTypeData$ | async"
+                placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}" valueExpr="value" (onContentReady)="selectContentReady($event)"
+                displayExpr="name" (onItemClick)="selectDropdownValue($event.itemData.code,'SucheTaskTypeCode')">
+              </dx-select-box>
+            </div>
+
+            <div *dxTemplate="let data of 'SubjectTemplate'">
+              <dx-text-box name="input-betreff-search" [(value)]="queryData['SucheSubject']"></dx-text-box>
+            </div>
+
+            <div *dxTemplate="let data of 'SenderTemplate'">
+              <dx-drop-down-box name="input-ersteller-search" [items]="pendenzenVerwaltungSandbox.pendenzenVerwaltungErstellerEmpfaengerData$ | async"
+                [(value)]="creatorSearchId" valueExpr="id" [showClearButton]="true" displayExpr="displayText"
+                (onOpened)="refeshGridInDropdown()" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}">
+                <div *dxTemplate="let data of 'content'">
+                  <dx-data-grid id="grid-ersteller" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungErstellerEmpfaengerData$ | async"
+                    keyExpr="id" columnAutoWidth="true" (onRowClick)="gridOnClick($event,'creatorSearchId')"
+                    (onContentReady)="gridContentReady($event,'creatorSearchId')" [selection]="{ mode: 'single' }"
+                    [hoverStateEnabled]="true" [height]="265" [showRowLines]='true' [showBorders]="true" noDataText="{{ 'VerwaltungDetails.Validation.NoData' | translate }}">
+                    <dxo-search-panel [visible]="true" highlightCaseSensitive="true" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"></dxo-search-panel>
+                    <dxo-pager [visible]="false"></dxo-pager>
+                    <dxo-paging [pageSize]="totalRowInGrid['creatorSearchId']"></dxo-paging>
+
+                    <dxi-column dataField="typ" caption="{{ 'VerwaltungDetails.DialogLookup.Typ' | translate }}"></dxi-column>
+                    <dxi-column dataField="kürzel" caption="{{ 'VerwaltungDetails.DialogLookup.Kuerzel' | translate }}"></dxi-column>
+                    <dxi-column dataField="name" caption="{{ 'VerwaltungDetails.DialogLookup.Name' | translate }}"></dxi-column>
+                    <dxi-column dataField="abteilung" caption="{{ 'VerwaltungDetails.DialogLookup.Abteilung' | translate }}"></dxi-column>
+
+                  </dx-data-grid>
+                  <div class="row-count">
+                    <span id="row-count-sender">{{ 'VerwaltungDetails.RowCount' | translate }}:
+                      {{totalRowInGrid['creatorSearchId']}}</span>
+                  </div>
+                </div>
+              </dx-drop-down-box>
+            </div>
+
+            <div *dxTemplate="let data of 'ReceiverTemplate'">
+              <dx-drop-down-box name="input-empfenger-search" [disabled]="queryData.NavBarItemName !=='itmSuche'"
+                [(value)]="receiverSearchId" valueExpr="id" displayExpr="displayText" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"
+                [showClearButton]="true" (onOpened)="refeshGridInDropdown()" [items]="pendenzenVerwaltungSandbox.pendenzenVerwaltungErstellerEmpfaengerData$ | async">
+                <div *dxTemplate="let data of 'content'">
+                  <dx-data-grid id="grid-empf" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungErstellerEmpfaengerData$ | async"
+                    keyExpr="id" columnAutoWidth="true" (onRowClick)="gridOnClick($event,'receiverSearchId')"
+                    (onContentReady)="gridContentReady($event,'receiverSearchId')" [selection]="{ mode: 'single' }"
+                    [hoverStateEnabled]="true" [showRowLines]='true' [showBorders]="true" [height]="265" noDataText="{{ 'VerwaltungDetails.Validation.NoData' | translate }}">
+                    <dxo-search-panel [visible]="true" highlightCaseSensitive="true" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"></dxo-search-panel>
+                    <dxo-paging [pageSize]="totalRowInGrid['receiverSearchId']"></dxo-paging>
+                    <dxo-pager [visible]="false"></dxo-pager>
+
+                    <dxi-column dataField="typ" caption="{{ 'VerwaltungDetails.DialogLookup.Typ' | translate }}"></dxi-column>
+                    <dxi-column dataField="kürzel" caption="{{ 'VerwaltungDetails.DialogLookup.Kuerzel' | translate }}"></dxi-column>
+                    <dxi-column dataField="name" caption="{{ 'VerwaltungDetails.DialogLookup.Name' | translate }}"></dxi-column>
+                    <dxi-column dataField="abteilung" caption="{{ 'VerwaltungDetails.DialogLookup.Abteilung' | translate }}"></dxi-column>
+
+
+                  </dx-data-grid>
+                  <div class="row-count">
+                    <span id="row-count-receiver">{{ 'VerwaltungDetails.RowCount' | translate }}:
+                      {{totalRowInGrid['receiverSearchId']}}</span>
+                  </div>
+                </div>
+              </dx-drop-down-box>
+            </div>
+
+            <div *dxTemplate="let data of 'NameTemplate'">
+              <dx-text-box name="input-nameKlient-search" [(value)]="queryData['SucheName']"></dx-text-box>
+            </div>
+
+            <div *dxTemplate="let data of 'VornameTemplate'">
+              <dx-text-box name="input-vomameKlient-search" [(value)]="queryData['SucheVorname']"></dx-text-box>
+            </div>
+
+            <div *dxTemplate="let data of 'FallnummerTemplate'">
+              <dx-text-box name="input-fallnummer-search" [(value)]="queryData['SucheFallId']"></dx-text-box>
+            </div>
+
+            <div *dxTemplate="let data of 'LeistungsverantwortlicherTemplate'">
+              <dx-drop-down-box name="input-leistungsverantw-search" [items]="pendenzenVerwaltungSandbox.pendenzenVerwaltungLeistungsverantData$ | async"
+                [(value)]="leistungSearchId" valueExpr="userId" [showClearButton]="true" displayExpr="displayText"
+                (onOpened)="refeshGridInDropdown()" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}">
+                <div *dxTemplate="let data of 'content'">
+
+                  <dx-data-grid id="grid-leistung" (onRowClick)="gridOnClick($event,'leistungSearchId')" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungLeistungsverantData$ | async"
+                    columnAutoWidth="true" (onContentReady)="gridContentReady($event,'leistungSearchId')" [selection]="{ mode: 'single' }"
+                    keyExpr="userId" [hoverStateEnabled]="true" [showRowLines]='true' [showBorders]="true" [height]="265"
+                    noDataText="{{ 'VerwaltungDetails.Validation.NoDataLeistungsverantw' | translate }}">
+                    <dxo-search-panel [visible]="true" highlightCaseSensitive="true" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"></dxo-search-panel>
+                    <dxo-paging [pageSize]="totalRowInGrid['leistungSearchId']"></dxo-paging>
+                    <dxo-pager [visible]="false"></dxo-pager>
+
+                    <dxi-column dataField="name" caption="{{ 'VerwaltungDetails.DialogLookup.Name' | translate }}"></dxi-column>
+                    <dxi-column dataField="logonName" caption="{{ 'VerwaltungDetails.DialogLookup.Kuerzel' | translate }}"></dxi-column>
+                  </dx-data-grid>
+                  <div class="row-count">
+                    <span id="row-count-leistungsverantwortlicher">{{ 'VerwaltungDetails.RowCount' | translate }}:
+                      {{totalRowInGrid['leistungSearchId']}}</span>
+                  </div>
+                </div>
+              </dx-drop-down-box>
+            </div>
+
+            <div *dxTemplate="let data of 'OrgUnitTemplate'">
+              <dx-select-box name="input-organ-search" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungOrganisationData$ | async"
+                valueExpr="code" displayExpr="text" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"
+                (onItemClick)="selectDropdownValue($event.itemData.code,'SucheOrgUnit')">
+              </dx-select-box>
+            </div>
+
+            <div *dxTemplate="let data of 'ErfasstTemplate'">
+              <div style="float: left; width: 40%;">
+                <dx-date-box name="input-erfasstFrom-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheCreateDateVon')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+              <div style="float: left; width: 20%; text-align:center;">
+                <strong>–</strong>
+              </div>
+              <div style="float: right; width: 40%;">
+                <dx-date-box name="input-erfasstTo-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheCreateDateBis')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+            </div>
+
+            <div *dxTemplate="let data of 'FalligTemplate'">
+              <div style="float: left; width: 40%;">
+                <dx-date-box name="input-falligFrom-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheExpirationDateVon')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+              <div style="float: left; width: 20%; text-align:center;">
+                <strong>–</strong>
+              </div>
+              <div style="float: right; width: 40%;">
+                <dx-date-box name="input-falligTo-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheExpirationDateBis')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+            </div>
+
+            <div *dxTemplate="let data of 'BearbeitungTemplate'">
+              <div style="float: left; width: 40%;">
+                <dx-date-box name="input-bearbeitungFrom-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheStartDateVon')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+              <div style="float: left; width: 20%; text-align:center;">
+                <strong>–</strong>
+              </div>
+              <div style="float: right; width: 40%;">
+                <dx-date-box name="input-bearbeitungTo-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheStartDateBis')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+            </div>
+
+            <div *dxTemplate="let data of 'ErledigtTemplate'">
+              <div style="float: left; width: 40%;">
+                <dx-date-box name="input-erledigtFrom-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheDoneDateVon')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+              <div style="float: left; width: 20%; text-align:center;">
+                <strong>–</strong>
+              </div>
+              <div style="float: right; width: 40%;">
+                <dx-date-box name="input-erledigtTo-search" type="date" pickerType="calendar" displayFormat="dd.MM.yyyy"
+                  placeholder="dd.MM.yyyy" (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)"
+                  (onValueChanged)="dateBoxValueChange($event,'SucheDoneDateBis')" (onContentReady)="$event.component.option('calendarOptions.firstDayOfWeek', 1 )"
+                  width="100%" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </div>
+            </div>
+
+            <div *dxTemplate="let data of 'btnSearchTemplate'">
+              <dx-button type="default" text="{{ 'Button.Search' | translate }}" name="btnSearch" icon="fa fa-search"
+                id="btnSearch" (onClick)="onClickBtnSearch()"></dx-button>
+            </div>
+
+          </dx-form>
+
+        </div>
+
+      </div>
+      <br>
+      <div *ngIf="toolbarControl.isFilterBuilder" class="filter-container">
+        <dx-filter-builder [fields]="gridComponent.instance.option('columns')" [(value)]="filter">
+        </dx-filter-builder>
+        <dx-button text="Apply Filter" type="default" (onClick)="gridComponent.instance.filter(filter)">
+        </dx-button>
+        <div class="dx-clearfix"></div>
+      </div>
+      <div class="grid-mid">
+        <dx-data-grid id="grid-pendenzen-verwaltung" #gridPendenzenVerwatung columnAutoWidth="true" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungsData$ | async"
+          [allowColumnResizing]="true" [hoverStateEnabled]="true" [showRowLines]='true' [showBorders]="true" keyExpr="xTaskId"
+          [disabled]="!isViewDetail || isAddMode" (onContentReady)="gridOnContentReady($event)" (onSelectionChanged)="gridOnChangedValue($event)"
+          filterValue="gridFilterValue" (onCellClick)="gridOnCellClick($event)" [height]="300" noDataText="{{ 'VerwaltungDetails.Validation.NoDataGrid' | translate }}">
+
+          <dxi-column dataField="expirationDate" caption="{{ 'VerwaltungDetails.ExpirationDate' | translate }}"
+            dataType="date" [format]="{type: 'dd.MM.yyyy'}"></dxi-column>
+          <dxi-column dataField="subject" caption="{{ 'VerwaltungDetails.Subject' | translate }}"></dxi-column>
+          <dxi-column dataField="leistungModul" caption="{{ 'VerwaltungDetails.Leistung' | translate }}" [width]="50"></dxi-column>
+          <dxi-column dataField="faFall" caption="{{ 'VerwaltungDetails.Falltraeger' | translate }}"></dxi-column>
+          <dxi-column dataField="fallnummer" caption="{{ 'VerwaltungDetails.Fallnummer' | translate }}" [width]="70"></dxi-column>
+          <dxi-column dataField="personBp" caption="{{ 'VerwaltungDetails.FallLeistungBetrifftPerson' | translate }}"
+            [width]="150"></dxi-column>
+          <dxi-column dataField="sender" caption="{{ 'VerwaltungDetails.Sender' | translate }}"></dxi-column>
+          <dxi-column dataField="receiver" caption="{{ 'VerwaltungDetails.Receiver' | translate }}"></dxi-column>
+          <dxi-column dataField="taskStatusCodeText" caption="{{ 'VerwaltungDetails.StatusCode' | translate }}"></dxi-column>
+          <!-- <dxi-column dataField="taskStatusCode" [visible]="false"></dxi-column> -->
+          <dxi-column dataField="createDate" caption="{{ 'VerwaltungDetails.CreateDate' | translate }}" dataType="date"
+            [format]="{type: 'dd.MM.yyyy'}"></dxi-column>
+          <dxi-column dataField="startDate" caption="{{ 'VerwaltungDetails.StartDate' | translate }}" dataType="date"
+            [format]="{type: 'dd.MM.yyyy'}" calendarOptions="{firstDayOfWeek: 1}"></dxi-column>
+          <dxi-column dataField="doneDate" caption="{{ 'VerwaltungDetails.DoneDate' | translate }}" dataType="date"
+            [format]="{type: 'dd.MM.yyyy'}"></dxi-column>
+          <dxi-column dataField="responseText" caption="{{ 'VerwaltungDetails.Antwort' | translate }}"></dxi-column>
+          <dxi-column caption="" cellTemplate="contextMenu" [width]="50"></dxi-column>
+          <dxo-search-panel [visible]="toolbarControl.isSearchPanel" highlightCaseSensitive="true" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"></dxo-search-panel>
+          <!-- <dxo-group-panel [visible]="isGroupPanel" emptyPanelText="{{ 'VerwaltungDetails.emptyPanelText' | translate }}"></dxo-group-panel> -->
+          <dxo-filter-row [visible]="toolbarControl.isSearch" applyFilter="Immediately"></dxo-filter-row>
+          <dxo-header-filter [visible]="toolbarControl.isFilter"></dxo-header-filter>
+          <dxo-selection selectAllMode="allPages" showCheckBoxesMode="onClick" mode="multiple"></dxo-selection>
+          <dxo-editing mode="row"></dxo-editing>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 30]" [showInfo]="true"></dxo-pager>
+          <dxo-column-chooser #columnChooser emptyPanelText="{{ 'VerwaltungDetails.ColumnChooser.EmptyPanelText' | translate }}"
+            title="{{ 'VerwaltungDetails.ColumnChooser.Title' | translate }}" [enabled]="false">
+          </dxo-column-chooser>
+          <div *dxTemplate="let d of 'contextMenu'">
+            <button id="id-context-{{d.data.xTaskId}}" style="border: 1px solid #978; border-radius: 3px; background-color: antiquewhite">
+              <b>...</b>
+            </button>
+            <dx-context-menu [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungModulenStatusData$ | async"
+              [width]="170" target="#id-context-{{d.key}}" [elementAttr]="{id: 'menu'}" showEvent="dxcontextmenu click"
+              hidden="auto" [height]="175" [position]="{ at: 'left bottom' }" [width]="270" [width]="270" [animation]="animationContextMenu">
+              <div *dxTemplate="let data of 'item'" [attr.id]="data.disabled?'disabled':'enabled'" class="custom-item">
+
+                <img class="context-focus" src="../../../assets/icon/characters-and-numbers/svg/{{data.iconId}}.svg"
+                  [attr.alt]="data.disabled?'false':'true'" width="24" height="24" />
+              </div>
+            </dx-context-menu>
+          </div>
+
+        </dx-data-grid>
+        <kiss-spinner [isRunning]="pendenzenVerwaltungSandbox.pendenzenVerwaltungLoading$ | async"></kiss-spinner>
+      </div>
+      <div class="dx-clearfix"></div>
+      <br>
+      <div class="form-content">
+        <div id="bar">
+          <dx-toolbar width="100%">
+            <dxi-item text="{{ 'VerwaltungDetails.TitleDetail' | translate }}" id="toolbar-header" location="before"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemBearbeitungTemplate'"
+              disabled="true" [visible]="toolbarControl.isVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemMaskeTemplate'" disabled="true"
+              [visible]="toolbarControl.isVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemWeiterleitenTemplate'"
+              disabled="true" [visible]="toolbarControl.isVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemErledigtTemplate'"
+              [disabled]="statusEdit.setErledigtDisable" [visible]="statusEdit.setErledigtVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemAddNewTemplate'"
+              [visible]="!toolbarControl.isVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemEditTemplate'" [visible]="!toolbarControl.isVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemSaveTemplate'" [visible]="toolbarControl.isVisible"></dxi-item>
+            <dxi-item locateInMenu="never" location="after" widget="dxButton" [template]="'itemCancelTemplate'"
+              [visible]="toolbarControl.isVisible"></dxi-item>
+
+            <div *dxTemplate="let temp of 'itemBearbeitungTemplate'">
+              <dx-button id="action-bearbeitung" name="action-bearbeitung" text="{{ 'Button.Status.Inprogress' | translate }}"
+                width="100%" disabled="true" [visible]="toolbarControl.isVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemMaskeTemplate'">
+              <dx-button id="action-maske" name="action-maske" text="{{ 'Button.Status.TotheMask' | translate }}" width="100%"
+                disabled="true" [visible]="toolbarControl.isVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemWeiterleitenTemplate'">
+              <dx-button id="action-weiterleiten" name="action-weiterleiten" text="{{ 'Button.Status.Forward' | translate }}"
+                width="100%" disabled="true" [visible]="toolbarControl.isVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemErledigtTemplate'">
+              <dx-button id="action-erledigt" name="action-erledigt" text="{{ 'Button.Status.Done' | translate }}"
+                (onClick)="actionDone_OnClick($event)" width="100%" [disabled]="statusEdit.setErledigtDisable"
+                [visible]="statusEdit.setErledigtVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemAddNewTemplate'">
+              <dx-button id="action-addnew" name="action-addnew" text="{{ 'Button.Add' | translate }}" (onClick)="actionNew_OnClick($event)"
+                icon="fa fa-plus" width="100%" [visible]="!toolbarControl.isVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemEditTemplate'">
+              <dx-button id="action-edit" name="action-edit" text="{{ 'Button.Edit' | translate }}" (onClick)="actionEdit_OnClick($event)"
+                icon="fa fa-pencil" width="100%" [visible]="!toolbarControl.isVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemSaveTemplate'">
+              <dx-button id="action-save" name="action-save" text="{{ 'Button.Save' | translate }}" (onClick)="actionSave_OnClick($event)"
+                icon="fa fa-floppy-o" width="100%" [visible]="toolbarControl.isVisible">
+              </dx-button>
+            </div>
+
+            <div *dxTemplate="let temp of 'itemCancelTemplate'">
+              <dx-button id="action-cancel" name="action-cancel" text="{{ 'Button.Cancel' | translate }}" (onClick)="actionCancel_OnClick()"
+                icon="fa fa-times" width="100%" [visible]="toolbarControl.isVisible">
+              </dx-button>
+            </div>
+          </dx-toolbar>
+        </div>
+        <div class="form-body">
+          <dx-form id="pendenzen-form" #pendenzenVerwaltungForm [(formData)]="pendenzenVerwaltungModel" colCount="auto"
+            labelLocation="left" [showColonAfterLabel]="false" validationGroup="PendenzenVerwaltungFormValidate">
+
+            <dxi-item itemType="group" colCount="2">
+              <dxi-item itemType="group" colSpan="1">
+                <dxi-item dataField="id" [visible]="false"></dxi-item>
+
+                <dxi-item dataField="taskStatusCode" [editorOptions]="{  width: '100%'}" [template]="'StatusTypTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.StatusCode' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="taskTypeCode" [editorOptions]="{ width: '100%' }" [template]="'PendenzTypTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.TypeCode' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="subject" [template]="'SubjectTypTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Subject' | translate }}"></dxo-label>
+
+
+                </dxi-item>
+                <dxi-item dataField="taskDescription" [template]="'DescriptionTypTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Beschreibung' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="senderId" [disabled]="!isAddMode" [template]="'SenderTypTemplate'" [editorOptions]="{ name:'input-ersteller', width: '100%' }">
+                  <dxo-label text="{{ 'VerwaltungDetails.Sender' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <!-- 2 dropdown -->
+                <dxi-item dataField="receiverId" [editorOptions]="{ width: '100%' }" [template]="'EmpfangeTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Receiver' | translate }}"></dxo-label>
+
+                </dxi-item>
+
+                <dxi-item dataField="faFallId" [editorOptions]="{ width: '100%' }" [template]="'FalltrageTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Falltraeger' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="faLeistungId" [editorOptions]="{ width: '100%' }" [template]="'LeistungTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Leistung' | translate }}"></dxo-label>
+                </dxi-item>
+
+              </dxi-item>
+
+              <dxi-item itemType="group" colSpan="1">
+
+                <dxi-item [template]="'LeistungsverantwTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Leistungsverantwortlicher' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="baPersonId" [editorOptions]="{ width: '100%' }" [template]="'BetrifftTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.DetailFallLeistungBetrifftPerson' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="responseText" [template]="'AntwortTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.Antwort' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="createDate" [editorOptions]="{ width: '100%' }" [template]="'ErfasstTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.CreateDate' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item dataField="expirationDate" [editorOptions]="{ width: '100%' }" [template]="'FalligTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.ExpirationDate' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item [template]="'StartDateTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.StartDate' | translate }}"></dxo-label>
+                </dxi-item>
+
+                <dxi-item [template]="'DoneDateTemplate'">
+                  <dxo-label text="{{ 'VerwaltungDetails.DoneDate' | translate }}"></dxo-label>
+                </dxi-item>
+              </dxi-item>
+            </dxi-item>
+
+            <div *dxTemplate="let data of 'StatusTypTemplate'">
+
+              <div *ngIf="isViewDetail; else elseBlock" id="lblStatusTyp">{{pendenzenVerwaltungModel['taskStatusDisplay']}}</div>
+              <ng-template #elseBlock>
+                <dx-text-box name="input-status" value="{{ isViewDetail ? pendenzenVerwaltungModel['taskStatusDisplay'] : 'VerwaltungDetails.Pendent'  | translate }}"
+                  disabled="true"></dx-text-box>
+              </ng-template>
+            </div>
+
+            <div *dxTemplate="let data of 'PendenzTypTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblPendenzTyp">{{pendenzenVerwaltungModel['taskTypeDisplay']}}</div>
+              <ng-template #elseBlock>
+                <dx-select-box name="input-pendez" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungTypeData$ | async"
+                  valueExpr="code" [(value)]="pendenzenVerwaltungModel['taskTypeCode']" displayExpr="text" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"
+                  (onItemClick)="pendenzenVerwaltungTypeAction($event.itemData.code)" [readOnly]="!isAddMode">
+                </dx-select-box>
+              </ng-template>
+            </div>
+
+
+            <div *dxTemplate="let data of 'SubjectTypTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblSubjectTyp">
+                {{pendenzenVerwaltungModel['subject']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-text-box (onFocusIn)="isValueSubjectChanged =(isAddMode || !isViewDetail)" name="input-subject"
+                  [(value)]="pendenzenVerwaltungModel['subject']" [readOnly]="statusEdit.subjectReadOnly">
+                  <dx-validator validationGroup="PendenzenVerwaltungFormValidate">
+                    <dxi-validation-rule type="stringLength" [max]="100" message="{{ 'VerwaltungDetails.Validation.MaxLength' | translate }}"></dxi-validation-rule>
+                    <dxi-validation-rule type="required" message="{{ 'VerwaltungDetails.Validation.BetreffEmpty' | translate }}">
+                    </dxi-validation-rule>
+                  </dx-validator>
+                </dx-text-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'DescriptionTypTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblDescriptionTyp">
+                {{pendenzenVerwaltungModel['taskDescription']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-text-area name="input-beschreibung" [(value)]="pendenzenVerwaltungModel['taskDescription']" width="100%"
+                  [readOnly]="statusEdit.beschreibungReadOnly" (onFocusIn)="isValueSubjectChanged =(isAddMode || !isViewDetail)"></dx-text-area>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'SenderTypTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblSenderTyp">
+                {{pendenzenVerwaltungModel['sender']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-text-box name="input-sender" [value]="pendenzenVerwaltungModel['sender']" disabled="true"></dx-text-box>
+              </ng-template>
+
+            </div>
+
+            <div *dxTemplate="let data of 'EmpfangeTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblEmpfange">{{pendenzenVerwaltungModel['receiver']}}</div>
+              <ng-template #elseBlock>
+                <dx-drop-down-box name="input-empfange" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"
+                  [(value)]="receiverDetailId" valueExpr="id" displayExpr="displayText" (onOpened)="refeshGridInDropdown()"
+                  [showClearButton]="true" [items]="pendenzenVerwaltungSandbox.pendenzenVerwaltungErstellerEmpfaengerData$ | async">
+                  <div *dxTemplate="let data of 'content'">
+
+                    <dx-data-grid id="grid-empfange" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungErstellerEmpfaengerData$ | async"
+                      keyExpr="id" columnAutoWidth="true" (onRowClick)="gridOnClick($event,'receiverDetailId')"
+                      (onContentReady)="gridContentReady($event,'receiverDetailId')" name="input-empfange" [selection]="{ mode: 'single' }"
+                      [hoverStateEnabled]="true" [showRowLines]='true' [showBorders]="true" [height]="265" noDataText="{{ 'VerwaltungDetails.Validation.NoData' | translate }}">
+                      <dxo-search-panel [visible]="true" highlightCaseSensitive="true" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"></dxo-search-panel>
+                      <dxo-paging [pageSize]="totalRowInGrid['receiverDetailId']"></dxo-paging>
+                      <dxo-pager [visible]="false"></dxo-pager>
+
+                      <dxi-column dataField="typ" caption="{{ 'VerwaltungDetails.DialogLookup.Typ' | translate }}"></dxi-column>
+                      <dxi-column dataField="kürzel" caption="{{ 'VerwaltungDetails.DialogLookup.Kuerzel' | translate }}"></dxi-column>
+                      <dxi-column dataField="name" caption="{{ 'VerwaltungDetails.DialogLookup.Name' | translate }}"></dxi-column>
+                      <dxi-column dataField="abteilung" caption="{{ 'VerwaltungDetails.DialogLookup.Abteilung' | translate }}"></dxi-column>
+
+                    </dx-data-grid>
+
+                    <div class="row-count">
+                      <span id="row-count-empfange">{{ 'VerwaltungDetails.RowCount' | translate }}:
+                        {{totalRowInGrid['receiverDetailId']}}</span>
+                    </div>
+                  </div>
+
+                  <dx-validator validationGroup="PendenzenVerwaltungFormValidate">
+                    <dxi-validation-rule type="required" message="{{ 'VerwaltungDetails.Validation.EmpfaengerEmpty' | translate }}"></dxi-validation-rule>
+                  </dx-validator>
+                </dx-drop-down-box>
+              </ng-template>
+            </div>
+
+            <div *dxTemplate="let data of 'FalltrageTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblFalltrage">{{pendenzenVerwaltungModel['faFall']}}</div>
+              <ng-template #elseBlock>
+                <dx-drop-down-box name="input-falltrage" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"
+                  [(value)]="falltraegerDetailId" valueExpr="id" (onOpened)="refeshGridInDropdown()" (onValueChanged)="falltraegerLoadData($event.value)"
+                  displayExpr="nameVorname" [showClearButton]="true" [items]="pendenzenVerwaltungSandbox.pendenzenVerwaltungFalltraegerData$ | async">
+                  <div *dxTemplate="let data of 'content'">
+
+                    <dx-data-grid id="grid-falltrage" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungFalltraegerData$ | async"
+                      (onContentReady)="gridContentReady($event,'falltraegerDetailId')" keyExpr="id" columnAutoWidth="true"
+                      (onRowClick)="gridOnClick($event,'falltraegerDetailId')" name="input-falltrage" [selection]="{ mode: 'single' }"
+                      [hoverStateEnabled]="true" [showRowLines]='false' [showBorders]="true" [height]="265" noDataText="{{ 'VerwaltungDetails.Validation.NoDataFallfanger' | translate }}">
+                      <dxo-search-panel [visible]="true" highlightCaseSensitive="true" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}"></dxo-search-panel>
+                      <dxo-paging [pageSize]="totalRowInGrid['falltraegerDetailId']"></dxo-paging>
+                      <dxo-pager [visible]="false"></dxo-pager>
+
+                      <dxi-column dataField="id" caption="ID"></dxi-column>
+                      <dxi-column dataField="name" caption="{{ 'VerwaltungDetails.DialogLookup.Name' | translate }}"></dxi-column>
+                      <dxi-column dataField="vorname" caption="{{ 'VerwaltungDetails.DialogLookup.VorName' | translate }}"></dxi-column>
+                      <dxi-column dataField="benutzer" caption="{{ 'VerwaltungDetails.DialogLookup.Benutzer' | translate }}"></dxi-column>
+                    </dx-data-grid>
+
+                    <div class="row-count">
+                      <span id="row-count-falltrage">{{ 'VerwaltungDetails.RowCount' | translate }}:
+                        {{totalRowInGrid['falltraegerDetailId']}}</span>
+                    </div>
+                  </div>
+                </dx-drop-down-box>
+              </ng-template>
+
+            </div>
+            <div *dxTemplate="let data of 'LeistungTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblLeistung">
+                {{pendenzenVerwaltungModel['leistungDisplay']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-select-box name="input-leistung" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungLeistungData$ | async"
+                  valueExpr="code" placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}" [(value)]="pendenzenVerwaltungModel['faLeistungId']"
+                  displayExpr="text" (onItemClick)="selectDropdownValue($event.itemData.code,'faLeistungId')"
+                  [readOnly]="statusEdit.faLeistungIdReadOnly">
+                </dx-select-box>
+              </ng-template>
+            </div>
+
+            <div *dxTemplate="let data of 'LeistungsverantwTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblLeistungsverantw">
+                {{pendenzenVerwaltungModel['sar']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-text-box name="input-leistungsverantw" [value]="leistungsverantwDisplayValue" disabled="true"></dx-text-box>
+              </ng-template>
+            </div>
+
+            <div *dxTemplate="let data of 'BetrifftTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblBetrifft">
+                {{pendenzenVerwaltungModel['personBp']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-select-box name="input-betrifft" [dataSource]="pendenzenVerwaltungSandbox.pendenzenVerwaltungBetriffPersonData$ | async"
+                  placeholder="{{ 'VerwaltungDetails.Placeholder' | translate }}" [(value)]="pendenzenVerwaltungModel['baPersonId']"
+                  valueExpr="baPersonId" displayExpr="nameVorname" [readOnly]="statusEdit.fallLeistungBetrifftPersonReadOnly">
+                </dx-select-box>
+              </ng-template>
+            </div>
+            <div *dxTemplate="let data of 'AntwortTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblAntwort">
+                {{pendenzenVerwaltungModel['responseText']}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-text-area name="input-antwort" [(value)]="pendenzenVerwaltungModel['responseText']" width="100%"
+                  [readOnly]="statusEdit.responseTextReadOnly"></dx-text-area>
+              </ng-template>
+            </div>
+
+            <div *dxTemplate="let data of 'ErfasstTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblErfasst">
+                {{pendenzenVerwaltungModel['createDate']| date:'dd.MM.yyyy'}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-date-box name="input-erfasst" dataField="datum" displayFormat="dd.MM.yyyy" placeholder="dd.MM.yyyy"
+                  (onContentReady)="$event.component.option('calendarOptions', { firstDayOfWeek: 1 })" width="50%"
+                  disabled="true" [(value)]="pendenzenVerwaltungModel['createDate']" (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </ng-template>
+            </div>
+
+            <div *dxTemplate="let data of 'FalligTemplate'">
+              <div *ngIf="isViewDetail; else elseBlock" id="lblFallig">
+                {{pendenzenVerwaltungModel['expirationDate']| date:'dd.MM.yyyy'}}
+              </div>
+              <ng-template #elseBlock>
+                <dx-date-box name="create-fallig" dataField="datum" displayFormat="dd.MM.yyyy" placeholder="dd.MM.yyyy"
+                  (onInput)="dateBoxOnInputValue($event)" (onChange)="dateBoxOnChange($event)" (onValueChanged)="dateBoxValueChange($event,'FalligDateBox')"
+                  (onContentReady)="$event.component.option('calendarOptions', { firstDayOfWeek: 1 })" width="50%"
+                  [(value)]="pendenzenVerwaltungModel['expirationDate']" [readOnly]="statusEdit.expirationDateReadOnly"
+                  (onPaste)="$event.event.preventDefault()">
+                </dx-date-box>
+              </ng-template>
+
+            </div>
+
+            <div *dxTemplate="let data of 'StartDateTemplate'">
+              <span id="lblStartDate" (mouseenter)="erfassungVisible=(erfassungMutationData.erfassung.length > 3)"
+                (mouseleave)="erfassungVisible=false">{{ erfassungMutationData ? erfassungMutationData['erfassung'] :
+                '' }}</span>
+              <dx-tooltip target="#lblStartDate" [visible]="erfassungVisible">
+                <div *dxTemplate="let item of 'content'">
+                  {{ erfassungMutationData ? erfassungMutationData['toolTipErf'] : '' }}
+                </div>
+              </dx-tooltip>
+            </div>
+
+            <div *dxTemplate="let data of 'DoneDateTemplate'">
+              <span id="lblDoneDate" (mouseenter)="mutationVisible = (erfassungMutationData.mutation.length > 3)"
+                (mouseleave)="mutationVisible=false">{{ erfassungMutationData ? erfassungMutationData['mutation'] : ''
+                }}</span>
+              <dx-tooltip target="#lblDoneDate" [visible]="mutationVisible">
+                <div *dxTemplate="let item of 'content'">
+                  {{ erfassungMutationData ? erfassungMutationData['toolTipMut'] : '' }}
+                </div>
+              </dx-tooltip>
+            </div>
+          </dx-form>
+
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+
+</section>
+</kiss-right-component>

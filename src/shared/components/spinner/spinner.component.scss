@@ -1,0 +1,127 @@
+@import 'settings/variables.scss';
+.loadingAnimation-1 {
+    svg,
+    div {
+        margin-left: -50px;
+        margin-top: -50px;
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        overflow: visible;
+    }
+    .pet1 {
+        fill: rgba(219, 219, 219, 0.75);
+        animation: rotate 0.5s linear infinite;
+    }
+    .pet2 {
+        fill: rgba(173, 235, 241, 0.75);
+        animation: rotate 1s linear infinite;
+    }
+    .pet3 {
+        fill: rgba(121, 190, 196, 0.75);
+        animation: rotate 0.5s linear infinite reverse;
+    }
+}
+
+.loadingAnimation-2 {
+    svg {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        width: 50px;
+        height: 40px;
+        overflow: visible;
+        rect {
+            fill: #337ab7;
+            fill-opacity: 1;
+            fill-rule: evenodd;
+            stroke: #748591;
+            stroke-width: 0.1px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+            stroke-opacity: 1;
+            opacity: 0;
+            animation-name: invis;
+            animation-duration: 1s;
+            animation-timing-function: steps(8);
+            animation-iteration-count: infinite;
+            &:nth-child(1) {
+                animation-delay: 0;
+            }
+            &:nth-child(2) {
+                animation-delay: 0.166667s;
+            }
+            &:nth-child(3) {
+                animation-delay: 0.333333s;
+            }
+        }
+    }
+}
+
+.loadingAnimation-3 {
+    position: fixed;
+    z-index: 99999;
+    top: 50%;
+    left: 0;
+    right: 0;
+    .loading-bro {
+        margin: 50px auto;
+        width: 50px;
+        >h1 {
+            text-align: center;
+            font-size: 1em;
+            margin-top: 1em;
+            font-weight: 300;
+            color: #8E8E8E;
+        }
+    }
+    svg {
+        width: 50px;
+        animation: loading 3s linear infinite;
+        .loading-inner {
+            stroke: {
+                dashoffset: 0;
+                dasharray: 300;
+                width: 10;
+                miterlimit: 10;
+                linecap: round;
+            }
+            animation: loading-circle 2s linear infinite;
+            stroke: #51BBA7;
+            fill: transparent;
+        }
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loading-circle {
+    0% {
+        stroke-dashoffset: 0
+    }
+    100% {
+        stroke-dashoffset: -600;
+    }
+}
+
+@keyframes invis {
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}

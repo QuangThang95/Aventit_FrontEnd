@@ -1,0 +1,31 @@
+{
+    "Gehezu": {
+        "TitlePopup": "Gehe zu ... [it]",
+        "TitleGroupSozialhilfe": "Sozialhilfe [it]",
+        "TitleGroupAsyl": "Asyl [it]",
+        "TitleGroupFallfuhrung": "Fallführung [it]",
+        "TitleInformation":"Information [it]",
+        "LabelWhFinanzplan": "Finanzplan Nr. [it]",
+        "LabelWhEinzelzahlung": "EZ oder ZL Nr. [it]",
+        "LabelWhFinanzplanSIL": "Finanzplan SIL [it]",
+        "LabelFaLeistung": "Fall Nr. [it]",
+        "ButtonGehezu": "Gehe zu [it]",
+        "ButtonAbbruch": "Abbruch [it]",
+        "MsgErrorWhFinanzplanFirst": "Der Sozialhilfe-Finanzplan mit der Nummer ",
+        "MsgErrorWhFinanzplanLast": " konnte nicht gefunden werden. [it]",
+
+        "MsgErrorWhEinzelzahlungFirst": "Die Sozialhilfe-Einzelzahlung mit der Nummer ",
+        "MsgErrorWhEinzelzahlungLast": " konnte nicht gefunden werden. [it]",
+
+        "MsgErrorAyFinanzplanFirst": "Der Asyl-Finanzplan mit der Nummer ",
+        "MsgErrorAyFinanzplanLast": " konnte nicht gefunden werden. [it]",
+
+        "MsgErrorAyEinzelzahlungFirst": "Die Asyl-Einzelzahlung mit der Nummer ",
+        "MsgErrorAyEinzelzahlungLast": " konnte nicht gefunden werden. [it]",
+
+        "MsgErrorFaLeistungFirst": "Die Fallführung mit der Nummer ",
+        "MsgErrorFaLeistungLast": " konnte nicht gefunden werden. [it]",
+        "MsgErrorInvalidForm": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [it]",
+        "MsgErrorMaxLength": "Beim beim Aufruf  mit der Nummer 0 ist ein Fehler aufgetreten. [it]"
+    }
+}

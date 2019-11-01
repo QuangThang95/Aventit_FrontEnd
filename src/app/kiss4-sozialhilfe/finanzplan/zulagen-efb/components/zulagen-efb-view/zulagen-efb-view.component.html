@@ -1,0 +1,74 @@
+<div class="container-detail form-content-details" id="i010_zulagen_form">
+  <div class="toolbar-header">
+    <kiss-card-title id="I010_detail_header" [titleHeader]="'CtlBfsFragenkatalog.Detail' | translate"
+                     [listBtn]="listBtn"
+                     [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)" [customizeBtn]="customizeBtn">
+    </kiss-card-title>
+  </div>
+
+  <div class="container-detail__form" id="zulagen_form">
+    <dx-box direction="row" width="100%" [height]="40">
+      <dxi-item [ratio]="10">
+        <div>
+          <div class="content-label">
+            {{dataForm['disPlayOnly']}}
+          </div>
+        </div>
+      </dxi-item>
+    </dx-box>
+
+    <dx-box direction="row" width="100%" [height]="40">
+      <dxi-item [ratio]="1">
+        <div class="label-text">{{ 'ZulagenEfb.Form.Zulage' | translate }}</div>
+      </dxi-item>
+      <dxi-item [ratio]="9">
+        <div class="ctrWith">
+          <div class="content-label">{{zulageSelected?.zulage}}</div>
+        </div>
+      </dxi-item>
+    </dx-box>
+
+    <dx-box direction="row" width="100%" [height]="40">
+      <dxi-item [ratio]="1">
+        <div class="label-text">{{ 'ZulagenEfb.Form.PercentAnteil' | translate }}</div>
+      </dxi-item>
+      <dxi-item [ratio]="9">
+        <div class="ctrWith">
+          <div class="content-label">{{anteilSelected?.anteil}}</div>
+        </div>
+      </dxi-item>
+    </dx-box>
+
+    <dx-box direction="row" width="100%" [height]="40">
+      <dxi-item [ratio]="1">
+        <div></div>
+      </dxi-item>
+      <dxi-item [ratio]="9">
+        <div class="ctrWith ctrmargin-top">
+          <dx-check-box class="content-label" [readOnly]="true" #Alleinerziehend [value]="dataForm.isAlleinerziehend"
+                        [text]="'ZulagenEfb.Form.Alleinerziehend' | translate"></dx-check-box>
+        </div>
+      </dxi-item>
+    </dx-box>
+
+    <dx-box direction="row" width="100%" [height]="40">
+      <dxi-item [ratio]="1">
+        <div class="label-text">{{ 'ZulagenEfb.Form.Betrag' | translate }}</div>
+      </dxi-item>
+      <dxi-item [ratio]="9">
+        <div class="ctrWith">
+            <div class="content-label"> {{dataForm['betrag']}}</div>
+        </div>
+      </dxi-item>
+    </dx-box>
+
+    <dx-box direction="row" width="100%" [height]="120">
+      <dxi-item [ratio]="1">
+        <div class="label-text">{{ 'ZulagenEfb.Form.Beschreibung' | translate }}</div>
+      </dxi-item>
+      <dxi-item [ratio]="9">
+        <div class="content-label"> {{dataForm['beschreibung']}}</div>
+      </dxi-item>
+    </dx-box>
+  </div>
+</div>

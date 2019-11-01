@@ -1,0 +1,71 @@
+@import 'settings/variables.scss';
+/***************** Css for Top Data Grid **************************/
+.data-grid-bottom-class{
+    margin: $margin-content;
+}
+/***************** The End Css for Top Data Grid **********************/
+
+/***************** Css for bottom Data Grid **************************/
+.buttonConfirm {
+    margin-top: $margin-top-5;
+    float: $float-right;
+}
+
+.i025-text-box.dx-state-disabled.dx-widget {
+    opacity: 0.95;
+}
+
+.button-background {
+    background-color: $color-base;
+    color: white;
+}
+
+.content-center {
+    text-align: $popup-confirm-text-align;
+}
+
+.custom-title {
+    padding: $padding-10;
+}
+
+.button-confirm {
+    margin-bottom: $margin-bottom-10;
+    margin-top: $margin-top-5;
+    float: $float-right;
+    .dx-button {
+        ::ng-deep i {
+            color: $color-white
+    }
+}
+}
+
+div.grid-table-view:hover {
+    ::ng-deep dx-data-grid .dx-datagrid-headers .dx-datagrid-table .dx-header-row>td {
+        background-color: $toolbar-detail-background-color-highlight;
+    }
+}
+
+.data-grid-bottom-class:hover {
+    ::ng-deep dx-data-grid .dx-datagrid-headers .dx-datagrid-table .dx-header-row>td {
+        background-color: $toolbar-detail-background-color-highlight;
+    }
+}
+
+.container .right-content .form-content-details:hover {
+    border: $border-color-highlight;
+    /deep/ #i025_detail_header>.dx-toolbar-items-container {
+        background-color: $toolbar-detail-background-color-highlight;
+    }
+}
+
+.grid-content-center {
+  text-align: center;
+}
+
+.gridContainer { 
+    max-height: 378px;
+}
+
+.gridBottom { 
+    max-height: 375px;
+}

@@ -1,0 +1,52 @@
+<kiss-right-component>
+    <app-navigator id="c006_berater_header" [titleHeader]="'ExterneBerater.TitlePage' | translate" *ngIf="isReadOnly" [listBtn]="listBtn" (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+    <app-navigator id="c006_berater_header" [titleHeader]="'ExterneBerater.TitlePage' | translate" *ngIf="!isReadOnly"></app-navigator>
+    <div class="container">
+        <div class="container__right-content">
+            <div class="remaining-message" *ngIf="remainMessage?.visible">
+                <span class="remaining-message__btn-container">
+                    <dx-button class="remaining-message__btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+                    </dx-button>
+                </span>
+                <div class="remaining-message__content">
+                    <span class="remaining-message__icon">
+                        <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                    </span>
+                    <i id="C006_errors-messeger">{{remainMessage?.message}}</i>
+                </div>
+            </div>
+            <kiss-berater-search (formSearchData)="onSearchData($event)" 
+                                [institutionListData]="institutionData"
+                                [isReadOnly]="isReadOnly">
+            </kiss-berater-search>
+            <div class="grid-table-view">
+                <kiss-berater-list #formList [beraterData]="beraterData" 
+                                    [listLanguage]="listLanguage" 
+                                    [selectedKeys]="selectedKeys"
+                                    [isReadOnly]="isReadOnly" 
+                                    [isAddNew]="isAddNew" 
+                                    (rowSelected)="rowSelectChange($event)">
+                </kiss-berater-list>
+            </div>
+            <div class="container-detail form-content-details">
+                <kiss-berater-detail [isReadOnly]="isReadOnly" 
+                                    [isAddNew]="isAddNew" 
+                                    [isEdit]="isEdit"
+                                    [listInstitution]="listInstitution" 
+                                    [listLanguage]="listLanguage" 
+                                    [formData]="formData"
+                                    [isEditFailAbbrechen]="isEditFailAbbrechen" 
+                                    (changeStatus)="changeStatus($event)" 
+                                    (formRemainData)="showRemainMessage($event)"
+                                    (formDataSave)="saveData($event)" 
+                                    (formDataChange)="onChangeData($event)" 
+                                    (isAbbrechen)="onAbbrechen($event)"
+                                    (isLoschen)="onLoschen($event)">
+                </kiss-berater-detail>
+            </div>
+        </div>
+    </div>
+</kiss-right-component>
+<app-popup-confirm [popUpModel]="popUpModelConfirm"></app-popup-confirm>
+<app-popup-confirm [popUpModel]="popUpModelCanDeactive"></app-popup-confirm>
+<app-popup-concurrency [popUpConcurrencyModel]="popUpConcurrencyModel"></app-popup-concurrency>

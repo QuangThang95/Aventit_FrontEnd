@@ -1,0 +1,27 @@
+<kiss-right-component>
+    <app-navigator id="i007_grund-bedarf_header" [titleHeader]="pageTitle" [customizeBtn]="customizeBtn" [listBtn]="listBtn"
+        (onCustomizeBtnFn)="toolBarOnItemClick($event)" (dblclick)="onCopyTitle()"></app-navigator>
+    <div class="container">
+        <div class="container__right-content">
+            <div class="remaining-message" *ngIf="isErrorClosed" id="i007_validate-message">
+                <span class="remaining-message__btn-container">
+                    <dx-button class="remaining-message__btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x"></dx-button>
+                </span>
+                <div class="remaining-message__content">
+                    <span class="remaining-message__icon"><i class="fa fa-exclamation-circle " aria-hidden="true"></i></span>
+                    <i class="remaining-message__text">{{messageErr}}</i>
+                </div>
+            </div>
+            <div class="container-detail form-content-details" id="i007_detail">
+                <kiss-grundbedarf-detail #formDetail [isViewMode]="isViewMode" (remainingMessageError)="displayRemainingMessage($event)"
+                    (changeToViewModeEvent)="changeToViewModeEvent($event)" (isConcurrencyEvent)="isConcurrencyEvent($event)">
+                </kiss-grundbedarf-detail>
+            </div>
+        </div>
+    </div>
+</kiss-right-component>
+<!-- Print component -->
+<kiss-printer #printer></kiss-printer>
+
+<!-- Confirm popup -->
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>

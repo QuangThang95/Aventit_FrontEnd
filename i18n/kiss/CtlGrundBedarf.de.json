@@ -1,0 +1,92 @@
+﻿{
+  "I007GrundBedarf": {
+    "Title": "Grund-Bedarf",
+    "Berechnungsgrundlage": "Berechnungsgrundlage",
+    "SKOSbzw": {
+      "caption": "SKOS bzw. interne Richtlinien",
+      "furHG": "für HG",
+      "furUE": "für UE",
+      "GrundbedarfI": "GrundbedarfI",
+      "AnpassungI": "Anpassung des Grundbedarfes (begründen!)",
+      "AbzugVVG": "Abzug VVG",
+      "Zuschlag": "Zuschlag zum Grundbedarf",
+      "GrundbedarfII": "Grundbedarf II",
+      "AnpassungII": "Anpassung des Grundbedarfes (begründen!)",
+      "Total": "Total monatlicher Grundbedarf"
+    },
+    "SKOS2005": {
+      "caption": "SKOS 2005",
+      "furHG": "für HG",
+      "furUE": "für UE",
+      "Grundbedarf": "Grundbedarf",
+      "Anpassung": "Anpassung des Grundbedarfes (begründen!)",
+      "AbzugVVG": "Abzug VVG",
+      "Total": "Total monatlicher Grundbedarf"
+    },
+    "Berechnungsgrundlage": {
+      "caption": "Berechnungsgrundlage",
+      "monatlicher": "monatlicher Grundbedarf",
+      "Anpassung": "Anpassung des Grundbedarfes (begründen!)",
+      "AbzugVVG": "Abzug VVG",
+      "Total": "Total monatlicher Grundbedarf"
+    },
+    "Kennzahlen": {
+      "caption": "Kennzahlen",
+      "Haushaltsgrösse": {
+        "caption": "Haushaltsgrösse",
+        "Grundbedarf": "Grundbedarf",
+        "Wohnkosten": "Wohnkosten"
+      },
+      "Unterstützungseinheit": {
+        "caption": "Unterstützungseinheit",
+        "Grundbedarf": "Grundbedarf",
+        "Wohnkosten": "Wohnkosten",
+        "ZuschlagI": "Zuschlag I"
+      }
+    },
+    "Begründungen": "Begründungen",
+    "Button": {
+      "Bearbeiten": "Bearbeiten",
+      "Speichern": "Speichern",
+      "Abbrechen": "Abbrechen",
+      "phaseWiederoffnen": "Phase wieder öffnen",
+      "neuesIntake": "Neues Intake",
+      "neueBeratungsphase": "Neue Beratungsphase",
+      "delete": "löschen"
+    },
+    "Msg": {
+      "NichtAlleMussfelder": "Nicht alle Mussfelder sind ausgefüllt",
+      "CheckNameNull": "'Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.Bitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern.';",
+      "DoubleClickMessage": "Die Angaben wurden in den Zwischenspeicher kopiert.",
+      "ShiftClickMessage": "Die ID wurde in den Zwischenspeicher kopiert",
+      "Information": "Information",
+      "MSG_003": "Beim Speichern des Datensatzes ist ein Fehler aufgetreten !",
+      "MSG_004": "Das Feld 'Anpassung des Grundbedarfes (begründen!)' darf nicht leer bleiben !",
+      "MSG_005": "Das Feld 'monatlicher Grundbedarf' darf nicht leer bleiben !",
+      "MSG_006": "Die Pauschale für stationäre Einrichtungen beträgt maximal Fr. 500.00",
+      "MSG_007": "Die Angaben wurden in den Zwischenspeicher kopiert.",
+      "MSG_009": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein"
+    },
+    "PopupConfirm": {
+      "Yes": "Ja",
+      "No": "Nein",
+      "Title": "Bestätigung",
+      "Message": "Änderungen an diesem Datensatz rückgängig machen ?",
+      "Abbrechen": "Abbrechen",
+      "Daten": "Daten aktualisieren"
+    },
+    "DefaultText": {
+      "SelectBox": "Auswählen..."
+    },
+    "NavigatorPopupConfirm": {
+      "Yes": "Discard",
+      "No": "Abbrechen",
+      "Title": "Bestätigung",
+      "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?"
+    },
+    "MessageValidation": {
+      "MsgErrorMaxLength": "Beim beim Aufruf  mit der Nummer 0 ist ein Fehler aufgetreten."
+    }
+    
+  }
+}

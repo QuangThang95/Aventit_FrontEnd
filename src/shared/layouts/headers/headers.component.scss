@@ -1,0 +1,73 @@
+@import 'settings/variables.scss';
+.header {
+    z-index: 1000 !important;
+    display: block !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.header-logo {
+    // padding: 5px 0;
+    // width: 170px;
+    // float: left;
+    a.logo {
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        text-align: center;
+        img {
+            vertical-align: middle;
+            height: 30px;
+            margin-right: -5px;
+        }
+        span {
+            font-size: 1.8em;
+            vertical-align: middle;
+            padding-left: 5px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            display: inline-block;
+        }
+    }
+}
+
+.header-menu {
+    margin-right: auto;
+}
+
+.dx-navbar-item-badge {
+    margin: -28px 0 0 12px;
+    top: initial;
+    right: initial;
+    background-color: $color-total-notification;
+}
+
+.header-badge {
+    margin-right: $margin-badge-layout;
+    line-height: $label-detail-box-height;
+}
+
+::ng-deep .simple-notification-wrapper {
+  z-index: 5000 !important;
+}
+
+.line-height-row {
+    line-height: 37px;
+}
+
+.horizontal-nav {
+    padding: 3px;
+}
+
+.kiss-more {
+    margin-right: $spacing-layout;
+}
+
+.header-search-box {
+    margin-right: 2*$spacing-layout;
+}
+
+.header-logo {
+    padding-right: 2*$spacing-layout;
+}

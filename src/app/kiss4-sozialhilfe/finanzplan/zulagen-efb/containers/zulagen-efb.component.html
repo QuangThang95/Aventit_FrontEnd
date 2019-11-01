@@ -1,0 +1,25 @@
+<kiss-right-component>
+  <kiss-zulagen-header-bar (action)="onHeaderAction($event)" [isEditMode]="false" [hideBtnEdit]="isDisableBtnEdit"
+                           [isShiftKeyDown]="isShiftKeyDown"></kiss-zulagen-header-bar>
+  <section id="wrapper-content">
+    <div class="container" id="i010_zulagen">
+      <div class="right-content">
+        <kiss-zulagen-efb-list #zulagenList [zulageList]="zulageList"></kiss-zulagen-efb-list>
+
+        <ng-container
+          *ngIf="isEditMode; then viewForm; else viewMode">
+        </ng-container>
+
+        <ng-template #viewMode>
+          <kiss-zulagen-efb-view (action)="onHandlerKissCardAction($event)" [dataForm]="dataForm" [zulageSelectBox]="zulageSelectBox" [anteilSelectBox]="anteilSelectBox"></kiss-zulagen-efb-view>
+        </ng-template>
+
+        <ng-template #viewForm>
+          <kiss-zulagen-efb-form (action)="onHandlerKissCardAction($event)" [dataForm]="dataForm" [zulageSelectBox]="zulageSelectBox" [anteilSelectBox]="anteilSelectBox"></kiss-zulagen-efb-form>
+        </ng-template>
+        <!-- show overlay popup confirm -->
+        <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+      </div>
+    </div>
+  </section>
+</kiss-right-component>

@@ -1,0 +1,163 @@
+<kiss-right-component>
+  <app-navigator id="d001_fallfuhrung_header" titleHeader="{{pageTitle}}{{'Fallfuhrung.Title' | translate}}" [listBtn]="listBtn"
+    [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClick($event)" (dblclick)="onCopyTitle()"></app-navigator>
+  <section id="wrapper-content">
+    <div class="container">
+      <div class="right-content rounded-0">
+        <div class="error" *ngIf="isErrorClosed">
+          <span class="btn-close-error">
+            <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+            </dx-button>
+          </span>
+          <div class="error-messege">
+            <span class="ico-error">
+              <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+            </span>
+            <i id="err-messeger">{{messageErr}}</i>
+          </div>
+        </div>
+        <div id="bar-content">
+          <dx-validation-group #validationGroup>
+            <dx-form class="form-padding" [showColonAfterLabel]="false" [(formData)]="faleistung" [readOnly]='!isEditMode'>
+              <dxi-item itemType="group" [colCount]="2">
+                <dxi-item id="d001_fallfuhrung_label-fall-eroffnung" itemType="group" caption="{{'Fallfuhrung.GroupTop' | translate}}"
+                  [colSpan]="1">
+                  <dxi-item id="d001_fallfuhrung_eroffnung-datum" class="d001-fallfuhrung-label" [template]="'datum'"
+                    dataField="datumVon" [editorOptions]="{width: widthDateBox}">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" text="{{ 'Fallfuhrung.TitleDatum' | translate }}"></dxo-label>
+                    <dxi-validation-rule type="required">
+                    </dxi-validation-rule>
+                  </dxi-item>
+                  <dxi-item id="d001_fallfuhrung_sar" [editorOptions]="{ width: '100%' }">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" text="{{ 'Fallfuhrung.TitleSAR' | translate }}"></dxo-label>
+                    <span>{{this.faleistung.sar}}</span>
+                  </dxi-item>
+
+                  <dxi-item id="d001_fallfuhrung_anmeldeart" dataField="faAufnahmeartCode" [editorOptions]="{ width: '100%' }"
+                    [template]="'anmeldeart'">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" [visible]="panelAnmeldeart" text="{{ 'Fallfuhrung.TitleAnmeldeart' | translate }}"></dxo-label>
+                  </dxi-item>
+                  <dxi-item id="d001_fallfuhrung_kontaktveranl" dataField="faKontaktveranlasserCode" [editorOptions]="{ width: '100%' }"
+                    [template]="'kontaktveranl'">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" [visible]="panelAnmeldeart" text="{{ 'Fallfuhrung.TitleKontaktveranl' | translate }}"></dxo-label>
+                  </dxi-item>
+                </dxi-item>
+
+                <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+
+                <dxi-item id="d001_fallfuhrung_label-fall-abschluss" cssClass="d001-fallfuhrung-groupbottom" itemType="group"
+                  caption="{{'Fallfuhrung.GroupBottom' | translate}}" [colSpan]="1">
+                  <dxi-item id="d001_fallfuhrung_abschluss-datum" class="d001-fallfuhrung-label" [editorOptions]="{width: widthDateBox}"
+                    [template]="'datum-Abschluss'" dataField="datumBis">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" text="{{ 'Fallfuhrung.TitleDatum' | translate }}"></dxo-label>
+                  </dxi-item>
+
+                  <dxi-item id="d001_fallfuhrung_grund" dataField="abschlussGrundCode" id="d001-fallfuhrung-label"
+                    [editorOptions]="{ width: '100%' }" [template]="'grund'">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" text="{{ 'Fallfuhrung.TitleGrund' | translate }}"></dxo-label>
+                  </dxi-item>
+                </dxi-item>
+
+                <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+
+                <dxi-item itemType="group" [colSpan]="2">
+                  <dxi-item id="d001_fallfuhrung_bemerkung" dataField="bemerkung" [template]="'bemerkung'">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" text="{{ 'Fallfuhrung.TitleBemerkung' | translate }}"></dxo-label>
+                  </dxi-item>
+                </dxi-item>
+                <dxi-item itemType="group" [colSpan]="1">
+                  <dxi-item id="d001_fallfuhrung_zust-gemeinde" dataField="gemeindeCode" id="d001-fallfuhrung-label"
+                    [editorOptions]="{ width: '100%' }" [template]="'gemeinde'">
+                    <dxo-label id="d001_fallfuhrung_label-fallfuhrung" text="{{ 'Fallfuhrung.TitleGemeinde' | translate }}"></dxo-label>
+                  </dxi-item>
+                </dxi-item>
+              </dxi-item>
+              <div *dxTemplate="let data of 'anmeldeart'">
+                <span *ngIf="!isEditMode && panelAnmeldeart">{{faleistung.faAufnahmeartText}}</span>
+                <dx-select-box #anmeldeart class="dx-select-box-width" id="d001-fallfuhrung-fallfuhrung" [accessKey]="7"
+                  [visible]="panelAnmeldeart" [showClearButton]="true" valueExpr="code" displayExpr="text" [dataSource]="dataComboboxAnmeldeart"
+                  [readOnly]='isReadOnlyControl||!isEditMode' [(value)]="faleistung.faAufnahmeartCode" (onFocusIn)="onFocusIn(anmeldeart,'Anmeldeart','selectbox')"
+                  (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()" (onOpened)="onOpened()"
+                  [searchEnabled]="true" *ngIf="isEditMode" (onContentReady) = "onContentReady($event,'anmeldeart')"></dx-select-box>
+              </div>
+              <div *dxTemplate="let data of 'kontaktveranl'">
+                <span *ngIf="!isEditMode && panelAnmeldeart">{{faleistung.faKontaktveranlasserText}}</span>
+                <dx-select-box class="dx-select-box-width" #kontaktveranl id="d001-fallfuhrung-fallfuhrung" [accessKey]="8"
+                  [visible]="panelAnmeldeart" [showClearButton]="true" valueExpr="code" displayExpr="text" [dataSource]="dataComboboxKontaktveranl"
+                  [readOnly]='isReadOnlyControl||!isEditMode' [(value)]="faleistung.faKontaktveranlasserCode"
+                  (onFocusIn)="onFocusIn(kontaktveranl,'Kontaktveranl','selectbox')" (onFocusOut)="onFocusOut($event)"
+                  (onKeyDown)="onKeyDown($event)" [searchEnabled]="true" *ngIf="isEditMode" (onContentReady) = "onContentReady($event,'kontaktveranl')"></dx-select-box>
+              </div>
+              <div *dxTemplate="let data of 'datum'">
+                <span *ngIf="!isEditMode">{{faleistung.datumVon | date:'dd.MM.yyyy'}}</span>
+                <dx-date-box #datum type="date" displayFormat="dd.MM.yyyy" [accessKey]="6" [(value)]='faleistung.datumVon'
+                  [readOnly]='isReadOnly||!isEditMode' (onValueChanged)="onChangeData($event,'DatumVon')" (onFocusIn)="onFocusIn(datum,'DatumVon','datebox')"
+                  (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()" (onOpened)="onOpened()"
+                  [visible]="isEditMode" [max]="maxDate" [min]="minDate">
+                  <dx-validator>
+                    <dxi-validation-rule type="required" message="{{ 'Fallfuhrung.MessageValidation.Eroffnungsdatum' | translate }}">
+                    </dxi-validation-rule>
+                  </dx-validator>
+                </dx-date-box>
+              </div>
+              <div *dxTemplate="let data of 'datum-Abschluss'">
+                <span *ngIf="!isEditMode">{{faleistung.datumBis | date:'dd.MM.yyyy'}}</span>
+                <dx-date-box #datumAbsch type="date" displayFormat="dd.MM.yyyy" [accessKey]="9" [(value)]='faleistung.datumBis'
+                  [readOnly]='isReadOnlyControl||!isEditMode' (onFocusIn)="onFocusIn(datumAbsch,'DatumAbsch','datebox')"
+                  (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" (onClosed)="onClosed()" (onOpened)="onOpened()"
+                  (onValueChanged)="onChangeData($event,'DatumAbsch')" *ngIf="isEditMode" [max]="maxDate" [min]="minDate">
+                </dx-date-box>
+              </div>
+              <div *dxTemplate="let data of 'grund'">
+                <span *ngIf="!isEditMode">{{faleistung.absschlussGrundText}}</span>
+                <dx-select-box #grund class="dx-select-box-width" id="d001-fallfuhrung-fallfuhrung" [accessKey]="10"
+                  [showClearButton]="true" valueExpr="code" displayExpr="text" [dataSource]="dataComboboxGrund"
+                  [readOnly]='isReadOnlyControl||!isEditMode' [(value)]="faleistung.abschlussGrundCode" (onFocusIn)="onFocusIn(grund,'Grund','selectbox')"
+                  (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" [searchEnabled]="true" *ngIf="isEditMode" (onContentReady) = "onContentReady($event,'grund')"></dx-select-box>
+              </div>
+              <div *dxTemplate="let data of 'gemeinde'">
+                <span *ngIf="!isEditMode">{{faleistung.gemeindeText}}</span>
+                <dx-select-box #gemeinde class="dx-select-box-width" id="d001-fallfuhrung-fallfuhrung" [accessKey]="12"
+                  [showClearButton]="true" valueExpr="code" displayExpr="text" [dataSource]="dataComboboxGemeinde"
+                  [readOnly]='isReadOnlyControl||!isEditMode' [(value)]="faleistung.gemeindeCode" (onFocusIn)="onFocusIn(gemeinde,'Gemeinde','selectbox')"
+                  (onFocusOut)="onFocusOut($event)" (onKeyDown)="onKeyDown($event)" [searchEnabled]="true" *ngIf="isEditMode"
+                  (onContentReady) = "onContentReady($event,'gemeinde')"></dx-select-box>
+              </div>
+              <div *dxTemplate="let data of 'bemerkung'">
+                <div [froalaEditor]="froalaEditorConfig" [(froalaModel)]="faleistung.bemerkung" [accessKey]="11" id="froalaEditor"
+                  class="form_text_area"></div>
+              </div>
+            </dx-form>
+          </dx-validation-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dx-popup id="d001_popup-confirm" title="{{popupDataMess.title}}" [width]="'auto'" [height]="170" [(visible)]="popupDataMess.visible"
+    [dragEnabled]="false" [closeOnOutsideClick]="false" [showTitle]="true" (onShown)="onShownPopUp()" (onHiding)="onPopupHiding()">
+    <div *dxTemplate="let data of 'content'">
+      <h3 id="d001_popup-confirm_label-message" class="custom-title">{{popupDataMess.message}}</h3>
+    </div>
+  </dx-popup>
+
+  <!-- Concurrency popup -->
+  <dx-popup #popup id="d001_popup" title="{{popupConcurrency.title}}" [width]="'auto'" [height]="'auto'" [(visible)]="popupConcurrency.visible"
+    [dragEnabled]="false" [closeOnOutsideClick]="false" (onHiding)="onHiding($event)">
+    <div *dxTemplate="let data of 'content'">
+      <h3 class="custom-title">
+        <pre>{{popupConcurrency.message}}</pre>
+      </h3>
+      <div class="buttonConfirm">
+        <dx-button id="d001_popup-confirm_abbrechen" class="button-background dx-button" text="{{ popupConcurrency.abbrechen }}"
+          (onClick)="popupConcurrencyAbbrechen('abbrechen')" icon="remove">
+        </dx-button>&nbsp;
+        <dx-button id="d001_popup-confirm_daten-aktualisieren" class="button-background dx-button" text="{{ popupConcurrency.datenAktualisieren }}"
+          (onClick)="popupConcurrencyAbbrechen('daten')" icon="refresh">
+        </dx-button>
+      </div>
+    </div>
+  </dx-popup>
+
+  <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+</kiss-right-component>

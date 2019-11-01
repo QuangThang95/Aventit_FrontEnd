@@ -1,0 +1,49 @@
+{
+    "Inkassofall": {
+        "Title": "Rechtliche Massnahmen",
+        "eroffnetAm": "Eröffnet am",
+        "eroffnetGrund": "Grund",
+        "typ": "Typ",
+        "anzeigeTyp": "Anzeigetyp",
+        "abgeschlossenAm": "Abgeschlossen am",
+        "abgeschlossenGrund": "Grund",
+        "bemerkung": "Bemerkung",
+        "ApplyFilter": "Filter anwenden",
+        "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen",
+        "Validation": {
+            "NoDataGrid": "Keine Daten"
+        },
+        "Placeholder": "Select...",
+        "ColumnChooser": {
+            "Title": "Benutzerdefiniert",
+            "EmptyPanelText": "Keine Daten"
+        },
+        "Message": {
+            "MessageDelete": "Soll der Datensatz gelöscht werden ?",
+            "MessageDeleteNew": "Neuen Datensatz wieder löschen ?",
+            "MessageConfirmCancel": "Fenster trotz der nicht gespeicherten Daten schliessen ?",
+            "MessageError": "Nicht alle Mussfelder sind ausgefüllt",
+            "MessageErrorValidate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein.",
+            "Yes": "Ja",
+            "No": "Nein",
+            "Title": "Bestätigung",
+            "Message": "Änderungen an diesem Datensatz rückgängig machen ?",
+            "Confirmation": "Confirmation",
+            "Abbrechen": "Abbrechen",
+            "Daten-aktualisieren": "Daten aktualisieren",
+            "MessageCandiavtive": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?",
+            "Discard": "Discard",
+            "MessageConcurrencyUpdate": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht.\r\nAktualisieren sie die Daten zuerst, um Ihre Änderungen zu speichern.",
+            "MessageConcurrencyDelete": "Beim Löschen des Datensatzes ist ein Fehler aufgetreten !",
+            "EditNumberOverLengthMessage": "Ungültiger Wert.",
+            "NameOverLength": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.\nBitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern."
+        },
+        "Button": {
+            "New": "Neue rechtliche Massnahme",
+            "Edit": "Bearbeiten",
+            "Save": "Speichem",
+            "Abort": "Abbrechen",
+            "Delete": "Löschen"
+        }
+    }
+}

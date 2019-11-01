@@ -1,0 +1,48 @@
+<div id="H001_frmLogin">
+  <div class="H001_container active">
+    <div id="H001_label-anmelden" class="herder-label"><label id="H001_label-anmelden">Anmelden</label></div>
+    <div class="animation">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event, loginForm.value)" id="loginfrm" enctype="application/x-www-form-urlencoded">
+        <div class="frmLogin-userName">
+          <div class="userName-passWort"><label id="H001_label-benutzer-in">Benutzer / -in</label></div>
+          <div class="input-container">
+            <input type="text" id="H001_benutzer-in" autofocus name="username" [formControl]="userName" required="required" value="{{userNameValue}}"
+              autocomplete="off" />
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div class="frmLogin-passWort">
+          <div class="userName-passWort"><label id="H001_label-passwort">Passwort</label></div>
+          <div class="input-container">
+            <input type="password" id="H001_passwort" name="password" [formControl]="password" required="required" />
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div class="button-container">
+          <button type="submit" id="H001_anmelden">Anmelden</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<dx-popup id="H001_popup" class="popup" [showTitle]="true" title="Benutzer auswählen" [dragEnabled]="false"
+  [closeOnOutsideClick]="false" [(visible)]="popupVisible" [width]="700" [height]="230" (onHiding)="onHiding()">
+  <div *dxTemplate="let data of 'content'">
+    <div id="form-container">
+      <div class="dx-fieldset">
+        <div class="dx-field">
+          <div id="H001_popup_label-benutzer" class="dx-field-label">Benutzer:</div>
+          <div id="H001_popup_benutzer" class="dx-field-value">
+            <dx-select-box [dataSource]="listUserPrimaryKey" displayExpr="displayName" valueExpr="logonName"
+              (onItemClick)="selectDropdownValue($event)" [value]="listUserPrimaryKey[0].logonName"></dx-select-box>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: right">
+      <dx-button id="H001_popup_ok" #btnGehezu type="submit" [tabIndex]="7" text="OK" name="btnBenutzer" (onClick)="clickOkBenutzer()"></dx-button>
+    </div>
+  </div>
+</dx-popup>
+<dx-button id="H001_show-the-popup" text="Show the Popup" (onClick)="popupVisible = true" style="display: none"></dx-button>

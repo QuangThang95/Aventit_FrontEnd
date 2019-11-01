@@ -1,0 +1,11 @@
+<kiss-vorlagen-kontext-view-mode *ngIf="!isEdit && !isAddMode" [vorlagenkontextModel]="vorlagenkontextModel">
+    <app-kontext-multi-select #multiSelectView [xDocContext]="vorlagenkontextModel" [isViewDetail]="true" [isSave]="isSave"
+        [gridFunctionModelVerfubare]="options" (emitRemainMessage)="showPopUpMulti.emit($event)" [isAddMode]="isAddMode"
+        (emitDataSourceChange)="onReceiveSourceChange($event)"></app-kontext-multi-select>
+</kiss-vorlagen-kontext-view-mode>
+<kiss-vorlagen-kontext-edit-mode *ngIf="isEdit||isAddMode" #editForm [vorlagenkontextModel]="vorlagenkontextModel"
+    (textboxChange)="onformChange($event)">
+    <app-kontext-multi-select #multiSelectComponent [xDocContext]="vorlagenkontextModel" [isViewDetail]="false"
+        [isAddMode]="isAddMode" [isSave]="isSave" [gridFunctionModelVerfubare]="options" (emitRemainMessage)="showPopUpMulti.emit($event)"
+        (emitDataSourceChange)="onReceiveSourceChange()"></app-kontext-multi-select>
+</kiss-vorlagen-kontext-edit-mode>

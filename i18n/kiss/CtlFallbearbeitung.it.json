@@ -1,0 +1,32 @@
+{
+    "Fallbearbeitung": {
+        "TitlePage": "Falllbearbeitung [it]",
+        "Textentfernen" :  " entfernen [it]",
+        "NeuesIntake" : "Neues Intake [it]",
+        "NeueBeratungsphase" : "Neue Beratungsphase [it]",
+        "Loschen" : "Löschen [it]",
+        "NeuePerson" : "Neue Person ... [it]",
+        "Soll" : "Soll [it]",
+        "OK" : "OK [it]",
+        "Entfernt_werden" : "entfernt werden ? [it]",
+        "Message": {
+            "ContentConfirm":"(Die Personendaten werden dadurch nicht gelöscht, sondern nur die Beziehung zur Fallträgerin.) [it]",
+            "ComfirmYes": "Ja [it]",
+            "ComfirmNo": "Nein [it]",
+            "MessageDatumbis": "Dieser Fallverlauf kann nicht gelöscht werden, da dieser bereits geschlossen oder archiviert ist! [it]",
+            "MessageCountPhaseFirst": "Dieser Fallverlauf kann nicht gelöscht werden, da dieser noch ",
+            "MessageCountPhaseLast": " Phase(n) enthält![it]",
+            "MessageCountDatenErfasst": "Dieser Fallverlauf kann nicht gelöscht werden, da bereits Daten erfasst worden sind! [it]",
+            "MessageHasOtherModul": "Dieser Fallverlauf kann nicht gelöscht werden, da andere Module vorhanden sind! [it]",
+            "MessageHasClosedModul": "Dieser Fallverlauf kann nicht gelöscht werden, da andere Module vorhanden sind! [it]",
+            "MessageDeleteFallverlaufFirst": "Sollen alle Daten der ",
+            "MessageDeleteFallverlaufLast": " gelöscht werden? [it]",
+            "MessageDeletePhaseFirst": "Sollen alle Daten der Phase ",
+            "MessageDeletePhaseLast": " gelöscht werden? [it]",
+            "TitleInformation": "Information [it]",
+            "TitleConfirm": "Bestätigung [it]"
+        },
+        "FallZugriff": "Fallzugriff [it]",
+        "FallInfo": "Fallinfo [it]"
+    }
+}

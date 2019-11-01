@@ -1,0 +1,44 @@
+<div id="clientList">
+  <p class="title">{{title}}</p>
+
+  <!-- -------------------Area for gridview ----------------------- -->
+
+
+  <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container" id="filter-builder">
+    <dx-filter-builder [fields]="dataGrid.instance.option('columns')" [(value)]="filter"></dx-filter-builder>
+    <dx-button class="btn-filter" [text]="'PersonenImHaushalt.ClientList.ApplyFilter' | translate" type="default"
+      (onClick)="dataGrid.instance.filter(filter)"></dx-button>
+    <div class="dx-clearfix"></div>
+  </div>
+  <dx-data-grid #dataGrid *ngIf="clientList" [dataSource]="clientList" showBorders="true" columnAutoWidth="true"
+    [width]="'100%'" showColumnLines="true" showRowLines="true" [keyExpr]="'baPersonID'" [customizeExportData]="customizeExportData"
+    allowColumnReordering="true" allowColumnResizing="true" [columnResizingMode]="'widget'" [columnMinWidth]="50"
+    scrollByThumb="true" (onSelectionChanged)="onSelectRow($event)" (onRowUpdating)="rowUpdate($event)"
+    (onContextMenuPreparing)="onContextMenuPreparing($event)" (onRowClick)="onDoubleClickRow($event)" (onContentReady)="focusTopRowInGrid($event)">
+
+    <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+    <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-group-panel [visible]="gridFunction.model.isGrouping" [emptyPanelText]="'PersonenImHaushalt.emptyPanelText' | translate"></dxo-group-panel>
+    <dxo-grouping [contextMenuEnabled]="gridFunction.model.isGrouping" #expandGrid [autoExpandAll]="false"></dxo-grouping>
+    <dxo-column-chooser #columnChooser emptyPanelText="" [title]="'PersonenImHaushalt.ColumnChooser.Title' | translate"
+      [enabled]="false"></dxo-column-chooser>
+
+    <dxo-editing mode="cell" [allowUpdating]="enable"></dxo-editing>
+    <dxo-selection mode="single"></dxo-selection>
+
+    <dxi-column dataField="istUnterstuetzt" [caption]="'PersonenImHaushalt.ClientList.Check' | translate" *ngIf="type === 'Haushalt'"></dxi-column>
+    <dxi-column dataField="nameVorname" [caption]="'PersonenImHaushalt.ClientList.Name' | translate" alignment="left"
+      [allowEditing]="false"></dxi-column>
+    <dxi-column dataField="geburtsdatum" [caption]="'PersonenImHaushalt.ClientList.DateOfBirth' | translate" alignment="left"
+      [allowEditing]="false" dataType="date" format="dd.MM.yyyy"></dxi-column>
+    <dxi-column dataField="alter" dataType="number" [caption]="'PersonenImHaushalt.ClientList.Alter' | translate"
+      alignment="right" [allowEditing]="false"></dxi-column>
+    <dxi-column dataField="beziehung" [caption]="'PersonenImHaushalt.ClientList.Beziehung' | translate" alignment="left"
+      [allowEditing]="false"></dxi-column>
+  </dx-data-grid>
+
+  <!-- ------------------------- The End Area for gridview ------------------- -->
+  <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+  <kiss-printer #printer></kiss-printer>
+</div>

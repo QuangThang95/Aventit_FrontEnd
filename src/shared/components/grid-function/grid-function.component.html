@@ -1,0 +1,20 @@
+<dx-popup #popupGridFunction width="auto" height="auto" [showTitle]="true" title="Grid Einstellungen" [dragEnabled]="false" [closeOnOutsideClick]="false"
+  [visible]="false" [showCloseButton]="false">
+  <div *dxTemplate="let data of 'content'">
+    <dx-form #pendenzenForm [(formData)]="model" [showColonAfterLabel]="false" colCount="1" accessKey="g" hoverStateEnabled="true"
+      focusStateEnabled="true" activeStateEnabled="true">
+      <dxi-item dataField="autoSaveSetting" editorType="dxCheckBox" [editorOptions]="{}">
+        <dxo-label text="Automatisches Speichern der Einstellungen ist an/aus"></dxo-label>
+      </dxi-item>
+      <dxi-item dataField="saveSetting" editorType="dxCheckBox" [editorOptions]="{}">
+        <dxo-label text="Speichere Einstellungen (nur aktiv wenn Auto-Speichern ist aus)"></dxo-label>
+      </dxi-item>
+      <dxi-item dataField="resetAllSetting" editorType="dxCheckBox" [editorOptions]="{}">
+        <dxo-label text="Alle Einstellungen zurücksetzen"></dxo-label>
+      </dxi-item>
+    </dx-form>
+  </div>
+  <dxi-toolbar-item toolbar="bottom" location="after">
+    <dx-button text='Schliessen' (onClick)="hidePopup()" type="default" icon="close"> </dx-button>
+  </dxi-toolbar-item>
+</dx-popup>

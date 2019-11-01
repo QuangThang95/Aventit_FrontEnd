@@ -1,0 +1,17 @@
+<!-- control similar -->
+<div class="input-group">
+  <input class="form-control" (click)="openFile()" readonly="true" value="{{ fileName }}">
+  <div class="input-group-btn">
+    <span class="btn btn-default" (click)="handlerButton(action)">{{ handlerText }}</span>
+    <button type="button" class="btn btn-default dropdown-toggle" (click)="btnToogle()">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" *ngIf="isToggle" [ngStyle]="{'display': 'block'}">
+      <li *ngFor="let item of templates">
+        <a href="javascript:void(0)" (click)="newTemplate(item)">{{ item.DisplayName }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- control similar -->

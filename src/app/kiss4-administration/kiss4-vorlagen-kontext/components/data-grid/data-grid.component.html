@@ -1,0 +1,49 @@
+<div class="grid-table-view">
+    <div *ngIf="gridFunctionModelKontext.isFilterBuilder" class="filter-container" id="r009_filter-builder">
+        <dx-filter-builder [fields]="gridKontextComponent.instance.option('columns')" [(value)]="filter">
+        </dx-filter-builder>
+        <dx-button [text]=" 'VorlagenProfile.FilterAnwendenButton' | translate" type="default" (onClick)="gridKontextComponent.instance.filter(filter)">
+        </dx-button>
+        <div class="dx-clearfix"></div>
+    </div>
+    <div class="r008_dx-data-grid">
+        <dx-data-grid id="r008_kontext_data-grid" class="gridContainer" 
+
+            [showColumnLines]="true" [selectedRowKeys]="selectedRowKeys"
+            [focusedRowEnabled]="true" #gridvorlagenkontext [dataSource]="data" [hoverStateEnabled]="true"
+            [showRowLines]="true" [height]="300" [columnAutoWidth]="false" [showBorders]="true" [allowColumnReordering]="true"
+            [allowColumnResizing]="true" columnResizingMode="widget" [noDataText]="'VorlagenKontext.VorlagenkontextDetails.Validation.NoData'  | translate"
+            [disabled]="!isViewDetail" [wordWrapEnabled]="true" [keyExpr]="keyExpr"
+
+            (onContentReady)="onContentReady($event)" (onRowClick)="rowClick.emit($event)" (onCellClick)="cellClick.emit($event)"
+            (onContextMenuPreparing)=onContextMenuPreparing($event) (onSelectionChanged)="onSelectionChangedGrid($event)"
+            (onFocusedRowChanged)="onFocusedRowChanged($event)">
+            
+            <dxi-column *ngFor="let item of listCol" [dataField]="item.field" [caption]="item.caption | translate"
+                [width]="item.width" [cellTemplate]="item.cellTemplate"></dxi-column>
+            <dxo-filter-row [visible]="gridFunctionModelKontext.isSearch" applyFilter="Immediately"></dxo-filter-row>
+            <dxo-header-filter [visible]="gridFunctionModelKontext.isFilter"></dxo-header-filter>
+            <dxo-search-panel [visible]="gridFunctionModelKontext.isSearchPanel" highlightCaseSensitive="true"
+                [placeholder]="'VorlagenKontext.VorlagenkontextDetails.Placeholder' | translate"></dxo-search-panel>
+            <dxo-selection selectAllMode="allPages" mode="single"></dxo-selection>
+            <dxo-editing mode="row"></dxo-editing>
+            <dxo-group-panel [visible]="gridFunctionModelKontext.isGrouping"></dxo-group-panel>
+            <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="true"></dxo-grouping>
+            <dxo-scrolling mode="virtual"></dxo-scrolling>
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-paging [enabled]="false"></dxo-paging>
+            <dxo-paging [pageSize]="99999"></dxo-paging>
+            <dxo-column-chooser #columnChooser [title]="'VorlagenKontext.VorlagenkontextDetails.ColumnChooser' | translate"
+                [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+                <!-- template -->
+            <div *dxTemplate="let data of 'cellIcon'">
+                <div class="icon-format" *ngIf="+data.value === 2">
+                    <span><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>
+                </div>
+                <div class="icon-format" *ngIf="+data.value === 1">
+                    <span><i class="fa fa-file-word-o" aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </dx-data-grid>
+    </div>
+</div>

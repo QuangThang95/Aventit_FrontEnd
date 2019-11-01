@@ -1,0 +1,78 @@
+{
+  "Asvexport": {
+    "Title": "ASV-Datenerfassung [it]",
+    "TitleDetail": "Detail [it]",
+    "TitleGridBottom": "Exportierte Einträge [it]",
+    "TitleGridBottomAdd": "Zu exportierende Einträge [it]",
+    "TitleBemerkung": "Bemerkung [it]",
+    "TitleSektion": "Sektion [it]",
+    "TitleBenutzerdefiniert": "Benutzerdefiniert [it]",
+    "GroupingHeader": "Nach dieser Spalte gruppieren [it]",
+    "HideColumn": "Spalte ausblenden [it]",
+    "UnAllGroupingHeader": "Alle Gruppierung entfernen [it]",
+    "ExpandCloumnGrouping": "Alles Gruppen erweitern [it]",
+    "UnExpandCloumnGrouping": "Alles Gruppen reduzieren [it]",
+    "EmptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen [it]",
+    "GridTop": {
+      "TitleExportDatum": "Export-Datum [it]",
+      "TitleBenutzer": "Benutzer [it]",
+      "TitleBemerkung": "Bemerkung [it]",
+      "ColumnChooser": "Spaltenauswahl [it]",
+      "ExportExcel": "Excel Export [it]",
+      "GridPrint": "Grid drucken [it]",
+      "Search": "Schnellfilterzeile anzeigen/ausblenden [it]",
+      "Grouping": "Gruppierungsbereich anzeigen/ausblenden [it]",
+      "SearchPanel": "Suche anzeigen/ausblenden [it]",
+      "FilterBuilder": "Filtereditor anzeigen/ausblenden [it]",
+      "GridSetting": "Grid Einstellungen [it]",
+      "FilterBuilderButton": "Apply Filter [it]"
+    },
+    "GridBottom": {
+      "TitleName": "Name [it]",
+      "TitlePersonID": "Person-ID [it]",
+      "TitleAnmeldung": "Anmeldung [it]",
+      "TitleAbmeldung": "Abmeldung [it]",
+      "TitleWiderruf": "Widerruf [it]",
+      "TitleProblem": "Problem [it]",
+      "ColumnChooser": "Spaltenauswahl [it]",
+      "ExportExcel": "Excel Export [it]",
+      "GridPrint": "Grid drucken [it]",
+      "Search": "Schnellfilterzeile anzeigen/ausblenden [it]",
+      "Grouping": "Gruppierungsbereich anzeigen/ausblenden [it]",
+      "SearchPanel": "Suche anzeigen/ausblenden [it]",
+      "FilterBuilder": "Filtereditor anzeigen/ausblenden [it]",
+      "GridSetting": "Grid Einstellungen [it]"
+    },
+    "Button": {
+      "Add": "Neue AVS - Datenfassung [it]",
+      "Edit": "Bearbeiten [it]",
+      "Save": "Speichern [it]",
+      "Cancel": "Abbrechen [it]",
+      "ExportXml": "Speichern Unter... [it]",
+      "CreateExport": "Neue Einträge exportieren [it]"
+    },
+    "PopupConfirm": {
+      "Yes": "Ja [it]",
+      "No": "Nein [it]",
+      "Title": "Bestätigung [it]",
+      "Message": "Änderungen an diesem Datensatz rückgängig machen ? [it]",
+      "Abbrechen": "Abbrechen [it]",
+      "Daten": "Daten aktualisieren [it]",
+      "TitleInformation": "Information [it]",
+      "MessageAddNew": "Neuen Datensatz wieder löschen ? [it]"
+    },
+    "MessageError": {
+      "ValidateBemerkung": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.Bitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern [it]",
+      "ValidateSpeichern": "Der Datensatz kann erst nach dem Export gespeichert werden. Über den Button 'Neue Einträge exportieren' können sie den Export starten. [it]",
+      "ValidateExport": "Keine Einträge zum exportieren gefunden. [it]",
+      "UpdateError": "Update Error [it]",
+      "Validate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [it]"
+    },
+    "NavigatorPopupConfirm": {
+      "Yes": "Discard [it]",
+      "No": "Abbrechen [it]",
+      "Title": "Bestätigung [it]",
+      "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [it]"
+    }
+  }
+}

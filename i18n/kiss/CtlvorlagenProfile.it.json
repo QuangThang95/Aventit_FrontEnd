@@ -1,0 +1,49 @@
+﻿{
+  "VorlagenProfile": {
+    "Title": "Vorlagen Profile [it]",
+    "FilterAnwendenButton" : "Filter anwenden [it]",
+    "Suche": {
+      "TitleSearch": "Profilename [it]"
+    },
+    "Liste": {
+      "xProfileIDCaption": "ID [it]",
+      "NameCaption": "Profilname [it]",
+      "TagsCaption": "Merkmale [it]"
+    },
+    "Detail": {
+      "Title": "Detail [it]",
+      "Add": "Neues Vorlagen Profil [it]",
+      "Edit": "Bearbeiten [it]",
+      "Save": "Speichern [it]",
+      "Cancel": "Abbrechen [it]",
+      "Delete": "Löschen [it]",
+      "NameCaption": "Profilname [it]",
+      "TagsCaption": "Merkmale [it]",
+      "TextAreaCaption": "Beschreibung [it]"
+    },
+    "Toolbar": {
+      "GridDrucken": "Grid drucken [it]",
+      "ExcelExport": "Excel Export [it]",
+      "Spaltenauswahl": "Spaltenauswahl [it]",
+      "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden [it]",
+      "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden [it]",
+      "Suche": "Suche anzeigen/ausblenden [it]",
+      "Filtereditor": "Filtereditor anzeigen/ausblenden [it]",
+      "GridEinstellungen": "Grid Einstellungen [it]"
+    },
+    "Message": {
+      "Title": "Confirmation! [it]",
+      "Add": "Supprimer à nouveau le nouvel enregistrement ? [it]",
+      "Edit": "Fermer les fenêtres malgré les données non sauvegardées? [it]",
+      "Delete": "Le dossier doit-il être supprimé ? [it]",
+      "NameRequired": "The field 'Profilname' can not be left empty ! [it]",
+      "MaxLenght": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [it]",
+      "Placeholder": "Wählen...[it]"
+    },
+    "PopupButton":{
+      "Yes": "Ja [it]",
+      "No": "Nein [it]",
+      "Language":"de-CH [it]"
+    }
+  }
+}

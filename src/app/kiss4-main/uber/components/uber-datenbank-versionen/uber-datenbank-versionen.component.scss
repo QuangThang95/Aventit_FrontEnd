@@ -1,0 +1,13 @@
+@import 'settings/variables.scss';
+.form-content-details-title {
+    padding-left: $padding-content;
+    font-weight: $label-detail-font-weight;
+}
+.grid-table-view:hover {
+    ::ng-deep dx-data-grid .dx-datagrid-headers .dx-datagrid-table .dx-header-row>td {
+        background-color: $toolbar-detail-background-color-highlight;
+    }
+}
+.btn-Coppy {
+    padding-right: 15px;
+}

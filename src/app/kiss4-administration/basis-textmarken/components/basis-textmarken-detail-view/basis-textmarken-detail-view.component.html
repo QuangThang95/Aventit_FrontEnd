@@ -1,0 +1,53 @@
+<div class="toolbar-header">
+    <kiss-card-title id="r011_detail_header" [titleHeader]="'BasisTextmarken.BasisTextmarkenDetails.TitleDetail' | translate"
+        [customizeBtn]="customizeBtn" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)" [tabIndex]="99">
+    </kiss-card-title>
+</div>
+<div class="container-detail__form">
+    <dx-form #textmarken [formData]="formData" [showColonAfterLabel]="false">
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="6">
+                <dxi-item id="r011_detail_kategorie" class="label_item_height">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Kategorie' | translate"></dxo-label>
+                    <span>{{ formData?.category }}</span>
+                </dxi-item>
+                <dxi-item id="r011_detail_textmarke" class="label_item_height">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Textmarke' | translate"></dxo-label>
+                    <span>{{ formData?.displayName }}</span>
+                </dxi-item>
+                <dxi-item id="r011_detail_typ" class="label_item_height">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Typ' | translate"></dxo-label>
+                    <span>{{ formData?.bookmarkCodeText }}</span>
+                </dxi-item>
+                <dxi-item id="r011_detail_tabelle" class="label_item_height">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Tabelle' | translate"></dxo-label>
+                    <span>{{ formData?.tableName }}</span>
+                </dxi-item>
+                <dxi-item id="r011_detail_modul" class="label_item_height">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Modul' | translate"></dxo-label>
+                    <span>{{ formData?.modul }}</span>
+                </dxi-item>
+                <dxi-item id="r011_detail_immer-sichtbar" class="label_item_height">
+                    <dxo-label text=" "></dxo-label>
+                    <dx-check-box [disabled]="true" [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.ImmerSichtbar' | translate"
+                        [value]="formData?.alwaysVisible"></dx-check-box>
+                </dxi-item>
+                <dxi-item id="r011_detail_system" class="label_item_height">
+                    <dxo-label text=" "></dxo-label>
+                    <dx-check-box [disabled]="true" #systemDetail [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.System' | translate"
+                        [value]="formData?.system"></dx-check-box>
+                </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="6">
+                <dxi-item id="r011_detail_description">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Beschreibung' | translate"></dxo-label>
+                    <span>{{ formData?.description }}</span>
+                </dxi-item>
+                <dxi-item id="r011_detail_sql">
+                    <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.SQL' | translate"></dxo-label>
+                    <span>{{ formData?.sql }}</span>
+                </dxi-item>
+            </dxi-item>
+        </dxi-item>
+    </dx-form>
+</div>

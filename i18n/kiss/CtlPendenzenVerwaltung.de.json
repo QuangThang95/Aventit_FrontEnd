@@ -1,0 +1,79 @@
+{
+  "PendenzenVerwaltung": {
+    "Title": "Pendenzenverwaltung"
+  },
+  "VerwaltungDetails": {
+    "TitleSearch": "Suche",
+    "TitleDetail": "Detail",
+    "StatusCode": "Status",
+    "TypeCode": "Pendenz Typ",
+    "Subject": "Betreff",
+    "Sender": "Ersteller",
+    "Receiver": "Empfänger",
+    "Name": "Name Klient/in",
+    "Vorname": "Vorname Klient/in",
+    "Fallnummer": "Fallnummer",
+    "Leistungsverantwortlicher": "Leistungsverantw.",
+    "FallLeistungBetrifftPerson": "Person",
+    "DetailFallLeistungBetrifftPerson": "betrifft Person",
+    "OrgUnit": "Organisationseinheit",
+    "CreateDate": "Erfasst",
+    "ExpirationDate": "Fällig",
+    "StartDate": "Bearbeitung",
+    "DoneDate": "Erledigt",
+    "Beschreibung": "Beschreibung",
+    "Antwort": "Antwort",
+    "Leistung": "Leistung",
+    "Falltraeger": "Fallträger",
+    "Pendent": "Pendent",
+    "Placeholder": "Auswählen ...",
+    "ExcelExport": "Excel - Export ",
+    "SchnellGrid": "Schnellfilter Zeile anzeigen",
+    "GroupGrid": "Gruppierungsbereich anzeigen/ausblenden",
+    "SucheGrid": "Suche anzeigen/ausblenden",
+    "FilterGrid": "Filtereditor anzeigen/aublenden",
+    "Einstellungen": "Grid Einstellungen",
+    "emptyPanelText":
+      "Ziehen Sie eine Spaltenüberschrift hier, um nach dieser Spalte zu gruppieren",
+
+    "DialogLookup": {
+      "Typ": "Typ",
+      "Kuerzel": "Kürzel",
+      "Name": "Name",
+      "Abteilung": "Abteilung",
+      "VorName": "VorName",
+      "Benutzer": "Benutzer"
+    },
+    "Validation": {
+      "NoData": "Informationen: Es wurde kein zutreffender Empfänger gefunden.",
+      "NoDataLeistungsverantw":
+        "Informationen: Keine zutreffenden MitarbeiterInnen gefunden.",
+      "NoDataFallfanger":
+        "Informationen: Es wurde kein zutreffender Fall gefunden.",
+      "NoDataGrid": "Keine Daten",
+      "Subject": "Das Feld 'Subject' darf nicht leer bleiben !",
+      "Receiver": "Das Feld 'receiver' darf nicht leer bleiben !",
+      "EmpfaengerEmpty":
+        "Informationen: Das Feld 'Empfänger' darf nicht leer bleiben !",
+      "BetreffEmpty":
+        "Informationen: Das Feld 'Betreff' darf nicht leer bleiben !",
+      "MaxLength":
+        "Fehler: Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge. Bitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu Save."
+    },
+
+    "RowCount": "Anzahl Datensätze"
+  },
+  "Button": {
+    "Add": "Neue Pendenz",
+    "Edit": "Bearbeiten",
+    "Save": "Speichern",
+    "Cancel": "Abbrechen",
+    "Search": "Suchen",
+    "Status": {
+      "Done": "Erledigt",
+      "Inprogress": "in Bearbeitung",
+      "TotheMask": "zur Maske",
+      "Forward": "Weiterleiten"
+    }
+  }
+}

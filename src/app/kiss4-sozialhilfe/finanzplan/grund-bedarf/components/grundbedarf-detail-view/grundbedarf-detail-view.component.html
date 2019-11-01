@@ -1,0 +1,355 @@
+<div class="container-detail__form">
+  <dx-form id="form-search-i007" labelLocation="left" [formData]="grundBedarfFormData" [showColonAfterLabel]="false"
+    (keyup.enter)="onSearchByEnter()" [colCount]="12" [showValidationSummary]="true">
+    <!--------------------------------------------------------- Form readonly -------------------------------------------------------------------->
+    <!-- Berechnungsgrundlage select box-->
+    <dxi-item itemType="group" [colSpan]="6" [template]="'BerechnungsgrundlageTemplate'" [editorOptions]="{ width: '100%' }"
+      dataField="berechnungsgrundlage">
+      <dxi-validation-rule message="Das Feld 'Berechnungsgrundlage' darf nicht leer bleiben !">
+      </dxi-validation-rule>
+      <dxo-label id="i007_berechnungsgrundlage-label" text="Berechnungsgrundlage"></dxo-label>
+    </dxi-item>
+    <!-- The End Berechnungsgrundlage select box-->
+    <dxi-item itemType="empty" [colSpan]="6"></dxi-item>
+    <!-- SKOS bzw. interne Richtlinien -->
+    <dxi-item itemType="group" [colCount]="12" [colSpan]="12" caption="{{ 'I007GrundBedarf.SKOSbzw.caption' | translate }}"
+      [visible]="visibleGroup.visibleSKOSbzwGroup">
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.GrundbedarfI' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.AnpassungI' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.AbzugVVG' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.Zuschlag' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.GrundbedarfII' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.AnpassungII' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.Total' | translate }}"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.furHG' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarfI-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'grundbedarfI-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'anpassungI-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'anpassungI-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'abzugVVG-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'abzugVVG-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'zuschlag-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'zuschlag-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarfII-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'grundbedarfII-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'anpassungII-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'anpassungII-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'total-furHGTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'total-furHG' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOSbzw.furUE' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarfI-furUETemplate'">
+        </dxi-item>
+        <dxi-item [template]="'anpassungI-furUETemplate'">
+        </dxi-item>
+        <dxi-item [template]="'abzugVVG-furUETemplate'">
+        </dxi-item>
+        <dxi-item [template]="'zuschlag-furUETemplate'">
+        </dxi-item>
+        <dxi-item [template]="'grundbedarfII-furUETemplate'">
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'anpassungII-furUETemplate'">
+        </dxi-item>
+        <dxi-item [template]="'keineCheckbox-furUETemplate'">
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'total-furUETemplate'">
+        </dxi-item>
+      </dxi-item>
+    </dxi-item>
+    <!-- The End SKOS bzw. interne Richtlinien -->
+    <!-- SKOS 2005 -->
+    <dxi-item itemType="group" [colCount]="12" [colSpan]="12" caption="{{ 'I007GrundBedarf.SKOS2005.caption' | translate }}"
+      [visible]="visibleGroup.visibleSKOS2005Group">
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOS2005.Grundbedarf' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOS2005.Anpassung' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOS2005.AbzugVVG' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOS2005.Total' | translate }}"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOS2005.furHG' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarf-furHG-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'grundbedarfI-furHG-SKOS_2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'anpassung-furHG-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'anpassungI-furHG-SKOS2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'abzugVVG-furHG-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'abzugVVG-furHG-SKOS2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'total-furHG-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'total-furHG-SKOS2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.SKOS2005.furUE' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarf-furUE-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'grundbedarfI-furUE-SKOS_2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'anpassung-furUE-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'anpassungI-furUE-SKOS2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'abzugVVG-furUE-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'abzugVVG-furUE-SKOS2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'total-furUE-SKOS2005Template'">
+          <dxi-validation-rule type="required" message="Das Feld 'total-furUE-SKOS2005' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+    </dxi-item>
+
+    <!-- The End SKOS 2005 -->
+    <!-- SKOS Berechnungsgrundlage -->
+    <dxi-item itemType="group" [colCount]="12" [colSpan]="12" caption="{{ 'I007GrundBedarf.Berechnungsgrundlage.caption' | translate }}"
+      [visible]="visibleGroup.visibleBerechnungsgrundlageGroup">
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Berechnungsgrundlage.monatlicher' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Berechnungsgrundlage.Anpassung' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Berechnungsgrundlage.AbzugVVG' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Berechnungsgrundlage.Total' | translate }}"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item [template]="'monatlicher-furHG-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'monatlicher-furHG-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'anpassung-furHG-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'anpassungI-furHG-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'abzugVVG-furHG-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'abzugVVG-furHG-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'total-furHG-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'total-furHG-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item [template]="'monatlicher-furUE-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'monatlicher-furUE-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'anpassung-furUE-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'anpassungI-furUE-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+        <dxi-item [template]="'abzugVVG-furUE-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'abzugVVG-furUE-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item [template]="'total-furUE-berechnungsgrundlageTemplate'">
+          <dxi-validation-rule type="required" message="Das Feld 'total-furUE-berechnungsgrundlage' darf nicht leer bleiben !"></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+    </dxi-item>
+
+    <!-- The End Berechnungsgrundlage -->
+    <!-- Kennzahlen -->
+    <dxi-item itemType="group" [colCount]="12" [colSpan]="12" caption="{{ 'I007GrundBedarf.Kennzahlen.caption' | translate }}">
+      <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Haushaltsgrösse.caption' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarf-haushaltsgrosse-kennzahlenTemplate'">
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Haushaltsgrösse.Grundbedarf' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'wohnkosten-haushaltsgrosse-kennzahlenTemplate'">
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Haushaltsgrösse.Wohnkosten' | translate }}"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Unterstützungseinheit.caption' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'grundbedarf-unterstutzungseinheit-kennzahlenTemplate'">
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Unterstützungseinheit.Grundbedarf' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'wohnkosten-unterstutzungseinheit-kennzahlenTemplate'">
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Unterstützungseinheit.Wohnkosten' | translate }}"></dxo-label>
+        </dxi-item>
+        <dxi-item [template]="'zuschlagI-unterstutzungseinheit-kennzahlenTemplate'">
+          <dxo-label text="{{ 'I007GrundBedarf.Kennzahlen.Unterstützungseinheit.ZuschlagI' | translate }}"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+    </dxi-item>
+    <dxi-item itemType="group" [colCount]="12" [colSpan]="12">
+      <dxi-item itemType="group" [colSpan]="3">
+        <dxi-item>
+          <dxo-label text="{{ 'I007GrundBedarf.Begründungen' | translate }}"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colSpan]="9">
+        <dxi-item [template]="'begrundungen-kennzahlenTemplate'">
+        </dxi-item>
+      </dxi-item>
+    </dxi-item>
+    <!-- The end Kennzahlen -->
+    <div *dxTemplate="let data of 'BerechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.berechnungsgrundlage}}</span>
+    </div>
+    <!------------------------ SKOSbzw -------------------------->
+    <!-- Template for fur HG -->
+    <div *dxTemplate="let data of 'grundbedarfI-furHGTemplate'"> <span>{{grundBedarfFormData.grundbedarfI_furHG}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassungI-furHGTemplate'"> <span>{{grundBedarfFormData.anpassungI_furHG}}</span>
+    </div>
+    <div *dxTemplate="let data of 'abzugVVG-furHGTemplate'"> <span>{{grundBedarfFormData.abzugVVG_furHG}}</span>
+    </div>
+    <div *dxTemplate="let data of 'zuschlag-furHGTemplate'"> <span>{{grundBedarfFormData.zuschlag_furHG}}</span>
+    </div>
+    <div *dxTemplate="let data of 'grundbedarfII-furHGTemplate'"> <span>{{grundBedarfFormData.grundbedarfII_furHG}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassungII-furHGTemplate'"> <span>{{grundBedarfFormData.anpassungII_furHG}}</span>
+    </div>
+    <div *dxTemplate="let data of 'total-furHGTemplate'"> <span>{{grundBedarfFormData.total_furHG}}</span>
+    </div>
+    <!-- The end template for fur HG -->
+    <!-- Template for fur UE -->
+    <div *dxTemplate="let data of 'grundbedarfI-furUETemplate'"> <span>{{grundBedarfFormData.grundbedarfI_furUE}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassungI-furUETemplate'"> <span>{{grundBedarfFormData.anpassungI_furUE}}</span>
+    </div>
+    <div *dxTemplate="let data of 'abzugVVG-furUETemplate'"> <span>{{grundBedarfFormData.abzugVVG_furUE}}</span>
+    </div>
+    <div *dxTemplate="let data of 'zuschlag-furUETemplate'"> <span>{{grundBedarfFormData.zuschlag_furUE}}</span>
+    </div>
+    <div *dxTemplate="let data of 'grundbedarfII-furUETemplate'"> <span>{{grundBedarfFormData.grundbedarfII_furUE}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassungII-furUETemplate'"> <span>{{grundBedarfFormData.anpassungII_furUE}}</span>
+    </div>
+    <div *dxTemplate="let data of 'keineCheckbox-furUETemplate'">
+      <dx-check-box id="i007_keineCheckbox_furUE" text="Keime Kopfteilung auf GB II anwenden" [(value)]="grundBedarfFormData.keineCheckbox_furUE"
+        (onValueChanged)="onValueChanged($event)" accessKey="12" [readOnly]="true"></dx-check-box>
+    </div>
+    <div *dxTemplate="let data of 'total-furUETemplate'"> <span>{{grundBedarfFormData.total_furUE}}</span>
+    </div>
+    <!-- The end template for fur UE -->
+    <!------------------------ The End SKOSbzw --------------------------->
+    <!------------------------ SKOS2005 ---------------------------------->
+    <!-- Template for fur HG -->
+    <div *dxTemplate="let data of 'grundbedarf-furHG-SKOS2005Template'"> <span>{{grundBedarfFormData.grundbedarf_furHG_SKOS2005}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassung-furHG-SKOS2005Template'"> <span>{{grundBedarfFormData.anpassung_furHG_SKOS2005}}</span>
+    </div>
+    <div *dxTemplate="let data of 'abzugVVG-furHG-SKOS2005Template'"> <span>{{grundBedarfFormData.abzugVVG_furHG_SKOS2005}}</span>
+    </div>
+    <div *dxTemplate="let data of 'total-furHG-SKOS2005Template'"> <span>{{grundBedarfFormData.total_furHG_SKOS2005}}</span>
+    </div>
+    <!-- The end template for fur HG -->
+    <!-- Template for fur UE -->
+    <div *dxTemplate="let data of 'grundbedarf-furUE-SKOS2005Template'"> <span>{{grundBedarfFormData.grundbedarf_furUE_SKOS2005}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassung-furUE-SKOS2005Template'"> <span>{{grundBedarfFormData.anpassung_furUE_SKOS2005}}</span>
+    </div>
+    <div *dxTemplate="let data of 'abzugVVG-furUE-SKOS2005Template'"> <span>{{grundBedarfFormData.abzugVVG_furUE_SKOS2005}}</span>
+    </div>
+    <div *dxTemplate="let data of 'total-furUE-SKOS2005Template'"> <span>{{grundBedarfFormData.total_furUE_SKOS2005}}</span>
+    </div>
+    <!-- The end template for fur UE -->
+    <!------------------------ The End SKOS2005 -------------------------->
+    <!------------------------ Berechnungsgrundlage ---------------------------------->
+    <!-- Template for fur HG -->
+    <div *dxTemplate="let data of 'monatlicher-furHG-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.monatlicher_furHG_Berechnungsgrundlage}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassung-furHG-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.anpassung_furHG_Berechnungsgrundlage}}</span>
+    </div>
+    <div *dxTemplate="let data of 'abzugVVG-furHG-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.abzugVVG_furHG_Berechnungsgrundlage}}</span>
+    </div>
+    <div *dxTemplate="let data of 'total-furHG-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.total_furHG_Berechnungsgrundlage}}</span>
+    </div>
+    <!-- The end template for fur HG -->
+    <!-- Template for fur UE -->
+    <div *dxTemplate="let data of 'monatlicher-furUE-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.monatlicher_furUE_Berechnungsgrundlage}}</span>
+    </div>
+    <div *dxTemplate="let data of 'anpassung-furUE-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.anpassung_furUE_Berechnungsgrundlage}}</span>
+    </div>
+    <div *dxTemplate="let data of 'abzugVVG-furUE-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.abzugVVG_furUE_Berechnungsgrundlage}}</span>
+    </div>
+    <div *dxTemplate="let data of 'total-furUE-berechnungsgrundlageTemplate'"> <span>{{grundBedarfFormData.total_furUE_Berechnungsgrundlage}}</span>
+    </div>
+    <!-- The end template for fur UE -->
+    <!------------------------ The End Berechnungsgrundlage -------------------------->
+    <!-- Template for Kennzahlen -->
+    <div *dxTemplate="let data of 'grundbedarf-haushaltsgrosse-kennzahlenTemplate'"> <span>{{grundBedarfFormData.kennzahlen_haushaltsgrosse_grundbedarf}}</span>
+    </div>
+    <div *dxTemplate="let data of 'wohnkosten-haushaltsgrosse-kennzahlenTemplate'"> <span>{{grundBedarfFormData.kennzahlen_haushaltsgrosse_wohnkosten}}</span>
+    </div>
+    <div *dxTemplate="let data of 'grundbedarf-unterstutzungseinheit-kennzahlenTemplate'"> <span>{{grundBedarfFormData.kennzahlen_unterstutzungseinheit_grundbedarf}}</span>
+    </div>
+    <div *dxTemplate="let data of 'wohnkosten-unterstutzungseinheit-kennzahlenTemplate'"> <span>{{grundBedarfFormData.kennzahlen_unterstutzungseinheit_wohnkosten}}</span>
+    </div>
+    <div *dxTemplate="let data of 'zuschlagI-unterstutzungseinheit-kennzahlenTemplate'"> <span>{{grundBedarfFormData.kennzahlen_unterstutzungseinheit_zuschlagI}}</span>
+    </div>
+    <div *dxTemplate="let data of 'begrundungen-kennzahlenTemplate'"> <span>{{grundBedarfFormData.kennzahlen_begrundungen}}</span>
+    </div>
+    <!-- The end template for Kennzahlen -->
+  </dx-form>
+</div>

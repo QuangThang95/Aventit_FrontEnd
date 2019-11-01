@@ -1,0 +1,54 @@
+.container-search {
+    $self: &;
+    border: 1px solid $color-gray;
+    border-radius: 1px;
+    &__header {
+        background-color: $toolbar-detail-background-color;
+        color: $color-black;
+        height: 44px;
+        line-height: 44px;
+        
+        .dx-toolbar-item-content { // Will be update in next release
+            padding-right: $padding-content;
+            .dx-button{
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    &__header-title {
+        color: $label-detail-color;
+        font-size: $font-size;
+        font-weight: $font-weight-title;
+        padding-left: $padding-content;
+    }
+
+    &__form {
+        padding: $padding-content;
+    }
+
+    &__check-box {
+        font-size: $search-checkbox-fw;
+        font-weight: $base-fw;
+        color: $color-text-control;
+        min-width: $search-checkbox-mw;
+        // min-height: $search-checkbox-minh;
+    }
+
+    &__drop-down-box {
+        min-width: $search-drop-down-box-minw;
+        max-width: $search-drop-down-box-maxw;
+    }
+
+    &__input-box {
+        min-width: $search-input-box-minw;
+        max-width: $search-input-box-maxw;
+    }
+
+    &:focus-within {
+        border: $border-color-highlight;
+        #{$self}__header {
+            background-color: $toolbar-detail-background-color-highlight;
+        }
+    }
+}

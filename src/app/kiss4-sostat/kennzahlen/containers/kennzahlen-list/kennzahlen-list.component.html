@@ -1,0 +1,116 @@
+<div class="container-detail">
+  <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-container">
+    <dx-filter-builder [fields]="caption" [(value)]="filterAvs">
+    </dx-filter-builder>
+    <dx-button [text]="'Kennzahlen.Gird.FilterBuilder' | translate" type="default" (onClick)="gridkennzahlen.instance.filter(filterAvs)">
+    </dx-button>
+    <div class="dx-clearfix"></div>
+  </div>
+  <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+  <div class="data-grid-top-class" *ngIf="model">
+    <!--------------------- Area for gridview -------------------------->
+    <dx-data-grid id="o012_kennzahlen_grid-kennzahlen" #gridkennzahlen class="gridContainer" [dataSource]="initdata"
+      [showBorders]="true" [showColumnLines]="true" [allowColumnResizing]="true" [columnMinWidth]="20" columnAutoWidth="true" [allowColumnReordering]="true" [showRowLines]="true" [noDataText]="'Kennzahlen.Gird.NoDataGrid' | translate"
+      [selectedRowKeys]="selectedKeys" (onContentReady)="onContentReady($event)" (onKeyDown)="onKeyDown($event)"
+      keyExpr="id" columnResizingMode="widget" (onContextMenuPreparing)="onContextMenuPreparing($event)">
+      <dxo-paging [pageSize]="100"></dxo-paging>
+      <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+      <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+      <dxo-load-panel [enabled]="false"></dxo-load-panel>
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+      <dxo-sorting mode="multiple"></dxo-sorting>
+      <dxo-selection mode="single"></dxo-selection>
+      <dxo-group-panel [visible]="gridFunction.model.isGrouping" [emptyPanelText]="'Kennzahlen.Gird.emptyPanelText' | translate"></dxo-group-panel>
+      <dxo-grouping #expand [autoExpandAll]="false" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+      <dxo-column-chooser id="o012_kennzahlen_column-chooser" #columnChooser [title]="titleBenutzerdefiniert" [enabled]="false"
+        emptyPanelText=""></dxo-column-chooser>
+      <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+      <dxi-column [allowFiltering]="true" dataField="Bezeichnung" [caption]="'Kennzahlen.Gird.Bezeichnung' | translate"
+        alignment="left"></dxi-column>
+      <dxi-column [allowFiltering]="true" dataField="WertBetrag" [caption]="'Kennzahlen.Gird.WertBetrag' | translate"
+        alignment="right"></dxi-column>
+      <dxi-column [allowFiltering]="false" dataField="" [minWidth]="60" [allowResizing]="false" [allowHiding]="false" [allowReordering]="false" cellTemplate='cellTemplate' alignment="center"></dxi-column>
+      <div *dxTemplate="let data of 'cellTemplate'">
+        <dx-button text="..." type="normal" (onClick)="onClick($event)"></dx-button>
+      </div>
+    </dx-data-grid>
+    <!--------------------- 0 of Area for gridview -------------------------->
+  </div>
+  <div class="data-grid-top-class" *ngIf="!model">
+    <!--------------------- Area for gridview -------------------------->
+    <dx-data-grid id="o012_kennzahlen_grid-kennzahlen" #gridkennzahlen class="gridContainer" [dataSource]="initdata"
+      [showBorders]="true" [showColumnLines]="true" [allowColumnResizing]="true" [columnMinWidth]="20"
+      [allowColumnReordering]="true" [columns]="captionGridBot" [showRowLines]="true" [noDataText]="'Kennzahlen.Gird.NoDataGrid' | translate"
+      [selectedRowKeys]="selectedKeyKennzahlen" (onInitialized)="onInitialized($event)"
+      (onContentReady)="onContentReady($event)" (onKeyDown)="onKeyDown($event)" columnResizingMode="widget"
+      (onContextMenuPreparing)="onContextMenuPreparing($event)"
+      keyExpr="id">
+      <dxo-paging [enabled]="false"></dxo-paging>
+      <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+      <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+      <dxo-load-panel [enabled]="false"></dxo-load-panel>
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+      <dxo-sorting mode="multiple"></dxo-sorting>
+      <dxo-selection mode="single"></dxo-selection>
+      <dxo-group-panel [visible]="gridFunction.model.isGrouping" [emptyPanelText]="'Kennzahlen.Gird.emptyPanelText' | translate"></dxo-group-panel>
+      <dxo-grouping expand [autoExpandAll]="false" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+      <dxo-column-chooser #columnChooser [title]="titleBenutzerdefiniert" [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+      <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+      <dxi-column [allowFiltering]="true"  width="auto" dataField="col1" [caption]="'Kennzahlen.Gird.Jahr' | translate"
+        alignment="right"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col2" [caption]="'Kennzahlen.Gird.Stichtag' | translate"
+        alignment="left"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col3" [caption]="'Kennzahlen.Gird.DossierID' | translate"
+        alignment="right"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col4" [caption]="'Kennzahlen.Gird.FallNr' | translate"
+        alignment="right"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col5" [caption]="'Kennzahlen.Gird.LeistungsNr' | translate"
+        alignment="right"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col6" [caption]="'Kennzahlen.Gird.AntragstellerID' | translate"
+        alignment="right"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col7" [caption]="'Kennzahlen.Gird.Antragsteller' | translate"
+        alignment="left"></dxi-column>
+      <dxi-column [allowFiltering]="true"  width="auto" dataField="col8" [caption]="'Kennzahlen.Gird.V1506' | translate"
+        alignment="left"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col9" [caption]="'Kennzahlen.Gird.V1602' | translate"
+        alignment="left"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col10" [caption]="'Kennzahlen.Gird.V1504' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col11" [caption]="'Kennzahlen.Gird.V1000' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col12" [caption]="'Kennzahlen.Gird.V150415' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col13" [caption]="'Kennzahlen.Gird.V150416' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col14" [caption]="'Kennzahlen.Gird.V150417' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col15" [caption]="'Kennzahlen.Gird.V15051' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col16" [caption]="'Kennzahlen.Gird.V15052' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col17" [caption]="'Kennzahlen.Gird.V1508' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col18" [caption]="'Kennzahlen.Gird.V1511' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col19" [caption]="'Kennzahlen.Gird.V1512' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col21" [caption]="'Kennzahlen.Gird.V1513' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col22" [caption]="'Kennzahlen.Gird.V1514' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col23" [caption]="'Kennzahlen.Gird.V1515' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col24" [caption]="'Kennzahlen.Gird.V1516' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col20" [caption]="'Kennzahlen.Gird.V1517' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col25" [caption]="'Kennzahlen.Gird.V1518' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col26" [caption]="'Kennzahlen.Gird.V1519' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col27" [caption]="'Kennzahlen.Gird.V1520' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col28" [caption]="'Kennzahlen.Gird.V1521' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col29" [caption]="'Kennzahlen.Gird.V1522' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col30" [caption]="'Kennzahlen.Gird.Bruttobedarf' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col31" [caption]="'Kennzahlen.Gird.TotalEinnahmen' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col32" [caption]="'Kennzahlen.Gird.TotalZulagen' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col33" [caption]="'Kennzahlen.Gird.NettobedarfInklZulagen' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col34" [caption]="'Kennzahlen.Gird.Zugesprochen' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col35" [caption]="'Kennzahlen.Gird.DifferenzNettoZugesprochen' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="true" width="auto" dataField="col36" [caption]="'Kennzahlen.Gird.DifferenzInProzent' | translate"></dxi-column>
+      <dxi-column [allowFiltering]="false" [minWidth]="60" dataField="" caption=""[allowResizing]="false" [allowHiding]="false" [allowReordering]="false" cellTemplate='cellTemplate' alignment="center"></dxi-column>
+      <div *dxTemplate="let data of 'cellTemplate'">
+        <dx-button text="..." type="normal" (onClick)="onClick($event)"></dx-button>
+      </div>
+    </dx-data-grid>
+    <!--------------------- 0 of Area for gridview -------------------------->
+  </div>
+  <app-popover #popover></app-popover>
+</div>
+<div class="grid-margin-top">
+  <span>{{ 'Kennzahlen.AnzahlDatensatze' | translate }} </span>
+  <span id="o010_bfs-variablen_anzahl-datensatze"> {{totalRecords}}</span>
+</div>

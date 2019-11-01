@@ -1,0 +1,80 @@
+<div class="mid-content">
+  <div class="left-grid">
+    <div class="left-side-grid" tabIndex="102">
+      <kiss-vorlagen-kontext-data-grid #verfuegbareGrid [listCol]="listCol" [data]="listVerfuegbar" keyExpr="docTemplateID"
+        isViewDetail="true" (selectionChanged)="onGridSelectionChanged($event)" (rowClick)="dblTurnRight($event)"
+        (contentReady)="setSelectedGridElement($event)" (cellClick)="headerClick($event, 'grid')"></kiss-vorlagen-kontext-data-grid>
+    </div>
+    <div class="box">
+      <dx-box direction="row" width="100%" [disabled]="isViewDetail">
+        <dxi-item [ratio]="2">
+          <p>{{ 'VorlagenKontext.VorlagenkontextDetails.Ordnername' |
+            translate }}</p>
+        </dxi-item>
+        <dxi-item [ratio]="4">
+          <dx-text-box id="r008_detail_ordnername" [(value)]="objMutilSelect.ordnername" (onFocusIn)="onOrdernameClick()"
+            [tabIndex]="109" [maxLength]="100" [disabled]="isViewDetail"></dx-text-box>
+        </dxi-item>
+        <dxi-item [ratio]="1">
+        </dxi-item>
+        <dxi-item [ratio]="1">
+          <dx-button id="r008_detail_add-to-tree" icon="fa fa-plus" [disabled]="isViewDetail" (onClick)="createFolder($event)"
+            tabIndex="111">
+          </dx-button>
+        </dxi-item>
+      </dx-box>
+    </div>
+  </div>
+  <div class="mid-button">
+    <dx-button id="r008_detail_to-right" class="turn-right-button" icon="assets/icon/ico/13.ico" tabIndex="103"
+      [disabled]="isViewDetail" (onClick)="turnRight()">
+    </dx-button>
+    <dx-button id="r008_detail_to-left" class="turn-left-button" icon="assets/icon/ico/11.ico" tabIndex="104"
+      [disabled]="isViewDetail" (onClick)="turnLeft()">
+    </dx-button>
+    <dx-button id="r008_detail_all-to-left" icon="assets/icon/ico/12.ico" [disabled]="isViewDetail" tabIndex="105"
+      (onClick)="confirmAllLeft()">
+    </dx-button>
+  </div>
+  <div class="right-grid">
+    <div tabIndex="106">
+      <dx-tree-list #zuweisungenAbteilungenTree id="r008_detail_tree-eks-vs-uhvspanschc" [dataSource]="listZugeteilt"
+        [focusedRowEnabled]="true" keyExpr="xDocContext_TemplateID" parentIdExpr="parentID" [showRowLines]="true"
+        [columnAutoWidth]="true" [hoverStateEnabled]="true" [showBorders]="true" [autoExpandAll]="true" (onRowClick)="dblTurnLeft($event)"
+        (onCellClick)="headerClick($event, 'tree')" (onFocusedRowChanged)="onFocusedRowChanged($event)"
+        (onContentReady)="setSelectedTreeElement($event)" (onOptionChanged)="onTreeSelectionChanged($event)"
+        [noDataText]="'VorlagenKontext.VorlagenkontextDetails.Validation.NoData'  | translate" (onRowExpanded)="onTreeRowExpanded($event)"
+        [wordWrapEnabled]="true">
+        <dxo-sorting mode="none"></dxo-sorting>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxo-selection mode="single"></dxo-selection>
+        <dxi-column dataField="itemName" [caption]="'VorlagenKontext.VorlagenkontextDetails.ZugeteiltVorlagen'|translate"
+          cellTemplate="cellitemName" calculateSortValue="parentPosition"></dxi-column>
+        <div *dxTemplate="let data of 'cellitemName'">
+          <span><i [class]="loadTreeIconCell(data.value)" aria-hidden="true"></i> {{loadTreeCell(data.value)}}</span>
+        </div>
+      </dx-tree-list>
+    </div>
+    <div class="box">
+      <dx-box direction="row" width="100%" [disabled]="isViewDetail">
+        <dxi-item [ratio]="1">
+          <dx-check-box id="r008_detail_einfugen-auf-derselben-ebene" [(value)]="objMutilSelect.einfugen" tabIndex="110"
+            (onValueChanged)="onCheckBox()" [disabled]="isViewDetail"></dx-check-box>
+        </dxi-item>
+        <dxi-item [ratio]="11">
+          <p>{{ 'VorlagenKontext.VorlagenkontextDetails.Einfugen' |
+            translate }}</p>
+        </dxi-item>
+      </dx-box>
+    </div>
+  </div>
+  <div class="right-button">
+    <dx-button id="r008_detail_up" class="turn-up-button" icon="assets/icon/ico/16.ico" [disabled]="isViewDetail || isUpDown"
+      tabIndex="107" (onClick)="upKontext()">
+    </dx-button>
+    <dx-button id="r008_detail_all-down" icon="assets/icon/ico/17.ico" [disabled]="isViewDetail || isUpDown" (onClick)="downKontext()"
+      tabIndex="108">
+    </dx-button>
+  </div>
+</div>
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>

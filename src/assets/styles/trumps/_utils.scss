@@ -1,0 +1,245 @@
+@import "../settings/_variables.scss";
+.u-no-outline {
+  outline: none;
+}
+
+.margin-top-15 {
+   margin-top: 15px;
+}
+
+#menuTreeLeft.dx-widget {
+    background-color: white;
+    z-index: 9999;
+}
+body, html {
+    margin: 0;
+    min-width: 400px;
+    padding: 0;
+    height: 100%;
+    font-family: $base-ft;
+    .dx-datagrid-column-chooser{
+        visibility: hidden ;
+        &> div{
+            visibility: visible;
+            .dx-popup-content.dx-datagrid-column-chooser-list{
+                min-height:205px !important;
+            }
+        }
+    }
+}
+.clear {
+    clear: both;
+}
+.hidden {
+    display: none;
+}
+a{
+    text-decoration: none;
+}
+.page-wrapper {
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    display: block;
+}
+.body {
+    position: relative;
+    padding: $header-height 0 $form-field-height 0;
+    height: 100vh;
+}
+
+.dx-button-text{
+    font-weight: $base-fw;
+}
+.widgets-menu-container {
+  -webkit-box-shadow: inset -1px 0 2px 0 #ececec;
+  -moz-box-shadow: inset -1px 0 2px 0 #ececec;
+  box-shadow: inset -1px 0 2px 0 rgba(51, 122, 183, 0.7);
+  position: fixed;
+  top: 60px;
+  bottom: 45px;
+  width: 360px;
+  background: rgba(51, 122, 183, 0.7);
+  z-index: 4;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: block;
+  overflow: hidden;
+}
+
+.border-b-2px-337ab7b3 {
+    border-bottom: 2px solid rgba(51,122,183,.7);
+}
+
+.menu-title {
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 330px;
+    height: 46px;
+    line-height: 46px;
+    background: #337ab7;
+    color: #fff;
+}
+
+.view-content{
+    margin-left: 360px;
+    height: 100%;
+    overflow: auto;
+}
+
+body.hide-widgets-menu {
+    .toolbarHeader {
+        width: 100%;
+    }
+    .widgets-menu-container {
+        display: none !important;
+    }
+    .view-content {
+        margin-left: 0 !important;
+        app-navigator{
+            width: 100% !important; 
+            .menu-state-button::after {
+                background-image: url(../icon/svg/menu-icon.svg) !important;
+            }
+        }
+        app-navigator-scenario{
+            width: 100% !important; 
+            .menu-state-button::after {
+                background-image: url(../icon/svg/menu-icon.svg) !important;
+            }
+        }
+    }
+}
+
+.no-padding{
+    padding: unset !important;
+}
+.no-margin{
+    margin: unset !important;
+}
+.title-header-container{
+    padding-left: 35px !important;
+}
+// Layout left 
+.container-fluid{
+    height: -moz-calc(100% - #{$header-height});
+    height: -webkit-calc(100% - #{$header-height});
+    height: calc(100% -  #{$header-height});
+    .bg{
+        background-color: $color-layout-left-bg;
+        height: 100%;
+    }
+}
+
+//Layout content
+.paddig-content{
+    padding: $padding-content;
+    padding-top: 10px;
+}
+
+.dx-popup-title{
+    background: $color-base !important;
+    color: $color-white !important;
+}
+
+// .dx-toolbar-after {
+//     position: fixed;
+//     z-index: 9999;
+//     top: -400px;
+// }
+
+.fixToolbar.showByFocus .dx-toolbar-after .dx-toolbar-item:first-child{
+    display: none !important;
+}
+.box-form:focus-within , .box-form:hover{
+    .fixToolbar.showByFocus .dx-toolbar-after .dx-toolbar-item:first-child{
+        display: table-cell !important;
+    }
+}
+.cockpitPendenzen{
+    .dx-toolbar-after{
+        display: none;
+    }
+    &:focus-within{
+        .dx-toolbar-after{
+            display: block;
+        }
+    }
+    &:hover{
+        .dx-toolbar-after{
+            display: block;
+        }
+    }
+}
+dx-form.costomS1{
+    .hr {
+        border-top: 2px solid #ebebeb;
+        margin-top: 10px;
+    }
+    .dx-first-row.dx-first-col.dx-last-col.dx-field-item.dx-field-item-required.dx-col-0.dx-flex-layout.dx-label-h-align {
+        font-size: 20px;
+    }
+}
+// Media
+// @media (max-width: 1200px)
+// {
+//     .header , .view-content app-navigator{
+//         position: absolute !important;
+//     }
+// }
+
+.toolbar-label{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+            supported by Chrome and Opera */
+}
+
+.cus-kvg{
+    .kvg-a1:focus-within{
+        .btnEdit1{
+            display: block !important;
+        }
+    }
+}
+
+.g-child-01{
+    padding-left: 0 !important;
+}
+
+#popover-menu .dx-menu-items-container {
+    width: 100%;
+}
+
+
+.pt-0 {
+    padding-top: 0;
+}
+
+.rounded-0 {
+    border: 0 !important;
+}
+
+#main-router-outlet {
+    height: calc(100vh - 105px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $color-layout-right-bg;
+}
+
+.color-title-navigator {
+    color: $color-text-navigator;
+}
+
+
+app-navigator .text-title-header {
+    color: $color-white;
+}
+

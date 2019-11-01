@@ -1,0 +1,73 @@
+{
+    "index": "/index.html",
+    "assetGroups": [
+        {
+            "name": "app",
+            "installMode": "prefetch",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/favicon.ico",
+                    "/index.html",
+                    "/i18n/**.json",
+                    "/**.ttf",
+                    "/**.woff",
+                    "/**.woff2",
+                    "/**.svg",
+                    "/**.eot",
+                    "/**.css",
+                    "/**.js"
+                ]
+            }
+        },
+        {
+            "name": "assets",
+            "installMode": "lazy",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/assets/**"
+                ]
+            }
+        }
+    ],
+    "dataGroups": [
+        {
+            "name": "api-pendenzen",
+            "urls": [
+                "/api/pendenzen/**"
+            ],
+            "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "5s",
+                "timeout": "1m",
+                "strategy": "freshness"
+            }
+        },
+        {
+            "name": "api-trees",
+            "urls": [
+                "/api/trees"
+            ],
+            "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "5s",
+                "timeout": "1m",
+                "strategy": "performance"
+            }
+        },
+        {
+            "name": "api-loadmenu",
+            "urls": [
+                "api/menuitem/loadtopmenuitems",
+                "api/menuitem/loadmenuitems"
+            ],
+            "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "10s",
+                "timeout": "1m",
+                "strategy": "performance"
+            }
+        }
+    ]
+}

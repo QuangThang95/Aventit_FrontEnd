@@ -1,0 +1,91 @@
+{
+  "VorlagenKontext": {
+    "Title": "Kontext",
+    "KontextName": "Kontextname",
+    "Description": "Beschreibung",
+    "VorlagenkontextDetails": {
+      "TitleSearch": "Suche",
+      "TitleDetail": "Detail",
+      "Placeholder": "Select ...",
+      "Spaltenauswahl": "Spaltenauswahl",
+      "ExcelExport": "Excel Export",
+      "GridDrucken": "Grid drucken",
+      "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden",
+      "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden",
+      "Suche": "Suche anzeigen/ausblenden",
+      "Filtereditor": "Filtereditor anzeigen/ausblenden",
+      "GridEinstellungen": "Grid Einstellungen",
+      "ApplyFilter": "Filter anwenden",
+      "SchnellGrid": "Schnellfilterzeile anzeigen/ausblenden",
+      "GroupGrid": "Show/Hide Grouping Area",
+      "SucheGrid": "Suche anzeigen/ausblenden",
+      "FilterGrid": "Filtereditor anzeigen/ausblenden",
+      "Einstellungen": "Grid Einstellungen",
+      "EmptyPanelText": "Drag a column header here to group by that column",
+      "Delete": "Löschen",
+      "ZugeteiltVorlagen": "Zugeteilt Vorlagen",
+      "File": "F",
+      "VerfugbareVorlagen": "verfugbare Vorlagen",
+      "DialogLookup": {
+        "Typ": "Type",
+        "Kuerzel": "Logon name",
+        "Name": "Name",
+        "Abteilung": "Department",
+        "VorName": "VorName",
+        "Benutzer": "User"
+      },
+      "Validation": {
+        "NoData": "Keine Daten",
+        "Subject": "The field 'Subject' must not be empty!",
+        "BetreffEmpty": "Information: The field 'Betreff' must not be empty!",
+        "MaxLength": "The content of a field exceeds the maximum allowed length."
+      },
+      "RowCount": "Number of records",
+      "ColumnChooser": "Benutzerdefiniert",
+      "GridPrint": "Grid drucken",
+      "Filterbuilder": "Gruppierungsbereich anzeigen/ausblenden",
+      "Einfugen": "Einfügen auf derselben Ebene",
+      "Ordnername": "Ordnername",
+      "OrdnerMessage": "Dieser Ordner kann nicht entfernt werden, da er noch Vorlagen oder Ordner enthält.",
+      "NewOrdnerMessage": "Der Name des neuen Ordners muss zuerst im Feld 'Ordnername' eingeben werden!",
+      "TreeAllLeft": "Dies entfernt alle zugeteilten Vorlagen und Ordner. Wollen Sie alle zugeteilten Vorlagen entfernen?"
+    },
+    "Button": {
+      "Add": "Neuer Kontext",
+      "Edit": "Bearbeiten",
+      "Save": "Speichern",
+      "Cancel": "Abbrechen",
+      "Search": "Search"
+    },
+    "Message": {
+      "TitleComfirm": "Bestätigung!",
+      "ComfirmYes": "Ja",
+      "ComfirmNo": "Nein",
+      "KonTextName": "Das Feld 'Kontextname' darf nicht leer bleiben !",
+      "DeleteAppNew": "Neuen Datensatz wieder löschen ?",
+      "CancelEditModel": "Änderungen an diesem Datensatz rückgängig machen ?",
+      "ComfirmDelete": "Soll der Datensatz gelöscht werden ?",
+      "ConfirmDeactive": "Änderungen an diesem Datensatz rückgängig machen ?",
+      "CloseBrower": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?",
+      "MessageUpdate": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht.",
+      "UpdateComfirmYes": "Abbrechen",
+      "UpdateComfirmNo": "Daten aktualisieren",
+      "Information": "information"
+    },
+    "NavigatorPopupConfirm": {
+      "Yes": "Discard",
+      "No": "Abbrechen",
+      "Title": "Bestätigung",
+      "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?"
+    },
+    "MessageValidate": {
+      "FormValidate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein",
+      "MaxLengthField": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge. Bitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern."
+    },
+    "MenuBar": {
+      "GridDrucken": "Grid Drucken",
+      "ExcelExport": "Excel Export",
+      "Spaltenauswahl": "Spaltenauswahl"
+    }
+  }
+}

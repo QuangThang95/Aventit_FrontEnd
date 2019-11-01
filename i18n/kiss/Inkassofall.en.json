@@ -1,0 +1,49 @@
+{
+    "Inkassofall": {
+        "Title": "Rechtliche Massnahmen [en]",
+        "eroffnetAm": "Eröffnet am [en]",
+        "eroffnetGrund": "Grund [en]",
+        "typ": "Typ [en]",
+        "anzeigeTyp": "Anzeigetyp [en]",
+        "abgeschlossenAm": "Abgeschlossen am [en]",
+        "abgeschlossenGrund": "Grund [en]",
+        "bemerkung": "Bemerkung [en]",
+        "ApplyFilter": "Filter anwenden [en]",
+        "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen [en]",
+        "Validation": {
+            "NoDataGrid": "Keine Daten [en]"
+        },
+        "Placeholder": "Select... [en]",
+        "ColumnChooser": {
+            "Title": "Benutzerdefiniert [en]",
+            "EmptyPanelText": "Keine Daten [en]"
+        },
+        "Message": {
+            "MessageDelete": "Soll der Datensatz gelöscht werden ? [en]",
+            "MessageDeleteNew": "Neuen Datensatz wieder löschen ? [en]",
+            "MessageConfirmCancel": "Fenster trotz der nicht gespeicherten Daten schliessen ? [en]",
+            "MessageError": "Nicht alle Mussfelder sind ausgefüllt [en]",
+            "MessageErrorValidate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [en]",
+            "Yes": "Ja [en]",
+            "No": "Nein [en]",
+            "Title": "Bestätigung [en]",
+            "Message": "Änderungen an diesem Datensatz rückgängig machen ? [en]",
+            "Confirmation": "Confirmation [en]",
+            "Abbrechen": "Abbrechen [en]",
+            "Daten-aktualisieren": "Daten aktualisieren [en]",
+            "MessageCandiavtive": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [en]",
+            "Discard": "Discard [en]",
+            "MessageConcurrencyUpdate": "Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht.\r\nAktualisieren sie die Daten zuerst, um Ihre Änderungen zu speichern. [en]",
+            "MessageConcurrencyDelete": "Beim Löschen des Datensatzes ist ein Fehler aufgetreten ! [en]",
+            "EditNumberOverLengthMessage": "Ungültiger Wert. [en]",
+            "NameOverLength": "Der Inhalt eines Feldes überschreitet die maximal zugelassene Länge.\nBitte kürzen Sie zuerst den Inhalt und versuchen Sie anschliessend nochmals zu speichern. [en]"
+        },
+        "Button": {
+            "New": "Neue rechtliche Massnahme [en]",
+            "Edit": "Bearbeiten [en]",
+            "Save": "Speichem [en]",
+            "Abort": "Abbrechen [en]",
+            "Delete": "Löschen [en]"
+        }
+    }
+}

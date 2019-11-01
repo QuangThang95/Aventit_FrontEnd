@@ -1,0 +1,90 @@
+﻿<kiss-right-component>
+    <div id="i002_personen-im-haushalt">
+        <kiss-header-bar (action)="onHeaderAction($event)" [isEditMode]="isEditMode" [isShiftKeyDown]="isShiftKeyDown"
+            (dblclick)="onDblClickMessage()" [hideBtnEdit]="disable" [personenData]="personenData"></kiss-header-bar>
+        <div class="container">
+            <div class="right-content">
+                <div class="error" *ngIf="messageData?.isShow">
+                    <span class="btn-close-error">
+                        <dx-button class="btn-close" (onClick)="messageData.isShow = false"
+                                   icon="fa fa-times fa-2x"></dx-button>
+                    </span>
+          <div class="error-messege">
+                        <span class="ico-error">
+                            <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                        </span>
+            <i id="err-messeger">{{messageData.message}}</i>
+          </div>
+        </div>
+
+        <!-- show staff and client sum information -->
+        <dx-box direction="row" width="100%">
+          <dxi-item [ratio]="1" class="staffInfo">
+            <span class="title">{{ 'PersonenImHaushalt.StaffInfo.Finanzplan' | translate }}</span>
+            <div class="divider"></div>
+            <kiss-staff-info [personenData]="personenData"></kiss-staff-info>
+          </dxi-item>
+          <dxi-item [ratio]="1" class="clientSumInfo">
+            <span class="title">{{ 'PersonenImHaushalt.ClientSumInfo.Kennzahlen' | translate }}</span>
+            <div class="divider"></div>
+            <dx-box direction="row" width="100%">
+              <dxi-item [ratio]="1">
+                    <kiss-client-sum-info [title]="'PersonenImHaushalt.ClientSumInfo.Haushaltsgrosse' | translate"
+                                    [data]="upperViewWhKennzahlen"></kiss-client-sum-info>
+              </dxi-item>
+              <dxi-item [ratio]="1">
+              <kiss-client-sum-info [title]="'PersonenImHaushalt.ClientSumInfo.Unterstutzungseinheit' | translate"
+                                    [data]="lowerViewWhKennzahlen"></kiss-client-sum-info>
+              </dxi-item>
+            </dx-box>
+          </dxi-item>
+        </dx-box>
+
+        <!-- show client list information -->
+        <p class="description">{{ 'PersonenImHaushalt.Description' | translate}}</p>
+        <dx-box direction="row" width="100%">
+          <dxi-item class="clientListContainer" [ratio]="1">
+            <kiss-client-list id="gridLeft" [title]="'PersonenImHaushalt.ClientList.Klientensystem' | translate"
+                              [clientList]="klientenSystem" (rowSelection)="onKlientenSystemSelectionChange($event)"
+                              (click)="setGridFocus('left')" (doubleClickRow)="registerKlient()"></kiss-client-list>
+          </dxi-item>
+          <dxi-item [ratio]="0" baseSize="62px">
+            <div class="clientActionContainer">
+              <dx-box direction="col" width="100%" height="100%" align="center">
+                <dxi-item [ratio]="1">
+                  <dx-button icon="assets/icon/ico/13.ico"  [disabled]="!isEditMode? true : false"
+                             (onClick)="registerKlient()">
+                  </dx-button>
+                </dxi-item>
+                <dxi-item [ratio]="1">
+                  <dx-button icon="assets/icon/ico/11.ico"  [disabled]="!isEditMode? true : false"
+                             (onClick)="unregisterKlient()">
+                  </dx-button>
+                </dxi-item>
+                <dxi-item [ratio]="1">
+                  <dx-button icon="assets/icon/ico/14.ico"  [disabled]="!isEditMode? true : false"
+                             (onClick)="registerAllKlient()">
+                  </dx-button>
+                </dxi-item>
+                <dxi-item [ratio]="1">
+                  <dx-button icon="assets/icon/ico/12.ico"  [disabled]="!isEditMode? true : false"
+                             (onClick)="unregisterAllKlient()">
+                  </dx-button>
+                </dxi-item>
+              </dx-box>
+            </div>
+          </dxi-item>
+          <dxi-item class="clientListContainer" [ratio]="1">
+            <kiss-client-list id="gridRight" [title]="'PersonenImHaushalt.ClientList.Haushaltsgrosse' | translate"
+                              [clientList]="haushalt" [enable]="isEditMode"
+                              (rowSelection)="onHaushaltSelectionChange($event)" (rowDataChange)="rowDataChange($event)"
+                              type="Haushalt" (click)="setGridFocus('right')" (doubleClickRow)="unregisterKlient()"></kiss-client-list>
+          </dxi-item>
+        </dx-box>
+        <p class="description">{{ 'PersonenImHaushalt.Tip' | translate }}</p>
+      </div>
+    </div>
+    <!-- show overlay popup confirm -->
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+  </div>
+</kiss-right-component>

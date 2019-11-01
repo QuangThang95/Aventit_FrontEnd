@@ -1,0 +1,40 @@
+.lblDos {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.toolbarFooter {
+    padding-top: 10px !important;   
+    .dx-button {
+        background-color: #337ab7;
+        color: #ffffff;
+        &.dx-state-focused {
+            background-color: #1c4b73;
+        }
+        .dx-icon{
+            color: #ffffff !important;
+        }
+    }
+}
+
+#customize-header .dx-menu-base .dx-menu-items-container,
+#customize-header  .dx-menu-base .dx-menu-item-wrapper {
+  border: 1px solid #FFFFFF;
+}
+
+@media only screen and (max-width: 1249px) {
+  #customize-header {
+    display: none;
+  }
+  .dx-menu-horizontal {
+      padding: 0;
+  }
+}
+
+@media screen and (max-height: 540px) {
+    .dx-context-menu .dx-menu-item .dx-submenu{
+        max-height: 250px;
+        overflow-y: auto;
+    }
+}

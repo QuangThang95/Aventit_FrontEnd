@@ -1,0 +1,53 @@
+<div class="grid-table-view">
+  <div *ngIf="gridFunction.model.isFilterBuilder" class="filter-builder">
+    <dx-filter-builder [fields]="gridAhvBeitrage.instance.option('columns')" [(value)]="filter"></dx-filter-builder>
+    <dx-button [text]="'AhvBeitrage.GirdTitle.FilterBuilderButton' | translate" type="default" (onClick)="gridAhvBeitrage.instance.filter(filter)"></dx-button>
+    <div class="dx-clearfix"></div>
+  </div>
+  <div>
+    <dx-data-grid [allowColumnReordering]="true" id="i011_ahv-beitrage_grid-ahv-beitrage" #gridAhvBeitrage columnAutoWidth="true"
+      [dataSource]="listAHVBeitragPosition" allowColumnResizing="true" [hoverStateEnabled]="true"
+      [showRowLines]="true" keyExpr="bgPositionID" [showBorders]="true" [height]="300" (onRowClick)="onClickRowGrid($event)"
+      columnResizingMode="widget"
+      noDataText="Keine Daten" (onContextMenuPreparing)=onContextMenuPreparing($event) [editing]="{allowDeleting: false, texts: {confirmDeleteMessage: ''}}"
+      [selectedRowKeys]="selectedRowKey" [allowColumnReordering]="true" [disabled]="disabledGrid" (onKeyDown)=onKeyDown($event)>
+      <dxi-column [minWidth]="120" [visible]="!isFillter" alignment="left" format="dd.MM.yyyy" dataType="date" dataField="datumVon"
+        caption="{{ 'AhvBeitrage.GirdTitle.GullingAB' | translate }}"></dxi-column>
+      <dxi-column dataType="string" [minWidth]="150" alignment="left" dataField="baPersonID" caption="{{ 'AhvBeitrage.GirdTitle.Name' | translate }}">
+        <dxo-lookup *ngIf="listAHVBeitragPosition.length" [dataSource]="baPersonIDLookup" displayExpr="nameVorname"
+          valueExpr="baPersonID"></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataType="number"  [minWidth]="80" alignment="right" dataField="baPersonIDNew" caption="{{ 'AhvBeitrage.GirdTitle.PersNr' | translate }}"></dxi-column>
+      <dxi-column [minWidth]="120" alignment="left" format="dd.MM.yyyy" dataType="date" dataField="geburtsdatum" caption="{{ 'AhvBeitrage.GirdTitle.Geburtsdatum' | translate }}"></dxi-column>
+      <dxi-column [minWidth]="150" alignment="left" dataField="bgPositionsartID" caption="{{ 'AhvBeitrage.GirdTitle.Leistungsart' | translate }}">
+        <dxo-lookup *ngIf="listAHVBeitragPosition.length" [dataSource]="listSqlQueryShPositionTyp" displayExpr="text"
+          valueExpr="code"></dxo-lookup>
+      </dxi-column>
+      <dxi-column [minWidth]="120" dataType="number" alignment="right" dataField="betrag" caption="{{ 'AhvBeitrage.GirdTitle.Betrag' | translate }}">
+        <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+      </dxi-column>
+      <dxo-summary>
+        <dxi-total-item column="betrag" summaryType="sum" valueFormat="#,##0.00" displayFormat="Sum: {0}">
+        </dxi-total-item>
+      </dxo-summary>
+      <dxi-column [minWidth]="150" alignment="left" dataField="institutionName" caption="{{ 'AhvBeitrage.GirdTitle.Institution' | translate }}"></dxi-column>
+      <dxi-column [minWidth]="150" alignment="left" dataField="bgBewilligungStatusCode" caption="{{ 'AhvBeitrage.GirdTitle.BewStatus' | translate }}">
+        <dxo-lookup *ngIf="listAHVBeitragPosition.length" [dataSource]="this.ahvBeitragesSandbox.getLookUps$ | async"
+          displayExpr="text" valueExpr="code"></dxo-lookup>
+      </dxi-column>
+      <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+      <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+      <dxo-selection selectAllMode="allPages" showCheckBoxesMode="onClick" mode="single"></dxo-selection>
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+      <dxo-sorting mode="multiple"></dxo-sorting>
+      <dxo-group-panel emptyPanelText="{{ 'AhvBeitrage.GirdTitle.emptyPanelText' | translate }}" [visible]="gridFunction.model.isGrouping"></dxo-group-panel>
+      <dxo-grouping [contextMenuEnabled]="gridFunction.model.isGrouping" #expandGrid [autoExpandAll]="true"></dxo-grouping>
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+      <dxo-column-chooser #columnChooser emptyPanelText="" title="{{ 'AhvBeitrage.GirdTitle.ColumnChooser' | translate }}"
+        [enabled]="false"></dxo-column-chooser>
+      <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+    </dx-data-grid>
+    <app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+    <kiss-printer #printer></kiss-printer>
+  </div>
+</div>

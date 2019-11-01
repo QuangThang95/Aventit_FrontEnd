@@ -1,0 +1,14 @@
+{
+    "KissCommonBtn":{
+        "Spaltenauswahl": "Spaltenauswahl [fr]",
+        "ExcelExport": "Excel Export [fr]",
+        "GridDrucken": "Grid drucken [fr]",
+        "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden [fr]",
+        "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden [fr]",
+        "Suche": "Suche anzeigen/ausblenden [fr]",
+        "Filtereditor": "Filtereditor anzeigen/ausblenden [fr]",
+        "Loschen": "Löschen [fr]",
+        "GridEinstellungen": "Grid Einstellungen [fr]",
+        "Close": "Close [fr]"
+    }
+}

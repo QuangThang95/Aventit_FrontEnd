@@ -1,0 +1,53 @@
+<kiss-left-sidebars [isNavbar]="isNavbar">
+  <kiss-selected-actions [selectedActions]="layoutSandbox.selectedAction$ | async" [currentUrl]="currentUrl">
+  </kiss-selected-actions>
+</kiss-left-sidebars>
+<div class="view-content">
+  <app-navigator id="h005_fall-navigator_header" [titleHeader]=" 'H005FallNavigator.Title' | translate" [listBtn]="listBtn" [customizeBtn]="customizeBtn"
+    (onCustomizeBtnFn)="toolBarOnItemClick($event)"></app-navigator>
+
+  <div class="container">
+    <div class="container__right-content">
+      <kiss-fall-navigator-filter 
+        [chkkategorieVisible]="chkkategorieVisible" 
+        (filters)="handleCheckboxEvent($event)"
+        [ahvNummerVisible]="ahvNummerVisible"
+        [versichertennummerVisible]="versichertennummerVisible"
+        [navigatorZusatzVisible]="navigatorZusatzVisible"
+        [nNummerVisible]="nNummerVisible"
+        [gemeindeVisible]="gemeindeVisible"
+        [kategorieVisible]="kategorieVisible"
+        [fallPendenzenVisible]="fallPendenzenVisible"
+        [ckbActiveVisible]="ckbActiveVisible"
+        [ckbClosedVisible]="ckbClosedVisible"
+        [ckbArchivedVisible]="ckbArchivedVisible"
+        [ckbIncludeGroupVisible]="ckbIncludeGroupVisible"
+        [ckbIncludeGuestVisible]="ckbIncludeGuestVisible">
+      </kiss-fall-navigator-filter>
+      <kiss-fall-navigator-tree
+        [treeList]="treeList"
+        [personCount]="personCount"
+        [taskCount]="taskCount"
+        [bCaption]="bCaption"
+        [fCaption]="fCaption"
+        [sCaption]="sCaption"
+        [iCaption]="iCaption"
+        [mCaption]="mCaption"
+        [aCaption]="aCaption"
+        [kCaption]="kCaption"
+        [emitTreeObject]="emitTreeObject"
+        [ahvNummerVisible]="ahvNummerVisible"
+        [versichertennummerVisible]="versichertennummerVisible"
+        [navigatorZusatzVisible]="navigatorZusatzVisible"
+        [nNummerVisible]="nNummerVisible"
+        [gemeindeVisible]="gemeindeVisible"
+        [kategorieVisible]="kategorieVisible"
+        [fallPendenzenVisible]="fallPendenzenVisible"
+        (navAction)="handleNavigationAction($event)"
+        (selected)="handleSelection($event)">
+      </kiss-fall-navigator-tree>
+    </div>
+  </div>
+  <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+  <kiss-spinner [isRunning]="fallNavSandbox.fallNavLoading$ | async"></kiss-spinner>
+</div>

@@ -1,0 +1,14 @@
+<dx-popup #pendency width="40vw" height="auto" [showTitle]="true" title="Neue Pendenz erstellen" [dragEnabled]="false"
+  [closeOnOutsideClick]="false" [visible]="false" [showCloseButton]="false">
+  <div *dxTemplate="let data of 'content'">
+    <div class="dx-field">
+      <div class="dx-field-label">Select Item</div>
+      <div class="dx-field-value">
+        <dx-select-box [items]="pendencySelectData" placeholder="--- Select ---"></dx-select-box>
+      </div>
+    </div>
+  </div>
+  <dxi-toolbar-item toolbar="bottom" location="after">
+    <dx-button text='Schliessen' (onClick)="hidePopup()" type="default" icon="close"> </dx-button>
+  </dxi-toolbar-item>
+</dx-popup>

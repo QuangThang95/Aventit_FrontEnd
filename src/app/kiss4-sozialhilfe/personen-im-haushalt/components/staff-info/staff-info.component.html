@@ -1,0 +1,50 @@
+<div id="staffInfoID" *ngIf="personenInfo">
+  <dx-box direction="row" width="100%" height="25px">
+    <dxi-item class="label-text"  [ratio]="0.3" [baseSize]="60">
+      {{'PersonenImHaushalt.StaffInfo.Name' | translate}}
+    </dxi-item>
+    <dxi-item [ratio]="1">
+      <span class="content-label">
+        {{personenInfo.nameVorname}}
+      </span>
+    </dxi-item>
+  </dx-box>
+  <dx-box direction="row" width="100%" height="'auto'">
+    <dxi-item class="label-text" [ratio]="0.3" [baseSize]="60">
+      {{'PersonenImHaushalt.StaffInfo.Address' | translate}}
+    </dxi-item>
+    <dxi-item [ratio]="1">
+      <span class="content-label">
+        {{personenInfo.wohnsitzStrasseHausNr}}
+      </span>
+    </dxi-item>
+  </dx-box>
+  <dx-box direction="row" width="100%" height="25px">
+    <dxi-item class="content-label" [ratio]="0.3" [baseSize]="60"></dxi-item>
+    <dxi-item [ratio]="1">
+       <span class="content-label">
+        {{personenInfo.wohnsitzPLZOrt}}
+       </span>
+    </dxi-item>
+  </dx-box>
+  <dx-box direction="row" width="100%" height="25px">
+    <dxi-item class="label-text" [ratio]="0.3" [baseSize]="60">
+      {{'PersonenImHaushalt.StaffInfo.DateOfBirth' | translate}}
+    </dxi-item>
+    <dxi-item [ratio]="1">
+       <span class="content-label">
+        {{personenInfo.geburtsdatum | date : 'dd.MM.yyyy'}}
+       </span>
+    </dxi-item>
+  </dx-box>
+  <dx-box direction="row" width="100%" height="25px">
+    <dxi-item class="label-text" [ratio]="0.3" [baseSize]="60">
+      {{'PersonenImHaushalt.StaffInfo.Heimatort' | translate}}
+    </dxi-item>
+    <dxi-item [ratio]="1">
+       <span class="content-label">
+        {{personenInfo.heimatort}}
+       </span>
+    </dxi-item>
+  </dx-box>
+</div>

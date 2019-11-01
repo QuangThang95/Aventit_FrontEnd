@@ -1,0 +1,26 @@
+﻿{
+  "Vermogen": {
+    "Neue-Vermogen": "Neues Vermogen und Vermogensverbrauch [it]",
+    "Bearbeiten": "Bearbeiten [it]",
+    "Speichern": "Speichern [it]",
+    "Abbrechen": "Abbrechen [it]",
+    "Grid" : {
+      "NurAktiveAnzeigen" : "Nur aktive anzeigen [it]",
+      "GultigAb" : "Gultig ab [it]",
+      "Name" : "Name [it]",
+      "Geburtsdatum" : "Geburtsdatum [it]",
+      "ArtDesVermogens" : "Art des Vermogens [it]",
+      "Vermogen" : "Vermogen [it]",
+      "Verbrauch" : "Verbrauch [it]"
+    },
+    "Detail" : {
+      "Freibetrag" : "Freibetrag [it]",
+      "Angerechnet" : "Angerechnet [it]",
+      "Person" : "Person [it]",
+      "ArtDesVermoge" : "Art des Vermoge [it]",
+      "Vermogen" : "Vermogen [it]",
+      "MonatlVermogensverbrauch" : "Monatl. Vermogensverbrauch [it]",
+      "Beschreibung": "Beschreibung [it]"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "I001WhLeistung":{
+        "Title":{
+            "Eröffnet":"Eröffnet am [it]",
+            "BFS-Leistungsart":"BFS-Leistungsart [it]",
+            "Grund": "Grund [it]",
+            "Abgeschlossen": "Abgeschlossen am [it]",
+            "Gemeindet":"zuständige Gemeindet [it]",
+            "Bemerkung":"Bemerkung [it]",
+            "Vorsaldo":"Vorsaldo Fremdsystem [it]",
+            "Infomationen":"Infomationen [it]",
+            "Perioden":"Perioden [it]",
+            "Status":"Status [it]",
+            "Geplantvon":"Geplant von [it]",
+            "UB":"UB [it]",
+            "Geplantbis":"Geplant bis [it]",
+            "Gultigvon":"Gultig von [it]",
+            "Gultigbis":"Gultig bis [it]",
+            "Hg":"Hg [it]",
+            "Ue":"Ue [it]",
+            "Monatsbudgets":"enthalt Monatsbudgets [it]",
+            "Information":"Information [it]"
+        },
+        "Button":{
+            "NeueSozialhilfe": "Neue Sozialhilfe [it]",
+            "Bearbeiten":"Bearbeiten [it]",
+            "Speichern":"Speichern [it]",
+            "Abbrechen":"Abbrechen [it]",
+            "Ja":"Ja [it]",
+            "Nein":"Nein [it]"
+        },
+        "Message":{
+            "Title": "Information [it]",
+            "MessageCanCel":"Änderungen an diesem Datensatz rückgängig machen ? [it]",
+            "MessageRefresh":"Datenansicht trotz der nicht gespeicherten Daten aktualisieren [it]",
+            "Message8":"Datum von ungültig. Mindestens ein Finanzplan beginnt vor diesem Datum. [it]",
+            "Message14":"Der Fall beginnt nach seinem Ende [it]",
+            "Message11": "Diese Leistung kann nicht gelöscht werden. Sie enthält mindestens 1 Finanzplan [it]",
+            "Message17":"Soll der Datensatz gelöscht werden ? [it]",
+            "Message1": "Das Einfügen eines Datensatzes ist nicht erlaubt ! [it]",
+            "Message16": "Das Feld 'zuständige Gemeinde' darf nicht leer bleiben [it]",
+            "ConfirmDeactive": "You have unsaved changes! If you leave, your changes will be lost. [it]"
+
+        }
+    }
+}

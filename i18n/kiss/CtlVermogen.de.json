@@ -1,0 +1,26 @@
+﻿{
+  "Vermogen": {
+    "Neue-Vermogen": "Neues Vermogen und Vermogensverbrauch",
+    "Bearbeiten": "Bearbeiten",
+    "Speichern": "Speichern",
+    "Abbrechen": "Abbrechen",
+    "Grid" : {
+      "NurAktiveAnzeigen" : "Nur aktive anzeigen",
+      "GultigAb" : "Gultig ab",
+      "Name" : "Name",
+      "Geburtsdatum" : "Geburtsdatum",
+      "ArtDesVermogens" : "Art des Vermogens",
+      "Vermogen" : "Vermogen",
+      "Verbrauch" : "Verbrauch"
+    },
+    "Detail" : {
+      "Freibetrag" : "Freibetrag",
+      "Angerechnet" : "Angerechnet",
+      "Person" : "Person",
+      "ArtDesVermoge" : "Art des Vermoge",
+      "Vermogen" : "Vermogen",
+      "MonatlVermogensverbrauch" : "Monatl. Vermogensverbrauch",
+      "Beschreibung": "Beschreibung"
+    }
+  }
+}

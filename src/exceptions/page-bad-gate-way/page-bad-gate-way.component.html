@@ -1,0 +1,9 @@
+<div class="pageGateWay">
+  <div class="pageGateWay-content">
+    <img src="/assets/images/Martian.png" />
+    <h1>{{ 'pageGateWay.Title' | translate }}</h1>
+    <h3>{{ 'pageGateWay.Subtitle' | translate }}</h3>
+    <h3 *ngIf="messager">{{ messager }}</h3>
+    <button (click)="goBack()">{{ 'pageGateWay.Button' | translate }}</button>
+  </div>
+</div>

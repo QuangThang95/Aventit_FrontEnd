@@ -1,0 +1,16 @@
+.drop-down-box {
+    min-width: 400px;
+    max-width: 600px;
+}
+@media screen and (max-width: 1300px) { 
+    .c006-data-gird {
+        max-height: 160px !important;
+        min-height: 160px !important;
+    }
+}
+@media screen and (min-width: 1300) { 
+    .c006-data-gird {
+        max-height: 360px !important;
+        min-height: 360px !important;
+    }
+}

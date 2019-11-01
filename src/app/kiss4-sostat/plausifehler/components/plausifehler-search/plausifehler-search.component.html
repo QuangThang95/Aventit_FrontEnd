@@ -1,0 +1,97 @@
+<div class="container-search" id="o011_suchen">
+    <dx-toolbar id="o011_suchen_header" class="container-search__header">
+      <dxi-item [template]="'detail-header'" name="toolbar-header" location="before"></dxi-item>
+      <div *dxTemplate="let temp of 'detail-header'">
+        <span (click)="onCollapseSearchContainer($event)" class="container-search__header-title">{{'plausifehler.suchen' | translate}}</span>
+      </div>
+      <dxi-item location="after" widget="dxButton" [options]="options" [visible]="true"></dxi-item>
+    </dx-toolbar>
+  <div class="container-search__form" *ngIf="isExpand">
+    <dx-form #plausifehlerSearchFormInstance id="form-search-o011" colCount="auto" labelLocation="left"
+             [showColonAfterLabel]="false" [colCount]="12" (keyup.enter)="onSearchByEnter()">
+      <dxi-item itemType="group" [colSpan]="8" [colCount]="8">
+        <dxi-item dataField="Jahr" [editorOptions]="{ width: '100%' }" [template]="'jahrTemplate'"
+                  [colSpan]="5">
+          <dxo-label [text]="'plausifehler.jahr' | translate"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="3"></dxi-item>
+
+        <dxi-item itemType="group" [colSpan]="7">
+          <dxi-item [dataField]="'plausifehler.MitarbeiterIn' | translate" [template]="'MitarbeiterInTemplate'">
+          </dxi-item>
+
+          <dxi-item [dataField]="'plausifehler.person' | translate" [template]="'PersonTemplate'">
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+        <dxi-item [colSpan]="3" [template]="'StichtagTemplate'">
+          <dxo-label text=" "></dxo-label>
+
+        </dxi-item>
+        <dxi-item [colSpan]="3" [template]="'AnfangszustandTemplate'">
+          <dxo-label text=" "></dxo-label>
+
+        </dxi-item>
+      </dxi-item>
+      <div *dxTemplate="let data of 'jahrTemplate'">
+        <dx-number-box name="suchen_gemeinde" placeholder="" id="o011_suchen_jahr" [width] ="fixWidth"
+                       [(value)]="dataJahr"  format = '#' min = '-9999' max = '9999' #textboxJahr></dx-number-box>
+      </div>
+      <div *dxTemplate="let data of 'MitarbeiterInTemplate'">
+        <dx-drop-down-box [dataSource]="dataMitarbeiters" [(value)]="userID" valueExpr="userID" class="drop-down-box"
+                          id="o011_suchen_mitarbeiter-in" [deferRendering]="false" displayExpr="name" 
+                          placeholder="" [showClearButton]="true" [(opened)]="isDropDownBoxMitarbeiterOpened"
+                          (onValueChanged)="onValueChangedMitarbeiter($event)">
+          <div *dxTemplate="let data of 'content'">
+            <dx-data-grid #gridMitarbeiter [dataSource]="dataMitarbeiters" [selection]="{ mode: 'single' }"
+                          [hoverStateEnabled]="true" [filterRow]="{ visible: true }" [scrolling]="{ mode: 'infinite' }"
+                          [height]="400" keyExpr="userID" (onRowClick)="onClickRowMitarbeiterGrid($event)"  (onContentReady)="onGridMitarbeiterContentReady($event)"
+                          [noDataText]="'plausifehler.noDataTextMitarbeiterIn' | translate">
+              <dxi-column dataField="name" [caption]="'plausifehler.name' | translate"></dxi-column>
+              <dxi-column dataField="logonName" [caption]="'plausifehler.logonname' | translate"></dxi-column>
+            </dx-data-grid>
+            <br/>
+            <div class="grid">
+              <span>{{ 'plausifehler.AnzahlDatensatze' | translate }}</span>
+              <span> {{totalMitarbeiterRecords}}</span>
+            </div>
+          </div>
+        </dx-drop-down-box>
+      </div>
+      <div *dxTemplate="let data of 'PersonTemplate'">
+        <dx-drop-down-box #dropDownboxPerson [dataSource]="dataPersons" [(value)]="baPersonID" class= "drop-down-box"
+                          valueExpr="baPersonID" [deferRendering]="false" displayExpr="name" placeholder=""
+                          [showClearButton]="true" [(opened)]="isDropDownBoxPersonOpened" id="o011_suchen_person"
+                          (onValueChanged)="onValueChangedPerson($event)"  >
+          <div *dxTemplate="let data of 'content'">
+            <dx-data-grid #gridPerson [dataSource]="dataPersons" [selection]="{ mode: 'single' }"
+                          [hoverStateEnabled]="true" [filterRow]="{ visible: true }" [scrolling]="{ mode: 'infinite' }"
+                          [height]="400" keyExpr="baPersonID" (onRowClick)="onClickRowPersonGrid($event)" (onContentReady)="onGridPersonContentReady($event)"
+                          [noDataText]="'plausifehler.noDataTextPerson' | translate">
+              <dxi-column dataField="baPersonID" [caption]="'plausifehler.barPersonId' | translate"></dxi-column>
+              <dxi-column dataField="name" [caption]="'plausifehler.name' | translate"></dxi-column>
+              <dxi-column dataField="strasse" [caption]="'plausifehler.strasse' | translate"></dxi-column>
+              <dxi-column dataField="plzOrt" [caption]="'plausifehler.plzort' | translate"></dxi-column>
+            </dx-data-grid>
+            <br/>
+            <div class="grid-margin-top">
+                <span>{{ 'plausifehler.AnzahlDatensatze' | translate }}</span>
+                <span id="o010_bfs-variablen_anzahl-datensatze"> {{totalPersonRecords}}</span>
+              </div>
+            
+          </div>
+        </dx-drop-down-box>
+      </div>
+      <div *dxTemplate="let data of 'StichtagTemplate'">
+        <dx-check-box class="container-search__check-box" id="o011_suchen_stichtag" [text]="'plausifehler.Stichtag' | translate"
+                      [(value)]="isStichtag">
+        </dx-check-box>
+      </div>
+      <div *dxTemplate="let data of 'AnfangszustandTemplate'">
+        <dx-check-box class="container-search__check-box" id="o011_suchen_anfangszustand" [text]="'plausifehler.Anfangszustand' | translate"
+                      [(value)]="isAnfangszustand">
+        </dx-check-box>
+      </div>
+    </dx-form>
+  </div>
+</div>

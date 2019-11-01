@@ -1,0 +1,93 @@
+<div class="container-search" id="r011_suchen">
+    <div class="toolbar-header">
+        <kiss-card-title id="r011_suchen_header" [titleHeader]="'CtlBfsFragenkatalog.Suchen' | translate" [isCard]="true"></kiss-card-title>
+    </div>
+    <div class="container-search__form">
+        <dx-form id="r011_search-form" #BasisTextmarkenSearchForm [showColonAfterLabel]="false" (keyup.enter)="onSearch()"
+            [disabled]="isDisable">
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item itemType="group" [colSpan]="6">
+                    <dxi-item id="r011_label-kategorie" [template]="'searchKategory'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Kategorie' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_label-textmarke" [template]="'searchTextmarke'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Textmarke' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_label-typ" [template]="'searchType'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Typ' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_label-tabelle" [template]="'searchTabelle'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Tabelle' | translate"></dxo-label>
+                    </dxi-item>
+                </dxi-item>
+                <dxi-item itemType="group" [colSpan]="6">
+                    <dxi-item id="r011_label-beschreibung" [template]="'searchBeschreibung'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Beschreibung' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_label-sql" [template]="'searchSQL'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.SQL' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_label-modul" [template]="'searchModul'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Modul' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_suche_immer-sichtbar" [template]="'searchImmerSichtbar'">
+                        <dxo-label text=" "></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_suche_system" [template]="'searchSystem'">
+                        <dxo-label text=" "></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_suche_benutzerdefiniert" [template]="'searchSystemNight'">
+                        <dxo-label text=" "></dxo-label>
+                    </dxi-item>
+                </dxi-item>
+            </dxi-item>
+            <div *dxTemplate="let data of 'searchKategory'" class="input-fixwidth">
+                <dx-text-box name="r011_suchen_kategorie" placeholder="" [(value)]="dataSuchen.category" id="r011_textbox-kategorie"
+                    (onValueChanged)="onSearch()"></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'searchTextmarke'" class="input-fixwidth">
+                <dx-text-box name="r011_textbox-textmarke" placeholder="" [(value)]="dataSuchen.bookmarkName" id="r011_textbox-textmarke"
+                    (onValueChanged)="onSearch()"></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'searchType'" class="input-fixwidth">
+                <dx-select-box id='r011_suche_typ' name="input-status-search" placeholder="" [dataSource]="typData"
+                    valueExpr="code" displayExpr="text" [(value)]="dataSuchen.bookmarkCode" [noDataText]="'Keine Daten verfügbar'"
+                    [disabled]="isDisable" searchEnabled="true" (onValueChanged)="onSearch()">
+                </dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'searchTabelle'" class="input-fixwidth">
+                <dx-select-box id='r011_suche_tabelle' name="input-status-search" placeholder="" [dataSource]="tableNameData"
+                    valueExpr="tableName" displayExpr="tableName" [(value)]="dataSuchen.tableName" [noDataText]="'Keine Daten verfügbar'"
+                    [disabled]="isDisable" searchEnabled="true" (onValueChanged)="onSearch()">
+                </dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'searchBeschreibung'" class="input-fixwidth">
+                <dx-text-box name="r011_textbox-beschreibung" placeholder="" [(value)]="dataSuchen.description" id="r011_textbox-beschreibung"
+                    (onValueChanged)="onSearch()"></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'searchSQL'" class="input-fixwidth">
+                <dx-text-box name="r011_textbox-sql" placeholder="" [(value)]="dataSuchen.sql" id="r011_textbox-sql"
+                    (onValueChanged)="onSearch()"></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'searchModul'">
+                <dx-select-box id='r011_suche_modul' name="input-status-search" placeholder="" [dataSource]="modulNameData"
+                    valueExpr="code" displayExpr="text" [(value)]="dataSuchen.modulID" [noDataText]="'Keine Daten verfügbar'"
+                    [disabled]="isDisable" searchEnabled="true" (onValueChanged)="onSearch()">
+                </dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'searchImmerSichtbar'">
+                <dx-check-box [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.ImmerSichtbar' | translate"
+                    [(value)]="dataSuchen.alwaysVisible" [disabled]="isDisable" (onValueChanged)="onSearch()"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'searchSystem'">
+                <dx-check-box [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.System' | translate" [(value)]="dataSuchen.system"
+                    [disabled]="isDisable" (onValueChanged)="onSearch()"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'searchSystemNight'">
+                <dx-check-box [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Benutzerdefiniert' | translate"
+                    [(value)]="dataSuchen.nichtSystem" [disabled]="isDisable" (onValueChanged)="onSearch()"></dx-check-box>
+            </div>
+        </dx-form>
+    </div>
+    <dx-load-indicator id="r011_search-form_loading" height="60" width="60" [visible]="isSearch"></dx-load-indicator>
+</div>

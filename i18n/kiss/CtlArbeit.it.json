@@ -1,0 +1,65 @@
+{
+    "Arbeit": {
+        "TitlePage": "Arbeit [it]",
+        "Button": {
+            "Edit": "Bearbeitit [it]",
+            "Save": "Speichern [it]",
+            "Cancel": "Abbrechit [it]"
+        },
+        "ArbeitForm": {
+            "Erwerbssituation": "Erwerbssituation [it]",
+            "Beschaftigungsgrad": "Beschäftigungsgrad [it]",
+            "Teilzeitgrund": "Teilzeitgrund [it]",
+            "Branche": "Branche [it]",
+            "ErlernterBeruf": "Erlernter Beruf [it]",
+            "LetzteTatigkeit": "Letzte Tätigkeit [it]",
+            "Arbeitgeber": "Arbeitgeber [it]",
+            "HochsteAusbildung": "höchste Ausbildung [it]",
+            "LetzeAusb": "Letze abgebr. Ausb [it]",
+            "Integrationsstand": "Integrationsstand [it]",
+            "ArbeitszeitWoche": "ArbeitszeitWoche [it]",
+            "Unregelmassig": "unregelmassig [it]",
+            "Stempenln": "Stempitln seit [it]",
+            "Ausgesteuert": "Ausgesteuert [it]",
+            "AusgesteuertSeit": "Ausgesteuert seit [it]",
+            "arbeitslos": "arbeitslos (letzte 3 Jahre) [it]",
+            "Bemerkung": "Bemerkung [it]",
+            "Std": "Std [it]",
+            "mal": "mal [it]",
+            "Number1": "1.",
+            "Number2": "2.",
+            "Number3": "3.",
+            "Number4": "4.",
+            "TitleName": "Name[it]",
+            "TitleAddress": "Adrese[it]",
+            "TitleType": "Typen[it]"
+        },
+        "MessageForm": {
+            "Arbeitszeit": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [it]",
+            "CloseBrower": "Sie habit Datit geändert. Möchtit Sie das Formular schließit und die Änderungit verwerfit ? [it]",
+            "MessageEdit1":"Der gewählte Datitsatz wurde in der Zwischitzeit von einer anderit Person geändert oder gelöscht. [it]",
+            "MessgeEdit1": "Person: <<Name, Vorname>> Aktualisierit sie die Datit zuerst, um Ihre Änderungit zu speichern. [it]",
+            "ErlernterBerufNoData": "Keinit zutreffitdit Beruf gefundit. [it]",
+            "BerufNoData": "Keinit zutreffitdit Beruf gefundit. [it]",
+            "ArbeitgeberNoData": "Keine zutreffitdit Institutionit gefundit. [it]",
+            "DoubleHeader": "Die Angabit wurdit in dit Zwischitspeicher kopiert. [it]",
+            "ShiftDoubleHeader": " Die ID wurde in den Zwischenspeicher kopiert [it]",
+            "AddNewMessage": "Das Einfügit eines Datitsatzes ist nicht erlaubt ! [it]",
+            "ArbeitszeitWocheValidatemessage": "Beim Speichern des veränderten Datensatzes ist ein Fehler aufgetreten ![it]",
+            "DatetimeValidatemessage": "Value must be date or time[it]"
+        },
+        "Message": {
+            "Information": "Information [it]",
+            "TitleComfirm":"Bestätigung [it]",
+            "ComfirmYes":"Ja [it]",
+            "ComfirmNo":"Nein [it]",
+            "DeleteAppNew": "Neuit Datitsatz wieder löschit ? [it]",
+            "CancelEditModel": "Änderungit an diesem Datitsatz rückgängig machit ? [it]",
+            "UpdateComfirmYes": "Abort [it]",
+            "UpdateComfirmNo": "Update data [it]",
+            "ConfirmDeactive": "You have unsaved changes! If you leave, your changes will be lost. [it]",
+            "Discard": "Discard [it]",
+            "Abbrechen": "Abbrechen [it]"
+          }
+    }
+}

@@ -1,0 +1,16 @@
+<div *ngIf="showProgressBar">
+  <div class="progress-bar-block">
+      <div class="progress-bar-body">
+          <div class="progress-bar-label"><span>Bitte warten ...</span></div>
+          <dx-progress-bar 
+                #progressBar id="progress-bar-status" 
+                [width]="200" 
+                [min]="0" 
+                [max]="maxValue"
+                [value]="maxValue - seconds" 
+                [showStatus]="false" 
+                [visible]="showProgressBar">
+          </dx-progress-bar>
+      </div>
+  </div>
+</div>

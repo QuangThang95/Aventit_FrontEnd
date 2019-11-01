@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "https://api.aventis.website",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

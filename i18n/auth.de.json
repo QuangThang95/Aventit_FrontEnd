@@ -1,0 +1,21 @@
+{
+	"Auth": {
+    "UserName": "Nutzername",
+    "Email": "Email",
+    "Password": "Passwort",
+    "ConfirmPassword": "Bestätigen Sie Ihr Passwort",
+    "EmailFormatError": "Die E-Mail-Adresse hat nicht das richtige Format",
+    "EmailRequiredError": "E-Mail-Adresse ist erforderlich",
+    "UserNameRequiredError": "Nutzername is required",
+    "PasswordRequiredError": "Passwort ist erforderlich",
+    "ConfirmPasswordError": "Die Passwörter stimmen nicht überein",
+    "PasswordLengthError": "Das Passwort muss mindestens 6 Zeichen lang sein",
+    "Authen":"Authentifizienung",
+    "Umgebung": "Umgebung",
+    "Login": {
+      "Title": "Einloggen",
+      "Submit": "Einloggen",
+      "RegisterLink": "Mach ein Konto"
+    }
+  }
+}

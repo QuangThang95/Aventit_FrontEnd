@@ -1,0 +1,22 @@
+<kiss-right-component>
+    <app-navigator 
+        id="o009_bfs-gemeinde-code_header" 
+        titleHeader="{{ 'GemeindeCode.Title' | translate }}" 
+        [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn" 
+        (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)">
+    </app-navigator>
+    <div  class="container">
+        <div id="o009_bfs-gemeinde-code" class="container__right-content">
+            <kiss-gemeinde-code-remaining-message #remainingMessage></kiss-gemeinde-code-remaining-message>
+            <kiss-gemeinde-code-search (searchEventEmitter)="onSearch($event)" ></kiss-gemeinde-code-search>
+            <kiss-gemeinde-code-list #gemeindeCodeList [dataGemeindeCodes]="dataGemeindeCodes"></kiss-gemeinde-code-list>
+        </div>
+        <dx-popup [fullScreen]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="showPrintPopup">
+            <div *dxTemplate="let data of 'content'">
+                <div [innerHTML]="popupHtml"></div>
+            </div>
+        </dx-popup>
+        <dx-button class="popup-print" text="Show the Popup" (onClick)="showPrintPopup = true"></dx-button>
+    </div>
+</kiss-right-component>

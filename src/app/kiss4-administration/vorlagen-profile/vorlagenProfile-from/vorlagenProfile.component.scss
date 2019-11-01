@@ -1,0 +1,57 @@
+@import 'settings/variables.scss';
+#r009_search {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  #r009_box-search {
+    position: relative;
+  }
+  #r009_label_search{
+    padding-top: 6px;
+  }
+  #r009-loading {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.dx-template-wrapper {
+  text-align: center;
+}
+
+div#R009_popup_button {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  /deep/ .dx-button {
+    .dx-button-content {
+      background-color: $color-base;
+      color: $color-white;
+    }
+  }
+}
+
+#r009_detail_tagbox_merkmale {
+  text-align: $popup-confirm-float-left;
+}
+
+.vorlagenProfile_item_height{
+  height: $form-line;
+  width: 100%;
+  text-align: $popup-confirm-float-left;
+  span{
+    word-break: break-all;
+  }
+}
+.detailBeschreibungArea{
+  height: $width-number-box;
+  line-height: $form-line;
+  text-align: $popup-confirm-float-left;
+}
+
+.vorlagenProfile_grid_height{
+  height: calc(100vh - 580px);
+}

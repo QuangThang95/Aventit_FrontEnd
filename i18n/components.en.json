@@ -1,0 +1,38 @@
+{
+  "Sidebar": {
+    "Menu": "Menu",
+    "ProductsItem": "Products",
+    "PersonsItem": "Persons"
+  },
+
+  "ProfileActionBar": {
+    "SignIn": "Sign in for other feature / area",
+    "SignOut": "Sign Out",
+    "ChangePwd": "Change Password",
+    "Language": "Change Language",
+    "OpenUser": "Open the User Settings",
+    "Logout": "Logout"
+  },
+
+  "PageNotFound": {
+    "Title": "Ooops, Page Not Found",
+    "Subtitle": "Please, return to the previous page",
+    "Button": "Go back"
+  },
+  "pageGateWay": {
+    "Title": "Ooops, 502 Bad Gateway Error",
+    "Subtitle": "Please, return to the previous page",
+    "Button": "Go back"
+  },
+  "DossierFilter": {
+    "Active": "aktiv",
+    "Closed": "abgeschlossen",
+    "Archived": "Archiveiert",
+    "IncludeGroup": "Gruppe",
+    "IncludeGuest": "IncludeGuest",
+    "IncludeTasks": "IncludeTasks"
+  },
+  "Navigator": {
+    "Title": "Dossier Menu"
+  }  
+}

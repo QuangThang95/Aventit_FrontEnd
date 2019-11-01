@@ -1,0 +1,20 @@
+<div class="button-confirm">
+    <div id="fileuploader-container" [hidden]="true">
+        <dx-file-uploader
+            #uploader
+            labelText=""
+            name="file"
+            accept="application/zip"
+            uploadMode="instantly"
+            [selectButtonText]="'GemeindeDaten.OK' | translate"
+            [uploadUrl]="uploadUrl"
+            [uploadHeaders]="requestHeader"
+            [showFileList]="false"
+            [maxFileSize]="maxFileSize"
+            (onUploadError)="onUploadError($event)"
+            (onUploaded)="onUploaded($event)"
+            (onUploadStarted)="onUploadStarted($event)"
+            (onValueChanged)="onValueChanged($event)">
+        </dx-file-uploader>
+    </div>
+</div>

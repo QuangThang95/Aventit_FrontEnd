@@ -1,0 +1,51 @@
+
+<div *ngIf="gridFunction.model.isFilterBuilder" class="filter-builder">
+    <dx-filter-builder [fields]="variablenGridColumns" [(value)]="filterAvs"></dx-filter-builder>
+    <dx-button text="{{ 'Variablen.ApplyFilter' | translate }}" type="default" (onClick)="gridVariablenInstance.instance.filter(filterAvs)"></dx-button>
+    <div class="dx-clearfix"></div>
+</div>
+<app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+<dx-data-grid 
+    id="o010_bfs-variablen_grid-bfs-variablen" 
+    #gridVariablen 
+    [dataSource]="dataVariablens"
+    [columns]="variablenGridColumns"
+    [showBorders]="true" 
+    [showColumnLines]="true"
+    [allowColumnResizing]="true" 
+    [columnMinWidth]="20" 
+    [allowColumnReordering]="true"
+    [showRowLines]="true" 
+    [selectedRowKeys]="selectedKeys" 
+    (onContentReady)="onContentReady($event)" 
+    (onKeyDown)="onKeyDown($event)" 
+    (onRowClick)="onRowClick($event)"
+    noDataText="{{ 'Variablen.NoDataText' | translate }}"
+    keyExpr="rowID"
+    columnResizingMode="widget"
+    (onContextMenuPreparing)="onContextMenuPreparing($event)">
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+    <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+    <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-sorting mode="single"></dxo-sorting>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-group-panel [visible]="gridFunction.model.isGrouping" emptyPanelText="{{ 'Variablen.emptyPanelText' | translate }}"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+    <dxo-column-chooser #columnChooser [title]="titleBenutzerdefiniert" [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+    <dxo-search-panel placeholder="{{ 'Variablen.SearchPlaceHolder' | translate }}" [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+    <div *dxTemplate="let data of 'cellTemplate'">
+        <dx-button text="..." type="normal" (onClick)="onClick($event)"></dx-button>
+    </div>
+</dx-data-grid>
+<div class="grid-margin-top">
+    <span>{{ 'Variablen.AnzahlDatensatze' | translate }}</span>
+    <span id="o010_bfs-variablen_anzahl-datensatze"> {{totalRecords}}</span>
+</div>
+<dx-popup title="{{popupData.title}}" [width]="500" [height]="170" [(visible)]="popupData.visible" [dragEnabled]="false" [closeOnOutsideClick]="false">
+    <div *dxTemplate="let data of 'content'">
+        <div class="overlay-message">{{popupData.message}}</div>
+    </div>
+</dx-popup>
+<app-popover #popover></app-popover>

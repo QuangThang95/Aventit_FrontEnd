@@ -1,0 +1,42 @@
+<section id="app-navbar">
+  <div id="navbars-wrapper">
+    <a (click)="goBack($event)" *ngIf="isBack" title="{{ 'BackBtn' | translate }}">
+      <i class="fa fa-2x fa-long-arrow-left"></i>
+    </a>
+    <h3>{{ titlePage }}</h3>
+    <div class="tool-bars">
+      <div class="action-toolbar">
+        <dx-toolbar width="100%">
+          <dxi-item locateInMenu="never" widget="dxButton" [template]="'itemAddNewTemplate'" [visible]="actionNew.isVisible" *appAuthorize="actionNew.roles"></dxi-item>
+          <dxi-item locateInMenu="never" widget="dxButton" [template]="'itemCancelTemplate'" [visible]="actionCancel.isVisible" *appAuthorize="actionCancel.roles"></dxi-item>
+          <dxi-item locateInMenu="never" widget="dxButton" [template]="'itemDeleteTemplate'" [visible]="actionDelete.isVisible" *appAuthorize="actionDelete.roles"></dxi-item>
+          <dxi-item locateInMenu="never" widget="dxButton" [template]="'itemSaveTemplate'" [visible]="actionSave.isVisible" *appAuthorize="actionSave.roles"></dxi-item>
+
+          <div *dxTemplate="let temp of 'itemAddNewTemplate'">
+            <dx-button id="action-addnew" name="action-addnew" [text]="actionNew.text" (onClick)="newEvent.emit($event)" icon="fa fa-plus"
+              width="100%">
+            </dx-button>
+          </div>
+
+          <div *dxTemplate="let temp of 'itemDeleteTemplate'">
+            <dx-button id="action-delete" name="action-delete" [text]="actionCancel.text" (onClick)="deleteEvent.emit($event)" icon="fa fa-times"
+              width="100%">
+            </dx-button>
+          </div>
+
+          <div *dxTemplate="let temp of 'itemSaveTemplate'">
+            <dx-button id="action-save" name="action-save" [text]="actionSave.text" (onClick)="saveEvent.emit($event)" icon="fa fa-floppy-o"
+              width="100%">
+            </dx-button>
+          </div>
+
+          <div *dxTemplate="let temp of 'itemCancelTemplate'">
+            <dx-button id="action-cancel" name="action-cancel" [text]="actionDelete.text" (onClick)="cancelEvent.emit($event)" icon="fa fa-times"
+              width="100%">
+            </dx-button>
+          </div>
+        </dx-toolbar>
+      </div>
+    </div>
+  </div>
+</section>

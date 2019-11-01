@@ -1,0 +1,69 @@
+<div class="form-body">
+    <dx-form labelLocation="left" id="C006-detail" #detailBeraterForm [formData]="formData" [showColonAfterLabel]="false">
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="5">
+                <dxi-item dataField="baInstitutionID" [editorOptions]="{ width: '100%' }" [template]="'institutionTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Institution' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item id="C006_detail_anrede" dataField="anrede" [editorOptions]="{ width: '100%' }" [template]="'anredeTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Anrede' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item id="C006_detail_name" dataField="name" [editorOptions]="{ width: '100%' }" [template]="'nameTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Name' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item id="C006_detail_vorname" dataField="vorname" [editorOptions]="{ width: '100%' }" [template]="'vornameTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Vorname' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+                <dxi-item id="C006_detail_telefon" dataField="telefon" [editorOptions]="{ width: '100%' }" [template]="'telefonTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Telefon' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item id="C006_detail_fax" dataField="fax" [editorOptions]="{ width: '100%' }" [template]="'faxTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Fax' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item id="C006_detail_email" dataField="eMail" [editorOptions]="{ width: '100%' }" [template]="'eMailTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Email' | translate"></dxo-label>
+                </dxi-item>
+                <dxi-item dataField="sprachCode" [editorOptions]="{ width: '100%' }" [template]="'spracheTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Sprache' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+            <dxi-item itemType="empty" [colSpan]="1"></dxi-item>
+            <dxi-item itemType="group" [colSpan]="11">
+                <dxi-item editorType="dxTextArea" id="C006_detail_benerkung" dataField="bemerkung" [editorOptions]="{ width: '100%' }"
+                    [template]="'bemerkungTemplate'">
+                    <dxo-label [text]="'ExterneBerater.ExterneBeraterSucheBox.Bemerkung' | translate"></dxo-label>
+                </dxi-item>
+            </dxi-item>
+        </dxi-item>
+        <div *dxTemplate="let data of 'institutionTemplate'">
+            <span class="textBreak">{{formData?.institution}}</span>
+        </div>
+        <div *dxTemplate="let data of 'anredeTemplate'">
+            <span class="textBreak">{{formData?.anrede}}</span>
+        </div>
+        <div *dxTemplate="let data of 'nameTemplate'">
+            <span class="textBreak">{{formData?.name}}</span>
+        </div>
+        <div *dxTemplate="let data of 'vornameTemplate'">
+            <span class="textBreak">{{formData?.vorname}}</span>
+        </div>
+        <div *dxTemplate="let data of 'spracheTemplate'">
+            <span class="textBreak">{{formData?.textSprache}}</span>
+        </div>
+        <div *dxTemplate="let data of 'telefonTemplate'">
+            <span class="textBreak">{{formData?.telefon}}</span>
+        </div>
+        <div *dxTemplate="let data of 'faxTemplate'">
+            <span class="textBreak">{{formData?.fax}}</span>
+        </div>
+        <div *dxTemplate="let data of 'eMailTemplate'">
+            <span class="textBreak">{{formData?.eMail}}</span>
+        </div>
+        <div *dxTemplate="let data of 'bemerkungTemplate'">
+          <div [froalaEditor]="froalaEditorConfig" [(froalaModel)]="formData.bemerkung" width="100%"></div>
+        </div>
+    </dx-form>
+</div>

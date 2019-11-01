@@ -1,0 +1,37 @@
+<dx-drop-down-box
+    class="container-search__drop-down-box"
+    id="o010_suchen_klient"
+    [dataSource]="dataPersons"
+    [(value)]="baPersonID" 
+    valueExpr="baPersonID" 
+    [deferRendering]="false"  
+    displayExpr="name"
+    placeholder="" 
+    [showClearButton]="true" 
+    [(opened)]="openPersonGrid" 
+    (onValueChanged)="closePersonInput($event)"
+    (onKeyDown)="onKeyDownSelectOption($event)">
+    <div *dxTemplate="let data of 'content'">
+        <dx-data-grid #gridPerson
+            [dataSource]="dataPersons" 
+            [selection]="{ mode: 'single' }"
+            [hoverStateEnabled]="true" 
+            [filterRow]="{ visible: true }" 
+            [scrolling]="{ mode: 'infinite' }"
+            [height]="400" 
+            keyExpr="baPersonID" 
+            (onRowClick)="onClickRowPersonGrid($event)"
+            (onContentReady)="onKlientGridContentReady($event)"
+            noDataText="{{ 'Variablen.NoDataKlient' | translate }}">
+                <dxi-column dataField="baPersonID" caption="{{ 'Variablen.GridKlient.Nr' | translate }}"></dxi-column>
+                <dxi-column dataField="name" caption="{{ 'Variablen.GridKlient.Name' | translate }}"></dxi-column>
+                <dxi-column dataField="strasse" caption="{{ 'Variablen.GridKlient.Strasse' | translate }}"></dxi-column>
+                <dxi-column dataField="plzOrt" caption="{{ 'Variablen.GridKlient.PLZOrt' | translate }}"></dxi-column>
+        </dx-data-grid>
+        <br/>
+        <div class="grid-margin-top">
+            <span>{{ 'Variablen.AnzahlDatensatze' | translate }}</span>
+            <span>{{totalKlientRecords}}</span>
+        </div>
+</div>
+</dx-drop-down-box>

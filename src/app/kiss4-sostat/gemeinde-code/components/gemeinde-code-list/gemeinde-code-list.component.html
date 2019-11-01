@@ -1,0 +1,52 @@
+
+<div *ngIf="gridFunction.model.isFilterBuilder" class="filter-builder">
+    <dx-filter-builder [fields]="filterColumns" [(value)]="filterAvs"></dx-filter-builder>
+    <dx-button class="filter-builder__apply-btn" text="{{ 'GemeindeCode.ApplyFilter' | translate }}" type="default" (onClick)="gridGemeindeCodeInstance.instance.filter(filterAvs)"></dx-button>
+    <div class="dx-clearfix"></div>
+</div>
+<app-grid-function #gridFunction (onchange)="gridFunction.model" [keyStorage]="gridFunctionKey"></app-grid-function>
+<dx-data-grid id="o009_bfs-gemeinde-code_grid-bfs-gemeinde-code" 
+    #gridGemeindeCodeInstance
+    [dataSource]="dataGemeindeCodes" 
+    [showBorders]="true"
+    [showColumnLines]="true"
+    [allowColumnResizing]="true"
+    columnResizingMode="widget"
+    [columnMinWidth]="20"
+    [allowColumnReordering]="true"
+    [showRowLines]="true"
+    columnAutoWidth="true"
+    [selectedRowKeys]="selectedKeys"
+    keyExpr="BaGemeindeID"
+    (onContentReady)="onContentReady($event)"
+    (onKeyDown)="onKeyDown($event)"
+    (onRowClick)="onRowClick($event)"
+    noDataText="{{ 'GemeindeCode.NoDataText' | translate }}" 
+    (onContextMenuPreparing)="onContextMenuPreparing($event)">
+    <dxo-paging [pageSize]="100"></dxo-paging>
+    <dxo-filter-row [visible]="gridFunction.model.isSearch" applyFilter="Immediately"></dxo-filter-row>
+    <dxo-header-filter [visible]="gridFunction.model.isFilter"></dxo-header-filter>
+    <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-sorting mode="single"></dxo-sorting>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-group-panel [visible]="gridFunction.model.isGrouping" emptyPanelText="{{ 'GemeindeCode.emptyPanelText' | translate }}"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true" [contextMenuEnabled]="gridFunction.model.isGrouping"></dxo-grouping>
+    <dxo-column-chooser #columnChooser [title]="titleBenutzerdefiniert" [enabled]="false" emptyPanelText=""></dxo-column-chooser>
+    <dxo-search-panel [visible]="gridFunction.model.isSearchPanel" highlightCaseSensitive="true"></dxo-search-panel>
+
+    <dxi-column width="auto" [allowFiltering]="true" dataType="number" dataField="BaGemeindeID" caption="{{ 'GemeindeCode.BaGemeindeID' | translate }}"></dxi-column>
+    <dxi-column width="auto" [allowFiltering]="true" dataType="number" dataField="PLZ" caption="{{ 'GemeindeCode.PLZ' | translate }}"></dxi-column>
+    <dxi-column width="auto" [allowFiltering]="true" dataType="string" dataField="Name" caption="{{ 'GemeindeCode.Name' | translate }}"></dxi-column>
+    <dxi-column width="auto" [allowFiltering]="true" dataType="string" dataField="Kanton" caption="{{ 'GemeindeCode.Kanton' | translate }}"></dxi-column>
+    <dxi-column width="auto" [allowFiltering]="true" dataType="number" dataField="BFSCode" caption="{{ 'GemeindeCode.BFSCode' | translate }}"></dxi-column>
+    <dxi-column [minWidth]="60" allowResizing="false" [allowFiltering]="false" [allowHiding]="false" [allowExporting]="false" [allowReordering]="false" caption="" cellTemplate="cellTemplate"></dxi-column>
+    <div *dxTemplate="let data of 'cellTemplate'">
+        <dx-button text="..." type="normal" (onClick)="onClick($event)"></dx-button>
+    </div>
+</dx-data-grid>
+<div class="margin-top-15">
+    <span>{{ 'GemeindeCode.AnzahlDatensatze' | translate }}</span>
+    <span id="o010_bfs-gemeinde-code-datensatze"> {{totalRecords}}</span>
+</div>
+<app-popover #popover></app-popover>

@@ -1,0 +1,34 @@
+<header class="header">
+  <div class="header-container test-scss">
+    <div class="header-logo">
+      <!-- Logo display-->
+      <a class="logo" title="Aventis" [tabIndex]="1" routerLink="{{ homePage }}" #logo>
+        <img src="/assets/images/logo.png" title="Aventis">
+      </a>
+    </div>
+    <div class="nav-collapse">
+      <div class="header-menu" #horizontalNav>
+        <kiss-horizontal-nav [itemMenus]="itemMenus" (select)="selectMenu.emit($event)" class="horizontal-nav">loading menu...</kiss-horizontal-nav>
+      </div>
+      <div class="header-search-box" #searchBox>
+        <kiss-search-box class="header-search" [searchBoxsData]="searchBoxsData">loading search...</kiss-search-box>
+      </div>
+      <div class="header-profileBarWrapper" #profileBar>
+        <kiss-profile-bar (select)="selectLanguage.emit($event)" (logout)="logout.emit($event)" [userImage]="userImage" [tabIndex]="6"
+          [userEmail]="userEmail" [selectedLanguage]="selectedLanguage" [availableLanguages]="availableLanguages"></kiss-profile-bar>
+      </div>
+      <div class="header-badge" #notifi [tabIndex]="7">
+        <span #notifi>
+          <i class="fa fa-bell fa-lg" aria-hidden="true">
+            <!-- TODO: add vao nhung de day chua dung nen phai hardcode -->
+            <div class="dx-badge dx-navbar-item-badge">3</div>
+          </i>
+        </span>
+      </div>
+      <div class="kiss-more" #more>
+        <app-popover-list [targetId]="'popover-header-id'" class="header-popover-list">Loading
+          popover...</app-popover-list>
+      </div>
+    </div>
+  </div>
+</header>

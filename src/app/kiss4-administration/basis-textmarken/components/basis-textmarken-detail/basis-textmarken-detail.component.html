@@ -1,0 +1,100 @@
+<div class="toolbar-header">
+    <kiss-card-title id="r011_detail_header" [titleHeader]="'BasisTextmarken.BasisTextmarkenDetails.TitleDetail' | translate"
+        [customizeBtn]="customizeBtn" [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)" [tabIndex]="99">
+    </kiss-card-title>
+</div>
+<div class="container-detail__form">
+    <dx-validation-group #validationGroup>
+        <dx-form #textmarken [formData]="formData" [showColonAfterLabel]="false" (onInitialized)="onInitialized($event)">
+            <dxi-item itemType="group" [colCount]="12">
+                <dxi-item itemType="group" [colSpan]="6">
+                    <dxi-item id="r011_detail_kategorie" dataField="category" [template]="'categoryDetail'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Kategorie' | translate"></dxo-label>
+                        <dxi-validation-rule type="required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item id="r011_detail_textmarke" dataField="displayName" [template]="'displayNameDetail'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Textmarke' | translate"></dxo-label>
+                        <dxi-validation-rule type="required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item id="r011_detail_typ" dataField="bookmarkCode" [template]="'bookmarkCodeTemplate'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Typ' | translate"></dxo-label>
+                        <dxi-validation-rule type="required"></dxi-validation-rule>
+                    </dxi-item>
+                    <dxi-item id="r011_detail_tabelle" dataField="tableName" [template]="'tableNameCodeTemplate'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Tabelle' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_detail_modul" dataField="modulID" [template]="'modulNameCodeTemplate'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Modul' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_suche_immer-sichtbar" [template]="'immerSichtbarTemplate'">
+                        <dxo-label text=" "></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_suche_system" [template]="'systemTemplate'">
+                        <dxo-label text=" "></dxo-label>
+                    </dxi-item>
+                </dxi-item>
+                <dxi-item itemType="group" [colSpan]="6">
+                    <dxi-item id="r011_detail_beschreibung" dataField="description" [template]="'beschreibungDetail'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.Beschreibung' | translate"></dxo-label>
+                    </dxi-item>
+                    <dxi-item id="r011_detail_sql" dataField="sql" [template]="'sqlDetail'">
+                        <dxo-label [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.SQL' | translate"></dxo-label>
+                        <dxi-validation-rule type="required"></dxi-validation-rule>
+                    </dxi-item>
+                </dxi-item>
+            </dxi-item>
+            <div *dxTemplate="let data of 'categoryDetail'" class="input-fixwidth">
+                <dx-text-box #categoryDetail [(value)]="formData.category" [maxLength]="2000"
+                    [tabIndex]="100">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" [message]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.messageToastNeuerCopyErrorKategory' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'displayNameDetail'" class="input-fixwidth">
+                <dx-text-box #displayNameDetail [(value)]="formData.displayName" [tabIndex]="101"
+                    [maxLength]="2000">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" [message]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.messageToastNeuerCopyErrorTextMarken' | translate"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'bookmarkCodeTemplate'" class="input-fixwidth">
+                <dx-select-box #typDetail displayExpr="text" [dataSource]="typData" valueExpr="code" [(value)]="formData.bookmarkCode"
+                    placeholder="" [tabIndex]="102">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" [message]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.messageToastNeuerCopyErrorTyp' | translate"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'tableNameCodeTemplate'" class="input-fixwidth">
+                <dx-select-box #tablepDetail displayExpr="tableName" [dataSource]="tableNameData" valueExpr="tableName"
+                [(value)]="formData.tableName" placeholder="" [tabIndex]="103"></dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'modulNameCodeTemplate'" class="input-fixwidth">
+                <dx-select-box #moduleDetail displayExpr="text" [dataSource]="modulNameData" valueExpr="code" [(value)]="formData.modulID"
+                    placeholder="" [tabIndex]="104"></dx-select-box>
+            </div>
+            <div *dxTemplate="let data of 'immerSichtbarTemplate'" class="input-fixwidth">
+                <dx-check-box #immerDetail [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.ImmerSichtbar' | translate"
+                [(value)]="formData.alwaysVisible" [tabIndex]="105"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'systemTemplate'" class="input-fixwidth">
+                <dx-check-box #systemDetail [text]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.System' | translate"
+                [(value)]="formData.system" [tabIndex]="106"></dx-check-box>
+            </div>
+            <div *dxTemplate="let data of 'beschreibungDetail'">
+                <dx-text-area #descriptionDetail [(value)]="formData.description" [maxLength]="2000" [height]="130"
+                    [tabIndex]="108"></dx-text-area>
+            </div>
+            <div *dxTemplate="let data of 'sqlDetail'">
+                <dx-text-area #sqlDetail [(value)]="formData.sql" [height]="180" [tabIndex]="109">
+                    <dx-validator>
+                        <dxi-validation-rule type="required" [message]="'BasisTextmarken.BasisTextmarkenDetails.ShowDetail.messageToastNeuerCopyErrorSQL' | translate"></dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-area>
+            </div>
+        </dx-form>
+    </dx-validation-group>
+</div>

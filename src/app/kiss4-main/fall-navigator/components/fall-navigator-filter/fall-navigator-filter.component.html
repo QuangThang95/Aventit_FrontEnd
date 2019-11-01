@@ -1,0 +1,66 @@
+<div class="container-search" id="bar-header">
+  <dx-toolbar class="container-search__header" id='H005_detail_toolbar'>
+    <dxi-item [template]="'titleTemplate'" name="toolbar-header" location="before"></dxi-item>
+    <div *dxTemplate="let temp of 'titleTemplate'">
+      <span class="container-search__header-title">{{ 'H005FallNavigator.Filter' |
+        translate}}</span>
+    </div>
+  </dx-toolbar>
+  <div class="container-search__form" id="nav-filters">
+    <dx-form [showColonAfterLabel]="false">
+      <dxi-item [dataField]="'H005FallNavigator.Status' | translate" [template]="'status'">
+        <dxo-label [text]=" 'H005FallNavigator.Status' | translate "></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'status'">
+        <dx-check-box width='150px' [(value)]="ckbActiveVisible" name="ckbActive" id="H005_filter_active" [text]=" 'H005FallNavigator.aktiv' | translate"
+          (onValueChanged)="onCheckbox($event.value,'aktiv')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="ckbClosedVisible" name="ckbClosed" id="H005_filter_closed" [text]=" 'H005FallNavigator.abgeschlossen' | translate"
+          (onValueChanged)="onCheckbox($event.value,'abgeschlossen')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="ckbArchivedVisible" name="ckbArchived" id="H005_filter_archived" [text]=" 'H005FallNavigator.archiviert' | translate"
+          (onValueChanged)="onCheckbox($event.value,'archiviert')">
+        </dx-check-box>
+      </div>
+      <dxi-item [dataField]=" 'H005FallNavigator.Anzeige' | translate" [template]="'anzeige'">
+        <dxo-label [text]=" 'H005FallNavigator.Anzeige' | translate "></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'anzeige'">
+        <dx-check-box width='150px' [(value)]="ckbIncludeGroupVisible" name="ckbIncludeGroup" id="H005_filter_gruppe"
+          [text]=" 'H005FallNavigator.Gruppe' | translate" (onValueChanged)="onCheckbox($event.value,'Gruppe')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="ckbIncludeGuestVisible" name="ckbIncludeGuest" id="H005_filter_gastrecht"
+          [text]=" 'H005FallNavigator.Gastrecht' | translate" (onValueChanged)="onCheckbox($event.value,'Gastrecht')">
+        </dx-check-box>
+      </div>
+
+      <dxi-item [dataField]=" 'H005FallNavigator.Spalten' | translate" [template]="'spalten'">
+        <dxo-label [text]=" 'H005FallNavigator.Spalten' | translate "></dxo-label>
+      </dxi-item>
+      <div *dxTemplate="let data of 'spalten'">
+        <dx-check-box width='150px' [(value)]="ahvNummerVisible" id="H005_filter_ahv-nr" name="ckbAHV" [text]=" 'H005FallNavigator.AHV' | translate"
+          (onValueChanged)="onCheckbox($event.value,'AHV')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="navigatorZusatzVisible" id="H005_filter_zusatz" name="ckbZusatz" [text]=" 'H005FallNavigator.Zusatz' | translate"
+          (onValueChanged)="onCheckbox($event.value,'Zusatz')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="fallPendenzenVisible" id="H005_filter_fall-pendenzen" name="ckbFallPendenzen"
+          [text]=" 'H005FallNavigator.fallPendenzen' | translate" (onValueChanged)="onCheckbox($event.value,'fallPendenzen')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="nNummerVisible" id="H005_filter_n-nr" name="ckbNNr" [text]=" 'H005FallNavigator.NNr' | translate"
+          (onValueChanged)="onCheckbox($event.value,'NNr')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="gemeindeVisible" id="H005_filter_gemeinde" name="ckbGemeinde" [text]=" 'H005FallNavigator.Gemeinde' | translate"
+          (onValueChanged)="onCheckbox($event.value,'Gemeinde')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="versichertennummerVisible" id="H005_filter_vers-nr" name="ckbVersNr"
+          [text]=" 'H005FallNavigator.VersNr' | translate" (onValueChanged)="onCheckbox($event.value,'VersNr')">
+        </dx-check-box>
+        <dx-check-box width='150px' [(value)]="kategorieVisible" id="H005_filter_kategorie" name="ckbKategorie" [text]=" 'H005FallNavigator.Kategorie' | translate"
+          [visible]="chkkategorieVisible" (onValueChanged)="onCheckbox($event.value,'Kategorie')">
+        </dx-check-box>
+      </div>
+
+    </dx-form>
+  </div>
+</div>

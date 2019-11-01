@@ -1,0 +1,9 @@
+.wrapper-main {
+  position: relative;
+  height: calc(100vh - #{$footer-height});
+}
+.layout-fallbearbeitung {
+    position: absolute;
+    height: calc(100% - 260px);
+    width: 100%;
+}

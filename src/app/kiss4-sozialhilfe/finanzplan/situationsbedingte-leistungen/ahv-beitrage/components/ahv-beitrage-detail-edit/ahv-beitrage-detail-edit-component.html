@@ -1,0 +1,295 @@
+<div class="container-detail__form">
+  <dx-validation-group #validationAhvBeitrage>
+    <dx-form
+      [showColonAfterLabel]="false"
+      id="i011-form-details"
+      class="form-body"
+      labelLocation="left"
+      id="i011-detail"
+      #detailAhvBeitrageForm
+      [formData]="ahvBeitragPositionDetail"
+      [screenByWidth]="sizeQualifier"
+    >
+      <dxi-item itemType="group" [colCount]="10">
+        <dxi-item itemType="group" [colSpan]="6">
+          <dxi-item dataField="baPersonID" [template]="'personTemplate'">
+            <dxo-label
+              text="{{ 'AhvBeitrage.Detail.Person' | translate }}"
+            ></dxo-label>
+          </dxi-item>
+          <dxi-item dataField="laID" [template]="'laTemplate'">
+            <dxi-validation-rule
+              type="required"
+              message="la is required !"
+            ></dxi-validation-rule>
+            <dxo-label
+              text="{{ 'AhvBeitrage.Detail.LA' | translate }}"
+            ></dxo-label>
+          </dxi-item>
+          <dxi-item itemType="group" [colCount]="2" minColWidth="250">
+            <dxi-item
+              [colSpan]="1"
+              [accessKey]="9"
+              id="i011_detail_mtl-betrag"
+              dataField="betragFormat"
+              [template]="'betragTemplate'"
+              [editorOptions]="{
+                placeholder: 'AhvBeitrage.Detail.EnterValue' | translate
+              }"
+            >
+              <dxi-validation-rule
+                type="required"
+                message="Betrag is required"
+              ></dxi-validation-rule>
+              <dxo-label
+                text="{{ 'AhvBeitrage.Detail.MtlBetrag' | translate }}"
+              ></dxo-label>
+            </dxi-item>
+          </dxi-item>
+          <dxi-item itemType="group" [colCount]="2" minColWidth="250">
+            <dxi-item
+              id="i011_detail_geplant-von"
+              dataField="datumVon"
+              editorType="dxDateBox"
+              [template]="'datumVonTemplate'"
+              [editorOptions]="{ value: null }"
+            >
+              <dxo-label
+                text="{{ 'AhvBeitrage.Detail.GeplantVon' | translate }}"
+              ></dxo-label>
+            </dxi-item>
+            <dxi-item
+              id="i011_detail_geplant-bis"
+              dataField="datumBis"
+              editorType="dxDateBox"
+              [template]="'datumBisTemplate'"
+              [editorOptions]="{ value: null }"
+            >
+              <dxo-label
+                text="{{ 'AhvBeitrage.Detail.GeplantBis' | translate }}"
+              ></dxo-label>
+            </dxi-item>
+          </dxi-item>
+          <dxi-item
+            id="i011_detail_institution"
+            dataField="name"
+            [template]="'institutionTemplate'"
+            [editorOptions]="{ width: '100%', maxLength: '100' }"
+          >
+            <dxo-label
+              text="{{ 'AhvBeitrage.Detail.Institution' | translate }}"
+            ></dxo-label>
+          </dxi-item>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item
+        id="i011_detail_begrundung"
+        dataField="bemerkung"
+        [template]="'bemerkungTemplate'"
+      >
+        <dxo-label
+          text="{{ 'AhvBeitrage.Detail.Begrundung' | translate }}"
+        ></dxo-label>
+      </dxi-item>
+
+      <div *dxTemplate="let data of 'personTemplate'">
+        <dx-select-box
+          [showClearButton]="true"
+          #person
+          [accessKey]="7"
+          (onItemClick)="onItemDropdownClick($event, 'baPersonID')"
+          [searchEnabled]="false"
+          id="i011_detail_person"
+          name="i011_detail_person"
+          [dataSource]="ahvBeitragesSandbox.personenUnterstuetzt$ | async"
+          valueExpr="baPersonID"
+          displayExpr="nameVorname"
+          [(value)]="ahvBeitragPositionDetail.baPersonID"
+          (onFocusIn)="onFocusIn(person, 'person')"
+          (onFocusOut)="onFocusOut($event)"
+          (onKeyDown)="onKeyDownSelectOption($event, 'person')"
+        >
+        </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'laTemplate'">
+        <dx-select-box
+          [showClearButton]="true"
+          #la
+          [accessKey]="8"
+          (onItemClick)="onItemDropdownClick($event, 'bgPositionsartID')"
+          [searchEnabled]="false"
+          id="i011_detail_la"
+          name="i011_detail_la"
+          [dataSource]="ahvBeitragesSandbox.sqlQueryShPositionTyp$ | async"
+          valueExpr="code"
+          displayExpr="text"
+          [(value)]="ahvBeitragPositionDetail.bgPositionsartID"
+          (onFocusIn)="onFocusIn(la, 'la')"
+          (onFocusOut)="onFocusOut($event)"
+          (onClosed)="closedSelectBox.emit($event)"
+          (onKeyDown)="onKeyDownSelectOption($event, 'la')"
+        >
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="{{'AhvBeitrage.MessageError.ValidateLA' | translate}}"
+            >
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-select-box>
+      </div>
+      <div *dxTemplate="let data of 'betragTemplate'">
+        <dx-number-box
+          class="kiss-input-right-i011"
+          format="#,##0.00"
+          #betrag
+          [value]="ahvBeitragPositionDetail.betrag"
+          [accessKey]="9"
+          id="i011_detail_mtl-betrag"
+          width="100%"
+          [step]="0"
+          (onFocusIn)="onFocusIn(betrag, 'betrag')"
+          (onFocusOut)="onFocusOut($event, 'betrag')"
+          (onValueChanged)="onChangeData($event, 'betrag')"
+        >
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="{{'AhvBeitrage.MessageError.ValidateBetrag' | translate}}"
+            >
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="range"
+              [max]="valueMaxValidateBetrag"
+              message="{{'AhvBeitrage.MessageError.ValidateDate' | translate}}"
+            ></dxi-validation-rule>
+            <dxi-validation-rule
+              type="range"
+              [min]="valueMinValidateBetrag"
+              message="{{'AhvBeitrage.MessageError.ValidateDate' | translate}}"
+            ></dxi-validation-rule>
+          </dx-validator>
+        </dx-number-box>
+      </div>
+      <div *dxTemplate="let data of 'datumVonTemplate'">
+        <dx-date-box
+          [showClearButton]="true"
+          [accessKey]="10"
+          #datumVon
+          placeholder="{{ 'AhvBeitrage.Detail.SelectItem' | translate}}"
+          width="100%"
+          [value]="ahvBeitragPositionDetail.datumVon"
+          (onValueChanged)="onChangeData($event, 'datumVon')"
+          displayFormat="dd.MM.yyyy"
+          [disabled]="!showDateVon"
+          (onFocusIn)="onFocusIn(datumVon, 'datumVon')"
+          (onFocusOut)="onFocusOut($event)"
+          (onKeyDown)="onKeyDownAdd($event)"
+        >
+          <dx-validator>
+            <dxi-validation-rule
+              type="range"
+              [max]="maxDate"
+              [message]="msgValidateDateErr"
+            ></dxi-validation-rule>
+            <dxi-validation-rule
+              type="range"
+              [min]="minDate"
+              [message]="msgValidateDateErr"
+            ></dxi-validation-rule>
+          </dx-validator>
+        </dx-date-box>
+      </div>
+      <div *dxTemplate="let data of 'datumBisTemplate'">
+        <dx-date-box
+          [showClearButton]="true"
+          [accessKey]="11"
+          #datumBis
+          placeholder="{{ 'AhvBeitrage.Detail.SelectItem' | translate }}"
+          width="100%"
+          [value]="ahvBeitragPositionDetail.datumBis"
+          (onValueChanged)="onChangeData($event, 'datumBis')"
+          displayFormat="dd.MM.yyyy"
+          (onFocusIn)="onFocusIn(datumBis, 'datumBis')"
+          (onFocusOut)="onFocusOut($event)"
+          (onKeyDown)="onKeyDownAdd($event)"
+        >
+          <dx-validator #validatorBis>
+            <dxi-validation-rule
+              [validationCallback]="validationBisDate"
+              type="custom"
+              [min]="ahvBeitragPositionDetail.datumVon"
+              message="{{'AhvBeitrage.MessageError.ValidateDateVonBis' | translate}}"
+            ></dxi-validation-rule>
+          </dx-validator>
+        </dx-date-box>
+      </div>
+      <div *dxTemplate="let data of 'institutionTemplate'">
+        <dx-drop-down-box
+          [accessKey]="12"
+          #institution
+          placeholder="{{ 'AhvBeitrage.Detail.SelectItem' | translate }}"
+          id="i011_detail_institution"
+          [(value)]="ahvBeitragPositionDetail.institutionName"
+          valueExpr="institution"
+          displayExpr="institution"
+          [showClearButton]="true"
+          [(opened)]="isgridInstitution"
+          [dataSource]="ahvBeitragesSandbox.ahvInstitutionSuchenWh$ | async"
+          (onFocusIn)="onFocusIn(institution, 'institution')"
+          (onFocusOut)="onFocusOut($event)"
+          (onKeyDown)="onKeyDownSelectOption($event, 'institution')"
+        >
+          <div *dxTemplate="let contentData of 'content'">
+            <dx-data-grid
+              [dataSource]="ahvBeitragesSandbox.ahvInstitutionSuchenWh$ | async"
+              [selection]="{ mode: 'single' }"
+              [hoverStateEnabled]="true"
+              noDataText="{{ 'AhvBeitrage.Detail.NoDataInstitution' | translate }}"
+              (onRowClick)="ondDataGridInstitutionClick($event)"
+              [paging]="{ enabled: true, pageSize: 10 }"
+              [filterRow]="{ visible: true }"
+              [scrolling]="{ mode: 'infinite' }"
+              [height]="300"
+            >
+              <dxi-column
+                dataField="institution"
+                caption="{{ 'AhvBeitrage.Detail.Institution' | translate }}"
+              ></dxi-column>
+              <dxi-column
+                dataField="adresse"
+                caption="{{ 'AhvBeitrage.Detail.Andresse' | translate }}"
+              ></dxi-column>
+              <dxi-column
+                dataField="typen"
+                caption="{{ 'AhvBeitrage.Detail.Typen' | translate }}"
+              ></dxi-column>
+              <dxo-summary>
+                <dxi-total-item
+                  column="institution"
+                  summaryType="count"
+                  displayFormat="{{ 'AhvBeitrage.Detail.AnzahlDatenstze' | translate }} : {0}"
+                >
+                </dxi-total-item>
+              </dxo-summary>
+            </dx-data-grid>
+          </div>
+        </dx-drop-down-box>
+      </div>
+      <div *dxTemplate="let data of 'bemerkungTemplate'">
+        <dx-text-area
+          #bemerkung
+          [accessKey]="13"
+          [(value)]="ahvBeitragPositionDetail.bemerkung"
+          placeholder="{{'AhvBeitrage.Detail.EnterValue' | translate }}"
+          [maxLength]="4000"
+          [height]="200"
+          (onValueChanged)="onChangeData($event, 'bemerkung')"
+          (onFocusIn)="onFocusIn(bemerkung, 'bemerkung')"
+          (onFocusOut)="onFocusOut($event)"
+        >
+        </dx-text-area>
+      </div>
+    </dx-form>
+  </dx-validation-group>
+</div>

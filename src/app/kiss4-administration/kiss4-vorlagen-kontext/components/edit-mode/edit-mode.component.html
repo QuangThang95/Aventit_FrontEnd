@@ -1,0 +1,34 @@
+<div class="form-body">
+    <dx-form [focusStateEnabled]="true" class="vorlagencontext-form" #vorlagenkontextForm [(formData)]="vorlagenkontextModel"
+        colCount="auto" labelLocation="left" [showColonAfterLabel]="false" validationGroup="FormValidate" keyExpr="docContextID">
+        <dxi-item itemType="group">
+            <dxi-item dataField="docContextName" [editorOptions]="{width: '100%'}" [template]="'DocContextNameTemplate'">
+                <dxo-label [text]=" 'VorlagenKontext.KontextName' | translate"></dxo-label>
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="description" [editorOptions]="{ width: '100%'}" [template]="'DescriptionTemplate'">
+                <dxo-label [text]="'VorlagenKontext.Description' | translate"></dxo-label>
+            </dxi-item>
+        </dxi-item>
+        <div *dxTemplate="let data of 'DocContextNameTemplate'">
+            <dx-text-box #docContextNameTemplate id="r008_detail_kontextname" name="input-name" [value]="vorlagenkontextModel['docContextName']"
+                (onInput)="onDataInput($event, 'docContextName')" valueChangeEvent="keyup" (onValueChanged)="valueChanged()"
+                tabIndex="100">
+                <dx-validator validationGroup="FormValidate">
+                    <dxi-validation-rule type="required" [message]="'VorlagenKontext.Message.KonTextName' | translate"></dxi-validation-rule>
+                    <dxi-validation-rule type="stringLength" [max]="50" [message]="'VorlagenKontext.MessageValidate.MaxLengthField' | translate"></dxi-validation-rule>
+                </dx-validator>
+            </dx-text-box>
+        </div>
+        <div *dxTemplate="let data of 'DescriptionTemplate'">
+            <dx-text-area #beschreibungTextArea id="r008_detail_beschreibung" name="input-name" #inputName [value]="vorlagenkontextModel['description']"
+                (onInput)="onDataInput($event, 'description')" valueChangeEvent="keyup" (onValueChanged)="valueChanged()"
+                [tabIndex]="101">
+                <dx-validator validationGroup="FormValidate">
+                    <dxi-validation-rule type="stringLength" [max]="500" [message]="'VorlagenKontext.MessageValidate.MaxLengthField' | translate"></dxi-validation-rule>
+                </dx-validator>
+            </dx-text-area>
+        </div>
+    </dx-form>
+    <ng-content></ng-content>
+</div>

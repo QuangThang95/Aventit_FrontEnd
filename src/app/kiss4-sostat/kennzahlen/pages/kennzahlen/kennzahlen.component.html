@@ -1,0 +1,17 @@
+<kiss-right-component>
+    <app-navigator id="o012_kennzahlen_header" titleHeader="{{ 'Kennzahlen.Title' | translate }}" [listBtn]="listBtn"
+        [customizeBtn]="customizeBtn" (onCustomizeBtnFn)="toolBarOnItemClickTopGrd($event)"></app-navigator>
+    <section id="wrapper-content">
+        <div class="container kennzahlen-aktualisieren-container" id="o012_kennzahlen">
+            <div class="right-content">
+
+                <kiss-kennzahlen-remaining [messageErr]="messageErr" (clearMessage)="messageErr = ''"></kiss-kennzahlen-remaining>
+                <kiss-kennzahlen-search-box (messageChange)="messageErr = $event"></kiss-kennzahlen-search-box>
+                <kiss-kennzahlen-list [action]="tableAction$" (isHideFilter) = "isHideFilter($event)" (messageChange)="messageErr = $event"></kiss-kennzahlen-list>
+
+            </div>
+
+        </div>
+    </section>
+
+</kiss-right-component>

@@ -1,0 +1,16 @@
+.container-detail__form {
+  &__label{
+    &--boder{
+      border-bottom: $form-detail-border;
+      height: 30px;
+      &>span{
+        font-weight: bold
+      }
+    }
+  }
+}
+.field-label {
+  font-size: $base-fz+1;
+  font-weight: $base-fw;
+  color: $form-detail-label-color;
+}

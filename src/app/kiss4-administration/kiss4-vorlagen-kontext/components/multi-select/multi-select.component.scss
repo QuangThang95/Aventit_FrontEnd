@@ -1,0 +1,48 @@
+@import 'settings/variables.scss';
+@import 'tools/mixins.scss';
+
+.mid-content {
+  padding-top: $padding-content;
+  display: inline-flex;
+  width: 100%;
+
+  .mid-button {
+    padding: $button-padding-top $padding-content;
+    width: $form-arrowkey-width;
+    .turn-right-button {
+      margin-top: $margin-content;
+      margin-bottom: $button-margin-bottom;
+    }
+    .turn-left-button {
+      margin-bottom: $margin-content;
+    }
+  }
+
+  .left-grid,
+  .right-grid {
+    min-width: $min-multiple-select;
+    .box {
+      padding-top: $padding-content;
+    }
+  }
+
+  .right-button {
+    padding: $button-padding-top 0 $padding-content $padding-content;
+    width: $form-arrowkey-width;
+    .turn-up-button {
+      margin-top: $padding-content;
+      margin-bottom: $button-margin-bottom;
+    }
+  }
+
+  dx-tree-list,
+  dx-data-grid {
+    height: $min-multiple-select;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .mid-content {
+    overflow-x: scroll;
+  }
+}

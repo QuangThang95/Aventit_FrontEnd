@@ -1,0 +1,60 @@
+<div class="container-detail__form">
+    <dx-form id="i006_form_view">
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.Freibetrag' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+                <span>123</span>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.Angerechnet' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+                <span>123</span>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.Person' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+                <span>{{dataSource?.Name}}</span>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.ArtDesVermoge' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="5">
+                <span>{{dataSource?.ArtDesVermogens}}</span>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.Vermogen' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="3">
+                <span>{{dataSource?.Vermogen}}</span>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.MonatlVermogensverbrauch' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="3">
+                <span>{{dataSource?.Verbrauch}}</span>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="12">
+            <dxi-item itemType="group" [colSpan]="1">
+                <dxo-label [text]="'Vermogen.Detail.Beschreibung' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item itemType="group" [colSpan]="11">
+                <span>abc def ghi klm</span>
+            </dxi-item>
+        </dxi-item>
+    </dx-form>
+</div>

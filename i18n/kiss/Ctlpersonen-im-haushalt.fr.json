@@ -1,0 +1,55 @@
+﻿{
+  "PersonenImHaushalt": {
+    "HeaderBar": {
+      "FinanzplanVon": "vom[fr]",
+      "FinanzplanBis": "bis[fr]"
+    },
+    "StaffInfo": {
+      "Finanzplan": "Finanzplan[fr]",
+      "Name": "Name[fr]",
+      "Address": "Adresse[fr]",
+      "DateOfBirth": "Geburts datum[fr]",
+      "Heimatort": "Heimatort[fr]"
+    },
+    "ClientSumInfo": {
+      "Haushaltsgrosse": "Haushaltsgrosse[fr]",
+      "Unterstutzungseinheit": "Unterstutzungseinheit[fr]",
+      "Kennzahlen": "Kennzahlen[fr]",
+      "Grundbedarf": "Grundbedarf[fr]",
+      "Wohnkosten": "Wohnkosten[fr]",
+      "Zuschlag": "Zuschlag l[fr]"
+    },
+    "ClientList": {
+      "Klientensystem": "Personen im Klientensystem[fr]",
+      "Haushaltsgrosse": "Personen im Unterstutzungsplan (Haushaltsgrosse)[fr]",
+      "Check": "U[fr]",
+      "Name": "Name[fr]",
+      "DateOfBirth": "Geb. dat[fr]",
+      "Alter": "Alter[fr]",
+      "Beziehung": "Beziehung[fr]",
+      "ApplyFilter": "Filter anwenden[fr]"
+    },
+    "Message": {
+      "ConfirmDeactive": "You have unsaved changes! If you leave, your changes will be lost. [fr]"
+    },
+    "Description": "Alle Pesonen aus dem Klientensystem, welche in diesem Unterstutzungsplan im Haushalt leben und/oder in de Unterstutzungseinheit sind, mussen in das rechte Fenster gesetzt werden.[fr]",
+    "Tip": "Tip: Die Altersangabe in der Liste bezieht sich auf den Beginn des Unterstutzungs-planes, nicht auf das akatuelle Datum.[fr]",
+    "CancelMessage": "Änderungen an diesem Datensatz rückgängig machen ?[fr]",
+    "TitleCancelMessage": "Bestätigung[fr]",
+    "DenyF5Message": "Das Einfügen eines Datensatzes ist nicht erlaubt ![fr]",
+    "DenyF8Message": "Das Löschen dieses Datensatzes ist nicht erlaubt ![fr]",
+    "DenyF9Message": "Keine Reports verfügbar in diesem Kontext oder fehlende Berechtigung[fr]",
+    "DoubleClickMessage": "Die Angaben wurden in den Zwischenspeicher kopiert.[fr]",
+    "ShiftClickMessage": "Die ID wurde in den Zwischenspeicher kopiert[fr]",
+    "Yes": "Ja[fr]",
+    "No": "Nein[fr]",
+    "Discard": "Discard [fr]",
+    "Abbrechen": "Abbrechen [fr]",
+    "ConfirmMessage":"Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [fr]",
+    "TitleInformationMessage": "Information [fr]",
+    "ColumnChooser": {
+      "Title": "Benutzerdefiniert [fr]"
+    },
+    "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen [fr]"
+  }
+}

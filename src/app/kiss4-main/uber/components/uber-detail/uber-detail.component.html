@@ -1,0 +1,34 @@
+<div class="container-detail form-content-details">
+
+  <div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+    <kiss-card-title [titleHeader]="'Uber.Title_Group.Title'| translate" [customizeBtn]="customizeBtn"
+      [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)">
+    </kiss-card-title>
+  </div>
+
+  <div [ngClass]="{'container__hide': !isExpandTabUber}" class="container-detail__form" id='form-uber-uber'>
+    <dx-form [colCount]="1" [showColonAfterLabel]="false">
+      <dxi-item>
+        <dxo-label [text]="'Uber.Title_Grid.User'|translate"></dxo-label>
+        <span>{{userInfo}}</span>
+      </dxi-item>
+
+      <dxi-item>
+        <dxo-label [text]="'Uber.Title_Grid.Administrator'|translate"></dxo-label>
+        <span *ngIf="xUser?.isUserBIAGAdmin">{{xUser?.isUserBIAGAdmin }} (BIAG Admin)</span>
+        <span *ngIf="xUser?.isUserAdmin && !xUser?.isUserBIAGAdmin">{{xUser?.isUserAdmin }} (Admin)</span>
+      </dxi-item>
+
+      <dxi-item>
+        <dxo-label [text]="'Uber.Title_Grid.LanguageCode'|translate"></dxo-label>
+        <span>{{ xUser?.languageCode }}</span>
+      </dxi-item>
+
+      <dxi-item>
+        <dxo-label [text]="'Uber.Title_Grid.CultureInfo'|translate"></dxo-label>
+        <span>{{cultureInfo}}</span>
+      </dxi-item>
+
+    </dx-form>
+  </div>
+</div>

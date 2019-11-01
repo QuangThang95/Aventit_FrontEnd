@@ -1,0 +1,43 @@
+<div id="H003_datenbank-versionen" class="container-detail form-content-details">
+  <div class="toolbar-header" (click)="changeCollapseFormContent($event)">
+      <kiss-card-title [titleHeader]="'Uber.Title_Group.Database-Version'| translate" [customizeBtn]="customizeBtn"
+      [isCard]="true" (onCustomizeBtnFn)="toolBarOnItemClick($event)">
+    </kiss-card-title>
+  </div>
+  <div [ngClass]="{'container__hide': !isExpandTabDatenBankVersion}" class="form-body" id='form-uber-datenbank-versionen'>
+    <div class="dx-field" id='H003_datenbank-versionen_descriptions'>
+      <span>{{'Uber.Detail.Database-Version-Detail'|translate }}</span>
+    </div>
+    <div class="grid-table-view">
+      <dx-data-grid #gridDatabaseVersion id="H003_datenbank-versionen_grid" [dataSource]="databaseVersions"
+        [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true" [columnMinWidth]="50" (mousedown)="onClickGrid()"
+        [selectedRowKeys]="selectedKeys" (onRowClick)="selectRowDatenbankVersionen($event)" [allowColumnReordering]="true" [columnResizingMode]="'widget'"
+        witdh="auto">
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-scrolling mode="infinite"></dxo-scrolling>
+        <dxo-paging [enabled]="false" [pageSize]="10000"></dxo-paging>
+        <dxo-selection mode="multiple" showCheckBoxesMode="checkBoxesMode"></dxo-selection>
+        <dxo-load-panel [enabled]="false"></dxo-load-panel>
+        <dxi-column dataField="id" [caption]="'Uber.Caption.Id'|translate" [allowHeaderFiltering]="false" dataType="number"
+          alignment="left">
+        </dxi-column>
+        <dxi-column dataField="active" [caption]="'Uber.Caption.Active'|translate" [allowHeaderFiltering]="false"
+          dataType="number" alignment="left"></dxi-column>
+        <dxi-column dataField="version" [caption]="'Uber.Caption.Version'|translate" format="Version"
+          [allowHeaderFiltering]="false" dataType="string" alignment="left">
+        </dxi-column>
+        <dxi-column dataField="versionDate" [caption]="'Uber.Caption.VersionDate'|translate" dataType="datetime"
+          [format]="formatDate" alignment="left" filter="false"></dxi-column>
+        <dxi-column dataField="backwardCompatibleToClient" [caption]="'Uber.Caption.BackwardCompatibleToClient'|translate"
+          dataType="string" alignment="left"></dxi-column>
+        <dxi-column dataField="description" [caption]="'Uber.Caption.Description'| translate" dataType="string"
+          alignment="left"></dxi-column>
+        <dxi-column dataField="dateCreated" [caption]="'Uber.Caption.DateCreated'|translate" dataType="datetime"
+          [format]="formatDate" alignment="left"></dxi-column>
+        <dxi-column dataField="dateModified" [caption]="'Uber.Caption.DateModified'|translate" dataType="datetime"
+          [format]="formatDate" alignment="left"></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>

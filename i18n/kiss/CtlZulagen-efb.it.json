@@ -1,0 +1,23 @@
+﻿{
+  "ZulagenEfb": {
+    "ClientList" : {
+      "NurAktuelleAnzeigen": "Nur aktuelle anzeigen  [it]",
+      "GultigAb": "Gultig ab [it]",
+      "Name": "Name [it]",
+      "Geburtsdatum": "Geburtsdatum [it]",
+      "Zulage": "Zulage [it]",
+      "Percent": "% [it]",
+      "Betrag": "Betrag [it]",
+      "Bemerkung": "Bemerkung [it]",
+      "ApplyFilter": "Filter anwenden [it]",
+      "EmptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen [it]"
+    },
+    "Form": {
+      "Zulage": "Zulage [it]",
+      "PercentAnteil": "% Anteil [it]",
+      "Alleinerziehend": "Alleinerziehend [it]",
+      "Betrag": "Betrag [it]",
+      "Beschreibung": "Beschreibung [it]"
+    }
+  }
+}

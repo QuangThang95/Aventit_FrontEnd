@@ -1,0 +1,86 @@
+﻿{
+  "Klientensystem": {
+    "Title": "Klientensystem [it]",
+    "Toolbar": {
+      "GridDrucken": "Grid drucken [it]",
+      "ExcelExport": "Excel Export [it]",
+      "Spaltenauswahl": "Spaltenauswahl [it]",
+      "Schnellfilterzeile": "Schnellfilterzeile anzeigen/ausblenden [it]",
+      "Gruppierungsbereich": "Gruppierungsbereich anzeigen/ausblenden [it]",
+      "Suche": "Suche anzeigen/ausblenden [it]",
+      "Filtereditor": "Filtereditor anzeigen/ausblenden [it]",
+      "GridEinstellungen": "Grid Einstellungen [it]",
+      "Bearbeiten": "Bearbeiten [it]",
+      "Speichern": "Speichern [it]",
+      "Abbrechen": "Abbrechen [it]"
+    },
+    "Message": {
+      "Title": "Confirmation! [it]",
+      "Information": "Information [it]",
+      "BemerkungMaxlength": "Beim Speichern des Datensatzes ist ein Fehler aufgetreten ! [fr]",
+      "Add": "Supprimer à nouveau le nouvel enregistrement ? [it]",
+      "Edit": "Fermer les fenêtres malgré les données non sauvegardées? [it]",
+      "Delete": "Le dossier doit-il être supprimé ? [it]",
+      "NameRequired": "The field 'Profilname' can not be left empty ! [it]",
+      "ShiftClickMessage": "Die ID wurde in den Zwischenspeicher kopiert  [it]",
+      "DoubleClickMessage": "Die Angaben wurden in den Zwischenspeicher kopiert. [it]",
+      "C007_MSG002_1":"Die Person  [it]",
+      "C007_MSG002_2":" hat keine gültige Wohnsitzadresse. Eine Koppelung der Adressen ist somit nicht möglich. [it]",
+      "C007_MSG003":"Die Adressen von zwei Klienten können nicht gekoppelt werden! [it]",
+      "Concurrency":"Der gewählte Datensatz wurde in der Zwischenzeit von einer anderen Person geändert oder gelöscht. Aktualisieren sie die Daten zuerst, um Ihre Änderungen zu speichern. [it]"
+    },
+    "PopupButton":{
+      "Yes": "Ja [it]",
+      "No": "Nein [it]",
+      "Ok": "Ok [it]",
+      "Language":"de-CH [it]"
+    },
+    "SectionKlientensystem": {
+      "Falltrager": "Fallträger [it]",
+      "WohnsitzZivilr": "Wohnsitz(zivilr.) [it]",
+      "Aufenthaltsort": "Aufenthaltsort [it]",
+      "Heimatort": "Heimatort [it]",
+      "Nationalitat": "Nationalität [it]",
+      "Alter": "Alter [it]",
+      "Geburtstag": "Geburtstag [it]",
+      "Geschiecht": "Geschiecht [it]",
+      "Zivilstand": "Zivilstand [it]"
+    },
+    "SectionBezugspersonen": {
+      "Bezungspersonen": "Bezugspersonen [it]",
+      "Name": "Name [it]",
+      "Beziehung": "Beziehung [it]",
+      "Alter": "Alter [it]",
+      "Unterstutzt": "Unterstützt [it]",
+      "Haushalt": "gi. Haushalt [it]",
+      "Klientln": "Klientln [it]",
+      "FilterAnwenden":"Filter anwenden [it]"
+    },
+    "SectionMietvertrag": {
+      "Mietvertrag": "Mietvertrag [it]",
+      "Vermieter": "Vermieter  [it]",
+      "Miete": "Miete ab [it]",
+      "bis": "bis [it]",
+      "MietkostenNetto": "Mietkosten netto [it]",
+      "Nebenkosten": "Nebenkosten [it]",
+      "KostenanteilUE": "Kostenanteil UE [it]",
+      "Mietdepot": "Mietdepot [it]",
+      "Mietzinsgarantie": "Mietzinsgarantie [it]",
+      "GarantieGultigBis": "Garantie gültig bis [it]",
+      "MieteAbgetreten": "Miete abgetreten [it]",
+      "Bemerkung": "Bemerkung [it]",
+      "Auswahlen":"Auswählen... [it]",
+      "NoDataText":"Keine zutreffenden Institutionen gefunden [it]"
+    },
+    "SearchSuche": "Suche... [it]",
+    "Discard": "Discard [it]",
+    "Abbrechen": "Abbrechen [it]",
+    "Bestatigung": "Bestätigung [it]",
+    "MessageBestatigung": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [it]",
+    "Benutzerdefiniert":"Benutzerdefiniert [it]",
+    "MessageValidation" : "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein [it]",
+    "AllesErweitern": "Alles erweitern [it]",
+    "AllesReduzieren": "Alles reduzieren [it]",
+    "SpalteAusblenden": "Spalte ausblenden [it]"
+  }
+}

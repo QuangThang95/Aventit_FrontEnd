@@ -1,0 +1,71 @@
+[{
+		"ControlName": "btnFall",
+		"Text": ">situation"
+	}, {
+		"ControlName": "btnGotoPendenzen",
+		"Text": "> Tâches"
+	}, {
+		"ControlName": "btnNeuerFall",
+		"Text": "Nouvelle sit."
+	}, {
+		"ControlName": "edtAbgeschlossene",
+		"Text": "terminé"
+	}, {
+		"ControlName": "edtAHVNummer",
+		"Text": "No. AVS"
+	}, {
+		"ControlName": "edtAktive",
+		"Text": "actif"
+	}, {
+		"ControlName": "edtArchivierte",
+		"Text": "archivé"
+	}, {
+		"ControlName": "edtGastrecht",
+		"Text": "hospitalité"
+	}, {
+		"ControlName": "edtGemeinde",
+		"Text": "commune"
+	}, {
+		"ControlName": "edtGruppe",
+		"Text": "groupe"
+	}, {
+		"ControlName": "edtKategorie",
+		"Text": "catégorie"
+	}, {
+		"ControlName": "edtVersNr",
+		"Text": "No d'assuré"
+	}, {
+		"ControlName": "edtZusatz",
+		"Text": "additif"
+	}, {
+		"ControlName": "lblAnzahlPersonen",
+		"Text": "Nombre de personnes: {0}"
+	}, {
+		"ControlName": "btnFallInfo",
+		"Text": "Info situation"
+	}, {
+		"ControlName": "colAHVNummer",
+		"Text": "No. AVS"
+	}, {
+		"ControlName": "colGemeinde",
+		"Text": "commune"
+	}, {
+		"ControlName": "colKategorie",
+		"Text": "catégorie"
+	}, {
+		"ControlName": "colName",
+		"Text": "Personne"
+	}, {
+		"ControlName": "colPendenzen",
+		"Text": "Tâches échues"
+	}, {
+		"ControlName": "colVersNr",
+		"Text": "No d'assuré"
+	}, {
+		"ControlName": "colZusatz",
+		"Text": "additif"
+	}, {
+		"ControlName": "qryModul",
+		"Text": "Voulez-vous supprimer l'ensemble de données?"
+	}
+]

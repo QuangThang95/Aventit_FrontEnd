@@ -1,0 +1,24 @@
+<div class="profileActionBar" id="btn-popover-user">
+  <div class="profileActionBar-anchor" (click)="toggleLogout()">
+    <a class="profileActionBar-imgWrapper">
+      <img src="{{ userImage }}" alt="">
+    </a>
+    <span class="profileActionBar-name">{{ userEmail }}
+      <i class="fa fa-caret-down"></i>
+    </span>
+  </div>
+  <dx-popover #dxMenuHeaderPopover target="#btn-popover-user" class="" position="bottom" width="200" [(visible)]="checkIsShowMenu">
+    <div *dxTemplate="let data of 'content'">
+      <dx-menu #dxMenuHeaderHiden [dataSource]="itemOptions" [showFirstSubmenuMode]="{name: 'onClick',delay: { show: 0, hide: 0 }}"
+        [hideSubmenuOnMouseLeave]="false" orientation="vertical" (onItemClick)="selectMenu($event)" [(visible)]="checkIsShowMenu"
+        id="popover-user" itemTemplate="items">
+        <div *dxTemplate="let item of 'items'" class="w-100" [ngClass]="item.flag ? 'icon-option': 'text-option'">
+          <!-- <span>{{item?.flag}}</span> -->
+          <span *ngIf="item.flag"><i class="{{ item.flag }}" title="{{item.name}}"></i></span>
+          <span *ngIf="!item.flag" class="mr-auto">{{item.name}}</span>
+          <span *ngIf="item.items">&nbsp;&nbsp;<i class="fa fa-angle-right color-base" aria-hidden="true"></i></span>
+        </div>
+      </dx-menu>
+    </div>
+  </dx-popover>
+</div>

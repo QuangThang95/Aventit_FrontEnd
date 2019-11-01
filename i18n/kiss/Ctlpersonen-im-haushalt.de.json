@@ -1,0 +1,56 @@
+﻿{
+  "PersonenImHaushalt": {
+    "HeaderBar": {
+      "FinanzplanVon": "vom",
+      "FinanzplanBis": "bis"
+    },
+    "StaffInfo": {
+      "Finanzplan": "Fallträger/-in für diesen Finanzplan",
+      "Name": "Name",
+      "Address": "Adresse",
+      "DateOfBirth": "Geburts datum",
+      "Heimatort": "Heimatort"
+    },
+    "ClientSumInfo": {
+      "Kennzahlen": "Kennzahlen",
+      "Haushaltsgrosse": "Haushaltsgrösse",
+      "Unterstutzungseinheit": "Unterstützungseinheit",
+      "Grundbedarf": "Grundbedarf",
+      "Wohnkosten": "Wohnkosten",
+      "Zuschlag": "Zuschlag l"
+    },
+    "ClientList": {
+      "Klientensystem": "Personen im Klientensystem",
+      "Haushaltsgrosse": "Personen im Unterstützungsplan (Haushaltsgrösse)",
+      "Check": "U",
+      "Name": "Name",
+      "DateOfBirth": "Geb. dat",
+      "Alter": "Alter",
+      "Beziehung": "Beziehung",
+      "ApplyFilter": "Filter anwenden"
+    },
+    "Message": {
+      "ConfirmDeactive": "Änderungen an diesem Datensatz rückgängig machen ?"
+    },
+    "Description": "Alle Personen aus dem Klientensystem, welche in diesem Unterstützungsplan im Haushalt leben und/oder in der Unterstützungseinheit sind, müssen in das rechte Fenster gesetzt werden.",
+    "Tip": "Tip: Die Altersangabe in der Liste bezieht sich auf den Beginn des Unterstützungs-planes, nicht auf das aktuelle Datum.",
+    "CancelMessage": "Änderungen an diesem Datensatz rückgängig machen ?",
+    "TitleCancelMessage": "Bestätigung",
+    "DenyF5Message": "Das Einfügen eines Datensatzes ist nicht erlaubt !",
+    "DenyF8Message": "Das Löschen dieses Datensatzes ist nicht erlaubt !",
+    "DenyF9Message": "Keine Reports verfügbar in diesem Kontext oder fehlende Berechtigung",
+    "DoubleClickMessage": "Die Angaben wurden in den Zwischenspeicher kopiert.",
+    "ShiftClickMessage": "Die ID wurde in den Zwischenspeicher kopiert",
+    "Yes": "Ja",
+    "No": "Nein",
+    "Discard": "Discard",
+    "Abbrechen": "Abbrechen",
+    "ConfirmMessage":"Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ?",
+    "TitleInformationMessage": "Information",
+    "ColumnChooser": {
+      "Title": "Benutzerdefiniert"
+    },
+    "emptyPanelText": "Zu gruppierende Spalten in diesen Bereich ziehen"
+
+  }
+}

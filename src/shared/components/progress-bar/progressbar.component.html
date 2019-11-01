@@ -1,0 +1,15 @@
+<div *ngIf="visibleProgressBar">
+    <div class="progress-bar-block">
+        <div class="progress-bar-body">
+            <div class="progress-bar-label"><span>{{ 'AppProgressBar.LoadingText' | translate }}</span></div>
+            <dx-progress-bar
+                class="progress-bar-status"
+                width="150"
+                min="0"
+                [max]="maxValue"
+                [value]="maxValue - seconds"
+                [showStatus]="false">
+            </dx-progress-bar>
+        </div>
+    </div>
+</div>

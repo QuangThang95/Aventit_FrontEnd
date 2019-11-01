@@ -1,0 +1,47 @@
+.container-detail,
+.container-search {
+  .toolbar-header {
+    color: #0c0c10;
+    .dx-toolbar > .dx-toolbar-items-container {
+      background-color: $toolbar-detail-background-color;
+      color: $color-black;
+      height: 44px;
+    }
+    .dx-button {
+      background-color: $button-detail-background-color;
+      .dx-button-text {
+        color: $color-white;
+      }
+    }
+    .dx-dropdownmenu.dx-button-has-icon {
+      background: transparent;
+      border: transparent;
+    }
+    .dx-toolbar .toolbar-header-title {
+       color: $label-detail-color;
+       font-size: $font-size;
+       font-weight: $label-detail-font-weight;
+       padding-left: $padding-content;
+    }
+  }
+  .kiss-card {
+    width: 100% !important;
+    .title-header-container {
+      padding-left: 15px!important;
+    }
+
+    &__title-header {
+      font-size: $font-size;
+      font-weight: $font-weight-title;
+    }
+
+    .dx-dropdownmenu-button {
+      border: none;
+      background: initial !important;
+      .dx-button-content .dx-icon {
+        color: $color-white!important;
+      }
+    }
+  }
+
+}

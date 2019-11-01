@@ -1,0 +1,10 @@
+<div class="error" *ngIf="isMessageClosed">
+  <span class="btn-close-error">
+      <dx-button class="btn-close" (onClick)="hideMessage()" icon="fa fa-times fa-2x">
+      </dx-button>
+  </span>
+  <div class="error-messege">
+      <span class="ico-error"><i class="fa fa-exclamation-circle " aria-hidden="true"></i></span>
+      <i id="err-messeger">{{message}}</i>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="wrapper-main" #wrapperContainer>
+  <app-header (selectLanguage)="layoutSandbox.selectLanguage($event)" (logout)="layoutSandbox.logout()"
+    [selectedLanguage]="layoutSandbox.selectedLang$ | async" [availableLanguages]="layoutSandbox.availableLanguages$ | async"
+    [userImage]="userImage" [userEmail]="userEmail" [itemMenus]="layoutSandbox.itemMenus$ | async" (selectMenu)="selectMenu($event.itemData)"
+    [searchBoxsData]="searchBoxDatas">
+    <!-- [searchBoxsData]="layoutSandbox.searchBoxsData$ | async" -->
+  </app-header>
+  <div class="body">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<app-popup-pendency #popupPendency></app-popup-pendency>
+<app-footer></app-footer>

@@ -1,0 +1,63 @@
+{
+    "Fallfuhrung": {
+        "Title": "Fallführung [fr]",
+        "GroupTop": "Fall-Eröffnung [fr]",
+        "GroupBottom": "Fall-Abschluss [fr]",
+        "TitleGrund": "Grund [fr]",
+        "TitleBemerkung": "Bemerkung [fr]",
+        "TitleGemeinde": "zust. Gemeinde [fr]",
+        "TitleDatum": "Datum [fr]",
+        "TitleSAR": "SAR [fr]",
+        "TitleBenutzerdefiniert": "Benutzerdefiniert [fr]",
+        "ColumnChooser": "Spaltenauswahl [fr]",
+        "ExportExcel": "Excel Export [fr]",
+        "GridPrint": "Grid drucken [fr]",
+        "Search": "Schnellfilterzeile anzeigen/ausblenden [fr]",
+        "Grouping": "Gruppierungsbereich anzeigen/ausblenden [fr]",
+        "SearchPanel": "Suche anzeigen/ausblenden [fr]",
+        "FilterBuilder": "Filtereditor anzeigen/ausblenden [fr]",
+        "GridSetting": "Grid Einstellungen [fr]",
+        "TitleAnmeldeart": "Anmeldeart [fr]",
+        "TitleKontaktveranl": "Kontaktveranl. [fr]",
+        "TitleFall": "Fall wieder öffnen [fr]",
+        "PopupConfirm": {
+            "Yes": "Ja [fr]",
+            "No": "Nein [fr]",
+            "Title": "Bestätigung [fr]",
+            "Message": "Änderungen an diesem Datensatz rückgängig machen ? [fr]",
+            "MessageFallWieder": "Soll der geschlossene Fallverlauf wieder geöffnet werden ? [fr]",
+            "Abbrechen": "Abbrechen [fr]",
+            "Daten": "Daten aktualisieren [fr]",
+            "MessageCancelConcurrency": "Fenster trotz der nicht gespeicherten Daten schliessen ? [fr]"
+        },
+        "MessageError": {
+            "DeleteMessageError": "Das Löschen dieses Datensatzes ist nicht erlaubt! [fr]",
+            "SaveMessageFirstError": "Es existieren noch ",
+            "SaveMessageLastError": " offene Pendenzen zu der abzuschliessenden Leistung. [fr]"
+        },
+        "Message": {
+            "DoubleClickMessage": "Die Angaben wurden in den Zwischenspeicher kopiert. [fr]",
+            "ShiftClickMessage": "Die ID wurde in den Zwischenspeicher kopiert [fr]"
+        },
+        "PopupMessage": {
+            "Title": "Information [fr]",
+            "Yes": "OK [fr]"
+        },
+        "NavigatorPopupConfirm": {
+            "Yes": "Discard [fr]",
+            "No": "Abbrechen [fr]",
+            "Title": "Bestätigung [fr]",
+            "Message": "Sie haben Daten geändert. Möchten Sie das Formular schließen und die Änderungen verwerfen ? [fr]"
+        },
+        "MessageValidation": {
+            "Eroffnungsdatum": "Das Feld 'Eröffnungsdatum' darf nicht leer bleiben ! [fr]",
+            "Validate": "Ungültige Daten. Bitte geben Sie gültige Eingabewerte ein. [fr]"
+        },
+        "Toolbar": {
+            "Bearbeiten": "Bearbeiten [fr]",
+            "Speichern": "Speichern [fr]",
+            "Abbrechen": "Abbrechen [fr]",
+            "FallWieder": "Fall wieder öffnen [fr]"
+        }
+    }
+}

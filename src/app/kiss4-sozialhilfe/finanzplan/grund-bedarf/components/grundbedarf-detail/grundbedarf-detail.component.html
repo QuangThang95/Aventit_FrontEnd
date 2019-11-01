@@ -1,0 +1,27 @@
+<!-- Form view -->
+<kiss-grundbedarf-detail-view *ngIf="isViewMode" [grundBedarfFormData]="grundBedarfFormData" [dataSourceSelectboxes]="dataSourceSelectboxes"
+  [readOnlySettingComponents]="readOnlySettingComponents" [visibleGroup]="visibleGroup">
+</kiss-grundbedarf-detail-view>
+
+<!-- Form edit -->
+<kiss-grundbedarf-detail-edit *ngIf="!isViewMode" [grundBedarfFormData]="grundBedarfFormData" [dataSourceSelectboxes]="dataSourceSelectboxes"
+  [readOnlySettingComponents]="readOnlySettingComponents" [typeFormatNumber]="typeFormatNumber" (focusOut)="onFocusOut($event, false)"
+  [visibleGroup]="visibleGroup" (changeDataSelectbox)="displayChangeValue($event)" (isDirtyDataFormEvent)="isDirtyDataFormEvent($event)"></kiss-grundbedarf-detail-edit>
+<app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+<!-- Concurrency popup -->
+<dx-popup id="i007_popup" title="{{popupConcurrency.title}}" [width]="680" [height]="'auto'" [(visible)]="popupConcurrency.visible"
+  [dragEnabled]="false" [closeOnOutsideClick]="false" (onHiding)="onHiding($event)">
+  <div *dxTemplate="let data of 'content'">
+    <h3 class="custom-title">
+      <pre>{{popupConcurrency.message}}</pre>
+    </h3>
+    <div class="button-confirm">
+      <dx-button id="i007_asvexport_abbrechen" class="button-background" text="{{ popupConcurrency.abbrechen }}"
+        (onClick)="popupConcurrencyAbbrechen('abbrechen')">
+      </dx-button>&nbsp;
+      <dx-button id="i007_asvexport_daten-aktualisieren" class="button-background" text="{{ popupConcurrency.datenAktualisieren }}"
+        (onClick)="popupConcurrencyAbbrechen('daten')">
+      </dx-button>
+    </div>
+  </div>
+</dx-popup>

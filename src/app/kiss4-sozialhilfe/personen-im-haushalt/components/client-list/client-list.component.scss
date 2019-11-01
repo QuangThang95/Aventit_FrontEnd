@@ -1,0 +1,16 @@
+@import 'settings/variables.scss';
+#clientList {
+    .title {
+        font-weight: $base-fw;
+        margin: 10px 0;
+    }
+    @media screen and (max-width: 960px) {
+        .title {
+            height: 40px;
+        }
+    }
+
+  #filter-builder{
+    padding-bottom: 0px;
+  }
+}

@@ -1,0 +1,35 @@
+<div id="searchBoxData">
+    <dx-select-box id="kiss-header-search-box" [(items)]="searchBoxsData" valueExpr="ID" placeholder="{{'DemografieHistory.Grid.Suchen' | translate}}"
+        displayExpr="Name" [searchEnabled]="true" [tabIndex]="5">
+        <div *dxTemplate="let data of 'dropDownButton'">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+    </dx-select-box>
+</div>
+
+<!-- 
+<dx-select-box 
+    [dataSource]="simpleData" 
+    valueExpr="ID"
+    placeholder="Suchen..."
+    [value]="" 
+    [grouped]="true" 
+    displayExpr="Name"
+    width="500"
+    [searchEnabled]="true"
+    (onValueChanged)="onValueChanged($event)"
+    (onKeyUp)="onKeyUp($event)"
+    (onPaste)="onPaste($event)"
+    tabIndex="{{tabIndexHtml}}">
+    <div *dxTemplate="let data of 'dropDownButton'">
+        <img src="assets/icon/svg/search-svg.svg" class="custom-icon"/>
+    </div>
+    <div *dxTemplate="let data of 'group'">
+        <div class="custom-icon">
+            {{data.key}}
+        </div>
+    </div>
+    <div *dxTemplate="let data of 'item'" class="custom-item">
+        <div class='product-name'>{{data.Name}}</div>
+    </div>
+</dx-select-box> -->

@@ -1,0 +1,20 @@
+<div class="form-body">
+    <dx-form [focusStateEnabled]="true" class="vorlagencontext-form" #vorlagenkontextForm [(formData)]="vorlagenkontextModel"
+        colCount="auto" labelLocation="left" [showColonAfterLabel]="false" validationGroup="FormValidate" keyExpr="docContextID">
+        <dxi-item itemType="group">
+            <dxi-item dataField="docContextName" [editorOptions]="{width: '100%'}" [template]="'DocContextNameTemplate'">
+                <dxo-label [text]=" 'VorlagenKontext.KontextName' | translate"></dxo-label>
+            </dxi-item>
+            <dxi-item dataField="description" [editorOptions]="{ width: '100%'}" [template]="'DescriptionTemplate'">
+                <dxo-label [text]="'VorlagenKontext.Description' | translate"></dxo-label>
+            </dxi-item>
+        </dxi-item>
+        <div *dxTemplate="let data of 'DocContextNameTemplate'">
+            <span>{{vorlagenkontextModel.docContextName}}</span>
+        </div>
+        <div *dxTemplate="let data of 'DescriptionTemplate'">
+            <span>{{vorlagenkontextModel.description}}</span>
+        </div>
+    </dx-form>
+    <ng-content></ng-content>
+</div>

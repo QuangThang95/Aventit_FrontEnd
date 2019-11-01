@@ -1,0 +1,54 @@
+<kiss-right-component>
+    <app-navigator id="o013-ctlbfscokumente" titleHeader="{{'CtlBfsDokumente.TitleView' | translate}}"></app-navigator>
+    <section id="wrapper-content">
+        <div class="container">
+            <div class="right-content rounded-0">
+                <div class="error" *ngIf="isErrorClosed">
+                    <span class="btn-close-error">
+                        <dx-button class="btn-close" (onClick)="onCloseError()" icon="fa fa-times fa-2x">
+                        </dx-button>
+                    </span>
+                    <div class="error-messege">
+                        <span class="ico-error">
+                            <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                        </span>
+                        <span class="err-messeger">{{messageErr}}</span>
+                    </div>
+                </div>
+                <div class="o013-leitfaden-wrapper">
+                    <dx-responsive-box width="100%" [(screenByWidth)]="screen">
+                        <dxi-row [ratio]="1"></dxi-row>
+
+                        <dxi-col [ratio]="2" screen="lg"></dxi-col>
+                        <dxi-col [ratio]="1" screen="lg"></dxi-col>
+                        <dxi-col [ratio]="12" screen="lg"></dxi-col>
+
+                        <dxi-col [ratio]="2" screen="sm"></dxi-col>
+                        <dxi-col [ratio]="1" screen="sm"></dxi-col>
+                        <dxi-col [ratio]="6" screen="sm"></dxi-col>
+                        <dxi-item>
+                            <dxi-location [row]="0" [col]="0" [colspan]="1" screen="lg"></dxi-location>
+                            <dxi-location [row]="0" [col]="0" [colspan]="1" screen="sm"></dxi-location>
+                            <div *dxTemplate>
+                                <dx-button id="o013_dokumente_leitfaden" name="leitfaden" text="{{ 'CtlBfsDokumente.LeitfadenNameBtn' | translate }}"
+                                    (onClick)="openHyperlink()">
+                                </dx-button>
+                            </div>
+                        </dxi-item>
+                        <dxi-item>
+                            <dxi-location [row]="0" [col]="1" [colspan]="1"></dxi-location>
+                        </dxi-item>
+                        <dxi-item>
+                            <dxi-location [row]="0" [col]="2" [colspan]="1" screen="lg"></dxi-location>
+                            <dxi-location [row]="0" [col]="2" [colspan]="1" screen="sm"></dxi-location>
+                            <div *dxTemplate class="item-label">
+                                <span> {{ 'CtlBfsDokumente.LabelLeitfaden' | translate}}</span>
+                            </div>
+                        </dxi-item>
+                    </dx-responsive-box>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-popup-confirm [popUpModel]="popUpModel"></app-popup-confirm>
+</kiss-right-component>

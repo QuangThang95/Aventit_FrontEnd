@@ -1,0 +1,191 @@
+@import 'settings/variables';
+@import 'tools/mixins';
+.sidebar {
+    background-color: darken($color: $color-bg-body, $amount: 5);
+    @include css3-prefix(transform 150ms linear, width 150ms linear);
+    position: fixed;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px);
+    /* background-color: #333; */
+    color: white;
+    height: calc(100% - 105px);
+    width: 350px;
+    z-index: 100;
+    .sidebar-content {
+        background-color: white;
+        position: relative;
+        overflow: auto;
+        height: calc(100% - 45px);
+        &:hover {
+            &::-webkit-scrollbar {
+                width: 10px;
+                /* for vertical scrollbars */
+                height: 10px;
+                /* for horizontal scrollbars */
+            }
+            &::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+            }
+            &::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.3);
+            }
+        }
+        &::-webkit-scrollbar {
+            width: 5px;
+            /* for vertical scrollbars */
+            height: 5px;
+            /* for horizontal scrollbars */
+            @include css3-prefix(transition, width 0.9s);
+            @include css3-prefix(transition, height 0.9s);
+        }
+        &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
+    .sidebar-header {
+        height: 45px;
+        background: transparent;
+        color: $color-white;
+        width: 100%;
+    }
+    >.sider-bar-panel-content {
+        >.sidebar-header {
+            background: darken($color: $color-base, $amount: 5);
+            .title {
+                padding: 15px;
+            }
+        }
+        float: left;
+        width: 100%;
+        overflow: hidden;
+        height: 100%;
+    }
+    >.sider-bar-panel-hidden {
+        >.sidebar-header {
+            background: darken($color: $color-base, $amount: 10);
+            i {
+                vertical-align: middle;
+                margin-top: 12px;
+                margin-left: 10px;
+                width: 100%;
+                font-size: 17px;
+            }
+        }
+        width: 35px;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        >.sidebar-content {
+            p {
+                margin: 0;
+                @include css3-prefix('transform', rotate(-90deg));
+                font-size: 15px;
+                left: -30px;
+                top: 30%;
+                text-align: center;
+                white-space: nowrap;
+                position: absolute;
+                color: #285f8f;
+                display: none;
+            }
+        }
+        &:hover {
+            background-color: darken($color: $color-bg-body, $amount: 10);
+            opacity: .8;
+        }
+    }
+}
+.sidebarsmenuiconoverflow{
+    color: #fff;
+}
+#H011_main-sticky-area_sidebars-menu-overflow{
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfiAREGGyTTJVqaAAAAfUlEQVRIx+3RQQpAQBSA4X/kYCKKsnArN7CcQyiKOJkaC4Z5FjYs37959RmmMaBpGoA5hkupiFlMHz50JTkwm1FoTcbGYNabWuezwcLu0i5Qe2nrKXFhjd9daHlqIzSBCCjEofLHfNPi+MCnImASMj/mm/o3v/zEf65R0zR2y1mIT/J03p8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTgtMDEtMTdUMDY6Mjc6MzYrMDE6MDAhMeJ4AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE4LTAxLTE3VDA2OjI3OjM2KzAxOjAwUGxaxAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=) 0 0/17px no-repeat;
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+}
+::ng-deep .selected-actions-container {
+        position: absolute;
+        bottom: 0;
+        .dx-scrollview-content {
+          .dx-list-item {
+            // Item
+            .dx-list-item-content {
+              padding: 5px 10px !important;
+              outline: none;
+              &.current {
+                // Active
+                &:focus {
+                  outline: none;
+                  color: #333;
+                }
+                background-color: #F5F5F5;
+              }
+              .item {
+                // Content
+                display: flex;
+                align-items: center;
+                .icon {
+                  flex: 1;
+                  img {
+                    height: 25px;
+                  }
+                }
+                .name {
+                  flex: 6;
+                }
+                .age {
+                  flex: 0;
+                }
+              }
+            }
+            &:focus-within,
+            &.dx-state-hover,
+            &.dx-state-active,
+            &.dx-state-focused {
+              background-color: #F5F5F5;
+              color: #333;
+              .dx-list-item-after-bag.dx-list-static-delete-button-container {
+                width: 35px;
+                visibility: visible !important;
+                background: #F44336 !important;
+              }
+            }
+            .dx-list-item-after-bag.dx-list-static-delete-button-container {
+              width: 0px;
+              transition: all 0.5s;
+              background: #d0d0d0;
+              .dx-list-static-delete-button {
+                margin-right: 0px;
+              }
+              .dx-button {
+                border-radius: unset;
+                border: unset;
+                background-color: #d0d0d0;
+                .dx-button-content {
+                  padding: 10px 9px 11px 9px;
+                }
+                &:focus-within,
+                &.dx-state-hover,
+                &.dx-state-active,
+                &.dx-state-focused {
+                  background: #F44336;
+                  border-color: #F44336;
+                  .dx-icon {
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+        }
+}
